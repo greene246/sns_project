@@ -1,10 +1,13 @@
 package com.example.sns.sns_project.domain.user;
 
+import com.example.sns.sns_project.util.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Blob;
 
@@ -13,16 +16,22 @@ import java.sql.Blob;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class BoardVO {
-    String id;
+public class BoardVO extends Timestamp {
+    @Id
+    private String id;
 
-    String userId;
+    @Column(name="userId", nullable = false)
+    private String userId;
 
-    Blob img;
+    @Column(name="img", nullable = false)
+    private String img;
 
-    String contents;
+    @Column(name="contents", nullable = false)
+    private String contents;
 
-    int like_cnt;
+    @Column(name="like_cnt")
+    private int like_cnt;
 
-    int public_scope;
+    @Column(name="public_scope")
+    private int public_scope;
 }

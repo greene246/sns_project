@@ -26,9 +26,8 @@ public class MainController {
         return "updateMyInfo";
     }
 
-    @RequestMapping("/writeBoard")
-    public String writeBoard(){
-        return "writeBoard";
-    }
-
+    @RequestMapping("/writeForm")
+    public String writeForm(){
+        return "writeForm";
+    };
 }

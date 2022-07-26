@@ -21,4 +21,8 @@ public class MainController {
         return "myPage";
     }
 
+    @RequestMapping("/writeForm")
+    public String writeForm(){
+        return "writeForm";
+    };
 }

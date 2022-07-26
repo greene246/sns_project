@@ -11,6 +11,7 @@
     <title>Main</title>
 </head>
 <body>
+
     <c:import url="/WEB-INF/views/header.jsp"/>
 
 </body>

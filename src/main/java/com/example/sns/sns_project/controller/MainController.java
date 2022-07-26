@@ -11,4 +11,14 @@ public class MainController {
         return "header";
     }
 
+    @RequestMapping("/main")
+    public String main(){
+        return "main";
+    }
+
+    @RequestMapping("/myPage")
+    public String myPage(){
+        return "myPage";
+    }
+
 }

@@ -11,6 +11,15 @@
     <title>Title</title>
 </head>
 <body>
+<form method="post" action="/main">
+    ID<input type="text" id="id" placeholder="id" required><br>
+    PW<input type="password" id="password" placeholder="password" required><br>
+    <input type="button" value="로그인" onclick="checkUser()">
+    <input type="button" value="회원가입" onclick="location.href='/join'"/>
+</form>
 
+<c:import url="/WEB-INF/views/footer.jsp"/>
+
+<script src="script/validation.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 package com.example.sns.sns_project.domain.user;
+import com.example.sns.sns_project.util.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,13 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @Table
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UserVO {
+public class UserVO extends Timestamp {
 
     @Id
     private int id;
@@ -28,6 +30,6 @@ public class UserVO {
     private String name;
 
     private String email;
-    private Timestamp created_at;
+    private LocalDateTime created_at;
 
 }

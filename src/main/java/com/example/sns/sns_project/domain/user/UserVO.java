@@ -11,6 +11,6 @@ public class UserVO {
 
     @Column(name="userId", nullable = false)
     private String userId;
-
+    // commit
 
 }

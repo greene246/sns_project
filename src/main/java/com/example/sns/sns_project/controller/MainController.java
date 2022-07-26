@@ -8,7 +8,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "main";
     }
 
     @RequestMapping("/main")
@@ -19,6 +19,16 @@ public class MainController {
     @RequestMapping("/myPage")
     public String myPage(){
         return "myPage";
+    }
+
+    @RequestMapping("/updateMyInfo")
+    public String updateMyInfo(){
+        return "updateMyInfo";
+    }
+
+    @RequestMapping("/writeBoard")
+    public String writeBoard(){
+        return "writeBoard";
     }
 
 }

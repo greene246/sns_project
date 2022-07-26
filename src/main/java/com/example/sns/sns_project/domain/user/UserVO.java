@@ -27,9 +27,10 @@ public class UserVO extends Timestamp {
     @Column(name = "userPw", nullable = false)
     private String userPw;
 
+    @Column(name="name", nullable = false)
     private String name;
 
+    @Column(name="email", nullable = true)
     private String email;
-    private LocalDateTime created_at;
 
-}
+    private LocalDateTime created_at;

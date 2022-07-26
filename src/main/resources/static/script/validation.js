@@ -1,3 +1,5 @@
-function checkUser(){
+function checkUser(form){
 
+
+    form.submit();
 }

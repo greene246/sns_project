@@ -21,16 +21,19 @@ public class UserVO extends Timestamp {
     @Id
     private int id;
 
-    @Column(name="userId", nullable = false)
+    @Column(name = "userId", nullable = false)
     private String userId;
 
     @Column(name = "userPw", nullable = false)
     private String userPw;
 
-    @Column(name="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name="email", nullable = true)
+    @Column(name = "email", nullable = true)
     private String email;
 
+    @Column(name = "created_at", nullable = true)
     private LocalDateTime created_at;
+
+}

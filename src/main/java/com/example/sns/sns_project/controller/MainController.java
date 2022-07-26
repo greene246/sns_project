@@ -25,4 +25,14 @@ public class MainController {
     public String writeForm(){
         return "writeForm";
     };
+    @RequestMapping("/updateMyInfo")
+    public String updateMyInfo(){
+        return "updateMyInfo";
+    }
+
+    @RequestMapping("/writeBoard")
+    public String writeBoard(){
+        return "writeBoard";
+    }
+
 }

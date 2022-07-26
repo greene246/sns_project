@@ -6,6 +6,11 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%
+        String userId = (String) session.getAttribute("userId");
+    %>
+    myPage 입니다.
+
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.sns.sns_project.domain.user;
+package com.example.sns.sns_project.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 
 public class UserVO {
 
-    @Id
-    private int id;
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
@@ -23,5 +21,19 @@ public class UserVO {
     @Column(name="email", nullable = true)
     private String email;
 
+    public UserVO(UserRequestDto userRequestDto){
+        this.userId = userRequestDto.getUserId();
+        this.userPw = userRequestDto.getUserPw();
+        this.name = userRequestDto.getName();
+//        this.email = userRequestDto.getEmail();
+    }
+
+    // update
+    public void update(UserRequestDto userRequestDto){
+        //set
+        this.userPw = userRequestDto.getUserPw();
+        this.name = userRequestDto.getName();
+        this.email = userRequestDto.getEmail();
+    }
 
 }

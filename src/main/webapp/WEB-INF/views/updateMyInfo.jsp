@@ -10,7 +10,7 @@
 
 <%--    이름, 비밀번호, 이메일--%>
 
-    <form method="post" action="">
+    <form method="post" action="/update">
         <div class="updateUser">
             <input type="text" class="name" placeholder="이름" required><br>
             <input type="email" class="email" placeholder="이메일" required><br>

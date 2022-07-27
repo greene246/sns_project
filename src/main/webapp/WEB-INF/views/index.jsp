@@ -22,12 +22,4 @@
 
     <script src="./script/validation.js"></script>
 
-    <%--
-    페이지 이동처리 + 검증js (ajax 활용 내가만든 api로 실시간 중복아이디 조회 처리)
-    1) index.jsp (id,pw,join button)
-    2) join.jsp (validation.js) <- ajax 호출
-    3) main.jsp (로그인 검증)
-    --%>
 
-</body>
-</html>

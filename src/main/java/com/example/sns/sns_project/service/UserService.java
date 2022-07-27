@@ -14,6 +14,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    // read
+    /*public UserVO readUser(UserRequestDto userRequestDto){
+        UserVO result = userRepository.findBy(userRequestDto.)
+    }*/
+
     // update
     @Transactional
     public void updateUser(UserRequestDto userRequestDto){

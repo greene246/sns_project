@@ -24,10 +24,15 @@ public class UserRequestDto {
         this.email = email;
     }
 
-    // update
+    // updateMe
     public UserRequestDto(String name, String email, String userPw){
         this.name = name;
         this.email = email;
         this.userPw = userPw;
     }
+
+    // updatePw
+//    public UserRequestDto(String userPw){
+//        this.userPw = userPw;
+//    }
 }

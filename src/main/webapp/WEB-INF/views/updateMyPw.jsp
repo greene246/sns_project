@@ -7,13 +7,13 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-    <%
-        String userId = (String) session.getAttribute("userId");
-        String name = (String) session.getAttribute("name");
-        String email = (String) session.getAttribute("email");
-        String userPw = (String) session.getAttribute("userPw");
-    %>
-    <h2>프로필 편집</h2>
+<%
+    String userId = (String) session.getAttribute("userId");
+    String name = (String) session.getAttribute("name");
+    String email = (String) session.getAttribute("email");
+    String userPw = (String) session.getAttribute("userPw");
+%>
+    <h2>비밀번호 변경</h2>
 
     <%=userId%><br>
 
@@ -23,15 +23,13 @@
     <form method="post" action="/update">
         <div class="content">
             <div class="updateUser">
-                <div class="con1">
-                    <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
-                </div>
-                <div class="con2">
-                    <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
-                </div>
 
-                <input type="hidden" name="userPw" value="<%=userPw%>">
+                <input type="hidden" name="name" value="<%=name%>">
+                <input type="hidden" name="email" value="<%=email%>">
 
+                <p class="_pw">이전 비밀번호</p> <input type="password" class="password" required><br>
+                <p class="_pw">새 비밀번호</p> <input type="password" name="userPw" class="password" required><br>
+                <p class="_pw">새 비밀번호 확인</p> <input type="password" name="userPw" class="password" required>
             </div>
             <div class="button">
                 <input type="submit" name="update" value="수정">

@@ -26,6 +26,11 @@ public class MainController {
         return "updateMyInfo";
     }
 
+    @RequestMapping("/updateMyPw")
+    public String updateMyPw(){
+        return "updateMyPw";
+    }
+
     @RequestMapping("/writeForm")
     public String writeForm(){
         return "writeForm";

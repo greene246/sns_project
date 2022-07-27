@@ -38,9 +38,9 @@ public class UserVO {
     // update
     public void update(UserRequestDto userRequestDto){
         //set
-        this.userPw = userRequestDto.getUserPw();
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
+        this.userPw = userRequestDto.getUserPw();
     }
 
 }

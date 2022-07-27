@@ -27,7 +27,7 @@
     width: 30px;
 }
 
-input[type="text"]{
+.header input[type="text"]{
     height: 50px;
     padding: 0px 20px;
     margin-top: 25px;

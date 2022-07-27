@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Getter
 public class BoardVO extends Timestamp {
     @Id
-    private String id;
+    private int id;
 
     @Column(name="userId", nullable = false)
     private String userId;
@@ -33,4 +33,11 @@ public class BoardVO extends Timestamp {
 
     @Column(name="public_scope")
     private int public_scope;
+
+    public BoardVO(BoardRequestDto boardRequestDto){
+        this.userId = boardRequestDto.getUserId();
+        this.img = boardRequestDto.getImg();
+        this.contents = boardRequestDto.getContents();
+        this.public_scope = boardRequestDto.getPublic_scope();
+    }
 }

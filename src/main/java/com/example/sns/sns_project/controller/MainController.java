@@ -21,18 +21,11 @@ public class MainController {
         return "myPage";
     }
 
-    @RequestMapping("/writeForm")
-    public String writeForm(){
-        return "writeForm";
-    };
     @RequestMapping("/updateMyInfo")
     public String updateMyInfo(){
         return "updateMyInfo";
     }
 
-    @RequestMapping("/writeBoard")
-    public String writeBoard(){
-        return "writeBoard";
-    }
-
+    @RequestMapping("/writeForm")
+    public String writeForm(){return "writeForm";}
 }

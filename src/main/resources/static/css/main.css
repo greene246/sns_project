@@ -1,0 +1,24 @@
+.wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.wrap > *{
+    justify-content: center;
+    margin-top: 60px;
+}
+.bookInfo {
+    width: 420px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    background-color:aqua;
+    overflow : auto;
+}
+.serve{
+    width: 150px;
+    height: 200px;
+    background-color:red;
+}

@@ -1,2 +1,4 @@
-package com.example.sns.sns_project.service;public class DBService {
+package com.example.sns.sns_project.service;
+
+public class DBService {
 }

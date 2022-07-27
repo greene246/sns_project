@@ -5,7 +5,7 @@ function checkUser(form){
     }
 
     $.ajax({
-        url: "/user",
+        url: "/check",
         // method : "POST",
         type : "POST",
         data : JSON.stringify(requestData),

@@ -7,11 +7,10 @@
 <body>
   <div class="header">
       <a href="/main" id="logo">LOGO</a>
+      <input type="text" class="search" name="search" placeholder="검색">
       <div class="topMenu">
-          <input type="text" class="search" name="search" placeholder="검색">
-          <p class="writeForm" onclick="location.href='/writeForm'">추가</p>
-          <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
-
+          <p class="writeForm" onclick="location.href='/writeForm'"><img src="image/add.jpg"></p>
+          <p class="myPage" onclick="location.href='/myPage'"><img src="image/myPage.png"></p>
       </div>
   </div>
 

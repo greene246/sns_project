@@ -1,5 +1,5 @@
 *{
-    text-align: center;
+    /*text-align: center;*/
 }
 .header{
     width:100vw;
@@ -21,4 +21,14 @@
 .topMenu p{
     margin-left: 20px;
     cursor:pointer;
+}
+
+.topMenu img{
+    width: 30px;
+}
+
+input[type="text"]{
+    height: 50px;
+    padding: 0px 20px;
+    margin-top: 25px;
 }

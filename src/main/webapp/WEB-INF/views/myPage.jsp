@@ -9,6 +9,8 @@
     <%
         String userId = (String) session.getAttribute("userId");
     %>
+    <%=userId%><br>
+    <input type="button" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
     myPage 입니다.
 
 

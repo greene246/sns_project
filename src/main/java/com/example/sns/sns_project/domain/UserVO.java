@@ -1,15 +1,22 @@
 package com.example.sns.sns_project.domain;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
+@Table(name="users")
+@NoArgsConstructor
+@Entity
 public class UserVO {
 
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
-    @Column(name="userId", nullable = false)
+    @Id
     private String userId;
 
     @Column(name="userPw", nullable = false)

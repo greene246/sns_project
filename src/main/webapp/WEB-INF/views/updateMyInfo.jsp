@@ -6,8 +6,10 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%
+        String userId = (String) session.getAttribute("userId");
+    %>
     <h2>프로필 편집</h2>
-
 <%--    이름, 비밀번호, 이메일--%>
 
     <form method="post" action="/update">

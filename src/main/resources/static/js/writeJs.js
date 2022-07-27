@@ -1,18 +1,9 @@
 function apply(form){
-    const requestData = {
-        "userId" : $('#userId').val(),
-        "img" : $('#img').val(),
-        "contents" : $('#contents').val(),
-        "public_cnt" : 0
-    };
-    console.log(requestData)
     $.ajax({
-        url : "/writeForm",
-        type : "POST",
-        data: JSON.stringify(requestData),
-        contentType: "application/json"
+        url : "https://cloudresourcemanager.googleapis.com/v3/projects/snsproject-357606",
+        type : "GET",
     }).success(result => {
-
+        console.log(result)
 
     }).fail(error => {
         console.log(error)

@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -10,13 +9,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/main">
-    ID<input type="text" id="userId" placeholder="ID" required><br>
-    PW<input type="password" id="userPw" placeholder="Password" required><br>
-    <input type="button" value="로그인" onclick="checkUser()">
+<form id="login" method="post" action="/login">
+    ID<input type="text" name="user_id" id="user_id" placeholder="ID" required><br>
+    PW<input type="password" name="user_pw" id="user_pw" placeholder="Password" required><br>
+
+    <input type="submit" value="로그인">
     <input type="button" value="회원가입" onclick="location.href='/join'"/>
 </form>
 

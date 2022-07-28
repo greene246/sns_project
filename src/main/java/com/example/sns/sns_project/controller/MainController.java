@@ -30,6 +30,8 @@ public class MainController {
         return "updateMyInfo";
     }
 
-
-
+    @RequestMapping("/join")
+    public String join(){
+        return "join";
+    }
 }

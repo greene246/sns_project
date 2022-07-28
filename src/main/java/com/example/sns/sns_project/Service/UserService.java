@@ -14,19 +14,17 @@ public class UserService {
     @Autowired
         private UserRepository userRepository;
 
-    public UserVO readUser(UserRequestDto userRequestDto) {
-           UserVO result = userRepository.findById(userRequestDto.getUserId()).orElseThrow(
-                    () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
-           );
-           if(result.getUserId().equals(userRequestDto.getUserId()))
-            return result;
-        return null;
+    public UserVO readUser(String id ) {
+        UserVO user = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("dd")
+        );
+        return user;
     }
 
 
-    public List<UserVO> readUserAll(UserRequestDto userRequestDto){
-        return userRepository.logCheck(userRequestDto.getUserId(),userRequestDto.getUserPw());
-    }
+//    public List<UserVO> readUserAll(UserRequestDto userRequestDto){
+//        return userRepository.logCheck(userRequestDto.getUser_id(),userRequestDto.getUser_pw());
+//    }
 
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Table
+@Table(name="users")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,13 +19,10 @@ import java.time.LocalDateTime;
 public class UserVO extends Timestamp {
 
     @Id
-    private int id;
+    private String user_id;
 
-    @Column(name = "userId", nullable = false)
-    private String userId;
-
-    @Column(name = "userPw", nullable = false)
-    private String userPw;
+    @Column(name = "user_pw", nullable = false)
+    private String user_pw;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -35,5 +32,9 @@ public class UserVO extends Timestamp {
 
     @Column(name = "created_at", nullable = true)
     private LocalDateTime created_at;
+
+    @Column(name = "modified_at", nullable = true)
+    private LocalDateTime modified_at;
+
 
 }

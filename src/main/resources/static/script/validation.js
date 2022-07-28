@@ -1,11 +1,11 @@
-function checkUser(form){
+function checkUser(){
     const requestData = {
         "id" : $("#userId").val(),
         "pw" : $("#userPw").val()
     }
 
     $.ajax({
-        url: "/check",
+        url : "/user",
         // method : "POST",
         type : "POST",
         data : JSON.stringify(requestData),
@@ -15,7 +15,5 @@ function checkUser(form){
     }).fail(error => {
         console.log(error.responseText);
     })
-
-    form.submit();
-
+    document.getElementById('#login').submit();
 }

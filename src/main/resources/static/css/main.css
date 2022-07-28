@@ -5,8 +5,9 @@
 
 }
 .wrap > *{
-    justify-content: center;
+    /*justify-content: center;*/
     margin-top: 60px;
+
 }
 
 .section {
@@ -25,6 +26,38 @@
     height: 200px;
     background-color:red;
 }
-.icon > *{
-    width: 60px;
+.icon{
+    justify-content: space-between;
+    display: flex;
+    margin:10px;
+}
+.icon img{
+    padding-top: 14px;
+    width: 24px;
+}
+.three > *{
+    padding: 0 5px 0 5px;
+}
+.bookmark {
+
+    width: 24px;
+
+}
+.box {
+    /*width: 80px;*/
+    height: 80px;
+    display: flex;
+}
+.profile {
+    width: 15%;
+    height: 80%;
+    margin-top: 10px;
+    margin-left: 10px;
+    object-fit: cover;
+    border-radius: 70%;
+    overflow: hidden;
+}
+.userid{
+    margin-top: 30px;
+    margin-left: 10px;
 }

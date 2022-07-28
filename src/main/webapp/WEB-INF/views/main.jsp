@@ -6,46 +6,96 @@
 
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/common.css">
     <title>Main</title>
 
 </head>
 <body>
     <c:import url="/WEB-INF/views/header.jsp"/>
 
-<div class="wrap">
-    <%
-        String id = (String) session.getAttribute("user_id");
+    <div class="wrap">
+        <div class="black"></div>
 
-    %>
-    <div class="section">
+        <%
+            String id = (String) session.getAttribute("user_id");
 
-        <div class="box">
-            <img class="profile" src="/img/cute.JPG">
-            <a class="userid"> <%=id%></a>
+        %>
+        <div class="section">
+
+            <div class="contents_wrap">
+                <div class="box">
+                    <span class="profile_wrap"><span><img class="profile" src="/img/cute.JPG"></span></span>
+                    <a class="userid"> <%=id%></a>
+                </div>
+
+                <span class="img_wrap"><img src="./img/backpic.jpg"></span>
+                <div class="icon">
+                    <div class="three">
+                    <img src="./img/heart.png">
+    <%--                <img src="./img/message.png">--%>
+                        <a href="javascript:;" onclick="javascript:showPopup()">
+                         <img src="./img/message.png">
+                        </a>
+                        <img src="./img/direct.png">
+
+                    </div>
+                    <div class="bookmark">
+                        <img src="./img/bookmark_off.png">
+                    </div>
+                </div>
+                <div class="word"> 좋아요 <%=1%>개</div>
+
+                <div class="id"><%=id%></div>
+                <div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>
+            </div>
         </div>
 
-        <img src="./img/backpic.jpg">
-        <div class="icon">
-            <div class="three">
-            <img src="./img/heart.png">
-            <img src="./img/message.png">
-            <img src="./img/direct.png">
+        <div class="serve">
+             serveserveserveserveserveseveserve
+        </div>
+<%--     ////////////////--%>
 
-            </div>
-            <div class="bookmark">
-                <img src="./img/bookmark_off.png">
+        <div class="wrap">
+
+            <jsp:include page="header.jsp"></jsp:include>
+            <div class="container">
+                <div class="black"></div>
+                <div class="subs">
+                    <div class="pop1" >
+
+
+                        <button class="cancel" id="cancel">X</button>
+                        <img src="">
+                        <h1>sssssssssssssssss</h1>
+                    </div>
+
+                </div>
+
             </div>
         </div>
-        <div class="word"> 좋아요 <%=1%>개</div>
-        <div><%=id%></div>
-        <div>contents</div>
+        <script src="./js/validation.js"></script>
+        <script type="text/javascript">
+            jQuery.fn.center = function () {
+                this.css("position","absolute");
+                this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()-60) + "px");
+                this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+
+                return this;
+            }
+            showPopup = function() {
+                $(".pop1").show();
+                $(".pop1").center();
+            }
+
+        </script>
+<%--     /////////////    --%>
     </div>
 
-    <div class="serve">
-
     </div>
 
-</div>
 
+</body>
 <html>

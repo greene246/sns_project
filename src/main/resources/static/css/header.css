@@ -1,20 +1,29 @@
 
 .header{
     text-align: center;
-    width:100vw;
+    /*width:100vw;*/
+    width: 100%;
     background-color: #eee6df;
     opacity: 0.6;
-    height: 10vh;
-    display: flex;
+    /*height: 10vh;*/
     /*color:#1b0f04;*/
     justify-content: space-between;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.header_contents_wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px 0;
 }
 .topMenu{
-    float:right;
+    flex-grow: 1;
     display: flex;
     font-weight: 500;
-    margin:10px 150px;
+    justify-content: right;
+    /*margin:10px 150px;*/
     /* color:#1b0f04; */
 }
 .topMenu p{

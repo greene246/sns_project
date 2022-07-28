@@ -20,4 +20,5 @@ public class UserRequestDto {
         this.user_pw = user_pw;
         this.name = name;
     }
+
 }

@@ -36,5 +36,13 @@ public class UserVO extends Timestamp {
     @Column(name = "modified_at", nullable = true)
     private LocalDateTime modified_at;
 
+    public UserVO(UserRequestDto userRequestDto){
+        this.user_id = userRequestDto.getUser_id();
+        this.user_pw = userRequestDto.getUser_pw();
+        this.name = userRequestDto.getName();
+        this.email = userRequestDto.getEmail();
+    }
+
+
 
 }

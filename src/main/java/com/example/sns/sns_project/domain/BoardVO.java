@@ -33,4 +33,6 @@ public class BoardVO extends Timestamp {
 
     @Column(name="public_scope")
     private int public_scope;
+
+
 }

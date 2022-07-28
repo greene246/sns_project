@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -18,26 +19,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//
-//    @PostMapping("/chcek")
-//    @ResponseBody
-//    public List<UserVO> getAllUser(@RequestBody UserRequestDto userRequestDto){
-//        List<UserVO> result = userService.readUserAll(userRequestDto);
-//        if(result.isEmpty())
-//            System.out.println("회원정보 확인필요");
-//        else
-//            System.out.println("로그인 완료");
-//        return result;
-//    }
 
-
+    // login
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
         System.out.println("111111111111111");
         UserRequestDto user = new UserRequestDto(id, password);
         System.out.println(user.getUser_id());
-        UserVO result = userService.readUser(user.getUser_id());
+        UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
         System.out.println(result.getUser_pw());
@@ -60,9 +50,43 @@ public class UserController {
             e.printStackTrace();
         }
     }
+    // join
+    @PostMapping("/joinUser")
+    public void addUser(@RequestParam(name="user_id") String id,
+                        @RequestParam(name="user_pw") String password,
+                        @RequestParam(name="name") String name,
+                        @RequestParam(name="email") String email,
+                        HttpServletResponse response){
+        UserRequestDto user = new UserRequestDto(id, password,name,email);
 
 
 
+        String url = "";
+
+        if(userService.readUser(user) == null) {
+            userService.createUser(user);
+            System.out.println("insert 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("아이디 중복");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("/getUser")
+    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
+        System.out.println("kjhkj"+userRequestDto.getUser_id());
+        UserVO user = userService.readUser(userRequestDto);
+        System.out.println("^^"+user.getUser_id());
+        return user;
+    }
 
 
 }

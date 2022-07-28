@@ -1,0 +1,25 @@
+.wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.wrap > *{
+    justify-content: center;
+    margin-top: 60px;
+}
+.section {
+    width: 420px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px 0 0;
+    margin-right: 30px;
+    background-color:aqua;
+    overflow : auto;
+}
+.serve{
+    width: 150px;
+    height: 200px;
+    background-color:red;
+}

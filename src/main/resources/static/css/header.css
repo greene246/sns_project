@@ -1,5 +1,5 @@
 *{
-    /*text-align: center;*/
+    text-align: center;
 }
 .header{
     width:100vw;
@@ -22,7 +22,6 @@
     margin-left: 20px;
     cursor:pointer;
 }
-
 .topMenu img{
     width: 30px;
 }

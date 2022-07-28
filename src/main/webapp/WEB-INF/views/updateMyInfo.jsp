@@ -23,6 +23,9 @@
     <form method="post" action="/update">
         <div class="content">
             <div class="updateUser">
+
+                <input type="hidden" name="user_id" value="<%=user_id%>">
+
                 <div class="con1">
                     <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
                 </div>

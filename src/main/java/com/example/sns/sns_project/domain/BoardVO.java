@@ -1,4 +1,4 @@
-package com.example.sns.sns_project.domain.user;
+package com.example.sns.sns_project.domain;
 
 import com.example.sns.sns_project.util.Timestamp;
 import lombok.AllArgsConstructor;
@@ -34,10 +34,10 @@ public class BoardVO extends Timestamp {
     @Column(name="public_scope")
     private int public_scope;
 
-/*    public BoardVO(BoardRequestDto boardRequestDto){
+    public BoardVO(BoardRequestDto boardRequestDto){
         this.userId = boardRequestDto.getUserId();
         this.img = boardRequestDto.getImg();
         this.contents = boardRequestDto.getContents();
         this.public_scope = boardRequestDto.getPublic_scope();
-    }*/
+    }
 }

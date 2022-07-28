@@ -42,9 +42,7 @@
             <div class="button">
                 <input type="submit" name="update" value="수정">
             </div>
-
         </div>
-
     </form>
 </body>
 <script src="js/validation.js"></script>

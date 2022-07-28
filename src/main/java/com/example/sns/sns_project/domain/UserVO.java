@@ -1,5 +1,6 @@
 package com.example.sns.sns_project.domain;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -11,16 +12,17 @@ import java.sql.Timestamp;
 @Table(name="users")
 @NoArgsConstructor
 @Entity
+@Getter
 public class UserVO {
 
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
     @Id
-    private String userId;
+    private String user_id;
 
-    @Column(name="userPw", nullable = false)
-    private String userPw;
+    @Column(name="user_pw", nullable = false)
+    private String user_pw;
 
     @Column(name="name", nullable = false)
     private String name;
@@ -29,8 +31,8 @@ public class UserVO {
     private String email;
 
     public UserVO(UserRequestDto userRequestDto){
-        this.userId = userRequestDto.getUserId();
-        this.userPw = userRequestDto.getUserPw();
+        this.user_id = userRequestDto.getUser_id();
+        this.user_pw = userRequestDto.getUser_pw();
         this.name = userRequestDto.getName();
 //        this.email = userRequestDto.getEmail();
     }
@@ -40,7 +42,7 @@ public class UserVO {
         //set
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
-        this.userPw = userRequestDto.getUserPw();
+        this.user_pw = userRequestDto.getUser_pw();
     }
 
 }

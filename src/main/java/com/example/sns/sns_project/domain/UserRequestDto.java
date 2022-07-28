@@ -8,31 +8,31 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor
 @Getter
 public class UserRequestDto {
-    private String userId,userPw,name,email;
+    private String user_id,user_pw,name,email;
 
     // login
-    public UserRequestDto(String userId, String userPw){
-        this.userId = userId;
-        this.userPw = userPw;
+    public UserRequestDto(String user_id, String user_pw){
+        this.user_id = user_id;
+        this.user_pw = user_pw;
     }
 
     // join
-    public UserRequestDto(String userId, String userPw, String name, String email){
-        this.userId = userId;
-        this.userPw = userPw;
+    public UserRequestDto(String user_id, String user_pw, String name, String email){
+        this.user_id = user_id;
+        this.user_pw = user_pw;
         this.name = name;
         this.email = email;
     }
 
-    // updateMe
-    public UserRequestDto(String name, String email, String userPw){
+    // update
+    public UserRequestDto(String name, String email, String user_pw){
         this.name = name;
         this.email = email;
-        this.userPw = userPw;
+        this.user_pw = user_pw;
     }
 
     // updatePw
-//    public UserRequestDto(String userPw){
-//        this.userPw = userPw;
-//    }
+    public UserRequestDto(String user_pw){
+        this.user_pw = user_pw;
+    }
 }

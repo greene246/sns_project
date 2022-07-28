@@ -7,11 +7,11 @@
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
     <%
-        String userId = (String) session.getAttribute("userId");
-        String userPw = (String) session.getAttribute("userPw");
+        String user_id = (String) session.getAttribute("user_id");
+        String user_pw = (String) session.getAttribute("user_pw");
     %>
-    <%=userId%><br>
-    <%=userPw%><br>
+    <%=user_id%><br>
+    <%=user_pw%><br>
     <input type="button" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
     myPage 입니다.
 

@@ -8,14 +8,14 @@
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
     <%
-        String userId = (String) session.getAttribute("userId");
+        String user_id = (String) session.getAttribute("user_id");
         String name = (String) session.getAttribute("name");
         String email = (String) session.getAttribute("email");
-        String userPw = (String) session.getAttribute("userPw");
+        String user_pw = (String) session.getAttribute("user_pw");
     %>
     <h2>프로필 편집</h2>
 
-    <%=userId%><br>
+    <%=user_id%><br>
 
     <input type="button" name="updateMe" value="프로필 수정" onclick="location.href='/updateMyInfo'">
     <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">
@@ -30,7 +30,7 @@
                     <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
                 </div>
 
-                <input type="hidden" name="userPw" value="<%=userPw%>">
+                <input type="hidden" name="user_pw" value="<%=user_pw%>">
 
             </div>
             <div class="button">

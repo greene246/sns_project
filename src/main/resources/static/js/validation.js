@@ -17,7 +17,7 @@ function updateCheck() {
     alert("수정 완료");
 }
 
-$('.input[type=submit]').click(e => {
+/*$('.input[type=submit]').click(e => {
     let requestData = {
         "user_id" : $("#user_id").val(),
         "pw_past" : $("#pw_past").val()
@@ -30,38 +30,31 @@ $('.input[type=submit]').click(e => {
     }).fail(error => {
         $('#msg_err').show();
     })
+})*/
+$('#pw_check').change(e=>{
+    let newPw = $('#pw_new').val();
+    let Pw_ch = $('#pw_check').val();
+    if(newPw !== Pw_ch){
+        $('#msg_error').show();
+
+    }else{
+        $('#msg_error').hide();
+    }
 })
 
-
-// $('.button input[type=submit]').click(e=>{
-//
-//
-//     let user = {
-//         "name" : $('#name').val(),
-//         "phone" : $('#phone').val()
-//     }
-//
-//     $.ajax({
-//         url : "/v1/users/find/id",
-//         method : "post" ,
-//
-//         data : JSON.stringify(user),
-//         contentType : "application/json"
-//
-//     }).done(result => {
-//         $('.userHelp_result_result').empty();
-//         if (result != null) {
-//             $('.userHelp_result_result').append(
-//                 `<div class="result"> 찾으시는 아이디는` + result + `입니다.</div>`
-//             );
-//         } else {
-//             $('.userHelp_result_result').append(
-//                 `<div class="result"> 아이디가 존재하지 않습니다.</div>`
-//             );
-//             // }
-//
-//
-//         }
-//     })
-//
-// });
+$('.input[type=submit]').click(e => {
+    let requestData = {
+        "pw_new" : $("#pw_new").val(),
+        "pw_check" : $("#pw_check").val()
+    }
+    $.ajax({
+        url: "/checkPw",
+        type: "POST",
+        data: JSON.stringify(requestData),
+        contentType: "application/json"
+    }).success(result => {
+        $('#msg_error').show();
+    }).fail(error => {
+        $('#msg_error').show();
+    })
+})

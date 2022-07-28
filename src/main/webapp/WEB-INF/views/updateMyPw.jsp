@@ -32,7 +32,8 @@
                 <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
                     <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
                 <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
-                <p class="_pw">새 비밀번호 확인</p> <input type="password" name="pw_check" id="pw_check" required>
+                <p class="_pw">비밀번호 재확인</p> <input type="password" name="pw_check" id="pw_check" required><br>
+                    <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
             </div>
             <div class="button">
                 <input type="submit" name="update" value="수정">

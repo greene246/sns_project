@@ -52,7 +52,8 @@ public class UserController {
     }
 
     @PostMapping("/update") // 이름, 이메일 변경
-    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletResponse response){
+    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request, HttpServletResponse response){
+        HttpSession session = request.getSession();
 
         System.out.println("name: "+name);
         System.out.println("email: " + email);
@@ -65,6 +66,13 @@ public class UserController {
 
         System.out.println("check:" + check );
 
+        if(check){
+            session.setAttribute("name",userRequestDto.getName());
+            session.setAttribute("email",userRequestDto.getEmail());
+            session.setAttribute("user_pw",userRequestDto.getUser_pw());
+
+            System.out.println("이름, 이메일 변경 성공");
+        }
         String url = "";
         url = "/updateMyInfo";
 
@@ -77,11 +85,18 @@ public class UserController {
     }
 
     @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
-    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, HttpServletResponse response) {
+    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
 
         if(pw_new.equals(pw_check)){
+            System.out.println("비밀번호 업데이트 성공");
+
             UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email);
             boolean check = userService.updateUser(userRequestDto);
+
+            session.setAttribute("name",userRequestDto.getName());
+            session.setAttribute("email",userRequestDto.getEmail());
+            session.setAttribute("user_pw",userRequestDto.getUser_pw());
         }
         else{
             System.out.println("비밀번호 업데이트 실패");
@@ -89,7 +104,6 @@ public class UserController {
         String url = "";
         url = "/updateMyPw";
 
-        System.out.println("비밀번호 업데이트 성공");
 
         try{
             response.sendRedirect(url);
@@ -97,6 +111,8 @@ public class UserController {
             e.printStackTrace();
         }
     }
+
+
 
 
     @PostMapping("/pastPw")

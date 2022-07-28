@@ -1,12 +1,9 @@
 package com.example.sns.sns_project.Service;
 
-import com.example.sns.sns_project.domain.user.UserRepository;
-import com.example.sns.sns_project.domain.user.UserRequestDto;
-import com.example.sns.sns_project.domain.user.UserVO;
+import com.example.sns.sns_project.domain.UserRepository;
+import com.example.sns.sns_project.domain.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {

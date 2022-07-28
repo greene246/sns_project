@@ -11,8 +11,14 @@
 <div class="wrap">
 
     <div class="section">
-
+        <img src="./img/backpic.jpg">
+        <div class="icon">
+            <img src="./img/heart.png">
+            <img src="https://raw.githubusercontent.com/sudar-life/instagram_resources/main/assets/images/reply_icon.jpg">
+            <img src="https://raw.githubusercontent.com/sudar-life/instagram_resources/main/assets/images/direct_msg_icon.jpg">
+        </div>
     </div>
+
     <div class="serve">
 
     </div>

@@ -14,12 +14,15 @@
     <c:import url="/WEB-INF/views/header.jsp"/>
 
 <div class="wrap">
+    <%
+        String id = (String) session.getAttribute("user_id");
 
+    %>
     <div class="section">
 
         <div class="box">
             <img class="profile" src="/img/cute.JPG">
-            <a class="userid"> user id</a>
+            <a class="userid"> <%=id%></a>
         </div>
 
         <img src="./img/backpic.jpg">
@@ -35,7 +38,7 @@
             </div>
         </div>
         <div class="word"> 좋아요 <%=1%>개</div>
-        <div>회원 아이디</div>
+        <div><%=id%></div>
         <div>contents</div>
     </div>
 

@@ -1,11 +1,10 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.domain.UserRequestDto;
-import com.example.sns.sns_project.domain.UserVO;
+import com.example.sns.sns_project.domain.user.UserRequestDto;
+import com.example.sns.sns_project.domain.user.UserVO;
 import com.example.sns.sns_project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +34,6 @@ public class UserController {
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
-        System.out.println("111111111111111");
         UserRequestDto user = new UserRequestDto(id, password);
         System.out.println(user.getUser_id());
         UserVO result = userService.readUser(user.getUser_id());
@@ -75,7 +73,5 @@ public class UserController {
 
 
 
-
-}
 
 

@@ -1,25 +1,29 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2022-07-26
+  Time: 오후 6:29
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link rel="stylesheet" href="css/index.css">
-    <title>index</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <title>Title</title>
 </head>
 <body>
-   <%-- <jsp:include page="header.jsp"></jsp:include> --%>
+<form id="login" method="post" action="/login">
+    ID<input type="text" name="user_id" id="user_id" placeholder="ID" required><br>
+    PW<input type="password" name="user_pw" id="user_pw" placeholder="Password" required><br>
 
-    <form method = "post" action="/login">
+    <input type="submit" value="로그인">
+    <input type="button" value="회원가입" onclick="location.href='/join'"/>
+</form>
 
-        <input class="req1" name = "id" type="text" placeholder="id" title="아이디를 입력하세요" required >
-        <input class="req2" name = "password" type="text" placeholder="password" title="비밀번호를 입력하세요" required ><br><br>
+<%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 
-        <div class="buttons">
-            <input type="button" onclick="location.href='./join'" value="회원가입">
-            <input type="submit" value="로그인" >
-        </div>
+<script src="script/validation.js"></script>
 
-    </form>
-
-    <script src="./script/validation.js"></script>
-
-
+</body>
+</html>

@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+<%--    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/update.css">
     <title>updateMyInfo</title>
 </head>
@@ -20,7 +23,7 @@
     <input type="button" name="updateMe" value="프로필 수정" onclick="location.href='/updateMyInfo'">
     <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">
 
-    <form method="post" action="/update">
+    <form method="post" action="/update" onsubmit="updateCheck()">
         <div class="content">
             <div class="updateUser">
 
@@ -43,6 +46,6 @@
         </div>
 
     </form>
-
 </body>
+<script src="js/validation.js"></script>
 </html>

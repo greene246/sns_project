@@ -27,12 +27,12 @@
 
                 <input type="hidden" name="name" value="<%=name%>">
                 <input type="hidden" name="email" value="<%=email%>">
-                <input type="hidden" name="userId" value="<%=user_id%>">
+                <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
 
-                <p class="_pastPw">이전 비밀번호</p> <input type="password" class="password" required><br>
+                <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
                     <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
-                <p class="_pw">새 비밀번호</p> <input type="password" name="user_pw" class="password" required><br>
-                <p class="_pw">새 비밀번호 확인</p> <input type="password" name="user_pw" class="password" required>
+                <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
+                <p class="_pw">새 비밀번호 확인</p> <input type="password" name="pw_check" id="pw_check" required>
             </div>
             <div class="button">
                 <input type="submit" name="update" value="수정">
@@ -41,6 +41,6 @@
         </div>
 
     </form>
-<script src="js/validation.js"></script>
+<script src="./js/validation.js"></script>
 </body>
 </html>

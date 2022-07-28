@@ -22,48 +22,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-/*    @PostMapping("/userPw")
-    public UserVO getUserPw(@RequestBody UserRequestDto userRequestDto){
-        UserVO userPw = userService.readUserPw(userRequestDto);
-        return userPw;
-    }*/
-
-    @PostMapping("/update")
-    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletResponse response){
-
-        System.out.println("name: "+name);
-        System.out.println("email: " + email);
-        System.out.println("user_pw: "+ user_pw);
-
-        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email);
-
-
-        boolean check = userService.updateUser(userRequestDto);
-
-        System.out.println("check:" + check );
-
-        String url = "";
-        url = "/updateMyInfo";
-
-        try {
-            response.sendRedirect(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @PutMapping("/updatePw")
-    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw) {
-        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email);
-
-        UserVO userVO = userService.readUser(user_id);
-
-        if (!user_pw.equals(userVO.getUser_pw())) {
-            userService.updateUser(userRequestDto);
-        }
-    }
-
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -93,9 +51,58 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user")
+    @PostMapping("/update") // 이름, 이메일 변경
+    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletResponse response){
+
+        System.out.println("name: "+name);
+        System.out.println("email: " + email);
+        System.out.println("user_pw: "+ user_pw);
+
+        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email);
+
+
+        boolean check = userService.updateUser(userRequestDto);
+
+        System.out.println("check:" + check );
+
+        String url = "";
+        url = "/updateMyInfo";
+
+        try {
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
+    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, HttpServletResponse response) {
+
+        if(pw_new.equals(pw_check)){
+            UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email);
+            boolean check = userService.updateUser(userRequestDto);
+        }
+        else{
+            System.out.println("비밀번호 업데이트 실패");
+        }
+        String url = "";
+        url = "/updateMyPw";
+
+        System.out.println("비밀번호 업데이트 성공");
+
+        try{
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @PostMapping("/pastPw")
     public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUserPw(userRequestDto);
+        UserVO user = userService.readUserId(userRequestDto);
+        System.out.println("@@@ID : " + user.getUser_id());
         return user;
     }
 

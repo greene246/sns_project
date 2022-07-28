@@ -1,10 +1,12 @@
 package com.example.sns.sns_project.domain.user;
 
+import com.example.sns.sns_project.util.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.sql.Timestamp;
+import java.sql.Time;
 
-public class UserVO {
+public class UserVO extends Timestamp {
 
     @Id
     private int id;

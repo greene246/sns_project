@@ -22,10 +22,10 @@
     <div class="wrap">
         <form action="/main">
             <input type="hidden" name="userId" value="apple" id="userId"/>
-            <img src=`$('#img').val`>
-            <input type="file" accept="image/png, image/gif, image/jpeg" id="img"/>
+            <div id="image_container"></div>
+            <input type="file" multiple accept="image/png, image/gif, image/jpeg" id="input_img" onchange="setThumbnail(event)"/>
             <textarea name="contents" placeholder="what's issue?" id="contents"></textarea>
-            <button type="button" onclick="apply(form)" id="write"></button>
+            <button type="button" onclick="fileChange()" id="write"></button>
         </form>
     </div>
 </body>

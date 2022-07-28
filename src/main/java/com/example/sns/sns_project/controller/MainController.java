@@ -8,7 +8,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String header(){
-        return "main";
+        return "index";
     }
 
     @RequestMapping("/main")

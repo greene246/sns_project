@@ -77,7 +77,10 @@ public class SnsProjectApplication {
 
             // Print the names and IDs for up to 10 files.
             FileList result = service.files().list()
-                    .setPageSize(10)
+//                    .setQ("mimeType='application/vnd.google-apps.folder' and name='sns_project'")
+                    .setQ("'1SBWeq1W7TY45ARKu6b_H3od2ZCInsIBP' in parents")
+                    .setSpaces("drive")
+//                    .setPageSize()
                     .setFields("nextPageToken, files(id, name)")
                     .execute();
             List<File> files = result.getFiles();

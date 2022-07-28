@@ -188,19 +188,3 @@
     background-color:#1b0f04;
     color:white;
 }
-
-#cancelBtn{
-    position:fixed;
-    top:60%;
-    width:240px;
-    height:40px;
-    text-decoration:none;
-    color:black;
-    border: none;
-    cursor:pointer;
-    background-color:#edeae3;
-    box-shadow:1px 1px #434240;
-    font-weight:700;
-    color:#1b0f04;
-    margin-left:40px;
-}

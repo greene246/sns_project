@@ -18,7 +18,6 @@
 
     <div class="wrap">
         <div class="black"></div>
-
         <%
             String id = (String) session.getAttribute("user_id");
 
@@ -37,7 +36,7 @@
                     <img src="./img/heart.png">
     <%--                <img src="./img/message.png">--%>
                         <a href="javascript:;" onclick="javascript:showPopup()">
-                         <img src="./img/message.png">
+                         <img src="./img/message.png" class="subsBtn">
                         </a>
                         <img src="./img/direct.png">
 
@@ -56,45 +55,29 @@
         <div class="serve">
              serveserveserveserveserveseveserve
         </div>
+
 <%--     ////////////////--%>
 
         <div class="wrap">
-
-            <jsp:include page="header.jsp"></jsp:include>
-            <div class="container">
                 <div class="black"></div>
-                <div class="subs">
                     <div class="pop1" >
 
+                        <div class="popTop">
+                            <button class="cancel" id="cancel">X</button>
+                            <h4>인스타그램</h4>
+                        </div>
 
-                        <button class="cancel" id="cancel">X</button>
-                        <img src="">
-                        <h1>sssssssssssssssss</h1>
+                        <h1>ssssssssss</h1>
+
                     </div>
-
                 </div>
-
-            </div>
         </div>
-        <script src="./js/validation.js"></script>
+        <script src="./script/validation.js"></script>
         <script type="text/javascript">
-            jQuery.fn.center = function () {
-                this.css("position","absolute");
-                this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()-60) + "px");
-                this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-
-                return this;
-            }
-            showPopup = function() {
-                $(".pop1").show();
-                $(".pop1").center();
-            }
 
         </script>
 <%--     /////////////    --%>
-    </div>
 
-    </div>
 
 
 </body>

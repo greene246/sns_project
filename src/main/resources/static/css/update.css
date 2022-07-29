@@ -4,39 +4,42 @@
 }
 
 .menu{
+    background-color: #eee6df;
     width: 100vw;
-    background-color: aquamarine;
+    height: 40px;
 }
 
-/*.updateUser{
-    display: grid;
-    grid-template-columns: repeat(2,500px);
-    grid-template-rows: repeat(2,500px);
-    grid-template-areas:
-    '_name email'
-    '_email name'
-    ;
+.menu div{
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 15px;
+    font-size: 12pt;
+    display: flex;
+    padding-top: 13px;
 }
 
-._name{
-  grid-area: _name;
+.menu p{
+    position: relative;
+    margin-right: 4vw;
+    cursor: pointer;
 }
-.name{
-    grid-area: name;
+
+/*.menu p:before{
+    content: '';
+    position: absolute; !*부모 요소에는 position: relative를 주어야 한다.*!
+    background-color: #1b0f04;
+    height: 2px; !*밑줄 굵기*!
+
+    width: 0; !*초기에 보이지 않도록*!
+    bottom: 0; !*a태그 아래에 위치시키기*!
+    transition: 0.7s; !*애니메이션 동작 실행 시간 정의*!
+
+    !*가상 요소를 가운데로 이동시키기*!
+    left: 50%;
+    transform: translateX(-50%) ;
 }
-._email{
-    grid-area: _email;
-}
-.email{
-    grid-area: email;
+.menu p:hover:before{
+    width:100%;
 }*/
 
-/*
-.con1{
-    display: flex;
-    justify-content: center;
-}
-.con2{
-    display: flex;
-    justify-content: center;
-}*/
+

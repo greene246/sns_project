@@ -20,8 +20,6 @@
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
             <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
-        <%--<input type="button" name="updateMe" value="내 프로필" onclick="location.href='/updateMyInfo'">
-        <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">--%>
         </div>
     </div>
 

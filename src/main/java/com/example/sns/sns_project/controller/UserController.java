@@ -83,7 +83,6 @@ public class UserController {
     @PostMapping("/getUser")
     @ResponseBody
     public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        System.out.println("85 : "+userRequestDto.getUser_id());
         UserVO user = userService.readUser(userRequestDto);
 
         return user;
@@ -151,7 +150,35 @@ public class UserController {
         }
     }
 
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="user_pw") String user_pw,
+                           HttpServletRequest request,
+                           HttpServletResponse response){
+        HttpSession session = request.getSession();
 
+         UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
+
+         String url = "";
+        if(userService.checkUser(user) != null) {
+            userService.deleteUser(user);
+            session.invalidate();
+            System.out.println("회원탈퇴 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("회원정보 확인");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 

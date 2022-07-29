@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-<div class="wrap">
+<div class = "wrap">
     <%
         String user_id = (String) session.getAttribute("user_id");
         String name = (String) session.getAttribute("name");
@@ -20,47 +20,35 @@
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
             <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
-            <%--<input type="button" name="updateMe" value="내 프로필" onclick="location.href='/updateMyInfo'">
-            <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">--%>
         </div>
     </div>
 
-    <h2>프로필 편집</h2>
+    <h2>비밀번호 변경</h2>
 
     <%=user_id%><br>
 
-    <%--<table>
-        <tr>
-            <thead>
-                이름
-            </thead>
-            <td>
-                <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
-            </td>
-        </tr>
-    </table>--%>
-    <form method="post" action="/update" onsubmit="updateCheck()">
+    <form method="post" action="/updatePw">
         <div class="content">
             <div class="updateUser">
 
-                <input type="hidden" name="user_id" value="<%=user_id%>">
+                <input type="hidden" name="name" value="<%=name%>">
+                <input type="hidden" name="email" value="<%=email%>">
+                <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
 
-                <div class="con1">
-                    <div class="_name">이름</div> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
-                </div>
-                <div class="con2">
-                    <div class="_email">이메일</div> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
-                </div>
-
-                <input type="hidden" name="user_pw" value="<%=user_pw%>">
-
+                <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
+                <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
+                <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
+                <p class="_pw">비밀번호 재확인</p> <input type="password" name="pw_check" id="pw_check" required><br>
+                <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
             </div>
             <div class="button">
                 <input type="submit" name="update" value="수정">
             </div>
+
         </div>
+
     </form>
 </div>
+<script src="./js/update.js"></script>
 </body>
-<script src="js/update.js"></script>
 </html>

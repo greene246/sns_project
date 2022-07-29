@@ -78,7 +78,7 @@ $(document).ready(function(){
         console.log(error.responseText);
     })
     document.getElementById('#login').submit();
-}
+
 
 
 

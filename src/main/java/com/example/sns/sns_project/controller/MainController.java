@@ -40,4 +40,8 @@ public class MainController {
     public String logout(){
         return "logout";
     }
+    @RequestMapping("/deleteUser")
+    public String deleteUser(){
+        return "deleteUser";
+    }
 }

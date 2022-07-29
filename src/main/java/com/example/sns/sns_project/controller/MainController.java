@@ -34,4 +34,9 @@ public class MainController {
     public String join(){
         return "join";
     }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        return "logout";
+    }
 }

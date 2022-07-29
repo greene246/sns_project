@@ -2,10 +2,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>main</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Main</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/header.jsp"></c:import>
+<c:import url="/WEB-INF/views/header.jsp"/>
+로그아웃<input type="button" value="로그아웃" onclick="location.href='/logout'">
+<div class="wrap">
 
-</body>
-</html>
+    <div class="section">
+
+    </div>
+    <div class="serve">
+
+    </div>
+
+</div>
+
+<html>

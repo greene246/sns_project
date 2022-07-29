@@ -6,6 +6,8 @@ import com.example.sns.sns_project.domain.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BoardService {
     @Autowired
@@ -15,5 +17,8 @@ public class BoardService {
     public void createBoard(BoardRequestDto boardRequestDto){
         BoardVO board = new BoardVO(boardRequestDto);
         boardRepository.save(board);
+
+
     }
+
 }

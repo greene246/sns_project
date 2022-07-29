@@ -48,7 +48,12 @@
                 <div class="word"> 좋아요 <%=1%>개</div>
 
                 <div class="id"><%=id%></div>
-                <div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>
+<%--                <div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>--%>
+                <div class="box">
+                    <div class="content">
+                        편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 다보면 괜찮을거 다보면 괜찮을거
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -56,29 +61,30 @@
              serveserveserveserveserveseveserve
         </div>
 
-<%--     ////////////////--%>
-
-        <div class="wrap">
-                <div class="black"></div>
-                    <div class="pop1" >
+                <div class="black" onclick="javascript:cancel1()">  </div>
+                    <div class="pop1" style="display: none">
 
                         <div class="popTop">
-                            <button class="cancel" id="cancel">X</button>
-                            <h4>인스타그램</h4>
+                            <div>
+                                <button class="cancel" id="cancel">X</button>
+                                <h4>인스타그램</h4>
+                            </div>
                         </div>
 
-                        <h1>ssssssssss</h1>
+                        <div class="popBottom">
+                            <div class="popimg">
+                             <img src="/img/cute.JPG">
+                            </div>
+                            <div class="popword">
+                                <h1>sssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsss</h1>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-        </div>
+
+    </div>
         <script src="./script/validation.js"></script>
-        <script type="text/javascript">
-
-        </script>
-<%--     /////////////    --%>
-
-
-
+        <script type="text/javascript"></script>
 </body>
 <html>

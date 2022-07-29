@@ -68,11 +68,6 @@
 .three > *{
     padding: 0 5px 0 5px;
 }
-.bookmark {
-
-    width: 24px;
-
-}
 .box {
     /*width: 80px;*/
     height: 80px;
@@ -142,40 +137,71 @@
 /*///////////////////////////////////*/
 
 .pop1{
-    width:400px;
-    height:500px;
+    width:1280px;
+    height:92%;
     position:absolute;
     top:10px;
     left:100px;
-    display:none;
+    display:flex;
     border:2px solid #1b0f04;
     background-color:white;
     color:#1b0f04;
+    flex-direction: column
+
+}
+.pop1 img{
+    /*position: absolute;*/
+    /*width: 80%;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+
+    max-height: 450px;
+    max-width: 450px;
+    aspect-ratio: 692.8 / 921;
+    flex-basis: 450.8px;
+
 }
 .black{
+    opacity: 0.45;
     position: fixed;
     left: 0;top: 0;
     background: black;
-    opacity:0.7;
     width: 100%;height: 100vh;
     display: none;
 }
-.subs{
-    width:60vw;
-    margin:auto;
-}
+/*.subs{*/
+/*    width:60vw;*/
+/*    margin:auto;*/
+/*}*/
 
-.pop1 h4{
-    font-weight:500;
-    font-size:13pt;
-    letter-spacing:5pt;
-    color:white;
-    margin-left:10px;
-}
+/*.pop1 h4{*/
+/*    font-weight:500;*/
+/*    font-size:13pt;*/
+/*    letter-spacing:5pt;*/
+/*    color:white;*/
+/*    margin-left:10px;*/
+/*}*/
 .popTop{
     width:100%;
     height:30px;
     background-color:#1b0f04;
+}
+.popBottom{
+    width: 100%;
+    height: 770px;
+    display:flex;
+}
+.popBottom > .popimg{
+    width:50%;
+    background-color:blue;
+
+}
+.popBottom > .popword{
+    width:50%;
+    background-color:yellow;
+    overflow: hidden;
+
 }
 #cancel{
     width:20px;

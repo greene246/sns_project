@@ -1,0 +1,42 @@
+
+.content{
+    text-align: center;
+}
+
+.menu{
+    width: 100vw;
+    background-color: aquamarine;
+}
+
+/*.updateUser{
+    display: grid;
+    grid-template-columns: repeat(2,500px);
+    grid-template-rows: repeat(2,500px);
+    grid-template-areas:
+    '_name email'
+    '_email name'
+    ;
+}
+
+._name{
+  grid-area: _name;
+}
+.name{
+    grid-area: name;
+}
+._email{
+    grid-area: _email;
+}
+.email{
+    grid-area: email;
+}*/
+
+/*
+.con1{
+    display: flex;
+    justify-content: center;
+}
+.con2{
+    display: flex;
+    justify-content: center;
+}*/

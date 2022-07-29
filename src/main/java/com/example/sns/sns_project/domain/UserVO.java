@@ -1,4 +1,5 @@
 package com.example.sns.sns_project.domain;
+import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.util.Timestamp;
 
 import lombok.AllArgsConstructor;
@@ -32,10 +33,10 @@ public class UserVO extends Timestamp {
 
 
     @Column(name = "created_at", nullable = true)
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "modified_at", nullable = true)
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modified_at;
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();

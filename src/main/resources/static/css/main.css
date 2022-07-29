@@ -1,25 +1,216 @@
 .wrap{
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    max-width: 900px;
+    height: 100vh;
+    margin: 0 auto;
+    padding-top: 60px;
 
+    overflow: hidden;
 }
 .wrap > *{
-    justify-content: center;
-    margin-top: 60px;
+    /*justify-content: center;*/
+    /*margin-top: 60px;*/
+
+}
+
+/*.section {*/
+/*    width: 420px;*/
+/*    height: 100vh;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 0 30px 0 0;*/
+
+/*    margin-right: 30px;*/
+/*    background-color:aqua;*/
+/*    overflow : auto;*/
+/*}*/
+.img_wrap {
+    display: block;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.img_wrap img {
+    max-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .section {
-    width: 420px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 30px 0 0;
-    margin-right: 30px;
-    background-color:aqua;
-    overflow : auto;
+    /*flex-grow: 1;*/
+    width: 80%;
+    padding-right: 20px;
+    overflow: auto;
 }
-.serve{
-    width: 150px;
-    height: 200px;
-    background-color:red;
+.serve {
+    width: 20%;
+    background-color: #eee;
+}
+
+/*.serve{*/
+/*    width: 150px;*/
+/*    height: 200px;*/
+/*    background-color:red;*/
+/*}*/
+.icon{
+    justify-content: space-between;
+    display: flex;
+    margin:10px;
+}
+.icon img{
+    padding-top: 14px;
+    width: 24px;
+}
+.three > *{
+    padding: 0 5px 0 5px;
+}
+.box {
+    /*width: 80px;*/
+    height: 80px;
+    display: flex;
+    margin-bottom: 8px;
+}
+.profile_wrap {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(60deg, red, yellow, greenyellow);
+    border-radius: 50%;
+    position: relative;
+}
+.profile_wrap > span {
+    display: block;
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+.profile {
+    /*margin-top: 10px;*/
+    /*margin-left: 10px;*/
+    min-height: 100%;
+    max-width: 100%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    /*border-radius: 70%;*/
+    /*overflow: hidden;*/
+    /*border-top: solid 3px red;*/
+    /*border-right: solid 3px greenyellow;*/
+    /*border-bottom: solid 3px green;*/
+    /*border-left: solid 3px hotpink;*/
+}
+
+.userid{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.word{
+    padding-left: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 5px 5px 5px 5px;
+    padding-left: 12px;
+}
+.contents{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    margin-left: 14px;
+}
+.id{
+    margin-left: 15px;
+    padding-bottom: 5px;
+}
+
+/*///////////////////////////////////*/
+
+.pop1{
+    width:1280px;
+    height:92%;
+    position:absolute;
+    top:10px;
+    left:100px;
+    display:flex;
+    border:2px solid #1b0f04;
+    background-color:white;
+    color:#1b0f04;
+    flex-direction: column
+
+}
+.pop1 img{
+    /*position: absolute;*/
+    /*width: 80%;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+
+    max-height: 450px;
+    max-width: 450px;
+    aspect-ratio: 692.8 / 921;
+    flex-basis: 450.8px;
+
+}
+.black{
+    opacity: 0.45;
+    position: fixed;
+    left: 0;top: 0;
+    background: black;
+    width: 100%;height: 100vh;
+    display: none;
+}
+/*.subs{*/
+/*    width:60vw;*/
+/*    margin:auto;*/
+/*}*/
+
+/*.pop1 h4{*/
+/*    font-weight:500;*/
+/*    font-size:13pt;*/
+/*    letter-spacing:5pt;*/
+/*    color:white;*/
+/*    margin-left:10px;*/
+/*}*/
+.popTop{
+    width:100%;
+    height:30px;
+    background-color:#1b0f04;
+}
+.popBottom{
+    width: 100%;
+    height: 770px;
+    display:flex;
+}
+.popBottom > .popimg{
+    width:50%;
+    background-color:blue;
+
+}
+.popBottom > .popword{
+    width:50%;
+    background-color:yellow;
+    overflow: hidden;
+
+}
+#cancel{
+    width:20px;
+    height:20px;
+    border:none;
+    text-align:center;
+    float:right;
+    margin-right:8px;
+    margin-top:5px;
+    background-color:#1b0f04;
+    color:white;
 }

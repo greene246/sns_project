@@ -11,6 +11,5 @@
     <title>JOIN</title>
   </head>
   <body>
-asdasda
   </body>
 </html>

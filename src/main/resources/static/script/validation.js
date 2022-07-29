@@ -32,10 +32,10 @@ cancel = function() {
 $(document).ready(function(){
 
     $('.box').each(function(){
-        var content = $(this).children('.content');
-        var content_txt = content.text();
-        var content_txt_short = content_txt.substring(0,48)+"...";
-        var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+        let content = $(this).children('.content');
+        let content_txt = content.text();
+        let content_txt_short = content_txt.substring(0,48)+"...";
+        let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
         $(this).append(btn_more);
 

@@ -30,3 +30,12 @@
     margin-left: 20px;
     cursor:pointer;
 }
+.topMenu img{
+    width: 30px;
+}
+
+.header input[type="text"]{
+    height: 50px;
+    padding: 0px 20px;
+    margin-top: 25px;
+}

@@ -1,3 +1,4 @@
+
 package com.example.sns.sns_project.domain.user;
 
 import javax.persistence.Column;
@@ -19,7 +20,6 @@ public class UserVO {
 
     @Column(name="name", nullable = false)
     private String name;
-
     @Column(name="email", nullable = true)
     private String email;
 

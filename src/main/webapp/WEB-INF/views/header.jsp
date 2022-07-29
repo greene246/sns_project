@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2022-07-26
-  Time: 오후 4:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,14 +6,11 @@
 </head>
 <body>
   <div class="header">
-      <div class="header_contents_wrap">
-          <a href="/main" id="logo">LOGO</a>
-          <div class="topMenu">
-              <input type="text" class="search" name="search" placeholder="검색">
-              <p class="writeBoard" onclick="location.href='/writeBoard'">추가</p>
-              <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
-
-          </div>
+      <a href="/main" id="logo">LOGO</a>
+      <input type="text" class="search" name="search" placeholder="검색">
+      <div class="topMenu">
+          <p class="writeForm" onclick="location.href='/writeForm'"><img src="image/add.jpg"></p>
+          <p class="myPage" onclick="location.href='/myPage'"><img src="image/myPage.png"></p>
       </div>
   </div>
 

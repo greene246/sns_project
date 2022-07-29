@@ -8,7 +8,7 @@ $('.user_id').change(e => {
     $.ajax({
         url: "/getUser",
         type: "POST",
-        data: JSON.stringify(requestData),
+        data : JSON.stringify(requestData),
         contentType: "application/json"
     }).success(result => {
         console.log(result + "##");

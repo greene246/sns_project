@@ -25,16 +25,17 @@ public class UserService {
     }
 
     public UserVO readUser(UserRequestDto userRequestDto) {
-        System.out.println("sssss"+userRequestDto.getUser_id());
+        System.out.println("28 : "+userRequestDto.getUser_id());
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );
+
     if(result.getUser_id().equals(userRequestDto.getUser_id())){
-        System.out.println(result);
         return result;
     }
     return null;
     }
+
 
 
     public UserVO createUser(UserRequestDto userRequestDto){

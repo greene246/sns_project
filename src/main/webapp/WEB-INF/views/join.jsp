@@ -23,7 +23,7 @@
 
 
     <input type="submit" value="회원가입"><br>
-    <input type="button" value="로그인 하러가기" onclick="location.href='/login'">
+    <input type="button" value="로그인 하러가기" onclick="location.href='/'">
 
 
 </form>

@@ -1,5 +1,6 @@
 package com.example.sns.sns_project.domain;
 
+import com.example.sns.sns_project.util.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,7 @@ public class UserRequestDto {
         this.user_pw = user_pw;
         this.name = name;
     }
+
+
 
 }

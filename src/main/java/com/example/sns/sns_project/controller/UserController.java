@@ -4,6 +4,7 @@ import com.example.sns.sns_project.Service.UserService;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
 
+import com.example.sns.sns_project.util.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -57,13 +58,13 @@ public class UserController {
                         @RequestParam(name="name") String name,
                         @RequestParam(name="email") String email,
                         HttpServletResponse response){
-        UserRequestDto user = new UserRequestDto(id, password,name,email);
 
+        UserRequestDto user = new UserRequestDto(id, password,name,email) ;
 
 
         String url = "";
 
-        if(userService.readUser(user) == null) {
+        if(userService.readUserId(user.getUser_id()) == null) {
             userService.createUser(user);
             System.out.println("insert 성공");
             url ="/";
@@ -81,10 +82,11 @@ public class UserController {
     }
 
     @PostMapping("/getUser")
+    @ResponseBody
     public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        System.out.println("kjhkj"+userRequestDto.getUser_id());
+        System.out.println("85 : "+userRequestDto.getUser_id());
         UserVO user = userService.readUser(userRequestDto);
-        System.out.println("^^"+user.getUser_id());
+
         return user;
     }
 

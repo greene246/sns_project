@@ -79,6 +79,3 @@ function checkUser(){
     })
     document.getElementById('#login').submit();
 }
-
-
-

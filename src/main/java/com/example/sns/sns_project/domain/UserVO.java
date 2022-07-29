@@ -1,58 +1,40 @@
+<<<<<<<< HEAD:src/main/java/com/example/sns/sns_project/domain/UserVO.java
 package com.example.sns.sns_project.domain;
-import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.util.Timestamp;
+========
+>>>>>>>> origin/Joohyeon:src/main/java/com/example/sns/sns_project/domain/user/UserVO.java
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+package com.example.sns.sns_project.domain.user;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-//import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
-@Table(name="users")
-@NoArgsConstructor
-@Entity
-@Getter
-public class UserVO extends Timestamp {
+public class UserVO {
 
+    @Id
+    private int id;
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
-    @Id
-    private String user_id;
+    @Column(name="userId", nullable = false)
+    private String userId;
 
-    @Column(name="user_pw", nullable = false)
-    private String user_pw;
+    @Column(name="userPw", nullable = false)
+    private String userPw;
 
     @Column(name="name", nullable = false)
     private String name;
-
     @Column(name="email", nullable = true)
     private String email;
-
-    @Column(name = "created_at", nullable = true)
-    private LocalDateTime created_at;
-
-    @Column(name = "modified_at", nullable = true)
-    private LocalDateTime modified_at;
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();
         this.user_pw = userRequestDto.getUser_pw();
         this.name = userRequestDto.getName();
-//        this.email = userRequestDto.getEmail();
+        this.email = userRequestDto.getEmail();
     }
 
-    // update
-    public void update(UserRequestDto userRequestDto){
-        //set
-        this.user_id = userRequestDto.getUser_id();
-        this.name = userRequestDto.getName();
-        this.email = userRequestDto.getEmail();
-        this.user_pw = userRequestDto.getUser_pw();
-    }
+
 
 }

@@ -10,7 +10,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
 <form id="login" method="post" action="/login">
@@ -23,7 +23,7 @@
 
 <%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 
-<script src="script/validation.js"></script>
+<script src="script/user.js"></script>
 
 </body>
 </html>

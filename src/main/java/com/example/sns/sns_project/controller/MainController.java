@@ -40,5 +40,4 @@ public class MainController {
     public String writeForm() {
         return "writeForm";
     }
->>>>>>>>> Temporary merge branch 2
 }

@@ -1,22 +1,14 @@
-
 .header{
     text-align: center;
-    /*width:100vw;*/
     width: 100%;
     background-color: #eee6df;
     opacity: 0.6;
-    /*height: 10vh;*/
-    /*color:#1b0f04;*/
     justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
 }
-.header_contents_wrap {
-    max-width: 1000px;
-    margin: 0 auto;
+.header_contents_wrap{
     display: flex;
-    padding: 20px 0;
+    padding: 0 30px;
+    margin: 20px 0;
 }
 .topMenu{
     flex-grow: 1;
@@ -29,13 +21,4 @@
 .topMenu p{
     margin-left: 20px;
     cursor:pointer;
-}
-.topMenu img{
-    width: 30px;
-}
-
-.header input[type="text"]{
-    height: 50px;
-    padding: 0px 20px;
-    margin-top: 25px;
 }

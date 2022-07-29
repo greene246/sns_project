@@ -1,27 +1,32 @@
-<<<<<<<< HEAD:src/main/java/com/example/sns/sns_project/domain/UserVO.java
 package com.example.sns.sns_project.domain;
-import com.example.sns.sns_project.util.Timestamp;
-========
->>>>>>>> origin/Joohyeon:src/main/java/com/example/sns/sns_project/domain/user/UserVO.java
 
-package com.example.sns.sns_project.domain.user;
+import com.example.sns.sns_project.util.Timestamp;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Timestamp;
+import javax.persistence.Table;
 
-public class UserVO {
+@Table(name="users")
+@Getter
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserVO extends Timestamp {
 
     @Id
     private int id;
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
-    @Column(name="userId", nullable = false)
-    private String userId;
+    @Column(name="user_id", nullable = false)
+    private String user_id;
 
-    @Column(name="userPw", nullable = false)
-    private String userPw;
+    @Column(name="user_pw", nullable = false)
+    private String user_pw;
 
     @Column(name="name", nullable = false)
     private String name;

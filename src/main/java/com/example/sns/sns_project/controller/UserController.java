@@ -1,18 +1,15 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.Service.UserService;
+import com.example.sns.sns_project.service.UserService;
 import com.example.sns.sns_project.domain.UserRequestDto;
-import com.example.sns.sns_project.domain.UserVO;
 
-import com.example.sns.sns_project.util.Timestamp;
+import com.example.sns.sns_project.domain.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 public class UserController {

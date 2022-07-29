@@ -1,12 +1,3 @@
-$(".subsBtn").on('click', e=>{
-    $(".black").css("display","block");
-});
-
-$(".cancel").on('click', e=>{
-    $(".pop1").css("display","none");
-    $(".black").css("display","none");
-
-});
 // 팝업창
 jQuery.fn.center = function () {
     this.css("position","absolute");
@@ -15,67 +6,70 @@ jQuery.fn.center = function () {
 
     return this;
 }
+// $(".subsBtn").on('click', e=>{
+//     $(".black").css("display","block");
+// });
+
+function black_block(){
+    $(".black").css("display","block");
+}
+// $(".cancel").on('click', e=>{
+//     $(".pop1").css("display","none");
+//     $(".black").css("display","none");
+//
+// });
+
+//팝업창을 보여준다.
 showPopup = function() {
-    $(".pop1").show();
-    $(".pop1").center();
+    $(".contents_detail").css("display","flex");
+    $(".contents_detail").center();
 }
 
+showWriteForm = function (){
+    $(".write_wrap").show();
+    $(".write_wrap").center();
+}
+//팝업창에 여백클릭스 cancel
+cancel = function() {
+    $(".contents_detail").css("display","none");
+    $(".write_wrap").css("display","none");
+    $(".black").css("display","none");
+}
 
+$(document).ready(function(){
 
-////////////////////////
-$("#id").change(e =>{
-    console.log($("#id").val());
+    $('.contents').each(function(){
+        let content = $(this).children('.content');
+        let content_txt = content.text();
+        let content_txt_short = content_txt.substring(0,100)+"...";
+        let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
-    $.ajax({
-        url : `/user?id=${$("#id").val()}`,
-        method : "POST",
-    }).done(result => {
-        console.log(result);
-        console.log(typeof result);
-        if(result ===""){
-            $("#msg_error").hide();
-            $("#msg_ok").show();
+        $(this).append(btn_more);
+
+        if(content_txt.length >= 100){
+            content.html(content_txt_short)
+
+        }else{
+            btn_more.hide()
         }
-        else{
-            $("#msg_error").show();
-            $("#msg_ok").hide();
+
+        btn_more.click(toggle_content);
+        // 아래 bind가 안 되는 이유는??
+        // btn_more.bind('click',toggle_content);
+
+        function toggle_content(){
+            if($(this).hasClass('short')){
+                // 접기 상태
+                $(this).html('더보기');
+                content.html(content_txt_short)
+                $(this).removeClass('short');
+            }else{
+                // 더보기 상태
+                $(this).html('접기');
+                content.html(content_txt);
+                $(this).addClass('short');
+
+            }
         }
     });
-
-    // 2) @RequestBody
-    const requestData = {
-        "id" : $("#id").val(),
-        "pw" : $("#password").val()
-    }
-
-    $.ajax({
-        url : "/v1/search/user",
-        // method : POST,
-        type : "POST",
-        data : JSON.stringify(requestData),
-        contentType : "application/json"
-    }).done(result => {
-        console.log(result);
-    })
-}).fail(error => {
-    console.log(error.responseText);
- })
-function checkUser(){
-    const requestData = {
-        "id" : $("#userId").val(),
-        "pw" : $("#userPw").val()
-    }
-
-    $.ajax({
-        url : "/user",
-        // method : "POST",
-        type : "POST",
-        data : JSON.stringify(requestData),
-        contentType : "application/json"
-    }).success(result =>{
-        console.log(result);
-    }).fail(error => {
-        console.log(error.responseText);
-    })
-    document.getElementById('#login').submit();
-}
+});

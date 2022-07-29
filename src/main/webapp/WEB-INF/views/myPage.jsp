@@ -15,7 +15,7 @@
 <input type="button" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
 myPage 입니다.
 
-<input type="button" value="탈퇴" onclick="location.href='/deleteUser'">
+
 
 
 </body>

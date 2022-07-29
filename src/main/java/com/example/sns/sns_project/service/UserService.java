@@ -28,6 +28,7 @@ public class UserService {
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );
+
         return result;
     }
 

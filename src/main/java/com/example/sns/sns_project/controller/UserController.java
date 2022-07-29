@@ -18,18 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//
-//    @PostMapping("/chcek")
-//    @ResponseBody
-//    public List<UserVO> getAllUser(@RequestBody UserRequestDto userRequestDto){
-//        List<UserVO> result = userService.readUserAll(userRequestDto);
-//        if(result.isEmpty())
-//            System.out.println("회원정보 확인필요");
-//        else
-//            System.out.println("로그인 완료");
-//        return result;
-//    }
-
 
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {

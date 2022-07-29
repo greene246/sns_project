@@ -8,16 +8,16 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/common.css">
     <title>Main</title>
-
 </head>
 <body>
     <c:import url="/WEB-INF/views/header.jsp"/>
 
     <div class="wrap">
-        <div class="black"></div>
+
         <%
             String id = (String) session.getAttribute("user_id");
 
@@ -25,25 +25,30 @@
         <div class="section">
 
             <div class="contents_wrap">
+
                 <div class="box">
                     <span class="profile_wrap"><span><img class="profile" src="/img/cute.JPG"></span></span>
                     <a class="userid"> <%=id%></a>
                 </div>
 
                 <span class="img_wrap"><img src="./img/backpic.jpg"></span>
+
                 <div class="icon">
+
                     <div class="three">
                     <img src="./img/heart.png">
     <%--                <img src="./img/message.png">--%>
                         <a href="javascript:;" onclick="javascript:showPopup()">
-                         <img src="./img/message.png" class="subsBtn">
+                         <img src="./img/message.png"onclick="javascript:black_block()">
                         </a>
                         <img src="./img/direct.png">
 
                     </div>
+
                     <div class="bookmark">
                         <img src="./img/bookmark_off.png">
                     </div>
+
                 </div>
                 <div class="word"> 좋아요 <%=1%>개</div>
 
@@ -54,6 +59,7 @@
                         편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 다보면 괜찮을거 다보면 괜찮을거
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -61,15 +67,9 @@
              serveserveserveserveserveseveserve
         </div>
 
-                <div class="black" onclick="javascript:cancel1()">  </div>
-                    <div class="pop1" style="display: none">
+                <div class="black" onclick="javascript:cancel()"></div>
 
-                        <div class="popTop">
-                            <div>
-                                <button class="cancel" id="cancel">X</button>
-                                <h4>인스타그램</h4>
-                            </div>
-                        </div>
+                    <div class="pop1" style="display: none">
 
                         <div class="popBottom">
                             <div class="popimg">
@@ -79,9 +79,8 @@
                                 <h1>sssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsss</h1>
                             </div>
                         </div>
-
                     </div>
-                </div>
+
 
     </div>
         <script src="./script/validation.js"></script>

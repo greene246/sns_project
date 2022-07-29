@@ -23,7 +23,7 @@
 
 <%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 
-<script src="script/user.js"></script>
+<script src="js/user.js"></script>
 
 </body>
 </html>

@@ -1,14 +1,12 @@
-package com.example.sns.sns_project.Service;
+package com.example.sns.sns_project.service;
 
 import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -19,18 +17,11 @@ public class UserService {
 
     public UserVO readUserId(String id ) {
         UserVO user = userRepository.findById(id).orElse(null);
-
-        System.out.println("asdasd"+user.getUser_id());
         return user;
 
-//        UserVO user = userRepository.findById(id).orElseThrow(
-//                () -> new IllegalArgumentException("dd")
-//        );
-//        return user;
     }
 
     public UserVO readUser(UserRequestDto userRequestDto) {
-        System.out.println("28 : "+userRequestDto.getUser_id());
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );

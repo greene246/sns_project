@@ -1,4 +1,4 @@
-package com.example.sns.sns_project.Service;
+package com.example.sns.sns_project.service;
 
 import com.example.sns.sns_project.domain.BoardRepository;
 

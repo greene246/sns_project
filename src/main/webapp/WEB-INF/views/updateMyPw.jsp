@@ -4,22 +4,28 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/update.css">
+    <link rel="stylesheet" href="css/common.css">
     <title>updateMyInfo</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-<%
-    String user_id = (String) session.getAttribute("user_id");
-    String name = (String) session.getAttribute("name");
-    String email = (String) session.getAttribute("email");
-    String user_pw = (String) session.getAttribute("user_pw");
-%>
+<div class = "wrap">
+    <%
+        String user_id = (String) session.getAttribute("user_id");
+        String name = (String) session.getAttribute("name");
+        String email = (String) session.getAttribute("email");
+        String user_pw = (String) session.getAttribute("user_pw");
+    %>
+    <div class="menu">
+        <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
+        <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
+        <input type="button" name="updateMe" value="내 프로필" onclick="location.href='/updateMyInfo'">
+        <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">
+    </div>
+
     <h2>비밀번호 변경</h2>
 
     <%=user_id%><br>
-
-    <input type="button" name="updateMe" value="프로필 수정" onclick="location.href='/updateMyInfo'">
-    <input type="button" name="updatePw" value="비밀번호 변경" onclick="location.href='/updateMyPw'">
 
     <form method="post" action="/updatePw">
         <div class="content">
@@ -42,6 +48,7 @@
         </div>
 
     </form>
-<script src="./js/validation.js"></script>
+</div>
+<script src="./js/update.js"></script>
 </body>
 </html>

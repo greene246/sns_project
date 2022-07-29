@@ -5,16 +5,15 @@
     <title>header</title>
 </head>
 <body>
-  <div class="header">
-      <div class="header_contents_wrap">
+<div class="header">
+    <div class="header_contents_wrap">
         <a href="/main" id="logo">LOGO</a>
-         <div class="topMenu">
+        <div class="topMenu">
             <input type="text" class="search" name="search" placeholder="검색">
-             <p class="writeForm" onclick="location.href='/writeForm'"><img src="image/add.jpg"></p>
-             <p class="myPage" onclick="location.href='/myPage'"><img src="image/myPage.png"></p>
-         </div>
-      </div>
-  </div>
+            <p class="writeBoard" onclick="location.href='/writeForm'">추가</p>
+            <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
+        </div>
+    </div>
+</div>
 
 </body>
-</html>

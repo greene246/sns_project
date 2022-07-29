@@ -1,8 +1,14 @@
+
 .content{
     text-align: center;
 }
 
-.updateUser{
+.menu{
+    width: 100vw;
+    background-color: aquamarine;
+}
+
+/*.updateUser{
     display: grid;
     grid-template-columns: repeat(2,500px);
     grid-template-rows: repeat(2,500px);
@@ -23,7 +29,7 @@
 }
 .email{
     grid-area: email;
-}
+}*/
 
 /*
 .con1{

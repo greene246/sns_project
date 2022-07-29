@@ -11,80 +11,79 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/common.css">
     <title>Main</title>
-
 </head>
 <body>
-    <c:import url="/WEB-INF/views/header.jsp"/>
+<c:import url="/WEB-INF/views/header.jsp"/>
 
-    <div class="wrap">
-        <div class="black"></div>
-        <%
-            String id = (String) session.getAttribute("user_id");
+<div class="wrap">
+    <div class="black"></div>
+    <%
+        String id = (String) session.getAttribute("user_id");
 
-        %>
-        <div class="section">
+    %>
+    <div class="section">
 
-            <div class="contents_wrap">
-                <div class="box">
-                    <span class="profile_wrap"><span><img class="profile" src="/img/cute.JPG"></span></span>
-                    <a class="userid"> <%=id%></a>
-                </div>
+        <div class="contents_wrap">
+            <div class="box">
+                <span class="profile_wrap"><span><img class="profile" src="/img/cute.JPG"></span></span>
+                <a class="userid"> <%=id%></a>
+            </div>
 
-                <span class="img_wrap"><img src="./img/backpic.jpg"></span>
-                <div class="icon">
-                    <div class="three">
+            <span class="img_wrap"><img src="./img/backpic.jpg"></span>
+            <div class="icon">
+                <div class="three">
                     <img src="./img/heart.png">
-    <%--                <img src="./img/message.png">--%>
-                        <a href="javascript:;" onclick="javascript:showPopup()">
-                         <img src="./img/message.png" class="subsBtn">
-                        </a>
-                        <img src="./img/direct.png">
+                    <%--                <img src="./img/message.png">--%>
+                    <a href="javascript:;" onclick="javascript:showPopup()">
+                        <img src="./img/message.png" class="subsBtn">
+                    </a>
+                    <img src="./img/direct.png">
 
-                    </div>
-                    <div class="bookmark">
-                        <img src="./img/bookmark_off.png">
-                    </div>
                 </div>
-                <div class="word"> 좋아요 <%=1%>개</div>
+                <div class="bookmark">
+                    <img src="./img/bookmark_off.png">
+                </div>
+            </div>
+            <div class="word"> 좋아요 <%=1%>개</div>
 
-                <div class="id"><%=id%></div>
-<%--                <div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>--%>
-                <div class="box">
-                    <div class="content">
-                        편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 다보면 괜찮을거 다보면 괜찮을거
-                    </div>
+            <div class="id"><%=id%></div>
+            <%--                <div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>--%>
+            <div class="box">
+                <div class="content">
+                    편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 다보면 괜찮을거 다보면 괜찮을거
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="serve">
-             serveserveserveserveserveseveserve
+    <div class="serve">
+        serveserveserveserveserveseveserve
+    </div>
+
+    <div class="black" onclick="javascript:cancel1()">  </div>
+    <div class="pop1" style="display: none">
+
+        <div class="popTop">
+            <div>
+                <button class="cancel" id="cancel">X</button>
+                <h4>인스타그램</h4>
+            </div>
         </div>
 
-                <div class="black" onclick="javascript:cancel1()">  </div>
-                    <div class="pop1" style="display: none">
-
-                        <div class="popTop">
-                            <div>
-                                <button class="cancel" id="cancel">X</button>
-                                <h4>인스타그램</h4>
-                            </div>
-                        </div>
-
-                        <div class="popBottom">
-                            <div class="popimg">
-                             <img src="/img/cute.JPG">
-                            </div>
-                            <div class="popword">
-                                <h1>sssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsss</h1>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+        <div class="popBottom">
+            <div class="popimg">
+                <img src="/img/cute.JPG">
+            </div>
+            <div class="popword">
+                <h1>sssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsss</h1>
+            </div>
+        </div>
 
     </div>
-        <script src="./script/validation.js"></script>
-        <script type="text/javascript"></script>
+</div>
+
+</div>
+<script src="./script/validation.js"></script>
+<script type="text/javascript"></script>
 </body>
 <html>

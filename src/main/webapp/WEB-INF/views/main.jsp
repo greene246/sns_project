@@ -7,7 +7,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"/>
-로그아웃<input type="button" value="로그아웃" onclick="location.href='/logout'">
+
 <div class="wrap">
 
     <div class="section">

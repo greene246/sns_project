@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @RequestMapping("/")
-    public String header(){
-        return "main";
+    public String index(){
+        return "index";
     }
 
     @RequestMapping("/main")
@@ -26,6 +26,8 @@ public class MainController {
         return "updateMyInfo";
     }
 
-    @RequestMapping("/writeForm")
-    public String writeForm(){return "writeForm";}
+    @RequestMapping("/join")
+    public String join(){
+        return "join";
+    }
 }

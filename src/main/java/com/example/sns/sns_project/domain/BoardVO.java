@@ -19,11 +19,11 @@ public class BoardVO extends Timestamp {
     @Id
     private int id;
 
-    @Column(name="userId", nullable = false)
-    private String userId;
+    @Column(name="user_id", nullable = false)
+    private String user_id;
 
-    @Column(name="img", nullable = false)
-    private String img;
+    @Column(name="img_url", nullable = false)
+    private String img_url;
 
     @Column(name="contents", nullable = false)
     private String contents;
@@ -34,10 +34,15 @@ public class BoardVO extends Timestamp {
     @Column(name="public_scope")
     private int public_scope;
 
+    @Column(name="delete_url")
+    private String delete_url;
+
     public BoardVO(BoardRequestDto boardRequestDto){
-        this.userId = boardRequestDto.getUserId();
-        this.img = boardRequestDto.getImg();
+        this.user_id = boardRequestDto.getUser_id();
+        this.img_url = boardRequestDto.getImg_url();
         this.contents = boardRequestDto.getContents();
+        this.like_cnt = boardRequestDto.getLike_cnt();
         this.public_scope = boardRequestDto.getPublic_scope();
+        this.delete_url = boardRequestDto.getDelete_url();
     }
 }

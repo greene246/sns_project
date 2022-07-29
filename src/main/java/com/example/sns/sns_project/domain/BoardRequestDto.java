@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class BoardRequestDto {
-    String userId, img, contents, like_cnt;
+    String user_id;
+    String img_url;
+    String contents;
+    int like_cnt;
     int public_scope;
+    String delete_url;
 }

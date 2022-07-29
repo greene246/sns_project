@@ -20,10 +20,11 @@
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
             <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
+            <p class="deleteUser" onclick="location.href='/deleteUser'">회원탈퇴</p>
         </div>
     </div>
 
-    <h2>프로필 편집</h2>
+    <h2 class="updateTitle">프로필 편집</h2>
 
     <%=user_id%><br>
 
@@ -43,12 +44,12 @@
 
                 <input type="hidden" name="user_id" value="<%=user_id%>">
 
-                <div class="con1">
-                    <div class="_name">이름</div> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
-                </div>
-                <div class="con2">
-                    <div class="_email">이메일</div> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
-                </div>
+<%--                <div class="con1">--%>
+                    <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
+<%--                </div>--%>
+<%--                <div class="con2">--%>
+                    <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
+<%--                </div>--%>
 
                 <input type="hidden" name="user_pw" value="<%=user_pw%>">
 

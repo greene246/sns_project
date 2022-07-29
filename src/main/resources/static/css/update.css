@@ -23,6 +23,24 @@
     margin-right: 4vw;
     cursor: pointer;
 }
+.updateUser{
+    padding-bottom: 20px;
+}
+.updateUser > p{
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.updateUser > span{
+    padding-top: 10px;
+}
+.button > input{
+    width: 80px;
+}
+
+.updateTitle{
+    font-size: 25px;
+}
+
 
 /*.menu p:before{
     content: '';

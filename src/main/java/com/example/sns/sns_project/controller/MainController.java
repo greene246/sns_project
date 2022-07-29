@@ -35,9 +35,9 @@ public class MainController {
         return "updateMyPw";
     }
 
-
     @RequestMapping("/join")
-    public String join(){
-        return "join";
-    }
+    public String join(){ return "join"; }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(){ return "deleteUser"; }
 }

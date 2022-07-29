@@ -23,15 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // 로그인
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
         UserRequestDto user = new UserRequestDto(id, password);
-        System.out.println(user.getUser_id());
-        UserVO result = userService.readUser(user.getUser_id());
+        UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        System.out.println(result.getUser_pw());
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
 
@@ -48,6 +47,66 @@ public class UserController {
         try {
             response.sendRedirect(url);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 회원가입
+    @PostMapping("/joinUser")
+    public void addUser(@RequestParam(name="user_id") String id,
+                        @RequestParam(name="user_pw") String password,
+                        @RequestParam(name="name") String name,
+                        @RequestParam(name="email") String email,
+                        HttpServletResponse response){
+
+        UserRequestDto user = new UserRequestDto(id, password,name,email) ;
+
+        String url = "";
+
+        if(userService.readUserId(user.getUser_id()) == null) {
+            userService.createUser(user);
+            System.out.println("insert 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("아이디 중복");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    // 회원탈퇴
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="user_pw") String user_pw,
+                           HttpServletRequest request,
+                           HttpServletResponse response){
+        HttpSession session = request.getSession();
+
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
+
+        String url = "";
+        if(userService.checkUser(user) != null) {
+            userService.deleteUser(user);
+            session.invalidate();
+            System.out.println("회원탈퇴 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("회원정보 확인");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
@@ -116,13 +175,20 @@ public class UserController {
 
 
 
-    @PostMapping("/pastPw")
+/*    @PostMapping("/pastPw")
     public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUserId(userRequestDto);
+        UserVO user = userService.readUser(userRequestDto);
         System.out.println("@@@ID : " + user.getUser_id());
         return user;
-    }
+    }*/
 
+    @PostMapping("/getUser")
+    @ResponseBody
+    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
+        UserVO user = userService.readUser(userRequestDto);
+
+        return user;
+    }
 
 }
 

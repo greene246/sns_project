@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Getter
 public class UserRequestDto {
     private String user_id,user_pw,name,email;
@@ -17,12 +17,12 @@ public class UserRequestDto {
     }
 
     // join
-    public UserRequestDto(String user_id, String user_pw, String name, String email){
+/*    public UserRequestDto(String user_id, String user_pw, String name, String email){
         this.user_id = user_id;
         this.user_pw = user_pw;
         this.name = name;
         this.email = email;
-    }
+    }*/
 
     public UserRequestDto(String name, String email, String user_pw){
         this.name = name;

@@ -24,41 +24,55 @@
         </div>
     </div>
 
-    <h2 class="updateTitle">프로필 편집</h2>
-
-    <%=user_id%><br>
-
-    <%--<table>
-        <tr>
-            <thead>
-                이름
-            </thead>
-            <td>
-                <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
-            </td>
-        </tr>
-    </table>--%>
-    <form method="post" action="/update" onsubmit="updateCheck()">
-        <div class="content">
-            <div class="updateUser">
-
-                <input type="hidden" name="user_id" value="<%=user_id%>">
-
-<%--                <div class="con1">--%>
-                    <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
-<%--                </div>--%>
-<%--                <div class="con2">--%>
-                    <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
-<%--                </div>--%>
-
-                <input type="hidden" name="user_pw" value="<%=user_pw%>">
-
-            </div>
-            <div class="button">
-                <input type="submit" name="update" value="수정">
-            </div>
+    <div id="myContent">
+        <div class="c_header">
+            <h2 class="updateTitle">프로필 편집</h2>
+            <div class="myId"><%=user_id%><br></div>
         </div>
-    </form>
+
+
+        <form method="post" action="/update" onsubmit="updateCheck()">
+            <input type="hidden" name="user_id" value="<%=user_id%>">
+            <input type="hidden" name="user_pw" value="<%=user_pw%>">
+
+            <%--<table class="tableMyInfo">
+                <thead>
+                    <th>이름</th>
+                    <th>이메일</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
+                        </td>
+                        <td>
+                            <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>--%>
+
+
+            <div class="content">
+                <div class="updateUser">
+
+                    <input type="hidden" name="user_id" value="<%=user_id%>">
+
+                        <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
+                        <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
+
+                    <input type="hidden" name="user_pw" value="<%=user_pw%>">
+
+                </div>
+                <div class="button">
+                    <input type="submit" name="update" value="수정">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
 </body>
 <script src="js/update.js"></script>

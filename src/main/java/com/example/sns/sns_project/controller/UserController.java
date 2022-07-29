@@ -101,7 +101,7 @@ public class UserController {
         }
         else{
             System.out.println("회원정보 확인");
-            url = "/join";
+            url = "/deleteUser";
         }
 
         try {

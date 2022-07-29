@@ -41,23 +41,26 @@
     font-size: 25px;
 }
 
-
-/*.menu p:before{
-    content: '';
-    position: absolute; !*부모 요소에는 position: relative를 주어야 한다.*!
-    background-color: #1b0f04;
-    height: 2px; !*밑줄 굵기*!
-
-    width: 0; !*초기에 보이지 않도록*!
-    bottom: 0; !*a태그 아래에 위치시키기*!
-    transition: 0.7s; !*애니메이션 동작 실행 시간 정의*!
-
-    !*가상 요소를 가운데로 이동시키기*!
-    left: 50%;
-    transform: translateX(-50%) ;
+/*updateMyInfo*/
+.c_header{
+    padding-bottom: 30px;
 }
-.menu p:hover:before{
-    width:100%;
-}*/
 
+#myContent{
+    position: relative;
+    padding: 45px 50px 95px;
+}
 
+.tableMyInfo{
+    border: 1px solid black;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    position: relative;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tableMyInfo > tr{
+    border: 1px solid black;
+}

@@ -20,6 +20,7 @@
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
             <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
+            <p class="deleteUser" onclick="location.href='/deleteUser'">회원탈퇴</p>
         </div>
     </div>
 

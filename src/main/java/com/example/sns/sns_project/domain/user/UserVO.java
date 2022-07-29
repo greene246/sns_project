@@ -13,11 +13,11 @@ public class UserVO extends Timestamp {
 //    private String userId, userPw, name, email;
 //    private Timestamp created_at;
 
-    @Column(name="userId", nullable = false)
-    private String userId;
+    @Column(name="user_id", nullable = false)
+    private String user_id;
 
-    @Column(name="userPw", nullable = false)
-    private String userPw;
+    @Column(name="user_pw", nullable = false)
+    private String user_pw;
 
     @Column(name="name", nullable = false)
     private String name;

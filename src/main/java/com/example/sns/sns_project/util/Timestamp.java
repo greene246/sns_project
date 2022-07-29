@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class) // - 실시간으로 테이블 변화를 지켜봄
 public class Timestamp {
     @CreatedDate
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime modified_at;
+    private LocalDateTime modifiedAt;
 
 }

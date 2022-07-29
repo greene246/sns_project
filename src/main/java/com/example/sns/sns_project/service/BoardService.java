@@ -12,8 +12,8 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     // 1. Create
-    public BoardVO createBoard(BoardRequestDto boardRequestDto){
+    public void createBoard(BoardRequestDto boardRequestDto){
         BoardVO board = new BoardVO(boardRequestDto);
-        return boardRepository.save(board);
+        boardRepository.save(board);
     }
 }

@@ -15,4 +15,7 @@ public interface BoardRepository extends JpaRepository<BoardVO, String> {
 
      @Query(value = "select * from boards where public_scope = ?1", nativeQuery = true)
      List<BoardVO> findBoardsByPublicScope(int public_scope);
+
+     @Query(value = "select * from boards where  = user_id = ?1", nativeQuery = true)
+     List<BoardVO> findBoardsByUserId(int user_id);
 }

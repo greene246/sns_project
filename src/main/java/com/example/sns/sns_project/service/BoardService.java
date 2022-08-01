@@ -26,10 +26,9 @@ public class BoardService {
 
     public List<BoardVO> search(int a){
 
-//        List<BoardVO> boards = boardRepository.findBoardsByPublic_scope(0);
-
         List<BoardVO> boards = boardRepository.findBoardsByPublicScope(a);
         for(int i = 0; i < boards.size(); i++) {
+            System.out.print(boards.get(i).getId()+" ");
            System.out.println(boards.get(i).getUser_id());
         }
         System.out.println("=========================================");

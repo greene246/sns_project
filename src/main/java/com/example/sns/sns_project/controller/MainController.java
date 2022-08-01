@@ -30,6 +30,7 @@ public class MainController {
     public String updateMyInfo(){
         return "updateMyInfo";
     }
+
     @RequestMapping("/updateMyPw")
     public String updateMyPw() {
         return "updateMyPw";
@@ -40,4 +41,7 @@ public class MainController {
 
     @RequestMapping("/deleteUser")
     public String deleteUser(){ return "deleteUser"; }
+
+    @RequestMapping("/userPage")
+    public String userPage(){ return "userPage"; }
 }

@@ -32,25 +32,38 @@
 
 
         <form method="post" action="/update">
-<%--            <input type="hidden" name="user_id" value="<%=user_id%>">--%>
-<%--            <input type="hidden" name="user_pw" value="<%=user_pw%>">--%>
 
-            <%--<table class="tableMyInfo">
-                <thead>
-                    <th>이름</th>
-                    <th>이메일</th>
-                </thead>
+<%--            table--%>
+            <%--<input type="hidden" name="user_id" value="<%=user_id%>">
+            <input type="hidden" name="user_pw" value="<%=user_pw%>">
+
+            <table class="tableMyInfo">
                 <tbody>
                     <tr>
+                        <th><span class="_img">프로필 사진</span></th>
+                        <td>
+                            <span class="img"><img src="./img/cute.JPG"></span>
+                            <input type="file">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><span class="_name">이름</span></th>
                         <td>
                             <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
                         </td>
+                    </tr>
+                    <tr>
+                        <th><span class="_email">이메일</span></th>
                         <td>
                             <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required>
                         </td>
                     </tr>
                 </tbody>
-            </table>--%>
+            </table>
+
+            <div class="button">
+                <input type="submit" name="update" value="수정">
+            </div>--%>
 
 
             <div class="content">
@@ -58,6 +71,8 @@
 
                     <input type="hidden" name="user_id" value="<%=user_id%>">
 
+                        <p class="_img">프로필 사진</p> <span class="img"><img src="./img/cute.JPG"></span><br>
+                        <input type="file" name="uploadFile">
                         <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
                         <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
 

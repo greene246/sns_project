@@ -16,7 +16,7 @@
     %>
 <div class="wrap">
     <div class="myPageBody">
-        <span class="img"><img src="./img/cute.JPG"></span>
+        <span class="img"><img src="./img/도라에몽.png"></span>
         <span class="id"><%=user_id%></span>
         <span class="name"><%=name%></span>
 

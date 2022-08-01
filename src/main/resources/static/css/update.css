@@ -41,6 +41,12 @@
     font-size: 25px;
 }
 
+.img img{
+    width: 150px;
+    height: 150px;
+    grid-area: img;
+}
+
 /*updateMyInfo*/
 .c_header{
     padding-bottom: 30px;

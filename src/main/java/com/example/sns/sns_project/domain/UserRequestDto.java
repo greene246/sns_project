@@ -17,7 +17,7 @@ public class UserRequestDto {
     }
 
     // join
-/*    public UserRequestDto(String user_id, String user_pw, String name, String email){
+    /*public UserRequestDto(String user_id, String user_pw, String name, String email){
         this.user_id = user_id;
         this.user_pw = user_pw;
         this.name = name;

@@ -22,13 +22,24 @@ public class UserService {
         return user;
     }
 
-    // read_PW
+    // read
     public UserVO readUser(UserRequestDto userRequestDto){
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );
-
         return result;
+    }
+
+    // read_Pw
+    public UserVO readUserPw(UserRequestDto userRequestDto){
+        UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 사용자")
+        );
+
+        if(result.getUser_pw().equals(userRequestDto.getUser_pw())){
+            return result;
+        }
+        return null;
     }
 
     // 회원가입
@@ -62,7 +73,7 @@ public class UserService {
     @Transactional
     public boolean updateUser(UserRequestDto userRequestDto){
         UserVO user = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("아이디 찾기 실패 업데이트 실패")
+                () -> new IllegalArgumentException("아이디 찾기 실패")
         );
 //        UserVO user = new UserVO(userRequestDto);
 

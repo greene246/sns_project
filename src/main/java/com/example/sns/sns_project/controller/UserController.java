@@ -115,6 +115,7 @@ public class UserController {
     public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
 
+        System.out.println("Id: " + user_id);
         System.out.println("name: "+name);
         System.out.println("email: " + email);
         System.out.println("user_pw: "+ user_pw);
@@ -145,10 +146,11 @@ public class UserController {
     }
 
     @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
-    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, HttpServletRequest request, HttpServletResponse response) {
+    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, @RequestParam(name="pw_past") String pw_past, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        if(pw_new.equals(pw_check)){
+        String user_pw = (String) session.getAttribute("user_pw");
+        if(pw_new.equals(pw_check) && pw_past.equals(user_pw)){
             System.out.println("비밀번호 업데이트 성공");
 
             UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email);
@@ -172,15 +174,13 @@ public class UserController {
         }
     }
 
+    @PostMapping("/pastPw")
+    @ResponseBody
+    public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
+        UserVO user = userService.readUserPw(userRequestDto);
 
-
-
-/*    @PostMapping("/pastPw")
-    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUser(userRequestDto);
-        System.out.println("@@@ID : " + user.getUser_id());
         return user;
-    }*/
+    }
 
     @PostMapping("/getUser")
     @ResponseBody

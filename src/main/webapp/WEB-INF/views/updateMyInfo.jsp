@@ -31,9 +31,9 @@
         </div>
 
 
-        <form method="post" action="/update" onsubmit="updateCheck()">
-            <input type="hidden" name="user_id" value="<%=user_id%>">
-            <input type="hidden" name="user_pw" value="<%=user_pw%>">
+        <form method="post" action="/update">
+<%--            <input type="hidden" name="user_id" value="<%=user_id%>">--%>
+<%--            <input type="hidden" name="user_pw" value="<%=user_pw%>">--%>
 
             <%--<table class="tableMyInfo">
                 <thead>

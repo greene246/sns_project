@@ -1,8 +1,8 @@
 
 
-$('.user_id').change(e => {
+$('#user_id').change(e => {
     const requestData = {
-        "user_id" : $('.user_id').val()
+        "user_id" : $('#user_id').val()
     }
     $.ajax({
         url: "/getUser",

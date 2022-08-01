@@ -1,0 +1,128 @@
+.wrap{
+    display: flex;
+    max-width: 950px;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 40px;
+    align-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.mainimg{
+    display: flex;
+    position: relative;
+    text-align : center;
+    width: 380px;
+}
+.loginbox{
+    position: relative;
+    border : solid 1px black;
+    width : 300px;
+    text-align : center;
+    padding : 30px 30px 30px 30px;
+}
+h3{
+    margin-bottom: 30px;
+}
+.main{
+    width: 380px;
+    height: auto;
+}
+.hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 12px;
+    margin: 8px 0;
+}
+.hr-sect::before,
+.hr-sect::after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    margin: 20px 16px;
+}
+.loginbox .req{
+    margin-bottom: 30px;
+    height: 50px;
+    width: 270px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.loginbox input[type=submit]{
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 270px;
+    color : #eeeeee;
+    cursor: pointer;
+}
+.loginbox input[type=button]{
+    background-color: rgba(147, 165, 215, 0.84);
+    color : #eeeeee;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    cursor: pointer;
+}
+.joinbox{
+    position: relative;
+    border : solid 1px black;
+    width : 300px;
+    text-align : center;
+    padding : 80px 30px;
+}
+.joinbox h3{
+    margin: 0 40px 20px;
+    text-align: center;
+}
+.joinbox .h4{
+    color: #8e8e8e;
+    margin: 0 40px 20px;
+    text-align: center;
+}
+.joinbox #msg_err{
+    color: red;
+
+}
+.joinbox span{
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.joinbox .req{
+    font-size: 14px;
+    position: relative;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 270px;
+    padding: 10px;
+    border-radius: 6px;
+}
+.joinbox input[type="submit"]{
+    height: 40px;
+    width: 270px;
+    border-radius: 6px;
+    color: #eeeeee;
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+.joinbox input[type="button"]{
+    height: 40px;
+    width: 270px;
+    border-radius: 6px;
+    color: #eeeeee;
+    cursor: pointer;
+    background-color: rgba(147, 165, 215, 0.84);
+}

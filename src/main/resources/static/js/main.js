@@ -2,9 +2,6 @@
 // 2번째는 getbody형식으로
 // Board값 가져오기
 function getBoards(scope) {
-    // let obj = {
-    //     "a" : scope
-    // }
 
     $.ajax({
         url: "/search",
@@ -12,8 +9,7 @@ function getBoards(scope) {
         data: {
             "a" : scope
         },
-        // data : JSON.stringify(obj),
-        // dataType: "json",
+
         contentType: "application/json"
     })
         .done(data => {
@@ -21,8 +17,9 @@ function getBoards(scope) {
 
             result.forEach(Board => {
 
-                 let html = `<div class="contents">${Board.user_id}</div>`;
-                 console.log(html);
+                //  let html = `<div class="contents">${Board.user_id}</div>`;
+                 let html = `<div class="img"><img src=${Board.img_url}></div>`;
+                    console.log(html.valueOf());
                   // $('.main').append(html);
                  $(".main2").append(html);
              })

@@ -18,7 +18,9 @@
                     <a><%=id%></a>
                 </div>
             </div>
-            <span id="main_img"><img src="./img/backpic.jpg" id="contents_img"></span>
+
+           <span id="main_img"><div class="main2" id="contents_img"></div></span>
+
             <!-- icon 모음 -->
             <div class="icon">
                 <!-- 좋아요 / 댓글 / 디엠 -->
@@ -35,7 +37,6 @@
             </div>
             <span class="word"> 좋아요 <%=1%>개</span>
             <span class="id"><%=id%></span>
-            <%--<div class="contents">집에 가고싶다 집에 보내줘 샹sssssssssssssssssssssssssssssssssssssssss</div>--%>
 
             <div class="contents">
                 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때
@@ -46,7 +47,7 @@
 
     <div class="serve_section">
         serve
-        <div class="main2"></div>
+
     </div>
 
     <div class="black" onclick="javascript:cancel()"></div>
@@ -67,6 +68,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         getBoards(0);
+        getBoards(1);
     });
 </script>
 </body>

@@ -1,7 +1,6 @@
 package com.example.sns.sns_project.service;
 
 import com.example.sns.sns_project.domain.BoardRepository;
-
 import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.domain.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;

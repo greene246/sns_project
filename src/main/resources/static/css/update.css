@@ -27,8 +27,8 @@
     padding-bottom: 20px;
 }
 .updateUser > p{
-    padding-top: 10px;
-    padding-bottom: 10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
 }
 .updateUser > span{
     padding-top: 10px;
@@ -39,6 +39,12 @@
 
 .updateTitle{
     font-size: 25px;
+}
+
+.img img{
+    width: 150px;
+    height: 150px;
+    grid-area: img;
 }
 
 /*updateMyInfo*/

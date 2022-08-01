@@ -1,16 +1,21 @@
 package com.example.sns.sns_project.controller;
 
 import com.example.sns.sns_project.service.UserService;
-import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
+import com.example.sns.sns_project.domain.UserRequestDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class UserController {
@@ -18,16 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // login
+    // 로그인
     @PostMapping("/login")
       public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
         UserRequestDto user = new UserRequestDto(id, password);
-        System.out.println(user.getUser_id());
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        System.out.println(result.getUser_pw());
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
 
@@ -47,7 +50,8 @@ public class UserController {
             e.printStackTrace();
         }
     }
-    // join
+
+    // 회원가입
     @PostMapping("/joinUser")
     public void addUser(@RequestParam(name="user_id") String id,
                         @RequestParam(name="user_pw") String password,
@@ -76,19 +80,42 @@ public class UserController {
         }
     }
 
-    @PostMapping("/getUser")
-    @ResponseBody
-    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUser(userRequestDto);
+    // 회원탈퇴
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="user_pw") String user_pw,
+                           HttpServletRequest request,
+                           HttpServletResponse response){
+        HttpSession session = request.getSession();
 
-        return user;
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
+
+        String url = "";
+        if(userService.checkUser(user) != null) {
+            userService.deleteUser(user);
+            session.invalidate();
+            System.out.println("회원탈퇴 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("회원정보 확인");
+            url = "/deleteUser";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-
 
     @PostMapping("/update") // 이름, 이메일 변경
     public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
 
+        System.out.println("Id: " + user_id);
         System.out.println("name: "+name);
         System.out.println("email: " + email);
         System.out.println("user_pw: "+ user_pw);
@@ -119,10 +146,11 @@ public class UserController {
     }
 
     @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
-    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, HttpServletRequest request, HttpServletResponse response) {
+    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, @RequestParam(name="pw_past") String pw_past, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        if(pw_new.equals(pw_check)){
+        String user_pw = (String) session.getAttribute("user_pw");
+        if(pw_new.equals(pw_check) && pw_past.equals(user_pw)){
             System.out.println("비밀번호 업데이트 성공");
 
             UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email);
@@ -146,37 +174,21 @@ public class UserController {
         }
     }
 
-    @PostMapping("/deleteUser")
-    public void deleteUser(@RequestParam(name="user_id") String user_id,
-                           @RequestParam(name="name") String name,
-                           @RequestParam(name = "email") String email,
-                           @RequestParam(name="user_pw") String user_pw,
-                           HttpServletRequest request,
-                           HttpServletResponse response){
-        HttpSession session = request.getSession();
+    @PostMapping("/pastPw")
+    @ResponseBody
+    public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
+        UserVO user = userService.readUserPw(userRequestDto);
 
-         UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
-
-         String url = "";
-        if(userService.checkUser(user) != null) {
-            userService.deleteUser(user);
-            session.invalidate();
-            System.out.println("회원탈퇴 성공");
-            url ="/";
-        }
-        else{
-            System.out.println("회원정보 확인");
-            url = "/join";
-        }
-
-        try {
-            response.sendRedirect(url);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        return user;
     }
 
+    @PostMapping("/getUser")
+    @ResponseBody
+    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
+        UserVO user = userService.readUser(userRequestDto);
 
+        return user;
+    }
 
 }
 

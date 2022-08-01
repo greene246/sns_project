@@ -20,7 +20,7 @@
 %>
 <body>
     <div class="wrap">
-        <form method="POST" id="write_form" action="/plz">
+        <form method="POST" id="write_form" action="/upload">
             <input type="hidden" name="user_id" value="apple" id="user_id"/>    <!-- getAttribute로 user_id 추출 -->
             <input type="hidden" name="img_url" value="1" id="img_url"/>                <!-- write.js에서 업로드 후 img_url값 추출 -->
             <input type="hidden" name="delete_url" value="2" id="delete_url"/><!-- write.js에서 업로드 후 delete_url값 추출 -->

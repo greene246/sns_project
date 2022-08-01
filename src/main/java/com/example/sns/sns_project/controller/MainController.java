@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @RequestMapping("/")
-
     public String index(){
         return "index";
     }
@@ -26,22 +25,23 @@ public class MainController {
     public String writeForm(){
         return "writeForm";
     };
+
     @RequestMapping("/updateMyInfo")
     public String updateMyInfo(){
         return "updateMyInfo";
     }
 
-    @RequestMapping("/join")
-    public String join(){
-        return "join";
+    @RequestMapping("/updateMyPw")
+    public String updateMyPw() {
+        return "updateMyPw";
     }
 
-    @RequestMapping("/logout")
-    public String logout(){
-        return "logout";
-    }
+    @RequestMapping("/join")
+    public String join(){ return "join"; }
+
     @RequestMapping("/deleteUser")
-    public String deleteUser(){
-        return "deleteUser";
-    }
+    public String deleteUser(){ return "deleteUser"; }
+
+    @RequestMapping("/userPage")
+    public String userPage(){ return "userPage"; }
 }

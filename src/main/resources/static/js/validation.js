@@ -25,7 +25,6 @@ cancel1 = function() {
     $(".pop1").css("display","none");
     $(".black").css("display","none");
 }
-
 $(document).ready(function(){
 
     $('.box').each(function(){
@@ -33,7 +32,6 @@ $(document).ready(function(){
         var content_txt = content.text();
         var content_txt_short = content_txt.substring(0,100)+"...";
         var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
-
 
         $(this).append(btn_more);
 
@@ -65,6 +63,49 @@ $(document).ready(function(){
     });
 });
 
+////////////////////////
+$("#id").change(e =>{
+    console.log($("#id").val());
+
+    $.ajax({
+        url : `/user?id=${$("#id").val()}`,
+        method : "POST",
+    }).done(result => {
+        console.log(result);
+        console.log(typeof result);
+        if(result ===""){
+            $("#msg_error").hide();
+            $("#msg_ok").show();
+        }
+        else{
+            $("#msg_error").show();
+            $("#msg_ok").hide();
+        }
+    });
+
+    // 2) @RequestBody
+    const requestData = {
+        "id" : $("#id").val(),
+        "pw" : $("#password").val()
+    }
+
+    $.ajax({
+        url : "/v1/search/user",
+        // method : POST,
+        type : "POST",
+        data : JSON.stringify(requestData),
+        contentType : "application/json"
+    }).done(result => {
+        console.log(result);
+    })
+}).fail(error => {
+    console.log(error.responseText);
+})
+function checkUser(){
+    const requestData = {
+        "id" : $("#userId").val(),
+        "pw" : $("#userPw").val()
+    }
 
     $.ajax({
         url : "/user",
@@ -78,7 +119,4 @@ $(document).ready(function(){
         console.log(error.responseText);
     })
     document.getElementById('#login').submit();
-
-
-
-
+}

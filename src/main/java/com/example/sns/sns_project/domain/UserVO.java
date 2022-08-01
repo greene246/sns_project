@@ -33,10 +33,10 @@ public class UserVO extends Timestamp {
 
 
     @Column(name = "created_at", nullable = true)
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @Column(name = "modified_at", nullable = true)
-    private LocalDateTime modified_at;
+    private LocalDateTime modifiedAt;
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();

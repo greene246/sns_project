@@ -3,11 +3,9 @@ package com.example.sns.sns_project.controller;
 import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.domain.BoardVO;
 import com.example.sns.sns_project.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,13 +14,11 @@ import com.example.sns.sns_project.domain.BoardRepository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 public class BoardController {
     @Autowired
     private BoardService boardService;
-    @Autowired
-    private BoardRepository repo;
-
 
     @PostMapping("/upload")
     public void createBoard(
@@ -44,15 +40,25 @@ public class BoardController {
         }
     }
 
-    //@Test
-//    @RequestMapping("/call")
-    public List findBoardByPublic_scope() {
+    public void findPublic_scope() {
 
-        List<BoardVO> list = repo.findBoardByPublic_scope(0);
-        for(int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getUser_id());
-        }
-        return  list;
+//        List<BoardVO> list = repo.findBoardByPublic_scope(0);
+//        for(int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).getUser_id());
+//        }
+//        List<User> userList = userRepository.findAll();
+
+
+        //repo.findBoardsByPublic_scope(0).forEach(board -> System.out.println(board.getUser_id()));
+
+
+       // return  list;
+    }
+
+    @GetMapping("/search")
+    public List<BoardVO> search(@RequestParam(name = "a") int a){
+        return boardService.search(a);
+
     }
 
 }

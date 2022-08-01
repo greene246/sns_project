@@ -1,10 +1,10 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.domain.UserRequestDto;
-import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.sns.sns_project.domain.UserVO;
+import com.example.sns.sns_project.domain.UserRequestDto;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,21 +12,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Controller
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    // 로그인
     @PostMapping("/login")
-      public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
+    public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
         UserRequestDto user = new UserRequestDto(id, password);
-        System.out.println(user.getUser_id());
-        UserVO result = userService.readUser(user.getUser_id());
+        UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        System.out.println(result.getUser_pw());
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
 
@@ -43,6 +47,66 @@ public class UserController {
         try {
             response.sendRedirect(url);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 회원가입
+    @PostMapping("/joinUser")
+    public void addUser(@RequestParam(name="user_id") String id,
+                        @RequestParam(name="user_pw") String password,
+                        @RequestParam(name="name") String name,
+                        @RequestParam(name="email") String email,
+                        HttpServletResponse response){
+
+        UserRequestDto user = new UserRequestDto(id, password,name,email) ;
+
+        String url = "";
+
+        if(userService.readUserId(user.getUser_id()) == null) {
+            userService.createUser(user);
+            System.out.println("insert 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("아이디 중복");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    // 회원탈퇴
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="user_pw") String user_pw,
+                           HttpServletRequest request,
+                           HttpServletResponse response){
+        HttpSession session = request.getSession();
+
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
+
+        String url = "";
+        if(userService.checkUser(user) != null) {
+            userService.deleteUser(user);
+            session.invalidate();
+            System.out.println("회원탈퇴 성공");
+            url ="/";
+        }
+        else{
+            System.out.println("회원정보 확인");
+            url = "/join";
+        }
+
+        try {
+            response.sendRedirect(url);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
@@ -107,18 +171,13 @@ public class UserController {
             e.printStackTrace();
         }
     }
-    @PostMapping("/pastPw")
+    @PostMapping("/getUser")
+    @ResponseBody
     public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUserId(userRequestDto);
-        System.out.println("@@@ID : " + user.getUser_id());
+        UserVO user = userService.readUser(userRequestDto);
+
         return user;
     }
 
-
-
 }
-
-
-
-
 

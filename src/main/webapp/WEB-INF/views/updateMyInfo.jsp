@@ -15,6 +15,7 @@
         String name = (String) session.getAttribute("name");
         String email = (String) session.getAttribute("email");
         String user_pw = (String) session.getAttribute("user_pw");
+        String thumbnail = (String) session.getAttribute("thumbnail");
     %>
     <div class="menu">
         <div>
@@ -71,16 +72,26 @@
 
                     <input type="hidden" name="user_id" value="<%=user_id%>">
 
-                        <p class="_img">프로필 사진</p> <span class="img"><img src="./img/cute.JPG"></span><br>
-                        <input type="file" name="uploadFile">
+                        <p class="_img">프로필 사진</p> <%--<span class="img"><img src="<%=thumbnail%>>"></span>--%><br>
+<%--                        <div id="image_container"></div>--%>
+<%--                        <input type="file" name="uploadFile" accept="image/png, image/jpeg" id="input_img" onchange="setThumbnail(event)">--%>
+                        <div class="image-container">
+                            <input type="hidden" name="img_url" id="img_url">
+                            <img style="width: 150px;" id="preview-image" src="<%=thumbnail%>">
+<%--                            src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"--%>
+                            <input style="display: block;" type="file" id="input_img">
+                        </div>
+
                         <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
+
                         <p class="_email">이메일</p> <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required><br>
 
                     <input type="hidden" name="user_pw" value="<%=user_pw%>">
 
                 </div>
                 <div class="button">
-                    <input type="submit" name="update" value="수정">
+                    <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">
+<%--                    <input type="submit" name="update" value="수정" onclick="uploadToCloud(form)">--%>
                 </div>
             </div>
 
@@ -91,4 +102,5 @@
 </div>
 </body>
 <script src="js/update.js"></script>
+<script src="js/writeJs.js"></script>
 </html>

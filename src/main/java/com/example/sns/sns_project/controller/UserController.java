@@ -42,6 +42,7 @@ public class UserController {
         session.setAttribute("name",result.getName());
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
+        session.setAttribute("thumbnail", result.getThumbnail());
 
 
         try {
@@ -59,7 +60,10 @@ public class UserController {
                         @RequestParam(name="email") String email,
                         HttpServletResponse response){
 
-        UserRequestDto user = new UserRequestDto(id, password,name,email) ;
+        String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
+
+        System.out.println("sss: "+ thumbnail);
+        UserRequestDto user = new UserRequestDto(id,password,name,email,thumbnail);
 
         String url = "";
 
@@ -112,15 +116,16 @@ public class UserController {
     }
 
     @PostMapping("/update") // 이름, 이메일 변경
-    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request, HttpServletResponse response){
+    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, @RequestParam(name="img_url") String thumbnail, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
 
         System.out.println("Id: " + user_id);
-        System.out.println("name: "+name);
+        System.out.println("name: " +name);
         System.out.println("email: " + email);
-        System.out.println("user_pw: "+ user_pw);
+        System.out.println("user_pw: " + user_pw);
+        System.out.println("img_url : " + thumbnail);
 
-        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email);
+        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
 
 
         boolean check = userService.updateUser(userRequestDto);
@@ -131,8 +136,11 @@ public class UserController {
             session.setAttribute("name",userRequestDto.getName());
             session.setAttribute("email",userRequestDto.getEmail());
             session.setAttribute("user_pw",userRequestDto.getUser_pw());
+            session.setAttribute("thumbnail",userRequestDto.getThumbnail());
 
-            System.out.println("이름, 이메일 변경 성공");
+            System.out.println("썸네일이에요 : " + userRequestDto.getThumbnail());
+
+            System.out.println("프로필 사진, 이름, 이메일 변경 성공");
         }
         String url = "";
         url = "/updateMyInfo";
@@ -178,6 +186,7 @@ public class UserController {
     @ResponseBody
     public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
         UserVO user = userService.readUserPw(userRequestDto);
+        System.out.println("aa: "+user.getUser_id());
 
         return user;
     }

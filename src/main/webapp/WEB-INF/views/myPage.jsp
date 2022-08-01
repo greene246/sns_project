@@ -13,12 +13,13 @@
         String user_id = (String) session.getAttribute("user_id");
         String name = (String) session.getAttribute("name");
         String user_pw = (String) session.getAttribute("user_pw");
+        String thumbnail = (String) session.getAttribute("thumbnail");
     %>
 <div class="wrap">
     <div class="myPageBody">
 <%--        <%=user_id%><br>--%>
         
-        <span class="img"><img src="./img/cute.JPG"></span>
+        <span class="img"><img src=<%=thumbnail%>></span>
         <span class="user_id"><%=user_id%></span>
         <span class="name"><%=name%></span>
 

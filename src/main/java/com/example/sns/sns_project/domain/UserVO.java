@@ -32,12 +32,16 @@ public class UserVO extends Timestamp {
     @Column(name="email", nullable = true)
     private String email;
 
+    @Column(name="thumbnail", nullable = true)
+    private String thumbnail;
+
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();
         this.user_pw = userRequestDto.getUser_pw();
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
+        this.thumbnail = userRequestDto.getThumbnail();
     }
 
     // update
@@ -47,6 +51,8 @@ public class UserVO extends Timestamp {
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
         this.user_pw = userRequestDto.getUser_pw();
+        this.thumbnail = userRequestDto.getThumbnail();
+        //김나연 바보
     }
 
 }

@@ -24,7 +24,12 @@ public class BoardController {
             @RequestParam(name="public_scope")int public_scope, HttpServletResponse response, HttpServletRequest request
     ) {
         HttpSession session = request.getSession();
+        user_id = (String) session.getAttribute("user_id");
+
+        System.out.println("img_url : " + img_url);
+
         BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url);
+
         boardService.createBoard(b_dto);
 
         String url = "/main";

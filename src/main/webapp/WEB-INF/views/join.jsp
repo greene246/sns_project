@@ -21,7 +21,6 @@
   이름<input type="text" name="name" id="name" placeholder="이름" required><br>
   E-mail<input type="email" name="email" id="email" placeholder="이메일" required><br>
 
-
   <input type="submit" value="회원가입"><br>
   <input type="button" value="로그인 하러가기" onclick="location.href='/'">
 

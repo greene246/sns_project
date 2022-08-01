@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gimminjeong
-  Date: 2022/07/26
-  Time: 7:04 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,16 +5,16 @@
     <title>WriteForm</title>
 </head>
 <%
-//    if(request.getAttribute("userId") == null){
+//    if(request.getAttribute("user_id") == null){
 //        response.sendRedirect("./");
 //    }
 //    else{
-//        String userId = (String) request.getAttribute("userId");
+        String user_id = (String) request.getAttribute("user_id");
 %>
 <body>
     <div class="wrap">
         <form method="POST" id="write_form" action="/upload">
-            <input type="hidden" name="user_id" value="apple" id="user_id"/>    <!-- getAttribute로 user_id 추출 -->
+            <input type="hidden" name="user_id" value="<%=user_id%>" id="user_id"/>    <!-- getAttribute로 user_id 추출 -->
             <input type="hidden" name="img_url" value="1" id="img_url"/>                <!-- write.js에서 업로드 후 img_url값 추출 -->
             <input type="hidden" name="delete_url" value="2" id="delete_url"/><!-- write.js에서 업로드 후 delete_url값 추출 -->
             <div id="image_container"></div>
@@ -37,7 +30,7 @@
     </div>
 </body>
 <script src="js/writeJs.js"></script>
-<%
-//    }
-%>
+<%--<%--%>
+<%--    }--%>
+<%--%>--%>
 </html>

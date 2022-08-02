@@ -5,6 +5,9 @@ import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.domain.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class BoardService {
@@ -15,5 +18,12 @@ public class BoardService {
     public void createBoard(BoardRequestDto boardRequestDto){
         BoardVO board = new BoardVO(boardRequestDto);
         boardRepository.save(board);
+        int id = board.getId();
+        System.out.println("BoardService save img id : "+id);
+    }
+
+    @Transactional
+    public void deleteBoard(int id){
+        boardRepository.deleteById(id);
     }
 }

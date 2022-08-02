@@ -40,4 +40,7 @@ public class MainController {
     public String writeForm() {
         return "writeForm";
     }
+
+    @RequestMapping("/deleteForm")
+    public String deleteForm(){return "deleteForm";}
 }

@@ -1,5 +1,4 @@
 // 사진 imgBB에 업로드
-
 function uploadToCloud(formObj) {
     let file = document.getElementById('input_img');
     let form = new FormData();

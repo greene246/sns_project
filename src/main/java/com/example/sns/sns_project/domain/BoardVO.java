@@ -46,4 +46,5 @@ public class BoardVO extends Timestamp {
         this.delete_url = boardRequestDto.getDelete_url();
     }
 
+
 }

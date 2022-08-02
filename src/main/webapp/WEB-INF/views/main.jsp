@@ -11,12 +11,12 @@
         <div class="section">
             <!-- 프로필 박스 -->
             <div class="profile_box">
-                <span style="width: 100px"><img src="/img/cute.JPG" id="profile_img"></span>
+                <span id="profile_img_wrap"><img src="/img/cute.JPG" id="profile_img"></span>
                 <div id="userid">
                     <a><%=id%></a>
                 </div>
             </div>
-            <span id="main_img"><img src="./img/backpic.jpg" id="contents_img"></span>
+            <span id="main_img"><img src="https://i.ibb.co/tZ52Dmf/image.png" class="contents_img"></span>
             <!-- icon 모음 -->
             <div class="icon">
                 <!-- 좋아요 / 댓글 / 디엠 -->
@@ -48,7 +48,7 @@
         <div class="black" onclick="javascript:cancel()"></div>
         <div class="contents_detail" style="display: none">
             <div class="detail_img">
-                <img src="/img/cute.JPG">
+                <img src="/img/cute.JPG" class="contents_img">
             </div>
             <div class="detail_coments">
                 <h1>test 댓글창</h1>
@@ -59,5 +59,6 @@
 </div>
 <script src="./script/validation.js"></script>
 <script type="text/javascript"></script>
+<script src="./script/writeJs.js"></script>
 </body>
 <html>

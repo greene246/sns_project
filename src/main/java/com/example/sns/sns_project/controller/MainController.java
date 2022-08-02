@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @RequestMapping("/")
-    public String header() {
+    public String index() {
         return "index";
     }
 
@@ -44,4 +44,10 @@ public class MainController {
 
     @RequestMapping("/userPage")
     public String userPage(){ return "userPage"; }
+
+    @RequestMapping("/findIdPage")
+    public String findIdPage(){ return "findIdPage"; }
+
+    @RequestMapping("/findPwPage")
+    public String findPw(){ return "findPwPage"; }
 }

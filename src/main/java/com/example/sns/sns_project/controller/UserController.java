@@ -34,7 +34,7 @@ public class UserController {
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
         } else {
-            url = "/join";
+            url = "/?check=chcek";
         }
 
         session.setAttribute("user_id",result.getUser_id());
@@ -71,7 +71,7 @@ public class UserController {
         }
         else{
             System.out.println("아이디 중복");
-            url = "/join";
+            url = "/join?check=chcek";
         }
 
         try {
@@ -112,9 +112,16 @@ public class UserController {
         }
     }
 
-    /*
-    @PostMapping("/update") // 이름, 이메일 변경
-    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, @RequestParam(name="img_url") String thumbnail, HttpServletRequest request, HttpServletResponse response){
+    // 이름, 이메일 변경
+    @PostMapping("/update")
+    public void updateUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="user_pw") String user_pw,
+                           @RequestParam(name="img_url") String thumbnail,
+                           HttpServletRequest request, HttpServletResponse response){
+
+
         HttpSession session = request.getSession();
 
         System.out.println("Id: " + user_id);
@@ -124,7 +131,6 @@ public class UserController {
         System.out.println("img_url : " + thumbnail);
 
         UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
-
 
         boolean check = userService.updateUser(userRequestDto);
 
@@ -140,6 +146,9 @@ public class UserController {
 
             System.out.println("프로필 사진, 이름, 이메일 변경 성공");
         }
+        else{
+            System.out.println("프로필 사진, 이름, 이메일 업데이트 실패");
+        }
         String url = "";
         url = "/updateMyInfo";
 
@@ -148,26 +157,38 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
-    public void updatePw(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="user_id") String user_id, @RequestParam(name="pw_new") String pw_new, @RequestParam(name="pw_check") String pw_check, @RequestParam(name="pw_past") String pw_past, HttpServletRequest request, HttpServletResponse response) {
+    public void updatePw(@RequestParam(name="name") String name,
+                         @RequestParam(name="email") String email,
+                         @RequestParam(name="user_id") String user_id,
+                         @RequestParam(name="pw_new") String pw_new,
+                         @RequestParam(name="pw_check") String pw_check,
+                         @RequestParam(name="pw_past") String pw_past,
+                         @RequestParam(name="thumbnail") String thumbnail,
+                         HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
         String user_pw = (String) session.getAttribute("user_pw");
         if(pw_new.equals(pw_check) && pw_past.equals(user_pw)){
-            System.out.println("비밀번호 업데이트 성공");
 
-            UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email);
+            UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email, thumbnail);
             boolean check = userService.updateUser(userRequestDto);
 
-            session.setAttribute("name",userRequestDto.getName());
-            session.setAttribute("email",userRequestDto.getEmail());
-            session.setAttribute("user_pw",userRequestDto.getUser_pw());
+            System.out.println("check:" + check );
+
+            if(check){
+                session.setAttribute("name",userRequestDto.getName());
+                session.setAttribute("email",userRequestDto.getEmail());
+                session.setAttribute("user_pw",userRequestDto.getUser_pw());
+                session.setAttribute("thumbnail",userRequestDto.getThumbnail());
+
+                System.out.println("비밀번호 업데이트 성공");
+            }
         }
         else{
-            System.out.println("비밀번호 업데이트 실패");
+            System.out.println("비밀번호 입력 오류");
         }
         String url = "";
         url = "/updateMyPw";
@@ -180,6 +201,15 @@ public class UserController {
         }
     }
 
+    @PostMapping("/getUser")
+    @ResponseBody
+    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
+        UserVO user = userService.readUser(userRequestDto);
+
+        return user;
+    }
+
+    // 이전 비밀번호 확인
     @PostMapping("/pastPw")
     @ResponseBody
     public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
@@ -189,14 +219,71 @@ public class UserController {
         return user;
     }
 
-    @PostMapping("/getUser")
-    @ResponseBody
-    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
-        UserVO user = userService.readUser(userRequestDto);
+    // 아이디 찾기
+    @PostMapping("/findId")
+    public void findId(@RequestParam (name="name") String name,
+                       @RequestParam(name="email") String email,
+                       HttpServletRequest request,
+                       HttpServletResponse response) {
+        HttpSession session = request.getSession();
 
-        return user;
+        UserVO user = userService.findName(name);
+
+        if(user!=null && user.getEmail().equals(email)){
+
+            session.setAttribute("id",user.getUser_id());
+
+            String url ="";
+            url = "/findIdPage";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            String url ="";
+            url = "/findIdPage?check=check";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
-*/
+
+    @PostMapping("/findPw")
+    public void findPw(@RequestParam(name="user_id") String user_id,
+                       @RequestParam (name="name") String name,
+                       @RequestParam(name="email") String email,
+                       HttpServletRequest request,
+                       HttpServletResponse response) {
+        HttpSession session = request.getSession();
+
+        UserVO user = userService.readUserId(user_id);
+
+        if(user != null && user.getName().equals(name) && user.getEmail().equals(email)){
+            session.setAttribute("pw",user.getUser_pw());
+            String url ="";
+            url = "/findPwPage";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            String url ="";
+            url = "/findPwPage?check=check";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }
 
 

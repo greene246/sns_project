@@ -14,4 +14,5 @@ public class BoardRequestDto {
     int like_cnt;
     int public_scope;
     String delete_url;
+    int contents_id;
 }

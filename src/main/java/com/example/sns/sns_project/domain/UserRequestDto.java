@@ -30,9 +30,4 @@ public class UserRequestDto {
         this.user_pw = user_pw;
     }
 
-    // updatePw
-    public UserRequestDto(String user_pw){
-        this.user_pw = user_pw;
-    }
-
 }

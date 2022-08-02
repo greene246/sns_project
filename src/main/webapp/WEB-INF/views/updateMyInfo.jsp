@@ -16,8 +16,6 @@
         String email = (String) session.getAttribute("email");
         String user_pw = (String) session.getAttribute("user_pw");
         String thumbnail = (String) session.getAttribute("thumbnail");
-
-        System.out.println("thumbnaillllllllllll : "  + thumbnail);
     %>
     <div class="menu">
         <div>
@@ -74,14 +72,12 @@
 
                     <input type="hidden" name="user_id" value="<%=user_id%>">
 
-                        <p class="_img">프로필 사진</p> <%--<span class="img"><img src="<%=thumbnail%>>"></span>--%><br>
-<%--                        <div id="image_container"></div>--%>
-<%--                        <input type="file" name="uploadFile" accept="image/png, image/jpeg" id="input_img" onchange="setThumbnail(event)">--%>
+                        <p class="_img">프로필 사진</p><br>
                         <div class="image-container">
                             <input type="hidden" name="img_url" id="img_url">
-                            <img style="width: 150px;" id="preview-image" src="<%=thumbnail%>">
-<%--                            src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"--%>
-                            <input style="display: block;" type="file" id="input_img">
+                            <input type="hidden" name="preview" id="preview" value=<%=thumbnail%>>
+                            <img style="width: 150px;" id="preview-image" src=<%=thumbnail%>><br>
+                            <input type="file" id="input_img">
                         </div>
 
                         <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>

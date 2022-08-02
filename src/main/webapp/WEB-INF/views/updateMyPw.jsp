@@ -15,6 +15,7 @@
         String name = (String) session.getAttribute("name");
         String email = (String) session.getAttribute("email");
         String user_pw = (String) session.getAttribute("user_pw");
+        String thumbnail = (String) session.getAttribute("thumbnail");
     %>
     <div class="menu">
         <div>
@@ -24,32 +25,35 @@
         </div>
     </div>
 
-    <h2 class="updateTitle">비밀번호 변경</h2>
+    <div id="myContent">
+        <h2 class="updateTitle">비밀번호 변경</h2>
 
-    <%=user_id%><br>
+        <%=user_id%><br>
 
-    <form method="post" action="/updatePw">
-        <div class="content">
-            <div class="updateUser">
+        <form method="post" action="/updatePw">
+            <div class="content">
+                <div class="updateUser">
 
-                <input type="hidden" name="name" value="<%=name%>">
-                <input type="hidden" name="email" value="<%=email%>">
-                <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
+                    <input type="hidden" name="name" value="<%=name%>">
+                    <input type="hidden" name="email" value="<%=email%>">
+                    <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
+                    <input type="hidden" name="thumbnail" value=<%=thumbnail%>>
 
-                <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
-                    <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
-                    <span style="display: none" id="msg_ok">비밀번호 일치</span>
-                <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
-                <p class="_pw">비밀번호 재확인</p> <input type="password" name="pw_check" id="pw_check" required><br>
-                    <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
+                    <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
+                        <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
+                        <span style="display: none" id="msg_ok">비밀번호 일치</span>
+                    <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
+                    <p class="_pw">비밀번호 재확인</p> <input type="password" name="pw_check" id="pw_check" required><br>
+                        <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
+                </div>
+                <div class="button">
+                    <input type="submit" name="update" value="수정">
+                </div>
+
             </div>
-            <div class="button">
-                <input type="submit" name="update" value="수정">
-            </div>
 
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>
 <script src="./js/update.js"></script>
 </body>

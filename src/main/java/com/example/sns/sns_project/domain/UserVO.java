@@ -57,7 +57,7 @@ public class UserVO extends Timestamp {
         this.email = userRequestDto.getEmail();
         this.user_pw = userRequestDto.getUser_pw();
         this.thumbnail = userRequestDto.getThumbnail();
-        //김나연 바보
+
     }
 
 }

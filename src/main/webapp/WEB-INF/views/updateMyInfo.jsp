@@ -16,6 +16,8 @@
         String email = (String) session.getAttribute("email");
         String user_pw = (String) session.getAttribute("user_pw");
         String thumbnail = (String) session.getAttribute("thumbnail");
+
+        System.out.println("thumbnaillllllllllll : "  + thumbnail);
     %>
     <div class="menu">
         <div>

@@ -14,6 +14,12 @@
     <title>Index</title>
 </head>
 <body>
+<%if(request.getParameter("check")!= null){ %>
+<script>
+    alert("회원정보를 확인하세요.");
+</script>
+
+<%}%>
 
 <div class="wrap">
     <div class="mainimg">
@@ -31,12 +37,15 @@
 
             <div class="hr-sect">또는</div>
 
-            <input type="button" value="회원가입" onclick="location.href='/join'"/>
+            <input type="button" value="회원가입" onclick="location.href='/join'"/><br>
+            <div class="a">
+                <a class="fi" href="/findIdPage">아이디 찾기</a>,<a class="fp" href="/findPwPage">비밀번호 찾기</a>
+            </div>
         </form>
     </div>
 <%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 </div>
-<script src="js/user.js"></script>
+
 
 </body>
 </html>

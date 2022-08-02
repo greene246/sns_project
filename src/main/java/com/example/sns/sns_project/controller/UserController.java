@@ -4,6 +4,7 @@ import com.example.sns.sns_project.service.UserService;
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -25,24 +28,23 @@ public class UserController {
 
     // 로그인
     @PostMapping("/login")
-      public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
+    public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
-        UserRequestDto user = new UserRequestDto(id, password);
+        UserRequestDto user = new UserRequestDto(user_id, user_pw);
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
-
         } else {
-            url = "/join";
+            url = "/?check=chcek";
         }
 
         session.setAttribute("user_id",result.getUser_id());
         session.setAttribute("name",result.getName());
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
-
+        session.setAttribute("thumbnail", result.getThumbnail());
 
         try {
             response.sendRedirect(url);
@@ -53,13 +55,15 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/joinUser")
-    public void addUser(@RequestParam(name="user_id") String id,
-                        @RequestParam(name="user_pw") String password,
+    public void addUser(@RequestParam(name="user_id") String user_id,
+                        @RequestParam(name="user_pw") String user_pw,
                         @RequestParam(name="name") String name,
                         @RequestParam(name="email") String email,
-                        HttpServletResponse response){
+                        HttpServletResponse response) {
 
-        UserRequestDto user = new UserRequestDto(id, password,name,email) ;
+        String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
+
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email,thumbnail);
 
         String url = "";
 
@@ -70,7 +74,7 @@ public class UserController {
         }
         else{
             System.out.println("아이디 중복");
-            url = "/join";
+            url = "/join?check=chcek";
         }
 
         try {
@@ -84,7 +88,7 @@ public class UserController {
     @PostMapping("/deleteUser")
     public void deleteUser(@RequestParam(name="user_id") String user_id,
                            @RequestParam(name="name") String name,
-                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="email") String email,
                            @RequestParam(name="user_pw") String user_pw,
                            HttpServletRequest request,
                            HttpServletResponse response){
@@ -94,7 +98,7 @@ public class UserController {
 
         String url = "";
         if(userService.checkUser(user) != null) {
-            userService.deleteUser(user);
+            userService.deleteUser(userService.checkUser(user));
             session.invalidate();
             System.out.println("회원탈퇴 성공");
             url ="/";
@@ -111,16 +115,18 @@ public class UserController {
         }
     }
 
+    /*
     @PostMapping("/update") // 이름, 이메일 변경
-    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request, HttpServletResponse response){
+    public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, @RequestParam(name="img_url") String thumbnail, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
 
         System.out.println("Id: " + user_id);
-        System.out.println("name: "+name);
+        System.out.println("name: " +name);
         System.out.println("email: " + email);
-        System.out.println("user_pw: "+ user_pw);
+        System.out.println("user_pw: " + user_pw);
+        System.out.println("img_url : " + thumbnail);
 
-        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email);
+        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
 
 
         boolean check = userService.updateUser(userRequestDto);
@@ -131,8 +137,11 @@ public class UserController {
             session.setAttribute("name",userRequestDto.getName());
             session.setAttribute("email",userRequestDto.getEmail());
             session.setAttribute("user_pw",userRequestDto.getUser_pw());
+            session.setAttribute("thumbnail",userRequestDto.getThumbnail());
 
-            System.out.println("이름, 이메일 변경 성공");
+            System.out.println("썸네일이에요 : " + userRequestDto.getThumbnail());
+
+            System.out.println("프로필 사진, 이름, 이메일 변경 성공");
         }
         String url = "";
         url = "/updateMyInfo";
@@ -178,6 +187,7 @@ public class UserController {
     @ResponseBody
     public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
         UserVO user = userService.readUserPw(userRequestDto);
+        System.out.println("aa: "+user.getUser_id());
 
         return user;
     }
@@ -189,7 +199,57 @@ public class UserController {
 
         return user;
     }
+*/
+
+    @PostMapping("/findId")
+    public void findId(@RequestParam (name="name") String name,
+                         @RequestParam(name="email") String email,
+                         HttpServletRequest request,
+                         HttpServletResponse response
+    ){
+        HttpSession session = request.getSession();
+
+        UserVO user = userService.findName(name);
+
+        if(user!=null && user.getEmail().equals(email)){
+
+
+            session.setAttribute("id",user.getUser_id());
+
+            String url ="";
+            url = "/findIdPage";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            String url ="";
+            url = "/findIdPage?check=check";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+    }
+//    @PostMapping("/findPw")
+//    public void findPw(@RequestParam(name="user_id") String user_id,
+//                       @RequestParam (name="name") String name,
+//                       @RequestParam(name="email") String email,
+//                       HttpServletRequest request,
+//                       HttpServletResponse response
+//    ){
+//        HttpSession session = request.getSession();
+//
+//        UserVO user = userService.
+//
+//    }
+
 
 }
-
 

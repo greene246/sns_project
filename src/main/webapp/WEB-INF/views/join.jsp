@@ -11,9 +11,15 @@
   <head>
     <link rel="stylesheet" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>JOIN</title>
+    <title>Join</title>
   </head>
   <body>
+  <%if(request.getParameter("check")!= null){ %>
+  <script>
+    alert("회원정보를 확인하세요.");
+  </script>
+
+  <%}%>
   <div class="wrap">
     <div class="joinbox">
       <form id="join" method="post" action="/joinUser">

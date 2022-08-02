@@ -2,6 +2,7 @@ package com.example.sns.sns_project.controller;
 
 import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.domain.BoardVO;
+import com.example.sns.sns_project.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -121,28 +121,17 @@ public class UserController {
                            @RequestParam(name="img_url") String thumbnail,
                            HttpServletRequest request, HttpServletResponse response){
 
-
         HttpSession session = request.getSession();
-
-        System.out.println("Id: " + user_id);
-        System.out.println("name: " +name);
-        System.out.println("email: " + email);
-        System.out.println("user_pw: " + user_pw);
-        System.out.println("img_url : " + thumbnail);
 
         UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
 
         boolean check = userService.updateUser(userRequestDto);
-
-        System.out.println("check:" + check );
 
         if(check){
             session.setAttribute("name",userRequestDto.getName());
             session.setAttribute("email",userRequestDto.getEmail());
             session.setAttribute("user_pw",userRequestDto.getUser_pw());
             session.setAttribute("thumbnail",userRequestDto.getThumbnail());
-
-            System.out.println("썸네일이에요 : " + userRequestDto.getThumbnail());
 
             System.out.println("프로필 사진, 이름, 이메일 변경 성공");
         }
@@ -176,8 +165,6 @@ public class UserController {
             UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email, thumbnail);
             boolean check = userService.updateUser(userRequestDto);
 
-            System.out.println("check:" + check );
-
             if(check){
                 session.setAttribute("name",userRequestDto.getName());
                 session.setAttribute("email",userRequestDto.getEmail());
@@ -193,7 +180,6 @@ public class UserController {
         String url = "";
         url = "/updateMyPw";
 
-
         try{
             response.sendRedirect(url);
         } catch (Exception e) {
@@ -203,10 +189,10 @@ public class UserController {
 
     @PostMapping("/getUser")
     @ResponseBody
-    public UserVO getUser(@RequestBody UserRequestDto userRequestDto){
+    public String  getUser(@RequestBody UserRequestDto userRequestDto){
         UserVO user = userService.readUser(userRequestDto);
 
-        return user;
+        return user.getUser_id();
     }
 
     // 이전 비밀번호 확인
@@ -214,7 +200,6 @@ public class UserController {
     @ResponseBody
     public UserVO checkPw(@RequestBody UserRequestDto userRequestDto){
         UserVO user = userService.readUserPw(userRequestDto);
-        System.out.println("aa: "+user.getUser_id());
 
         return user;
     }

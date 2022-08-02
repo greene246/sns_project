@@ -17,19 +17,22 @@
     %>
 <div class="wrap">
     <div class="myPageBody">
-<%--        <%=user_id%><br>--%>
-        
         <span class="img"><img src=<%=thumbnail%>></span>
         <span class="user_id"><%=user_id%></span>
         <span class="name"><%=name%></span>
+        <span class="boardCnt">게시물</span>
+        <span class="follower">팔로워</span>
+        <span class="following">팔로잉</span>
 
         <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
-        myPage 입니다.
+
+        <div class="myPageContent">
+            <span class="con">콘텐츠</span>
+
+        </div>
     </div>
 
-    <div class="myPageContent">
-
-    </div>
 </div>
 </body>
+<script src="js/myPage.js"></script>
 </html>

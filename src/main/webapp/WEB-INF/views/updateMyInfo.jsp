@@ -89,7 +89,6 @@
                 </div>
                 <div class="button">
                     <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">
-<%--                    <input type="submit" name="update" value="수정" onclick="uploadToCloud(form)">--%>
                 </div>
             </div>
 

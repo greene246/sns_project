@@ -4,43 +4,40 @@
 <c:import url="/WEB-INF/views/header.jsp"/>
 
 <div class="main_wrap">
-    <%
-        String id = (String) session.getAttribute("user_id");
-    %>
     <input type="hidden" value="cntBoards()">
     <div class="all_contents">
-        <div class="section">
-            <!-- 프로필 박스 -->
-            <div class="profile_box">
-                <span style="width: 100px"><img src="/img/cute.JPG" id="profile_img"></span>
-                <div id="userid">
-                    <a><%=id%></a>
-                </div>
-            </div>
+<%--        <div class="section">--%>
+<%--            <!-- 프로필 박스 -->--%>
+<%--            <div class="profile_box">--%>
+<%--                <span style="width: 100px"><img src="/img/cute.JPG" id="profile_img"></span>--%>
+<%--                <div id="userid">--%>
+<%--                    <a><%=id%></a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-           <span id="main_img" src=""></span>
+<%--           <span id="main_img" src=""></span>--%>
 
-            <!-- icon 모음 -->
-            <div class="icon">
-                <!-- 좋아요 / 댓글 / 디엠 -->
-                <div class="three">
-                    <img src="./img/heart.png" class="icon_img">
-                    <%--<img src="./img/message.png">--%>
-                    <a href="javascript:;" onclick="javascript:showPopup()">
-                        <img src="./img/message.png" onclick="javascript:black_block()" class="icon_img">
-                    </a>
-                    <img src="./img/direct.png" class="icon_img">
-                </div>
-                <!-- 북마크 -->
-                <span><img src="./img/bookmark_off.png" class="icon_img"></span>
-            </div>
-            <span class="word"> 좋아요 <div class="main2" id="likeCnt"></div>개</span>
-            <span class="id"><%=id%></span>
+<%--            <!-- icon 모음 -->--%>
+<%--            <div class="icon">--%>
+<%--                <!-- 좋아요 / 댓글 / 디엠 -->--%>
+<%--                <div class="three">--%>
+<%--                    <img src="./img/heart.png" class="icon_img">--%>
+<%--                    &lt;%&ndash;<img src="./img/message.png">&ndash;%&gt;--%>
+<%--                    <a href="javascript:;" onclick="javascript:showPopup()">--%>
+<%--                        <img src="./img/message.png" onclick="javascript:black_block()" class="icon_img">--%>
+<%--                    </a>--%>
+<%--                    <img src="./img/direct.png" class="icon_img">--%>
+<%--                </div>--%>
+<%--                <!-- 북마크 -->--%>
+<%--                <span><img src="./img/bookmark_off.png" class="icon_img"></span>--%>
+<%--            </div>--%>
+<%--            <span class="word"> 좋아요 <div class="main2" id="likeCnt"></div>개</span>--%>
+<%--            <span class="id"><%=id%></span>--%>
 
-            <div class="main3" id="contents"></div>
-            <div class="main4" id="createdAt"></div>
-        </div>
-    </div>
+<%--            <div class="main3" id="contents"></div>--%>
+<%--            <div class="main4" id="createdAt"></div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
     <div class="serve_section">
         serve
@@ -61,11 +58,9 @@
 </div>
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        getBoards(0);
-        getBoards(1);
-    });
+<script>
+    getBoards(0);
+    // getThumbnail();
 </script>
 </body>
 <html>

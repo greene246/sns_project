@@ -38,21 +38,27 @@ public class UserVO extends Timestamp {
     @Column(name = "modified_at", nullable = true)
     private LocalDateTime modifiedAt;
 
+    @Column(name="thumbnail", nullable = true)
+    private String thumbnail;
+
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();
         this.user_pw = userRequestDto.getUser_pw();
         this.name = userRequestDto.getName();
-//        this.email = userRequestDto.getEmail();
+        this.email = userRequestDto.getEmail();
+        this.thumbnail = userRequestDto.getThumbnail();
     }
 
     // update
     public void update(UserRequestDto userRequestDto){
         //set
+        this.user_id = userRequestDto.getUser_id();
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
         this.user_pw = userRequestDto.getUser_pw();
-    }
+        this.thumbnail = userRequestDto.getThumbnail();
 
+    }
 
 
 }

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -43,7 +45,7 @@ public class UserController {
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
 
-
+//바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보
         try {
             response.sendRedirect(url);
         } catch (Exception e) {
@@ -178,6 +180,18 @@ public class UserController {
 
         return user;
     }
+
+    @GetMapping("/getThumbnail")
+    public String getThumbnail(@RequestParam(name = "id") String id){
+        String temp = userService.findThumbnailById(id);
+        System.out.println(id);
+        System.out.println(temp);
+        return temp;
+
+    }
+
+
+
 
 }
 

@@ -237,18 +237,38 @@ public class UserController {
 
 
     }
-//    @PostMapping("/findPw")
-//    public void findPw(@RequestParam(name="user_id") String user_id,
-//                       @RequestParam (name="name") String name,
-//                       @RequestParam(name="email") String email,
-//                       HttpServletRequest request,
-//                       HttpServletResponse response
-//    ){
-//        HttpSession session = request.getSession();
-//
-//        UserVO user = userService.
-//
-//    }
+    @PostMapping("/findPw")
+    public void findPw(@RequestParam(name="user_id") String user_id,
+                       @RequestParam (name="name") String name,
+                       @RequestParam(name="email") String email,
+                       HttpServletRequest request,
+                       HttpServletResponse response
+    ){
+        HttpSession session = request.getSession();
+
+        UserVO user = userService.readUserId(user_id);
+
+        if(user != null && user.getName().equals(name) && user.getEmail().equals(email)){
+           session.setAttribute("pw",user.getUser_pw());
+            String url ="";
+            url = "/findPwPage";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            String url ="";
+            url = "/findPwPage?check=check";
+            try{
+                response.sendRedirect(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 
 }

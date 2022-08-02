@@ -16,22 +16,70 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // id 찾기
+    /*// id 찾기
     public UserVO readUserId(String id ) {
         UserVO user = userRepository.findById(id).orElse(null);
         return user;
+    }*/
+
+    // id 찾기
+    public UserVO readUserId(String user_id) {
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(user_id.equals(user.get(i).getUser_id()))
+                return user.get(i);
+        }
+        return null;
     }
 
-    // read
+    // 회원가입
+    public UserVO createUser(UserRequestDto userRequestDto){
+        UserVO user = new UserVO(userRequestDto);
+        return userRepository.save(user);
+    }
+
+    // 회원탈퇴 id, pw 검증
+    public UserVO checkUser(UserRequestDto userRequestDto){
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id()) &&
+                    userRequestDto.getUser_pw().equals(user.get(i).getUser_pw())) {
+                return user.get(i);
+            }
+        }
+        return null;
+    }
+
+    // 회원탈퇴
+    @Transactional
+    public void deleteUser(UserVO userVO){
+        userRepository.deleteById(userVO.getId());
+    }
+
+/*    // update
+    @Transactional
+    public boolean updateUser(UserRequestDto userRequestDto){
+        UserVO user = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
+                () -> new IllegalArgumentException("아이디 찾기 실패")
+        );
+//        UserVO user = new UserVO(userRequestDto);
+
+        user.update(userRequestDto);
+        return true;
+    }*/
+
+   /* // read
     public UserVO readUser(UserRequestDto userRequestDto){
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );
         return result;
     }
-
+*/
     // read_Pw
-    public UserVO readUserPw(UserRequestDto userRequestDto){
+   /* public UserVO readUserPw(UserRequestDto userRequestDto){
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자")
         );
@@ -45,8 +93,8 @@ public class UserService {
     // 회원가입
     public UserVO createUser(UserRequestDto userRequestDto){
         UserVO user = new UserVO(userRequestDto);
+        System.out.println("dddddddddddddddddddddddddd: " + userRepository.save(user).getId());
         return  userRepository.save(user);
-
     }
 
     // 회원탈퇴 id, pw 검증
@@ -66,7 +114,6 @@ public class UserService {
     public void deleteUser(UserRequestDto userRequestDto){
         UserVO user = new UserVO(userRequestDto);
         userRepository.deleteById(user.getUser_id());
-
     }
 
     // update
@@ -80,6 +127,6 @@ public class UserService {
         user.update(userRequestDto);
         return true;
     }
-
+*/
 
 }

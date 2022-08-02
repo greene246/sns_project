@@ -25,15 +25,14 @@ public class UserController {
 
     // 로그인
     @PostMapping("/login")
-      public void loginUser(@RequestParam(name="user_id") String id, @RequestParam(name="user_pw") String password, HttpServletRequest request , HttpServletResponse response) {
+      public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
-        UserRequestDto user = new UserRequestDto(id, password);
+        UserRequestDto user = new UserRequestDto(user_id, user_pw);
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
         if (result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
-
         } else {
             url = "/join";
         }
@@ -44,7 +43,6 @@ public class UserController {
         session.setAttribute("user_pw",result.getUser_pw());
         session.setAttribute("thumbnail", result.getThumbnail());
 
-
         try {
             response.sendRedirect(url);
         } catch (Exception e) {
@@ -54,16 +52,15 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/joinUser")
-    public void addUser(@RequestParam(name="user_id") String id,
-                        @RequestParam(name="user_pw") String password,
+    public void addUser(@RequestParam(name="user_id") String user_id,
+                        @RequestParam(name="user_pw") String user_pw,
                         @RequestParam(name="name") String name,
                         @RequestParam(name="email") String email,
-                        HttpServletResponse response){
+                        HttpServletResponse response) {
 
         String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
 
-        System.out.println("sss: "+ thumbnail);
-        UserRequestDto user = new UserRequestDto(id,password,name,email,thumbnail);
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email,thumbnail);
 
         String url = "";
 
@@ -88,7 +85,7 @@ public class UserController {
     @PostMapping("/deleteUser")
     public void deleteUser(@RequestParam(name="user_id") String user_id,
                            @RequestParam(name="name") String name,
-                           @RequestParam(name = "email") String email,
+                           @RequestParam(name="email") String email,
                            @RequestParam(name="user_pw") String user_pw,
                            HttpServletRequest request,
                            HttpServletResponse response){
@@ -98,7 +95,7 @@ public class UserController {
 
         String url = "";
         if(userService.checkUser(user) != null) {
-            userService.deleteUser(user);
+            userService.deleteUser(userService.checkUser(user));
             session.invalidate();
             System.out.println("회원탈퇴 성공");
             url ="/";
@@ -115,6 +112,7 @@ public class UserController {
         }
     }
 
+    /*
     @PostMapping("/update") // 이름, 이메일 변경
     public void updateUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="name") String name, @RequestParam(name = "email") String email, @RequestParam(name="user_pw") String user_pw, @RequestParam(name="img_url") String thumbnail, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
@@ -198,7 +196,7 @@ public class UserController {
 
         return user;
     }
-
+*/
 }
 
 

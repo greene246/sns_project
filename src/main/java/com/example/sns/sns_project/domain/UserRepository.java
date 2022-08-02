@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserVO , String> {
-
+public interface UserRepository extends JpaRepository<UserVO , Integer> {
 
 }

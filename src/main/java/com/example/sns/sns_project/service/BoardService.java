@@ -62,26 +62,6 @@ public class BoardService {
         return r_c_id;
     }
 
-    //컨텐츠 카운팅
-    public int countBoards() {
-        List<BoardVO> user = boardRepository.findAll();
-
-        int count = 0;
-        int allCount = user.size();
-
-        for(int i =0; i < allCount; i++){
-            int temp = user.get(i).getContents_id();
-            for(int j = 0; j < allCount; j++){
-                if(i != j && temp == user.get(j).getContents_id()){
-                    count++;
-                    i++;
-                }
-            }
-        }
-
-        allCount -= count;
-        return allCount;
-    }
 }
 
 

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/views/header.jsp"/>
+
 <div class="main_wrap">
     <%
         String id = (String) session.getAttribute("user_id");
@@ -17,7 +18,7 @@
                 </div>
             </div>
 
-           <span id="main_img"><div class="main2" id="contents_img"></div></span>
+           <span id="main_img" src=""></span>
 
             <!-- icon 모음 -->
             <div class="icon">
@@ -33,13 +34,11 @@
                 <!-- 북마크 -->
                 <span><img src="./img/bookmark_off.png" class="icon_img"></span>
             </div>
-            <span class="word"> 좋아요 <%=1%>개</span>
+            <span class="word"> 좋아요 <div class="main2" id="likeCnt"></div>개</span>
             <span class="id"><%=id%></span>
 
-            <div class="contents">
-                편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때 불편할수도...? 신다보면 괜찮을거같아요 편하긴 엄청 편합니다. 단지 발볼이 조금 넓으신 분들은 신으실때
-                불편할수도...? 신다보면 괜찮을거같아요 다보면 괜찮을거 다보면 괜찮을거
-            </div>
+            <div class="main3" id="contents"></div>
+            <div class="main4" id="createdAt"></div>
         </div>
     </div>
 
@@ -61,7 +60,6 @@
 </div>
 </div>
 <script src="./js/validation.js"></script>
-
 <script src="./js/main.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {

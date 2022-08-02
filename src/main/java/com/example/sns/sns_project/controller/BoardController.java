@@ -44,8 +44,4 @@ public class BoardController {
         return boardService.search(a);
 
     }
-    @GetMapping("/count")
-    public int countBoards(){
-        return  boardService.countBoards();
-    }
 }

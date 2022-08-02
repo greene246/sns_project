@@ -34,7 +34,7 @@
 
         <input type="file" multiple name="uploadFile" accept="image/png, image/gif, image/jpeg" id="input_img"
                onchange="setThumbnail(event)"/>
-        <textarea name="contents" placeholder="what's issue?" id="contents" style="display: none"></textarea>
+        <textarea name="contents" placeholder="what's issue?" id="contents"></textarea>
         <select name="public_scope" id="scope">
             <option value="0" selected>전체 공개</option>
             <option value="1">친구만 공개</option>

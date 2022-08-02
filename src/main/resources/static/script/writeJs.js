@@ -3,6 +3,7 @@ function uploadToCloud(formObj) {
     let file = document.getElementById('input_img');
     let form = new FormData();
     form.append("image", file.files[0])
+    console.log(file.files[0]);
 
     let settings = {
         "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
@@ -22,8 +23,7 @@ function uploadToCloud(formObj) {
         $('#delete_url').val(`"${jx.data.delete_url}"`);
 
         // jx.data.id의 값도 저장해야함 - 삭제 시 필요
-        //$('#write_form').submit();
-        formObj.submit();
+        // formObj.submit();
 
     }).fail(error =>{
         console.log(error)
@@ -38,7 +38,6 @@ function setThumbnail(event) {
         let img = document.createElement("img");
         img.setAttribute("src", event.target.result);
         $('#image_container').append(img);
-
     };
     reader.readAsDataURL(event.target.files[0]);
 

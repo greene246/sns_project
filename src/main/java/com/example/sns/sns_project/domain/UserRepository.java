@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserVO , String> {
-    @Query(value = "select * from users where user_id =?1 and user_pw =?2", nativeQuery = true)
-    public UserVO logCheck(String id, String pw);
+
 }

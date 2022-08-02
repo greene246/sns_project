@@ -1,14 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.example.sns.sns_project.domain.BoardVO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.example.sns.sns_project.controller.BoardController" %>
 
 <c:import url="/WEB-INF/views/header.jsp"/>
 <div class="main_wrap">
     <%
         String id = (String) session.getAttribute("user_id");
     %>
+    <input type="hidden" value="cntBoards()">
     <div class="all_contents">
         <div class="section">
             <!-- 프로필 박스 -->

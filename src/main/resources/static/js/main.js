@@ -14,7 +14,6 @@ function getBoards(scope) {
     })
         .done(data => {
              let result = data;
-
             result.forEach(Board => {
 
                 //  let html = `<div class="contents">${Board.user_id}</div>`;
@@ -25,3 +24,19 @@ function getBoards(scope) {
              })
          })
 }
+
+
+// function cntBoards() {
+//
+//     $.ajax({
+//         url: "/count",
+//         type: "GET",
+//         contentType: "application/json"
+//     })
+//         .done(data => {
+//             let result = data;
+//             console.log(result);
+//             return result;
+//         })
+//
+// }

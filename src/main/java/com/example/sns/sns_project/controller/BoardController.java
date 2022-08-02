@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 public class BoardController {
     @Autowired
-    private BoardService boardService;
+    public BoardService boardService;
 
     @PostMapping("/upload")
     public void createBoard(
@@ -26,11 +26,11 @@ public class BoardController {
             @RequestParam(name="delete_url")String delete_url, @RequestParam(name="contents")String contents,
             @RequestParam(name="public_scope")int public_scope, HttpServletResponse response, HttpServletRequest request
     ) {
+        int contents_id = boardService.createContents_id();
+
         HttpSession session = request.getSession();
-        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url);
+        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url,contents_id);
         boardService.createBoard(b_dto);
-
-
 
         String url = "/main";
         try{
@@ -39,26 +39,13 @@ public class BoardController {
             e.printStackTrace();
         }
     }
-
-    public void findPublic_scope() {
-
-//        List<BoardVO> list = repo.findBoardByPublic_scope(0);
-//        for(int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i).getUser_id());
-//        }
-//        List<User> userList = userRepository.findAll();
-
-
-        //repo.findBoardsByPublic_scope(0).forEach(board -> System.out.println(board.getUser_id()));
-
-
-       // return  list;
-    }
-
     @GetMapping("/search")
     public List<BoardVO> search(@RequestParam(name = "a") int a){
         return boardService.search(a);
 
     }
-
+    @GetMapping("/count")
+    public int countBoards(){
+        return  boardService.countBoards();
+    }
 }

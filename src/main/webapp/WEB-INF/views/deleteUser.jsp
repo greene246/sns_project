@@ -24,29 +24,31 @@
         </div>
     </div>
 
-    <h2 class="updateTitle">회원 탈퇴</h2>
+    <div id="myContent">
 
-    <%=user_id%><br>
+        <h2 class="updateTitle">회원 탈퇴</h2>
 
-    <form method="post" action="/deleteUser">
-        <div class="content">
-            <div class="updateUser">
+        <%=user_id%><br>
 
-                <input type="hidden" name="name" value="<%=name%>">
-                <input type="hidden" name="email" value="<%=email%>">
-                <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
+        <form method="post" action="/deleteUser">
+            <div class="content">
+                <div class="updateUser">
+
+                    <input type="hidden" name="name" value="<%=name%>">
+                    <input type="hidden" name="email" value="<%=email%>">
+                    <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
 
 
-                <p class="_pw">비밀번호</p> <input type="password" name="user_pw" id="user_pw" required><br>
-                <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
+                    <p class="_pw">비밀번호</p> <input type="password" name="user_pw" id="user_pw" required><br>
+                    <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
+                </div>
+                <div class="button">
+                    <input type="submit" name="delete" value="탈퇴">
+                </div>
             </div>
-            <div class="button">
-                <input type="submit" name="delete" value="탈퇴">
-            </div>
+        </form>
 
-        </div>
-
-    </form>
+    </div>
 </div>
 </body>
 </html>

@@ -37,6 +37,7 @@
                     <input type="hidden" name="name" value="<%=name%>">
                     <input type="hidden" name="email" value="<%=email%>">
                     <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
+                    <input type="hidden" name="user_pw" id="user_pw" value="<%=user_pw%>">
                     <input type="hidden" name="thumbnail" value=<%=thumbnail%>>
 
                     <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>

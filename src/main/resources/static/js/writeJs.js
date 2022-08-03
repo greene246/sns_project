@@ -2,7 +2,7 @@ let fileNo = 0;
 let filesArr = new Array();
 
 // 사진 클라우드에 업로드 후 data 받아와서 hidden에 넣어줌
-function uploadImg(formObj){
+function uploadImg(){
     let form = new FormData();
     form.append("image", filesArr[0]);
     let settings = {
@@ -18,13 +18,42 @@ function uploadImg(formObj){
             console.log("image upload fail");
         }
     };
-    $.ajax(settings).done(response => {
-        let jx = JSON.parse(response);
-        // jx.data.id의 값도 저장해야함 - 삭제 시 필요
-        $('#img_url').val(jx.data.url);
-        $('#del_url').val(jx.data.delete_url);
-        formObj.submit();
+    callUploadApi(settings);
+}
+
+function callUploadApi(settings){
+    $.ajax(settings)
+        .done(response => {
+            let jx = JSON.parse(response);
+            // jx.data.id의 값도 저장해야함 - 삭제 시 필요
+            $('#img_url').val(jx.data.url);
+            $('#del_url').val(jx.data.delete_url);
+
+            let boardJson = {
+                "url" : "/upload",
+                "method" : "POST",
+                "contentType" : "application/json",
+                "data" : JSON.stringify({
+                    "user_id" : $('#user_id').val(),
+                    "img_url" : $('#img_url').val(),
+                    "contents" : $('#contents').val(),
+                    "public_scope" : $('#scope').val(),
+                    "delete_url" : $('#del_url').val(),
+                })
+            };
+
+            $.ajax(boardJson)
+                .done(result => {
+                    console.log(result);
+                })
+            // return callUploadApi(response);
+
+            // formObj.submit();
     })
+        .fail(error =>{
+            console.log(error);
+            // return;
+        })
 }
 
 // 고른 사진 띄워주기

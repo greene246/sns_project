@@ -1,5 +1,6 @@
 package com.example.sns.sns_project.controller;
 
+import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,10 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-//
     @PostMapping("/upload")
-    public void creatMultiBoard(@RequestParam(name="img_url")String img_url, @RequestParam(name="del_url")String del_url, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(img_url);
-        System.out.println(del_url);
-    }
-
-    public void getFile(@RequestParam(name = "uploadFile")File files){
-
+    @ResponseBody
+    public void creatMultiBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
+        boardService.createBoard(boardRequestDto);
     }
 
 //    @DeleteMapping("/delete")

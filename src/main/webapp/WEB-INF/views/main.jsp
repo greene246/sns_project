@@ -57,8 +57,8 @@
         <c:import url="/WEB-INF/views/writeForm.jsp"/>
     </div>
 </div>
-<script src="./script/validation.js"></script>
+<script src="./js/validation.js"></script>
 <script type="text/javascript"></script>
-<script src="./script/writeJs.js"></script>
+<script src="./js/writeJs.js"></script>
 </body>
 <html>

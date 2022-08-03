@@ -31,12 +31,11 @@ public class BoardController {
         response.sendRedirect("/main");
     }
 
-    @DeleteMapping("/delete")
-    public void deleteBoard(@RequestParam(name="user_id")String user_id, @RequestParam(name="img_url")String img_url){
-        System.out.println(user_id);
-        System.out.println(img_url);
-        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url);
-        boardService.deleteBoard(b_dto);
+    @DeleteMapping("/delete_board")
+    @ResponseBody
+    public void deleteBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException{
+        boardService.deleteBoard(boardRequestDto);
+
     }
 
     @PostMapping("/delete")

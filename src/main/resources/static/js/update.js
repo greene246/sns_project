@@ -44,6 +44,6 @@ function deleteBoard(){
     };
     $.ajax(boardJson)
         .done(result => {
-
+            
         })
 }

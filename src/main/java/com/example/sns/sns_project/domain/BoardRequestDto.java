@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class BoardRequestDto {
+    int id;
     String user_id;
     String img_url;
     String contents;

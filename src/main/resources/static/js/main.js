@@ -1,5 +1,4 @@
 // let list0 = getBoards(0);
-let $thumb;
 function getBoards(scope) {
     let list;
     $.ajax({

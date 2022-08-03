@@ -24,8 +24,9 @@ public class BoardService {
     }
 
     @Transactional
-    public void deleteBoard(int id){
-        boardRepository.deleteById(id);
+    public void deleteBoard(BoardRequestDto boardRequestDto){
+        int del_id = boardRequestDto.getId();
+        boardRepository.deleteById(del_id);
     }
 
 

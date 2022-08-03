@@ -46,7 +46,6 @@ public class UserController {
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
 
-//바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보
         try {
             response.sendRedirect(url);
         } catch (Exception e) {

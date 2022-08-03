@@ -32,54 +32,24 @@
             <div class="user_id"></div><br>
         </div>
 
+        <div class="update_user">
 
-        <form method="post" action="/update">
-
-<%--            table--%>
-            <%--<input type="hidden" name="user_id" value="<%=user_id%>">
-            <input type="hidden" name="user_pw" value="<%=user_pw%>">
-
-            <table class="tableMyInfo">
-                <tbody>
-                    <tr>
-                        <th><span class="_img">프로필 사진</span></th>
-                        <td>
-                            <span class="img"><img src="./img/cute.JPG"></span>
-                            <input type="file">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><span class="_name">이름</span></th>
-                        <td>
-                            <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><span class="_email">이메일</span></th>
-                        <td>
-                            <input type="email" name="email" class="email" value="<%=email%>" placeholder="이메일" required>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="button">
-                <input type="submit" name="update" value="수정">
-            </div>--%>
+        </div>
+<%--        <form method="post" class="update_user" action="/update">--%>
 
 
-            <div class="content">
+            <%--<div class="content">
                 <div class="updateUser">
 
-<%--                    <input type="hidden" name="user_id" value="<%=user_id%>">--%>
+                    <input type="hidden" name="user_id" value="<%=user_id%>">
 
                         <p class="_img">프로필 사진</p><br>
-                        <%--<div class="image-container">
+                        <div class="image-container">
                             <input type="hidden" name="img_url" id="img_url">
                             <input type="hidden" name="preview" id="preview" value=<%=thumbnail%>>
                             <img style="width: 150px;" id="preview-image" src=<%=thumbnail%>><br>
                             <input type="file" id="input_img">
-                        </div>--%>
+                        </div>
 
                         <p class="_name">이름</p> <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required><br>
 
@@ -91,21 +61,19 @@
                 <div class="button">
                     <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">
                 </div>
-            </div>
+            </div>--%>
 
-        </form>
+<%--        </form>--%>
 
     </div>
 
 </div>
 
 <script>$(document).ready(function(){
-    getUser(<%=log%>);
+    updateUser(<%=log%>);
 })
 </script>
-<script src="js/user.js"></script>
 <script src="js/update.js"></script>
-<script src="js/writeJs.js"></script>
 <%
     }
 %>

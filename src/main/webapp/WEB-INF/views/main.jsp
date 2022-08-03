@@ -6,28 +6,31 @@
 <div class="main_wrap">
     <input type="hidden" value="cntBoards()">
     <div class="all_contents">
+        <%
+            int log = (Integer) session.getAttribute("log");
+        %>
 
-    <div class="serve_section">
-        serve
+        <div class="serve_section">
+            serve
 
-    </div>
-
-    <div class="black" onclick="javascript:cancel()"></div>
-    <div class="contents_detail" style="display: none">
-        <div class="detail_img">
-            <img src="/img/cute.JPG">
         </div>
-        <div class="detail_coments">
-            <h1>test 댓글창</h1>
+
+        <div class="black" onclick="javascript:cancel()"></div>
+        <div class="contents_detail" style="display: none">
+            <div class="detail_img">
+                <img src="/img/cute.JPG">
+            </div>
+            <div class="detail_coments">
+                <h1>test 댓글창</h1>
+            </div>
         </div>
+        <c:import url="/WEB-INF/views/writeForm.jsp"/>
     </div>
-    <c:import url="/WEB-INF/views/writeForm.jsp"/>
-</div>
 </div>
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script>
-    getBoards(0);
+    getBoards(0,<%=log%>);
 </script>
 </body>
 <html>

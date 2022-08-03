@@ -34,12 +34,6 @@ public class BoardController {
 
     }
 
-//    @PostMapping("/delete")
-//    public void deleteBoard(@RequestParam(name="id")int id){
-//        System.out.println(id);
-//        boardService.deleteBoard(id);
-//    }
-//    @GetMapping("/search")
     @GetMapping("/search/{num}")
 //    public List<BoardVO> search(@RequestParam(name = "a") int a){
     public List<BoardVO> search(@PathVariable("num") int num){

@@ -18,6 +18,8 @@ function black_block(){
 //     $(".black").css("display","none");
 //
 // });
+
+
 //팝업창을 보여준다.
 showPopup = function() {
     $(".pop1").show();

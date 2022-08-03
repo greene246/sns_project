@@ -28,7 +28,5 @@ public class LikesVo {
         this.id = likesRequestDto.getId();
         this.user_id = likesRequestDto.getUser_id();
         this.board_id = likesRequestDto.getBoard_id();
-
-
     }
 }

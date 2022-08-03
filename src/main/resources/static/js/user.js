@@ -3,6 +3,8 @@ $('#user_id').change(e => {
     const requestData = {
         "user_id" : $('#user_id').val()
     }
+
+
     $.ajax({
         url: "/getUser",
         type: "POST",

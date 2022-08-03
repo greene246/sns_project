@@ -5,17 +5,16 @@
 
 <div class="main_wrap">
 
-    <%
-        if (session.getAttribute("log") == null) {
-            String url = "/";
-            request.getRequestDispatcher(url).forward(request, response);
-        }
-    %>
-
     <input type="hidden" value="cntBoards()">
     <div class="all_contents">
     <%
-        int log = (Integer) session.getAttribute("log");
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        else {
+            int log = (Integer) session.getAttribute("log");
+
     %>
 
     <div class="serve_section">
@@ -38,7 +37,10 @@
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script>
-    getBoards(0,"log");
+    getBoards(0,<%=log%>);
 </script>
+<%
+    }
+%>
 </body>
 <html>

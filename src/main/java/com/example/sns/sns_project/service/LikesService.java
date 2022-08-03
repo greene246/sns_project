@@ -16,16 +16,33 @@ public class LikesService {
     private LikesRepository likesRepository;
 
 
-    public boolean search(int userid, int log){
-        boolean check  = false;
-        List<LikesVo> likes = likesRepository.findLikesByUser_id(userid);
+    public boolean search(int userid, int log) {
 
-        for(int i = 0; i < likes.size(); i ++) {
+        boolean check = false;
+        List<LikesVo> likes = likesRepository.findLikesByUserId(log);
 
-            if(likes.get(i).getBoard_id() == log){
+        for (int i = 0; i < likes.size(); i++) {
+            System.out.println(likes.get(i).getBoard_id());
+            if (likes.get(i).getBoard_id() == userid) {
                 check = true;
             }
         }
+        System.out.println("check: "+check);
+        return check;
+    }
+
+    public boolean dibsSearch(int boardid, int log){
+        boolean check = false;
+
+        List<LikesVo> likes = likesRepository.findLikesByBoardId(boardid);
+
+        for (int i = 0; i < likes.size(); i++) {
+
+            if (likes.get(i).getUser_id() == log) {
+                check = true;
+            }
+        }
+        System.out.println("check: "+check);
 
         return check;
 

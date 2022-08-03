@@ -38,12 +38,8 @@ public class BoardController {
             e.printStackTrace();
     }
     }
-//    @GetMapping("/search")
     @GetMapping("/search/{num}")
-//    public List<BoardVO> search(@RequestParam(name = "a") int a){
     public List<BoardVO> search(@PathVariable("num") int num){
-//    public void search(@PathVariable("num") int num){
         return boardService.search(num);
-//        boardService.search(num);
     }
 }

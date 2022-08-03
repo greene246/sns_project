@@ -18,36 +18,28 @@ function black_block(){
 //     $(".black").css("display","none");
 //
 // });
-
 //팝업창을 보여준다.
 showPopup = function() {
-    $(".contents_detail").css("display","flex");
-    $(".contents_detail").center();
-}
-
-showWriteForm = function (){
-    black_block();
-    $(".write_wrap").show();
-    $(".write_wrap").center();
+    $(".pop1").show();
+    $(".pop1").center();
 }
 //팝업창에 여백클릭스 cancel
 cancel = function() {
-    $(".contents_detail").css("display","none");
-    $(".write_wrap").css("display","none");
+    $(".pop1").css("display","none");
     $(".black").css("display","none");
 }
 
 $(document).ready(function(){
 
-    $('.contents').each(function(){
+    $('.box').each(function(){
         let content = $(this).children('.content');
         let content_txt = content.text();
-        let content_txt_short = content_txt.substring(0,100)+"...";
+        let content_txt_short = content_txt.substring(0,48)+"...";
         let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
         $(this).append(btn_more);
 
-        if(content_txt.length >= 100){
+        if(content_txt.length >= 48){
             content.html(content_txt_short)
 
         }else{
@@ -74,3 +66,7 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+

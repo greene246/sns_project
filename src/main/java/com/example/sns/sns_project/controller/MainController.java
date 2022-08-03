@@ -16,25 +16,23 @@ public class MainController {
     }
 
     @RequestMapping("/main")
-    public String main() {
+    public String main(){
         return "main";
     }
 
     @RequestMapping("/myPage")
-    public String myPage() {
+    public String myPage(){
         return "myPage";
     }
 
     @RequestMapping("/updateMyInfo")
-    public String updateMyInfo() {
+    public String updateMyInfo(){
         return "updateMyInfo";
     }
     @RequestMapping("/updateMyPw")
     public String updateMyPw() {
         return "updateMyPw";
     }
-
-
 
     @RequestMapping("/writeForm")
     public String writeForm() {

@@ -10,11 +10,20 @@
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class = "wrap">
+    <%if(request.getParameter("check")!= null){ %>
+    <script>
+        alert("회원정보를 확인하세요.");
+    </script>
+
+    <%}%>
+
     <%
-        String user_id = (String) session.getAttribute("user_id");
-        String name = (String) session.getAttribute("name");
-        String email = (String) session.getAttribute("email");
-        String user_pw = (String) session.getAttribute("user_pw");
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            response.sendRedirect(url);
+        }
+        else{
+            int log = (Integer) session.getAttribute("log");
     %>
     <div class="menu">
         <div>
@@ -26,19 +35,17 @@
 
     <h2 class="updateTitle">회원 탈퇴</h2>
 
-    <%=user_id%><br>
+    <span class="user_id"></span><br>
 
-    <form method="post" action="/deleteUser">
+    <form method="post" action="/removeUser">
         <div class="content">
             <div class="updateUser">
 
-                <input type="hidden" name="name" value="<%=name%>">
-                <input type="hidden" name="email" value="<%=email%>">
-                <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>">
+                <input type="hidden" name="log" value="<%=log%>">
+
 
 
                 <p class="_pw">비밀번호</p> <input type="password" name="user_pw" id="user_pw" required><br>
-                <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
             </div>
             <div class="button">
                 <input type="submit" name="delete" value="탈퇴">
@@ -48,5 +55,13 @@
 
     </form>
 </div>
+<script>$(document).ready(function(){
+    getUser(<%=log%>);
+})
+</script>
+<script src="js/user.js"></script>
+<%
+    }
+%>
 </body>
 </html>

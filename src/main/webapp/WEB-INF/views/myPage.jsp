@@ -13,7 +13,7 @@
 <%
   if(session.getAttribute("log") == null) {
     String url = "/";
-    request.getRequestDispatcher(url).forward(request, response);
+    response.sendRedirect(url);
   }
   else{
     int log = (Integer) session.getAttribute("log");

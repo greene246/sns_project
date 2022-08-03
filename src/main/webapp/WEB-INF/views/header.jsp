@@ -13,7 +13,9 @@
     <title>Main</title>
     <title>header</title>
 </head>
+
 <body>
+
 <div id="total_wrap">
     <div class="header">
         <div class="header_contents_wrap">

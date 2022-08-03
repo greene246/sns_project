@@ -30,7 +30,7 @@ public class UserRequestDto {
         this.user_pw = user_pw;
     }
 
-    // updatePw
+
 
 
 }

@@ -92,27 +92,25 @@ public class UserController {
     }
 
     // 회원탈퇴
-    @PostMapping("/deleteUser")
-    public void deleteUser(@RequestParam(name="user_id") String user_id,
-                           @RequestParam(name="name") String name,
-                           @RequestParam(name="email") String email,
+    @PostMapping("/removeUser")
+    public void deleteUser(@RequestParam(name="log") int log,
                            @RequestParam(name="user_pw") String user_pw,
                            HttpServletRequest request,
                            HttpServletResponse response){
         HttpSession session = request.getSession();
 
-        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
 
         String url = "";
-        if(userService.checkUser(user) != null) {
-            userService.deleteUser(userService.checkUser(user));
+        if(userService.readLog(log).getUser_pw().equals(user_pw)){
+            userService.deleteUser(userService.readLog(log));
             session.invalidate();
             System.out.println("회원탈퇴 성공");
             url ="/";
         }
+
         else{
             System.out.println("회원정보 확인");
-            url = "/deleteUser";
+            url = "/deleteUser?check=check";
         }
 
         try {

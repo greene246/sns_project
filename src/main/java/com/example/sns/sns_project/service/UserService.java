@@ -31,7 +31,6 @@ public class UserService {
 
     public UserVO findName(String name) {
         List<UserVO> user = userRepository.findAll();
-        System.out.println("fi"+ user);
         for(int i=0; i<user.size(); i++) {
             if(user.get(i).getName().equals(name))
                 return user.get(i);
@@ -107,7 +106,6 @@ public class UserService {
         UserVO user = userRepository.findById(log).orElseThrow(
                 () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
         );
-        System.out.println(user.getUser_id());
 
         return user;
     }

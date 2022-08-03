@@ -45,7 +45,5 @@
   </div>
   <%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 </div>
-
-
 </body>
 </html>

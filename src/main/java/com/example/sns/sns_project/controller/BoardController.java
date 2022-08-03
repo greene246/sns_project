@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import com.example.sns.sns_project.domain.BoardRepository;
-import java.io.File;
 import java.io.IOException;
 
 import java.util.List;
@@ -38,11 +34,11 @@ public class BoardController {
 
     }
 
-    @PostMapping("/delete")
-    public void deleteBoard(@RequestParam(name="id")int id){
-        System.out.println(id);
-        boardService.deleteBoard(id);
-    }
+//    @PostMapping("/delete")
+//    public void deleteBoard(@RequestParam(name="id")int id){
+//        System.out.println(id);
+//        boardService.deleteBoard(id);
+//    }
 //    @GetMapping("/search")
     @GetMapping("/search/{num}")
 //    public List<BoardVO> search(@RequestParam(name = "a") int a){

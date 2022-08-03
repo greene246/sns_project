@@ -3,85 +3,46 @@ package com.example.sns.sns_project.service;
 import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+        private UserRepository userRepository;
 
-    // id 찾기
-    public UserVO readUserId(String id) {
+    public UserVO readUserId(String id ) {
         UserVO user = userRepository.findById(id).orElse(null);
         return user;
+
+//        UserVO user = userRepository.findById(id).orElseThrow(
+//                () -> new IllegalArgumentException("dd")
+//        );
+//        return user;
     }
 
-    // read_PW
-    public UserVO readUser(UserRequestDto userRequestDto){
+    public UserVO readUser(UserRequestDto userRequestDto) {
+        System.out.println("28 : "+userRequestDto.getUser_id());
         UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
         );
 
+    if(result.getUser_id().equals(userRequestDto.getUser_id())){
         return result;
     }
+    return null;
+    }
 
-    // 회원가입
+
+
     public UserVO createUser(UserRequestDto userRequestDto){
         UserVO user = new UserVO(userRequestDto);
         return  userRepository.save(user);
 
     }
 
-    // 회원탈퇴 id, pw 검증
-    public UserVO checkUser(UserRequestDto userRequestDto){
-        UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("아이디 찾기 실패")
-        );
-        if(result.getUser_id().equals(userRequestDto.getUser_id()) &&
-                result.getUser_pw().equals(userRequestDto.getUser_pw())){
-            return result;
-        }
-        return null;
-    }
-
-    // 회원탈퇴
-    @Transactional
-    public void deleteUser(UserRequestDto userRequestDto){
-        UserVO user = new UserVO(userRequestDto);
-        userRepository.deleteById(user.getUser_id());
-
-    }
-
-    // update
-    @Transactional
-    public boolean updateUser(UserRequestDto userRequestDto){
-        UserVO user = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("아이디 찾기 실패 업데이트 실패")
-        );
-//        UserVO user = new UserVO(userRequestDto);
-
-        user.update(userRequestDto);
-        return true;
-    }
-//    @Transactional
-//    public String findthumbnail(String id){
-    public String findThumbnailById(String id){
-//        List<UserVO> temp = userRepository.findAll();
-//        String aa = null;
-//        for(int i = 0; i < temp.size(); i ++){
-//            if(temp.get(i).getUser_id().equals(id)){
-//                aa = temp.get(i).getThumbnail();
-//            }
-//        }
-//        return aa;
-
-        return userRepository.findThumbnailById(id);
-    }
 
 }

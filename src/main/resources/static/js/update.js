@@ -32,6 +32,7 @@ function updateUser(log){
     }).done(result => {
         console.log(result);
         let user_id = result.user_id;
+        let user_pw = result.user_pw;
 
         let thumbnail = result.thumbnail;
         let user_name = result.name;
@@ -40,6 +41,7 @@ function updateUser(log){
         let html = `
             <form method="post">
                 <input type="hidden" name="user_id" id="user_id" value=${user_id}>
+                <input type="hidden" name="user_pw" id="user_pw" value=${user_pw}>
             
                 <div class="_img">프로필 사진</div><br>
                 <div class="image-container">
@@ -117,15 +119,16 @@ function uploadToCloud(formObj) {
     // }
 }
 
-// <input type="hidden" name="user_id" id="user_id" value=${user_id}>
-
 function update(formObj){
     const requestData = {
         "user_id" : $('#user_id').val(),
-        "img_url" : $('#img_url').val(),
+        "user_pw" : $('#user_pw').val(),
+        "thumbnail" : $('#img_url').val(),
         "name" : $('.name').val(),
         "email" : $('.email').val()
     }
+    console.log("이미지유알엘 : " + $(`#img_url`).val());
+
     console.log(requestData);
     $.ajax({
         url: "/update",
@@ -146,7 +149,6 @@ function update(formObj){
     })
 }
 
-
 // 프로필 사진 바꾸기
 function show_img(){
     let reader = new FileReader();
@@ -156,7 +158,6 @@ function show_img(){
         img.setAttribute("src", event.target.result);
     };
     reader.readAsDataURL(event.target.files[0]);
-
 }
 
 $('#input_img').on("change", e => {

@@ -5,17 +5,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/update.css">
     <link rel="stylesheet" href="css/common.css">
-    <title>updateMyInfo</title>
+    <title>updateMyPw</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class = "wrap">
     <%
-        String user_id = (String) session.getAttribute("user_id");
-        String name = (String) session.getAttribute("name");
-        String email = (String) session.getAttribute("email");
-        String user_pw = (String) session.getAttribute("user_pw");
-        String thumbnail = (String) session.getAttribute("thumbnail");
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        else {
+            int log = (Integer) session.getAttribute("log");
     %>
     <div class="menu">
         <div>
@@ -57,5 +58,9 @@
     </div>
 </div>
 <script src="./js/update.js"></script>
+<%
+    }
+%>
+
 </body>
 </html>

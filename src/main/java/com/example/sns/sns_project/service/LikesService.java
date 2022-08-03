@@ -16,15 +16,15 @@ public class LikesService {
     private LikesRepository likesRepository;
 
 
-    public boolean search(int userid, int serve){
+    public boolean search(int userid, int log){
         boolean check  = false;
         List<LikesVo> likes = likesRepository.findLikesByUser_id(userid);
 
         for(int i = 0; i < likes.size(); i ++) {
 
-           if(likes.get(i).getBoard_id() == serve){
+            if(likes.get(i).getBoard_id() == log){
                 check = true;
-           }
+            }
         }
 
         return check;

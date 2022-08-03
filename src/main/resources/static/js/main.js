@@ -1,8 +1,7 @@
-// let list0 = getBoards(0);
 let $thumb;
 let _userid;
 let _boardid;
-function getBoards(scope) {
+function getBoards(scope,log) {
     let list;
     $.ajax({
         url: "/search/" + scope,
@@ -13,8 +12,9 @@ function getBoards(scope) {
             data.forEach(e => {
                 insertHtml(e);
                 _userid = e.user_id;
-                _boardid = e.board_id;
+                _boardid = log;
                  getThumbnail(_userid);
+                checkDibs(_userid,_boardid);
             })
         },
         fail: function () {
@@ -51,7 +51,7 @@ function insertHtml(Board) {
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
-                            <img src='./img/heart.png' class='icon_img' id="dibs" value="<%=_boardid%>">
+                            <img src='./img/heart.png' class='icon_img' id="dibs" value="${Board.id}">
                                 <a href='javascript:;' onClick='javascript:showPopup()'>
                                     <img src='./img/message.png' onClick='javascript:black_block()' class='icon_img'>
                                 </a>
@@ -93,25 +93,45 @@ function getThumbnail(userId) {
     })
 }
 
-//찜 아이콘을 클릭시 실행
-// 클릭시 해당 아이디의 log
-
-$('#dibs').click(e => {
-    console.log("알빠노sss")
-
+// 해당 테이블에 찜 확인 출력
+function checkDibs(userid,log) {
     $.ajax({
-        url: "/search/",
+        url: "/likesSearch?userid=" + userid + "&log="+log,
         type: "GET",
         async: false,
-    }).success(result=>{
-        console.log(result)
-        if(result == true) {
-            $('.' + userId + '_info').prop('src', data.replace(/"/gi, ""));
+        contentType: "application/json",
+        success: data => {
+            $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
+        },
+        fail: function () {
+            console.log("fail2")
+        },
+        error: function () {
+            console.log("error2")
         }
-
-    }).fail(error=>{
-        console.log("ss: "+error)
     })
-
-    location.reload();
-})
+}
+//찜 아이콘을 클릭시 실행
+// 클릭시 해당 아이디의 log
+//
+// $('#dibs').click(e => {
+//     console.log("알빠노sss")
+//
+//     $.ajax({
+//         url: "/search/",
+//         type: "GET",
+//         async: false,
+//     }).success(result=>{
+//         console.log(result)
+//         if(result == true) {
+//            console.log("rdeeeeee");
+//         }
+//         else{
+//             console.log("aaaaa")
+//         }
+//
+//     }).fail(error=>{
+//         console.log("ss: "+error)
+//     })
+//
+// })

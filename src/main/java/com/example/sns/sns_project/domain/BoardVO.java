@@ -25,6 +25,9 @@ public class BoardVO extends Timestamp {
     @Column(name="img_url", nullable = false)
     private String img_url;
 
+    @Column(name="contents_id", nullable = false)
+    private int contents_id;
+
     @Column(name="contents", nullable = false)
     private String contents;
 
@@ -37,6 +40,7 @@ public class BoardVO extends Timestamp {
     @Column(name="delete_url")
     private String delete_url;
 
+
     public BoardVO(BoardRequestDto boardRequestDto){
         this.user_id = boardRequestDto.getUser_id();
         this.img_url = boardRequestDto.getImg_url();
@@ -44,5 +48,8 @@ public class BoardVO extends Timestamp {
         this.like_cnt = boardRequestDto.getLike_cnt();
         this.public_scope = boardRequestDto.getPublic_scope();
         this.delete_url = boardRequestDto.getDelete_url();
+
     }
+
+
 }

@@ -64,7 +64,9 @@
 }
 
 .serve_section {
+    margin-left: 50px;
     width: 30%;
+    height: 500px;
     background-color: #eee;
 }
 
@@ -190,4 +192,8 @@
     margin-top: 5px;
     background-color: #1b0f04;
     color: white;
+}
+#emoji{
+    width: 20px;
+    height: 20px;
 }

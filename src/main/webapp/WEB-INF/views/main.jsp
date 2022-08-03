@@ -9,12 +9,6 @@
         <%
             int log = (Integer) session.getAttribute("log");
         %>
-
-        <div class="serve_section">
-            serve
-
-        </div>
-
         <div class="black" onclick="javascript:cancel()"></div>
         <div class="contents_detail" style="display: none">
             <div class="detail_img">
@@ -26,11 +20,14 @@
         </div>
         <c:import url="/WEB-INF/views/writeForm.jsp"/>
     </div>
+    <div class="serve_section">
+        serve
+    </div>
 </div>
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script>
-    getBoards(0,<%=log%>);
+    getBoards(0, <%=log%>);
 </script>
 </body>
 <html>

@@ -25,9 +25,6 @@ public class BoardVO extends Timestamp {
     @Column(name="img_url", nullable = false)
     private String img_url;
 
-    @Column(name="contents_id", nullable = false)
-    private int contents_id;
-
     @Column(name="contents", nullable = false)
     private String contents;
 

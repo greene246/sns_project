@@ -1,23 +1,22 @@
 package com.example.sns.sns_project.controller;
 
 import com.example.sns.sns_project.service.UserService;
+
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @RestController
 public class UserController {
@@ -25,11 +24,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     // 로그인
+
+    // login
     @PostMapping("/login")
-      public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
+    public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
+
         UserRequestDto user = new UserRequestDto(user_id, user_pw);
+
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
@@ -39,11 +43,13 @@ public class UserController {
             url = "/?check=chcek";
         }
 
-        session.setAttribute("user_id",result.getUser_id());
-        session.setAttribute("name",result.getName());
-        session.setAttribute("email",result.getEmail());
-        session.setAttribute("user_pw",result.getUser_pw());
-        session.setAttribute("thumbnail", result.getThumbnail());
+//        session.setAttribute("user_id",result.getUser_id());
+//        session.setAttribute("name",result.getName());
+//        session.setAttribute("email",result.getEmail());
+//        session.setAttribute("user_pw",result.getUser_pw());
+//        session.setAttribute("thumbnail", result.getThumbnail());
+
+        session.setAttribute("log",result.getId());
 
         try {
             response.sendRedirect(url);
@@ -62,7 +68,9 @@ public class UserController {
 
         String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
 
+
         UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email,thumbnail);
+
 
         String url = "";
 
@@ -113,6 +121,7 @@ public class UserController {
             e.printStackTrace();
         }
     }
+
 
     // 이름, 이메일 변경
     @PostMapping("/update")
@@ -191,11 +200,12 @@ public class UserController {
 
     @PostMapping("/getUser")
     @ResponseBody
-    public String  getUser(@RequestBody UserRequestDto userRequestDto){
+    public String getUser(@RequestBody UserRequestDto userRequestDto){
         UserVO user = userService.readUser(userRequestDto);
 
         return user.getUser_id();
     }
+
 
     // 이전 비밀번호 확인
     @PostMapping("/pastPw")
@@ -269,6 +279,11 @@ public class UserController {
             }
         }
 
+    }
+
+    @PostMapping("/getInfo")
+    public UserVO getInfo(@RequestParam(name="log") int log){
+        return userService.readLog(log);
     }
 
 }

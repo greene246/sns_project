@@ -101,30 +101,15 @@ public class UserService {
         return null;
     }
 
-    public String findId(String name,String email){
-        System.out.println(name);
-        System.out.println(email);
-        UserVO result = userRepository.findId(name,email);
-        System.out.println(result);
-        if(result == null){
-            return null;
-        }else{
-            return result.getUser_id();
-        }
-    }
-//    @Transactional
-//    public String findthumbnail(String id){
-    public String findThumbnailById(String id){
-//        List<UserVO> temp = userRepository.findAll();
-//        String aa = null;
-//        for(int i = 0; i < temp.size(); i ++){
-//            if(temp.get(i).getUser_id().equals(id)){
-//                aa = temp.get(i).getThumbnail();
-//            }
-//        }
-//        return aa;
+    @Transactional
+    public UserVO readLog(int log){
+        UserVO user = userRepository.findById(log).orElseThrow(
+                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
+        );
+        System.out.println(user.getUser_id());
+        System.out.println(user.getThumbnail());
 
-        return userRepository.findThumbnailById(id);
+        return user;
     }
 
 }

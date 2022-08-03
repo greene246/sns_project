@@ -27,40 +27,20 @@ $('#pw_past').change(e => {
     }
 })
 
-/*$('#pw_past').change(e => {
-    let requestData = {
-        "user_id" : $("#user_id").val(),
-        "user_pw" : $("#pw_past").val()
-        // "user_pw" : $("#user_pw").val()
-    }
-
+function updateUser(log){
     $.ajax({
-        url: "/pastPw",
-        type: "POST",
-        data: JSON.stringify(requestData),
-        contentType: "application/json"
-    }).success(result => {
-        $('#msg_err').hide();
-        $('#msg_ok').show();
-    }).fail(error => {
-        $('#msg_err').show()
-        $('#msg_ok').hide();
-    })
-})*/
+        url : "/getInfo?log=" + log,
+        type : "POST"
+    }).done(result => {
 
-/*$('.input[type=submit]').click(e => {
-    let requestData = {
-        "pw_new" : $("#pw_new").val(),
-        "pw_check" : $("#pw_check").val()
-    }
-    $.ajax({
-        url: "/checkPw",
-        type: "POST",
-        data: JSON.stringify(requestData),
-        contentType: "application/json"
-    }).success(result => {
-        $('#msg_error').show();
-    }).fail(error => {
-        $('#msg_error').show();
+        let user_id = result.user_id;
+        let user_name = result.name;
+        let user_email = result.email;
+        let thumbnail = result.thumbnail;
+
+
+
+        let html = ``;
+
     })
-})*/
+}

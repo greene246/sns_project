@@ -38,7 +38,7 @@
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script>
-    getBoards(0,log);
+    getBoards(0,"log");
 </script>
 </body>
 <html>

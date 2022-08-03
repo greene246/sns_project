@@ -14,7 +14,7 @@ function getBoards(scope,log) {
                 _userid = e.user_id;
                 _boardid = log;
                  getThumbnail(_userid);
-                checkDibs(_userid,_boardid);
+                // checkDibs(_userid,_boardid);
             })
         },
         fail: function () {
@@ -93,24 +93,24 @@ function getThumbnail(userId) {
     })
 }
 
-// 해당 테이블에 찜 확인 출력
-function checkDibs(userid,log) {
-    $.ajax({
-        url: "/likesSearch?userid=" + userid + "&log="+log,
-        type: "GET",
-        async: false,
-        contentType: "application/json",
-        success: data => {
-            $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
-        },
-        fail: function () {
-            console.log("fail2")
-        },
-        error: function () {
-            console.log("error2")
-        }
-    })
-}
+// // 해당 테이블에 찜 확인 출력
+// function checkDibs(userid,log) {
+//     $.ajax({
+//         url: "/likesSearch?userid=" + userid + "&log=" + log,
+//         type: "GET",
+//         async: false,
+//         contentType: "application/json",
+//         success: data => {
+//             $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
+//         },
+//         fail: function () {
+//             console.log("fail2")
+//         },
+//         error: function () {
+//             console.log("error2")
+//         }
+//     })
+// }
 //찜 아이콘을 클릭시 실행
 // 클릭시 해당 아이디의 log
 //

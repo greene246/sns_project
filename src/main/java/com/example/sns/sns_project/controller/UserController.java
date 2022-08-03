@@ -42,6 +42,7 @@ public class UserController {
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
         session.setAttribute("thumbnail", result.getThumbnail());
+        session.setAttribute("log", result.getId());
 
         try {
             response.sendRedirect(url);

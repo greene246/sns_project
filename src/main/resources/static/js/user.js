@@ -1,6 +1,5 @@
-
-
 $('#user_id').change(e => {
+
     const requestData = {
         "user_id" : $('#user_id').val()
     }
@@ -19,3 +18,22 @@ $('#user_id').change(e => {
         $('#msg_err').hide();
     })
 })
+
+function getUser(log){
+        $.ajax({
+            url: "/getInfo?log="+log,
+            type : "POST"
+    }).done(result => {
+            let user_id = result.user_id;
+            let user_name = result.name;
+
+            let innerid = "<a>" + user_id + "</a>"
+
+            let innername = "<a>" + user_name + "</a>"
+            $('.user_id').append(innerid);
+            $('.id').append(innername);
+        })
+
+}
+
+

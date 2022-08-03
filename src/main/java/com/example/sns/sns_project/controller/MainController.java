@@ -51,5 +51,8 @@ public class MainController {
     @RequestMapping("/findPwPage")
     public String findPw(){ return "findPwPage"; }
 
+    @RequestMapping("/logout")
+    public String logout(){ return "logout"; }
+
 
 }

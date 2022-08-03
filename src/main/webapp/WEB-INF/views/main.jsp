@@ -8,8 +8,8 @@
         if (session.getAttribute("user_id") == null) {
             String url = "/";
             request.getRequestDispatcher(url).forward(request, response);
+        }
     %>
-    <%}%>
     <div class="all_contents">
         <div class="section">
             <!-- 프로필 박스 -->

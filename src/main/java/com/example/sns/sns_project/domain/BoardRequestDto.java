@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 public class BoardRequestDto {
     String user_id;
     String img_url;
+    int contents_id;
     String contents;
     int like_cnt;
     int public_scope;
     String delete_url;
+
 }

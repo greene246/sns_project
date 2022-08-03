@@ -1,15 +1,59 @@
-.wrap{
+.main_wrap {
     display: flex;
-
+    padding:10px 20%;
+}
+.all_contents{
+    width: 70%;
+}
+.main_wrap > *{
+    border: solid 1px;
+}
+#profile_img_wrap{
+    width: 100px;
 }
 
-.img_wrap {
+.section{
+    /*flex-grow: 1;*/
+    display : flex;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.profile_box{
+    display: flex;
+    align-items: center;
+    height: 10%;
+    padding: 8px;
+}
+
+#profile_img{
+    height: 100%;
+    border-radius: 50%;
+}
+
+#main_img{
+    height: 50%;
+    overflow: hidden;
+    align-self: center;
+}
+
+.contents_img{
+    height: 100%;
+}
+
+#content{
+    padding: 5px;
+    overflow: hidden;
+    height: 36px;}
+
+#img_wrap {
     display: block;
-    width: 100%;
-    height: 300px;
     overflow: hidden;
     position: relative;
+    width: 100%;
+    height: 300px;
 }
+
 .img_wrap img {
     max-width: 100%;
     min-height: 100%;
@@ -18,42 +62,23 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.section {
-    /*flex-grow: 1;*/
-    width: 80%;
-    padding-right: 20px;
-    overflow: auto;
-}
-.serve {
-    width: 20%;
+
+.serve_section {
+    width: 30%;
     background-color: #eee;
 }
-.icon{
-    justify-content: space-between;
+
+.icon {
     display: flex;
-    margin:10px;
+    justify-content: space-between;
+    padding:5px;
 }
-.icon img{
-    padding-top: 14px;
+
+.icon_img {
+    height: 24px;
     width: 24px;
 }
-.three > *{
-    padding: 0 5px 0 5px;
-}
-.box {
-    /*width: 80px;*/
-    height: 80px;
-    display: flex;
-    margin-bottom: 8px;
-}
-.profile_wrap {
-    display: block;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(60deg, red, yellow, greenyellow);
-    border-radius: 50%;
-    position: relative;
-}
+
 .profile_wrap > span {
     display: block;
     width: 90%;
@@ -66,62 +91,46 @@
     transform: translate(-50%, -50%);
     position: absolute;
 }
-.profile {
-    /*margin-top: 10px;*/
-    /*margin-left: 10px;*/
-    min-height: 100%;
-    max-width: 100%;
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    /*border-radius: 70%;*/
-    /*overflow: hidden;*/
-    /*border-top: solid 3px red;*/
-    /*border-right: solid 3px greenyellow;*/
-    /*border-bottom: solid 3px green;*/
-    /*border-left: solid 3px hotpink;*/
-}
 
-.userid{
+
+.userid {
     margin-top: 30px;
     margin-left: 10px;
 }
-.word{
-    padding-left: 20px;
+
+.word {
     font-family: 'Noto Sans KR', sans-serif;
-    margin: 5px 5px 5px 5px;
-    padding-left: 12px;
+    padding: 5px;
 }
-.contents{
+
+.contents {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 200px;
-    margin-left: 14px;
+    padding: 5px;
 }
-.id{
-    margin-left: 15px;
-    padding-bottom: 5px;
+
+.id {
+    padding: 5px;
 }
 
 /*///////////////////////////////////*/
 
-.pop1{
-    width:1280px;
-    height:92%;
-    position:absolute;
-    top:10px;
-    left:100px;
-    display:flex;
-    border:2px solid #1b0f04;
-    background-color:white;
-    color:#1b0f04;
-    flex-direction: column
+.contents_detail {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid #1b0f04;
+    background-color: white;
+    color: #1b0f04;
+    flex-direction: row;
 
 }
-.pop1 img{
+
+.pop1 img {
     /*position: absolute;*/
     /*width: 80%;*/
     /*top: 50%;*/
@@ -134,44 +143,51 @@
     flex-basis: 450.8px;
 
 }
-.black{
+
+.black {
     opacity: 0.45;
     position: fixed;
-    left: 0;top: 0;
+    left: 0;
+    top: 0;
     background: black;
-    width: 100%;height: 100vh;
+    width: 100%;
+    height: 100%;
     display: none;
 }
 
-.popTop{
-    width:100%;
-    height:30px;
-    background-color:#1b0f04;
+.popTop {
+    width: 100%;
+    height: 30px;
+    background-color: #1b0f04;
 }
-.popBottom{
+
+.popBottom {
     width: 100%;
     height: 770px;
-    display:flex;
+    display: flex;
 }
-.popBottom > .popimg{
-    width:50%;
-    background-color:blue;
+
+.detail_img {
+    width: 50%;
+    background-color: blue;
 
 }
-.popBottom > .popword{
-    width:50%;
-    background-color:yellow;
+
+.detail_coments {
+    width: 50%;
+    background-color: yellow;
     overflow: hidden;
 
 }
-#cancel{
-    width:20px;
-    height:20px;
-    border:none;
-    text-align:center;
-    float:right;
-    margin-right:8px;
-    margin-top:5px;
-    background-color:#1b0f04;
-    color:white;
+
+#cancel {
+    width: 20px;
+    height: 20px;
+    border: none;
+    text-align: center;
+    float: right;
+    margin-right: 8px;
+    margin-top: 5px;
+    background-color: #1b0f04;
+    color: white;
 }

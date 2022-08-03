@@ -8,19 +8,23 @@
     <title>myPage</title>
 </head>
 <body>
+
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <%
-    String user_id = (String) session.getAttribute("user_id");
-    String name = (String) session.getAttribute("name");
-    String user_pw = (String) session.getAttribute("user_pw");
+    int log = (Integer) session.getAttribute("log");
+
+    if(session.getAttribute("user_id") == null) {
+        String url = "/";
+        request.getRequestDispatcher(url).forward(request, response);
+    }
 %>
 <div class="wrap">
     <div class="myPageBody">
         <%--        <%=user_id%><br>--%>
 
         <span class="img"><img src="./img/cute.JPG"></span>
-        <span class="user_id"><%=user_id%></span>
-        <span class="name"><%=name%></span>
+        <span class="user_id"></span>
+        <span class="name"></span>
 
         <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
         myPage 입니다.
@@ -30,5 +34,6 @@
 
     </div>
 </div>
+<script src="js/user.js">$(document).ready(getUser(<%=log%>))</script>
 </body>
 </html>

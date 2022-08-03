@@ -6,42 +6,38 @@ function getBoards(scope) {
         url: "/search/" + scope,
         type: "GET",
         sync: false,
-        // data: {
-        //     "a" : scope
-        // },
-        // contentType: "application/json",
+
         success: data => {
             data.forEach(e => {
                 insertHtml(e);
-                getThumbnail(e.user_id);
+                 getThumbnail(e.user_id);
             })
-
-            $thumb = $('#thumb_img');
-            console.log($thumb);
         },
         fail: function () {
-            console.log("fail")
+            console.log("fail1")
         },
         error: function () {
-            console.log("error")
+            console.log("error1")
         }
     })
     return list;
 }
 
-function insertHtml(Board, thum) {
-    // let thum = getThumbnail(Board.id)
+function insertHtml(Board) {
 
-    // .done(data => {
-    //      let result = data;
-
-    // board.forEach(Board => {
+    console.log("insert check");
 
     let html = `
-                <div class='section'>
-
+                 <div class='section'> 
+               
                     <div class='profile_box'>
-                     <span id="thumb_img"><img class="thum_img_target"></span>
+                    
+                    <!-- <span id="contents"><img class="thum_img_target"></span>-->
+                   <!--  <span id="contents"><img class="thum_img_target"></span>-->
+                     
+                    <!-- <span class="profile_img_wrap"><img class="thum_img_target"></span>-->
+                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
+                     
                         <div id='userid'>
                             <a>${Board.user_id}</a>
                         </div>
@@ -73,60 +69,25 @@ function insertHtml(Board, thum) {
             `;
 
     $('.all_contents').append(html);
-    //     })
-    // })
+
 }
 
 function getThumbnail(userId) {
-    let temp = "";
     $.ajax({
-        url: "/getThumbnail?id=nayeon",
+        url: "/getThumbnail?id=" + userId,
         type: "GET",
         sync: false,
         contentType: "application/json",
         success: data => {
-            // temp = data;
+             $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
 
-            $('.thum_img_target').prop('src', data.replace(/"/gi,""));
-            console.log("src : " + $('.thum_img_target').prop('src'));
-            console.log("data : " + data);
+
         },
         fail: function () {
-            console.log("fail")
+            console.log("fail2")
         },
         error: function () {
-            console.log("error")
+            console.log("error2")
         }
-    }).done(result => {
-        temp = result;
     })
-    console.log("temp : " + temp)
-    return temp;
 }
-
-// function getThumbnail() {
-//     let temp = "";
-//
-//     let userId;
-//     let $thums = $('');
-//
-//
-//
-//     $.ajax({
-//         url: "/getThumbnail?id="+userId,
-//         type: "GET",
-//         sync: false,
-//         contentType: "application/json",
-//         success: function (data) {
-//             temp = data;
-//         },
-//         fail: function () {
-//             console.log("fail")
-//         },
-//         error: function () {
-//             console.log("error")
-//         }
-//     })
-//     console.log("ss" + temp)
-//     // return temp;
-// }

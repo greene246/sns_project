@@ -1,9 +1,15 @@
 .main_wrap {
     display: flex;
-    padding:0 20%;
+    padding:10px 20%;
+}
+.all_contents{
+    width: 70%;
 }
 .main_wrap > *{
     border: solid 1px;
+}
+#profile_img_wrap{
+    width: 100px;
 }
 
 .section{
@@ -12,32 +18,7 @@
     flex-direction: column;
     height: 70vh;
 }
-/*.profile_wrap {*/
-/*    display: block;*/
-/*    width: 80px;*/
-/*    height: 80px;*/
-/*    background: linear-gradient(60deg, red, yellow, greenyellow);*/
-/*    border-radius: 50%;*/
-/*    position: relative;*/
-/*}*/
 
-.profile {
-    /*margin-top: 10px;*/
-    /*margin-left: 10px;*/
-    /*min-height: 100%;*/
-    /*max-width: 100%;*/
-
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%, -50%);*/
-    /*position: absolute;*/
-    /*border-radius: 70%;*/
-    /*overflow: hidden;*/
-    /*border-top: solid 3px red;*/
-    /*border-right: solid 3px greenyellow;*/
-    /*border-bottom: solid 3px green;*/
-    /*border-left: solid 3px hotpink;*/
-}
 .profile_box{
     display: flex;
     align-items: center;
@@ -45,7 +26,7 @@
     padding: 8px;
 }
 
-#profile_img{
+.profile_img{
     height: 100%;
     border-radius: 50%;
 }
@@ -53,10 +34,13 @@
 #main_img{
     height: 50%;
     overflow: hidden;
+    align-self: center;
 }
-#contents_img{
+
+.contents_img{
     height: 100%;
 }
+
 #content{
     padding: 5px;
     overflow: hidden;
@@ -135,16 +119,14 @@
 /*///////////////////////////////////*/
 
 .contents_detail {
-    width: 1280px;
-    height: 92%;
-    position: absolute;
-    top: 10px;
-    left: 100px;
     display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
     border: 2px solid #1b0f04;
     background-color: white;
     color: #1b0f04;
-    flex-direction: column
+    flex-direction: row;
 
 }
 

@@ -1,5 +1,3 @@
-
-
 $('.user_id').change(e => {
     const requestData = {
         "user_id" : $('.user_id').val()

@@ -1,36 +1,28 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 public class BoardController {
     @Autowired
     private BoardService boardService;
 
+//
     @PostMapping("/upload")
-    public void createBoard(
-            @RequestParam(name="user_id")String user_id, @RequestParam(name="img_url")String img_url,
-            @RequestParam(name="delete_url")String delete_url, @RequestParam(name="contents")String contents,
-            @RequestParam(name="public_scope")int public_scope, HttpServletResponse response) {
+    public void creatMultiBoard(@RequestParam(name="img_url")String img_url, @RequestParam(name="del_url")String del_url, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(img_url);
+        System.out.println(del_url);
+    }
 
-        int contents_id = boardService.createContents_id();
+    public void getFile(@RequestParam(name = "uploadFile")File files){
 
-        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents_id, contents, 0, public_scope, delete_url);
-        boardService.createBoard(b_dto);
-
-        String url = "/main";
-        try{
-            response.sendRedirect(url);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
 //    @DeleteMapping("/delete")

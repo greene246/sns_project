@@ -26,6 +26,7 @@ showPopup = function() {
 }
 
 showWriteForm = function (){
+    black_block();
     $(".write_wrap").show();
     $(".write_wrap").center();
 }

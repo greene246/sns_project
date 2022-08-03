@@ -14,7 +14,7 @@ public class UserService {
     @Autowired
         private UserRepository userRepository;
 
-    public UserVO readUserId(String id ) {
+    public UserVO readUserId(String id) {
         UserVO user = userRepository.findById(id).orElse(null);
         return user;
 

@@ -11,12 +11,11 @@
 
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <%
-
-    if(session.getAttribute("log") == null) {
+    int log = (Integer) session.getAttribute("log");
+    if (session.getAttribute("log") == null) {
         String url = "/";
         request.getRequestDispatcher(url).forward(request, response);
     }
-    int log = (Integer) session.getAttribute("log");
 %>
 <div class="wrap">
     <div class="myPageBody">

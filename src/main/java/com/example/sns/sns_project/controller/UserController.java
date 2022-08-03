@@ -37,11 +37,11 @@ public class UserController {
             url = "/?check=chcek";
         }
 
-        session.setAttribute("user_id",result.getUser_id());
+        /*session.setAttribute("user_id",result.getUser_id());
         session.setAttribute("name",result.getName());
         session.setAttribute("email",result.getEmail());
         session.setAttribute("user_pw",result.getUser_pw());
-        session.setAttribute("thumbnail", result.getThumbnail());
+        session.setAttribute("thumbnail", result.getThumbnail());*/
         session.setAttribute("log", result.getId());
 
         try {

@@ -10,7 +10,7 @@ $('#user_id').change(e => {
         contentType: "application/json"
     }).success(result => {
         $('#msg_err').show();
-        $('#msg_err').css("display", "block");
+        $('#msg_err').css("display", "block");0
         $('#msg_ok').hide();
     }).fail(error => {
         $('#msg_ok').show();
@@ -31,7 +31,7 @@ function getUser(log){
 
             let innername = "<a>" + user_name + "</a>"
             $('.user_id').append(innerid);
-            $('.id').append(innername);
+            $('.name').append(innername);
         })
 
 }

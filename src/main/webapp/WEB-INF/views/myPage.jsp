@@ -11,16 +11,15 @@
 
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <%
-
     if(session.getAttribute("log") == null) {
         String url = "/";
         request.getRequestDispatcher(url).forward(request, response);
     }
-    int log = (Integer) session.getAttribute("log");
+    else{
+        int log = (Integer) session.getAttribute("log");
 %>
 <div class="wrap">
     <div class="myPageBody">
-        <%--        <%=user_id%><br>--%>
 
         <span class="img"><img src="./img/cute.JPG"></span>
         <span class="user_id"></span>
@@ -34,6 +33,13 @@
 
     </div>
 </div>
-<script src="js/user.js">$(document).ready(getUser(<%=log%>))</script>
+<script>$(document).ready(function(){
+    getUser(<%=log%>);
+})
+</script>
+<script src="js/user.js"></script>
+<%
+    }
+%>
 </body>
 </html>

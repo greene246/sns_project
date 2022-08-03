@@ -5,7 +5,7 @@
 <div class="main_wrap">
 
     <%
-        if (session.getAttribute("user_id") == null) {
+        if (session.getAttribute("log") == null) {
             String url = "/";
             request.getRequestDispatcher(url).forward(request, response);
         }

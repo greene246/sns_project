@@ -27,11 +27,8 @@ function getUser(log){
             let user_id = result.user_id;
             let user_name = result.name;
 
-            let innerid = "<a>" + user_id + "</a>"
-
-            let innername = "<a>" + user_name + "</a>"
-            $('.user_id').append(innerid);
-            $('.id').append(innername);
+            $('.user_id').append(user_id);
+            $('.name').append(user_name);
         })
 
 }

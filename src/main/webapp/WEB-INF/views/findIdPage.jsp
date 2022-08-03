@@ -47,5 +47,8 @@
         </form>
     </div>
 </div>
+<%
+    session.invalidate();
+%>
 </body>
 </html>

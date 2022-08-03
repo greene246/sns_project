@@ -26,10 +26,10 @@ public class BoardController {
             @RequestParam(name="delete_url")String delete_url, @RequestParam(name="contents")String contents,
             @RequestParam(name="public_scope")int public_scope, HttpServletResponse response, HttpServletRequest request
     ) {
-        int contents_id = boardService.createContents_id();
+
 
         HttpSession session = request.getSession();
-        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url,contents_id);
+        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url);
         boardService.createBoard(b_dto);
 
         String url = "/main";
@@ -39,9 +39,12 @@ public class BoardController {
             e.printStackTrace();
         }
     }
-    @GetMapping("/search")
-    public List<BoardVO> search(@RequestParam(name = "a") int a){
-        return boardService.search(a);
+//    @GetMapping("/search")
+    @GetMapping("/search/{num}")
+//    public List<BoardVO> search(@RequestParam(name = "a") int a){
+    public List<BoardVO> search(@PathVariable("num") int num){
+//    public void search(@PathVariable("num") int num){
+        return boardService.search(num);
+//        boardService.search(num);
     }
-
 }

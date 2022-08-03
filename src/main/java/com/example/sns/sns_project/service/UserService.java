@@ -112,5 +112,19 @@ public class UserService {
             return result.getUser_id();
         }
     }
+//    @Transactional
+//    public String findthumbnail(String id){
+    public String findThumbnailById(String id){
+//        List<UserVO> temp = userRepository.findAll();
+//        String aa = null;
+//        for(int i = 0; i < temp.size(); i ++){
+//            if(temp.get(i).getUser_id().equals(id)){
+//                aa = temp.get(i).getThumbnail();
+//            }
+//        }
+//        return aa;
+
+        return userRepository.findThumbnailById(id);
+    }
 
 }

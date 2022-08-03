@@ -31,36 +31,34 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    // 컨텐츠 DB 탐색
-    public List<BoardVO> search(int a){
-
+    // 컨텐츠 DB 탐색색
+//   public void search(int a){
+   public List<BoardVO> search(int a){
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
 
         for(int i = 0; i < boards.size(); i++) {
             System.out.print(boards.get(i).getId()+" ");
-            System.out.println(boards.get(i).getUser_id());
+           System.out.println(boards.get(i).getUser_id());
         }
         System.out.println("=========================================");
         return boards;
     }
 
-    //컨텐츠 랜덤 코드 부여
-    public int createContents_id(){
-        List<BoardVO> boardVOList = boardRepository.findAll();
 
-        Random ran = new Random();
 
-        int r_c_id;
-        while(true){
-            r_c_id = ran.nextInt(9999)+1;
-            for(int j=0; j<boardVOList.size(); j++) {
-                if(r_c_id == boardVOList.get(j).getContents_id()){
-                    break;
-                }
-            }
-            break;
-        }
-        return r_c_id;
-    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

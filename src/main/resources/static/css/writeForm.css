@@ -1,0 +1,7 @@
+.write_wrap{
+    position: absolute;
+    background-color:black;
+    border-radius: 4px;
+    width: 500px;
+    height: 500px;
+}

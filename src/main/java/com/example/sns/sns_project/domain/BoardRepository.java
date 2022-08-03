@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface BoardRepository extends JpaRepository<BoardVO, Integer> {
 
-    @Query(value = "select * from boards where public_scope = ?1 order by  created_at DESC ", nativeQuery = true)
-    List<BoardVO> findBoardsByPublicScopeOrderByCreatedAtDesc(int public_scope);
+     @Query(value = "select * from boards where public_scope = ?1 order by  created_at DESC ", nativeQuery = true)
+     List<BoardVO> findBoardsByPublicScopeOrderByCreatedAtDesc(int public_scope);
 
 }

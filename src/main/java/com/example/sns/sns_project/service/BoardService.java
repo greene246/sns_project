@@ -27,7 +27,7 @@ public class BoardService {
     public void deleteBoard(int id){
         boardRepository.deleteById(id);
     }
-}
+
 
     // 컨텐츠 DB 탐색색
 //   public void search(int a){

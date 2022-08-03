@@ -1,4 +1,3 @@
-
 function updateCheck() {
     alert("수정 완료");
 }
@@ -30,3 +29,21 @@ $('.input[type=submit]').click(e => {
         $('#msg_error').show();
     })
 })
+
+function deleteBoard(){
+    // 이거 data 안에 값들 수정하셈
+    let boardJson = {
+        "url" : "/delete",
+        "method" : "DELETE",
+        "contentType" : "application/json",
+        "data" : JSON.stringify({
+            "user_id" : $('#user_id').val(),
+            "img_url" : $('#img_url').val(),
+            "contents" : $('#contents').val(),
+        })
+    };
+    $.ajax(boardJson)
+        .done(result => {
+
+        })
+}

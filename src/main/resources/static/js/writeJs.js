@@ -46,13 +46,9 @@ function callUploadApi(settings){
                 .done(result => {
                     console.log(result);
                 })
-            // return callUploadApi(response);
-
-            // formObj.submit();
     })
         .fail(error =>{
             console.log(error);
-            // return;
         })
 }
 

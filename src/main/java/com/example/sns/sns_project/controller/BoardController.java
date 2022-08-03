@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.example.sns.sns_project.domain.BoardRepository;
@@ -26,15 +27,17 @@ public class BoardController {
     @ResponseBody
     public void creatMultiBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
         boardService.createBoard(boardRequestDto);
+
+        response.sendRedirect("/main");
     }
 
-//    @DeleteMapping("/delete")
-//    public void deleteBoard(@RequestParam(name="user_id")String user_id, @RequestParam(name="img_url")String img_url){
-//        System.out.println(user_id);
-//        System.out.println(img_url);
-//        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url);
-//        boardService.deleteBoard(b_dto);
-//    }
+    @DeleteMapping("/delete")
+    public void deleteBoard(@RequestParam(name="user_id")String user_id, @RequestParam(name="img_url")String img_url){
+        System.out.println(user_id);
+        System.out.println(img_url);
+        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url);
+        boardService.deleteBoard(b_dto);
+    }
 
     @PostMapping("/delete")
     public void deleteBoard(@RequestParam(name="id")int id){

@@ -13,10 +13,13 @@ public class UserService {
 
     @Autowired
         private UserRepository userRepository;
+// 도모다찌는 죽었다
 
     public UserVO readUserId(String id ) {
         UserVO user = userRepository.findById(id).orElse(null);
+        System.out.println("낄낄낄낄낄 내가 너 가만 둘꺼같아? ㄷ쫌만 기다려 ;");
         return user;
+
 
 //        UserVO user = userRepository.findById(id).orElseThrow(
 //                () -> new IllegalArgumentException("dd")

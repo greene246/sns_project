@@ -90,3 +90,11 @@ function getThumbnail(userId) {
         }
     })
 }
+
+function inputComents(){
+    let coment = $('.coment_box').val();
+
+    let requestData = {
+
+    }
+}

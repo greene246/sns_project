@@ -44,7 +44,6 @@ public class BoardVO extends Timestamp {
     public BoardVO(BoardRequestDto boardRequestDto){
         this.user_id = boardRequestDto.getUser_id();
         this.img_url = boardRequestDto.getImg_url();
-        this.contents_id = boardRequestDto.getContents_id();
         this.contents = boardRequestDto.getContents();
         this.like_cnt = boardRequestDto.getLike_cnt();
         this.public_scope = boardRequestDto.getPublic_scope();

@@ -1,4 +1,4 @@
-package com.example.sns.sns_project.service;
+package com.example.sns.sns_project.Service;
 
 import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;

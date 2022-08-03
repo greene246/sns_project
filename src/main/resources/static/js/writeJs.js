@@ -3,6 +3,7 @@
 function uploadToCloud(formObj) {
     let file = document.getElementById('input_img');
     let form = new FormData();
+    console.log(file.files[0])
     form.append("image", file.files[0])
 
     let settings = {
@@ -24,7 +25,7 @@ function uploadToCloud(formObj) {
 
         // jx.data.id의 값도 저장해야함 - 삭제 시 필요
         //$('#write_form').submit();
-        formObj.submit();
+        // formObj.submit();
 
     }).fail(error =>{
         console.log(error)

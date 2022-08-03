@@ -11,9 +11,11 @@ $('#user_id').change(e => {
         contentType: "application/json"
     }).success(result => {
         $('#msg_err').show();
+        $('#msg_err').css("display", "block");
         $('#msg_ok').hide();
     }).fail(error => {
         $('#msg_ok').show();
+        $('#msg_ok').css("display", "block");
         $('#msg_err').hide();
     })
 })

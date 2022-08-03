@@ -40,8 +40,9 @@
                 <div class="hr-sect">또는</div>
                 비밀번호가 기억나지 않으신가요? <br>
                 <a class="fp" href="/findPwPage">비밀번호 찾기</a><br>
-                <a class="login" href="/">로그인으로 돌아가기</a>
-
+                <div class="gl">
+                    <a class="login" href="/">로그인으로 돌아가기</a>
+                </div>
 
             </form>
         </div>

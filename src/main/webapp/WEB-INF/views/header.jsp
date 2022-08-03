@@ -20,8 +20,8 @@
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <a href="javascript:;" onclick="javascript:showWriteForm()">
-                    <p class="writeBoard" onclick="javascript:black_block()">추가</p>
+                <a href="javascript:;" onclick="showWriteForm()",>
+                    <p class="writeBoard">추가</p>
                 </a>
                 <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
             </div>

@@ -1,16 +1,20 @@
 // let list0 = getBoards(0);
 let $thumb;
+let _userid;
+let _boardid;
 function getBoards(scope) {
     let list;
     $.ajax({
         url: "/search/" + scope,
         type: "GET",
-        sync: false,
+        async: false,
 
         success: data => {
             data.forEach(e => {
                 insertHtml(e);
-                 getThumbnail(e.user_id);
+                _userid = e.user_id;
+                _boardid = e.board_id;
+                 getThumbnail(_userid);
             })
         },
         fail: function () {
@@ -33,9 +37,7 @@ function insertHtml(Board) {
                     <div class='profile_box'>
                     
                     <!-- <span id="contents"><img class="thum_img_target"></span>-->
-                   <!--  <span id="contents"><img class="thum_img_target"></span>-->
                      
-                    <!-- <span class="profile_img_wrap"><img class="thum_img_target"></span>-->
                      <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
                      
                         <div id='userid'>
@@ -49,7 +51,7 @@ function insertHtml(Board) {
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
-                            <img src='./img/heart.png' class='icon_img'>
+                            <img src='./img/heart.png' class='icon_img' id="dibs" value="<%=_boardid%>">
                                 <a href='javascript:;' onClick='javascript:showPopup()'>
                                     <img src='./img/message.png' onClick='javascript:black_block()' class='icon_img'>
                                 </a>
@@ -70,18 +72,17 @@ function insertHtml(Board) {
 
     $('.all_contents').append(html);
 
-}
 
+}
+//유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
 function getThumbnail(userId) {
     $.ajax({
         url: "/getThumbnail?id=" + userId,
         type: "GET",
-        sync: false,
+        async: false,
         contentType: "application/json",
         success: data => {
              $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
-
-
         },
         fail: function () {
             console.log("fail2")
@@ -91,3 +92,26 @@ function getThumbnail(userId) {
         }
     })
 }
+
+//찜 아이콘을 클릭시 실행
+// 클릭시 해당 아이디의 log
+
+$('#dibs').click(e => {
+    console.log("알빠노sss")
+
+    $.ajax({
+        url: "/search/",
+        type: "GET",
+        async: false,
+    }).success(result=>{
+        console.log(result)
+        if(result == true) {
+            $('.' + userId + '_info').prop('src', data.replace(/"/gi, ""));
+        }
+
+    }).fail(error=>{
+        console.log("ss: "+error)
+    })
+
+    location.reload();
+})

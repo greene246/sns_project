@@ -64,22 +64,13 @@ public class UserService {
         UserVO user = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
                 () -> new IllegalArgumentException("아이디 찾기 실패 업데이트 실패")
         );
-//        UserVO user = new UserVO(userRequestDto);
 
         user.update(userRequestDto);
         return true;
     }
-//    @Transactional
-//    public String findthumbnail(String id){
+    //    @Transactional
     public String findThumbnailById(String id){
-//        List<UserVO> temp = userRepository.findAll();
-//        String aa = null;
-//        for(int i = 0; i < temp.size(); i ++){
-//            if(temp.get(i).getUser_id().equals(id)){
-//                aa = temp.get(i).getThumbnail();
-//            }
-//        }
-//        return aa;
+
 
         return userRepository.findThumbnailById(id);
     }

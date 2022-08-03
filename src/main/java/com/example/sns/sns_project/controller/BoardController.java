@@ -7,10 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import com.example.sns.sns_project.domain.BoardRepository;
+import java.io.IOException;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class BoardController {
             request.getRequestDispatcher(url).forward(request,response);
         }catch (Exception e){
             e.printStackTrace();
-        }
+    }
     }
 //    @GetMapping("/search")
     @GetMapping("/search/{num}")

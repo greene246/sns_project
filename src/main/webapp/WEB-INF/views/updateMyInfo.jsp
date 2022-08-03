@@ -28,17 +28,6 @@
     <h2>프로필 편집</h2>
 
     <%=user_id%><br>
-
-    <%--<table>
-        <tr>
-            <thead>
-                이름
-            </thead>
-            <td>
-                <input type="text" name="name" class="name" value="<%=name%>" placeholder="이름" required>
-            </td>
-        </tr>
-    </table>--%>
     <form method="post" action="/update" onsubmit="updateCheck()">
         <div class="content">
             <div class="updateUser">

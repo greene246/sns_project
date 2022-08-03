@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -16,61 +17,103 @@ public class UserService {
     private UserRepository userRepository;
 
     // id 찾기
-    public UserVO readUserId(String id) {
-        UserVO user = userRepository.findById(id).orElse(null);
-        return user;
+    public UserVO readUserId(String user_id) {
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(user_id.equals(user.get(i).getUser_id()))
+                return user.get(i);
+        }
+        return null;
     }
 
-    // read_PW
-    public UserVO readUser(UserRequestDto userRequestDto){
-        UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("존재하지 않는 사용자입니다.")
-        );
+    public UserVO findName(String name) {
+        List<UserVO> user = userRepository.findAll();
 
-        return result;
+        for(int i=0; i<user.size(); i++) {
+            if(user.get(i).getName().equals(name))
+                return user.get(i);
+        }
+        return null;
     }
 
     // 회원가입
     public UserVO createUser(UserRequestDto userRequestDto){
         UserVO user = new UserVO(userRequestDto);
-        return  userRepository.save(user);
-
+        return userRepository.save(user);
     }
 
     // 회원탈퇴 id, pw 검증
     public UserVO checkUser(UserRequestDto userRequestDto){
-        UserVO result = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("아이디 찾기 실패")
-        );
-        if(result.getUser_id().equals(userRequestDto.getUser_id()) &&
-                result.getUser_pw().equals(userRequestDto.getUser_pw())){
-            return result;
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id()) &&
+                    userRequestDto.getUser_pw().equals(user.get(i).getUser_pw())) {
+                return user.get(i);
+            }
         }
         return null;
     }
 
     // 회원탈퇴
     @Transactional
-    public void deleteUser(UserRequestDto userRequestDto){
-        UserVO user = new UserVO(userRequestDto);
-        userRepository.deleteById(user.getUser_id());
-
+    public void deleteUser(UserVO userVO){
+        userRepository.deleteById(userVO.getId());
     }
 
     // update
     @Transactional
     public boolean updateUser(UserRequestDto userRequestDto){
-        UserVO user = userRepository.findById(userRequestDto.getUser_id()).orElseThrow(
-                () -> new IllegalArgumentException("아이디 찾기 실패 업데이트 실패")
-        );
+        List<UserVO> user = userRepository.findAll();
 
-        user.update(userRequestDto);
-        return true;
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())){
+                user.get(i).update(userRequestDto);
+                return true;
+            }
+        }
+        return false;
     }
+
+    // read
+    public UserVO readUser(UserRequestDto userRequestDto){
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())){
+                return user.get(i);
+            }
+        }
+        return null;
+    }
+
+    // read_Pw
+    public UserVO readUserPw(UserRequestDto userRequestDto){
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id()) &&
+                    userRequestDto.getUser_pw().equals(user.get(i).getUser_pw())) {
+                return user.get(i);
+            }
+        }
+        return null;
+    }
+
+    @Transactional
+    public UserVO readLog(int log){
+        UserVO user = userRepository.findById(log).orElseThrow(
+                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
+        );
+        System.out.println(user.getUser_id());
+        System.out.println(user.getThumbnail());
+
+        return user;
+    }
+
     //    @Transactional
     public String findThumbnailById(String id){
-
-
         return userRepository.findThumbnailById(id);
     }
 

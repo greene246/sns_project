@@ -4,6 +4,14 @@
 <c:import url="/WEB-INF/views/header.jsp"/>
 
 <div class="main_wrap">
+
+    <%
+        if (session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+    %>
+
     <input type="hidden" value="cntBoards()">
     <div class="all_contents">
     <%

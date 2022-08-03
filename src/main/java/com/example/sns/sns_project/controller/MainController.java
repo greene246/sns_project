@@ -36,6 +36,7 @@ public class MainController {
         return "deleteForm";
     }
 
+
     @RequestMapping("/updateMyPw")
     public String updateMyPw() {
         return "updateMyPw";

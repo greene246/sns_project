@@ -1,5 +1,8 @@
 package com.example.sns.sns_project.domain;
+<<<<<<< HEAD
 import com.example.sns.sns_project.domain.UserRequestDto;
+=======
+>>>>>>> origin/New-Joohyeon
 import com.example.sns.sns_project.util.Timestamp;
 
 import lombok.AllArgsConstructor;
@@ -10,19 +13,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Table(name="users")
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Getter
 public class UserVO extends Timestamp {
 
+//    private String userId, userPw, name, email;
+//    private Timestamp created_at;
+
     @Id
+    private int id;
+
+    @Column(name="user_id", nullable = false)
     private String user_id;
 
-    @Column(name = "user_pw", nullable = false)
+    @Column(name="user_pw", nullable = false)
     private String user_pw;
 
     @Column(name="name", nullable = false)
@@ -31,15 +41,9 @@ public class UserVO extends Timestamp {
     @Column(name="email", nullable = true)
     private String email;
 
-
-    @Column(name = "created_at", nullable = true)
-    private LocalDateTime createdAt;
-
-    @Column(name = "modified_at", nullable = true)
-    private LocalDateTime modifiedAt;
-
     @Column(name="thumbnail", nullable = true)
     private String thumbnail;
+
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();

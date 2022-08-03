@@ -24,6 +24,7 @@
                     <p class="writeBoard">추가</p>
                 </a>
                 <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
+                <p class="logout" onclick="location.href='/logout'">로그아웃</p>
             </div>
         </div>
     </div>

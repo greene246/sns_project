@@ -57,9 +57,6 @@ public class MainController {
     @RequestMapping("/logout")
     public String logout(){ return "logout"; }
 
-    @RequestMapping("/updateMyPw")
-    public String updateMyPw() {
-        return "updateMyPw";
-    }
+
 
 }

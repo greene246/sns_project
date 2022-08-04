@@ -36,11 +36,13 @@
       <input type="text" name="name" id="name" placeholder="이름" class="req" required><br>
       <input type="email" name="email" id="email" placeholder="email" class="req" required><br>
       <input type="submit" value="비밀번호 찾기"><br>
+      <div class="bottom">
       <div class="hr-sect">또는</div>
       아이디가 기억나지 않으신가요? <br>
       <a class="fi" href="/findIdPage">아이디 찾기</a><br>
       <div class="gl">
         <a class="login" href="/">로그인으로 돌아가기</a>
+      </div>
       </div>
     </form>
   </div>

@@ -2,7 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/views/header.jsp"/>
-
+<%
+    if(session.getAttribute("log") == null) {
+        String url = "/";
+        response.sendRedirect(url);
+    }
+    else{
+        int log = (Integer) session.getAttribute("log");
+%>
 <div class="main_wrap">
     <input type="hidden" value="cntBoards()">
     <div class="all_contents">
@@ -29,5 +36,13 @@
 <script>
     getBoards(0);
 </script>
+<script>$(document).ready(function(){
+    getUser(<%=log%>);
+})
+</script>
+<script src="js/user.js"></script>
+<%
+    }
+%>
 </body>
 <html>

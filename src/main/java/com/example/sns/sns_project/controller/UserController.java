@@ -32,13 +32,13 @@ public class UserController {
     public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        UserRequestDto user = new UserRequestDto(user_id, user_pw);
+        UserVO result = userService.readUserId(user_id);
 
-        UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        if (result.getUser_pw().equals(user.getUser_pw())) {
+        if (result != null && result.getUser_id().equals(user_id) && result.getUser_pw().equals(user_pw)) {
             url = "/main";
+            session.setAttribute("log",result.getId());
         } else {
             url = "/?check=chcek";
         }
@@ -49,10 +49,10 @@ public class UserController {
 //        session.setAttribute("user_pw",result.getUser_pw());
 //        session.setAttribute("thumbnail", result.getThumbnail());
 
-        session.setAttribute("log",result.getId());
+
 
         try {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request,response);
         } catch (Exception e) {
             e.printStackTrace();
         }

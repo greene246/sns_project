@@ -19,7 +19,6 @@
         <input type="button" class="followBtn" name="followBtn" value="팔로우">
         <input type="button" class="followingBtn" name="following" value="팔로잉">
 
-
     </div>
 </div>
 

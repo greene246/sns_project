@@ -13,18 +13,17 @@
     <title>WriteForm</title>
 </head>
 <%
-//        if(request.getAttribute("user_id") == null){
-//        response.sendRedirect("./");
-//    }
-//    else{
-//        String user_id = (String) request.getAttribute("user_id");
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
 %>
 <body>
 <div class="write_wrap" style="display: none">
     <form method="post" id="write_form" action="/upload">
         <!-- POST로 넘겨 작업 할 소스들 -->
         <div class="sources">
-            <input type="hidden" name="user_id" value="test2" id="user_id"/>    <!-- getAttribute로 user_id 추출 -->
+            <input type="hidden" name="user_id" id="user_id">    <!-- getAttribute로 user_id 추출 -->
             <input type='hidden' id='img_url' name='img_url'>
             <input type='hidden' id='del_url' name='del_url'>
         </div>
@@ -46,7 +45,4 @@
 </div>
 </body>
 <script src="js/writeJs.js"></script>
-<%
-//}
-%>
 </html>

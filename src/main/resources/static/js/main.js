@@ -47,7 +47,7 @@ function insertHtml(Board, log) {
                         </div>
                     </div>
 
-                    <span id='main_img'><img src=${Board.img_url}></span>
+                    <span id='main_img'><img src=${Board.img_url} class="print_img"></span>
 
                     <!-- icon 모음 -->
                     <div class='icon'>

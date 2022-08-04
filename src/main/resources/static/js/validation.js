@@ -27,8 +27,9 @@ function showPopup(){
 }
 
 // 추가 버튼 클릭 시
-function writeForm(){
+function writeForm(log){
     $('.write_wrap').css("display","block");
+    who_am_i(log);
     scrollDisable()
 }
 
@@ -87,6 +88,18 @@ $(document).ready(function(){
     });
 });
 
+// 버튼 클릭시 나의 아이디 받아오기
+function who_am_i(log){
+    $.ajax({
+        url: "/getInfo?log="+log,
+        type : "POST"
+    }).done(result => {
 
+        let user_id = result.user_id;
+        console.log(user_id)
+
+        $('#user_id').val(user_id);
+    })
+}
 
 

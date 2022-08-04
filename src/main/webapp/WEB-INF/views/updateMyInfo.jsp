@@ -32,9 +32,7 @@
             <div class="user_id"></div><br>
         </div>
 
-        <div class="update_user">
-
-        </div>
+        <div class="update_user"></div>  <%--값출력--%>
 
     </div>
 

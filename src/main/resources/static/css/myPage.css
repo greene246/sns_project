@@ -35,3 +35,8 @@
 .btn{
     grid-area: btn;
 }
+
+.myPageContent{
+    display: flex;
+    padding: 60px;
+}

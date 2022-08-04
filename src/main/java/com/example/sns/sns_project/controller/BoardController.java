@@ -42,4 +42,10 @@ public class BoardController {
     public List<BoardVO> search(@PathVariable("num") int num){
         return boardService.search(num);
     }
+
+    // 유저 아이디 받아서 그 유저가 쓴 게시물 죄다 가져오기
+    @PostMapping("/myContent/{user_id}")
+    public List<BoardVO> myContent(@PathVariable("user_id") String user_id){
+        return boardService.myContent(user_id);
+    }
 }

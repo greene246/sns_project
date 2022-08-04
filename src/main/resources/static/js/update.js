@@ -138,10 +138,12 @@ function update(formObj){
 
         success: data => {
             console.log("success");
+            alert("회원정보 수정이 완료되었습니다.");
             // formObj.submit();
         },
         fail: function () {
             console.log("fail");
+            alert("회원정보 수정 오류");
         },
         error: function () {
             console.log("error")

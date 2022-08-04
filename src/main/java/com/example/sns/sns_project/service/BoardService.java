@@ -34,11 +34,13 @@ public class BoardService {
     public List<BoardVO> search(int a){
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
 
-        for(int i = 0; i < boards.size(); i++) {
-            System.out.print(boards.get(i).getId()+" ");
-            System.out.println(boards.get(i).getUser_id());
-        }
-        System.out.println("=========================================");
+        return boards;
+    }
+
+    // 나의 게시물 가져오기
+    public List<BoardVO> myContent(String user_id){
+        List<BoardVO> boards = boardRepository.findBoardsByUserId(user_id);
+
         return boards;
     }
 }

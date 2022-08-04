@@ -120,4 +120,9 @@ public class UserService {
         return user;
     }
 
+    //    @Transactional
+    public String findThumbnailById(String id){
+        return userRepository.findThumbnailById(id);
+    }
+
 }

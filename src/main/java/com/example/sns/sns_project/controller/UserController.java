@@ -39,12 +39,6 @@ public class UserController {
             url = "/?check=chcek";
         }
 
-//        session.setAttribute("user_id",result.getUser_id());
-//        session.setAttribute("name",result.getName());
-//        session.setAttribute("email",result.getEmail());
-//        session.setAttribute("user_pw",result.getUser_pw());
-//        session.setAttribute("thumbnail", result.getThumbnail());
-
         session.setAttribute("log",result.getId());
 
         try {
@@ -301,17 +295,15 @@ public class UserController {
     }
 
     @PostMapping("/getInfo")
-    public UserVO getInfo(@RequestParam(name="log") int log){
+    public UserVO getInfo(@RequestParam(name="log") int log) {
         return userService.readLog(log);
     }
 
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
         String temp = userService.findThumbnailById(id);
-        System.out.println(id);
-        System.out.println(temp);
-        return temp;
 
+        return temp;
     }
 
 }

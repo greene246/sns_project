@@ -22,12 +22,10 @@ public class LikesService {
         List<LikesVo> likes = likesRepository.findLikesByUserId(log);
 
         for (int i = 0; i < likes.size(); i++) {
-            System.out.println(likes.get(i).getBoard_id());
             if (likes.get(i).getBoard_id() == userid) {
                 check = true;
             }
         }
-        System.out.println("check: "+check);
         return check;
     }
 
@@ -42,8 +40,6 @@ public class LikesService {
                 check = true;
             }
         }
-
-        System.out.println("check: "+check);
 
         return check;
 

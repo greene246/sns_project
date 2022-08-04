@@ -8,8 +8,8 @@
     <title>myPage</title>
 </head>
 <body>
-
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+<div class="wrap">
 <%
     if(session.getAttribute("log") == null) {
         String url = "/";
@@ -18,7 +18,6 @@
     else{
         int log = (Integer) session.getAttribute("log");
 %>
-<div class="wrap">
     <div class="myPageBody">
 
         <div class="thumbnail"></div>
@@ -26,19 +25,18 @@
         <span class="name"></span>
 
         <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
-        myPage 입니다.
-    </div>
-
-    <div class="myPageContent">
 
     </div>
+
+    <div class="myPageContent"></div>
+
 </div>
 
 <script>$(document).ready(function(){
-    getUser(<%=log%>);
+    myPageUser(<%=log%>);
 })
 </script>
-<script src="js/user.js"></script>
+<script src="js/myPage.js"></script>
 <%
     }
 %>

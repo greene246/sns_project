@@ -15,15 +15,11 @@ public class LikesController {
 
     @GetMapping("/likesSearch")
     public boolean search(@RequestParam(name = "userid") int userid, @RequestParam(name = "log") int log){
-        System.out.println(userid);
-        System.out.println(log);
         return likesService.search(userid,log);
     }
 
     @GetMapping("/dibsSearch")
     public boolean dibsSearch(@RequestParam(name = "boardid") int boardid, @RequestParam(name = "log") int log){
-        System.out.println("board_id: "+boardid);
-        System.out.println("log: "+log);
 
         boolean check = likesService.dibsSearch(boardid,log);
 

@@ -24,9 +24,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-    // 로그인
-
     // login
     @PostMapping("/login")
     public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
@@ -68,9 +65,7 @@ public class UserController {
 
         String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
 
-
         UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email,thumbnail);
-
 
         String url = "";
 
@@ -122,8 +117,33 @@ public class UserController {
         }
     }
 
-
     // 이름, 이메일 변경
+    @ResponseBody
+    @PostMapping("/update")
+    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
+//        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
+        System.out.println(userRequestDto.getUser_id());
+        boolean check = userService.updateUser(userRequestDto);
+
+        if(check){
+            System.out.println("프로필 사진, 이름, 이메일 변경 성공");
+        }
+        else{
+            System.out.println("프로필 사진, 이름, 이메일 업데이트 실패");
+        }
+
+        String url = "";
+        url = "/updateMyInfo";
+
+        try {
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /*// 이름, 이메일 변경
     @PostMapping("/update")
     public void updateUser(@RequestParam(name="user_id") String user_id,
                            @RequestParam(name="name") String name,
@@ -157,9 +177,9 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
+    /*@PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
     public void updatePw(@RequestParam(name="name") String name,
                          @RequestParam(name="email") String email,
                          @RequestParam(name="user_id") String user_id,
@@ -196,7 +216,7 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @PostMapping("/getUser")
     @ResponseBody

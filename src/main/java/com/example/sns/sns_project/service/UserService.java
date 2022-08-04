@@ -64,17 +64,27 @@ public class UserService {
 
     // update
     @Transactional
-    public boolean updateUser(UserRequestDto userRequestDto){
+    public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
         for(int i=0; i<user.size(); i++) {
-            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())){
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
                 user.get(i).update(userRequestDto);
                 return true;
             }
         }
         return false;
     }
+
+    /*public UserVO readLog(int log){
+        UserVO user = userRepository.findById(log).orElseThrow(
+                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
+        );
+        System.out.println(user.getUser_id());
+        System.out.println(user.getThumbnail());
+
+        return user;
+    }*/
 
     // read
     public UserVO readUser(UserRequestDto userRequestDto){
@@ -106,8 +116,6 @@ public class UserService {
         UserVO user = userRepository.findById(log).orElseThrow(
                 () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
         );
-        System.out.println(user.getUser_id());
-        System.out.println(user.getThumbnail());
 
         return user;
     }

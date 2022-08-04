@@ -47,6 +47,11 @@
     grid-area: img;
 }
 
+/*08.04*/
+.update_user{
+    text-align: center;
+}
+
 /*updateMyInfo*/
 .c_header{
     padding-bottom: 30px;

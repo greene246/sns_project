@@ -21,9 +21,9 @@
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
                 <a onclick="writeForm(), black_block()">
-                    <p class="writeBoard">추가</p>
+                    <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>
-                <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
+                <p class="myPage" onclick="location.href='/myPage'"><img class="header_img" src="img/myPage.png"></p>
                 <p class="logout" onclick="location.href='/logout'">로그아웃</p>
             </div>
         </div>

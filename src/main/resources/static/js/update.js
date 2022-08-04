@@ -1,4 +1,4 @@
-// 새 비밀번호 체크
+/*// 새 비밀번호 체크
 $('#pw_check').change(e=>{
     let newPw = $('#pw_new').val();
     let pw_ch = $('#pw_check').val();
@@ -22,7 +22,7 @@ $('#pw_past').change(e => {
         $('#msg_err').show();
         $('#msg_ok').hide();
     }
-})
+})*/
 
 // 프사, 이름, 이메일 업데이트
 function updateUser(log){
@@ -79,8 +79,6 @@ function uploadToCloud(formObj) {
     let form = new FormData();
     form.append("image", file.files[0])
 
-    console.log("vvvvvvvvvvvvvvvvvv");
-
     let settings = {
         "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
         "method": "POST",
@@ -91,11 +89,7 @@ function uploadToCloud(formObj) {
         "data": form
     };
 
-    console.log("eeeeeeeeeeeee")
-
     $.ajax(settings).done(function (response) {
-        console.log("fofofofofofo")
-        console.log(formObj);
 
         let jx = JSON.parse(response);
         $('#img_url').val(`"${jx.data.url}"`);
@@ -127,9 +121,7 @@ function update(formObj){
         "name" : $('.name').val(),
         "email" : $('.email').val()
     }
-    console.log("이미지유알엘 : " + $(`#img_url`).val());
 
-    console.log(requestData);
     $.ajax({
         url: "/update",
         type: "POST",

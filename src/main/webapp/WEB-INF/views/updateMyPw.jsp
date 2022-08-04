@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/common.css">
     <title>updateMyPw</title>
 </head>
-<body>
-<c:import url="/WEB-INF/views/header.jsp"></c:import>
-<div class = "wrap">
     <%
         if(session.getAttribute("log") == null) {
             String url = "/";
@@ -18,6 +15,10 @@
         else {
             int log = (Integer) session.getAttribute("log");
     %>
+<body>
+<c:import url="/WEB-INF/views/header.jsp"></c:import>
+<div class = "wrap">
+    <div class="_wrap">
     <div class="menu">
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
@@ -27,11 +28,14 @@
     </div>
 
     <div id="myContent">
-        <h2 class="updateTitle">비밀번호 변경</h2>
+        <div class="c_header">
+            <h2 class="updateTitle">비밀번호 변경</h2>
+            <div class="user_id"></div><br>
+        </div>
 
-        <%=user_id%><br>
+        <div class="update_userPw"></div>   <%--값출력--%>
 
-        <form method="post" action="/updatePw">
+        <%--<form method="post" action="/updatePw">
             <div class="content">
                 <div class="updateUser">
 
@@ -54,13 +58,23 @@
 
             </div>
 
-        </form>
+        </form>--%>
     </div>
+
 </div>
-<script src="./js/update.js"></script>
+
+<script>$(document).ready(function(){
+    updatePw(<%=log%>);
+})
+</script>
+<script src="js/updatePw.js"></script>
 <%
     }
 %>
+    </div>
+
+</div>
 
 </body>
+<script src="js/updatePw.js"></script>
 </html>

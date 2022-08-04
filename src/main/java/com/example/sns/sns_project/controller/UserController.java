@@ -112,9 +112,8 @@ public class UserController {
     // 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
-    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
+    public void updateUser(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response){
 //        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
-        System.out.println(userRequestDto.getUser_id());
         boolean check = userService.updateUser(userRequestDto);
 
         if(check){
@@ -170,6 +169,12 @@ public class UserController {
             e.printStackTrace();
         }
     }*/
+
+    // 비밀번호 업데이트
+    @PostMapping("/updatePw")
+    public void updatePw(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response) {
+
+    }
 
     /*@PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
     public void updatePw(@RequestParam(name="name") String name,

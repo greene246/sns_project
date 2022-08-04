@@ -25,10 +25,18 @@ showPopup = function() {
     $(".pop1").show();
     $(".pop1").center();
 }
+
+// 추가 버튼 클릭 시
+function writeForm(){
+    $('.write_wrap').css("display","block");
+
+}
+
 //팝업창에 여백클릭스 cancel
 cancel = function() {
     $(".pop1").css("display","none");
     $(".black").css("display","none");
+    $('.write_wrap').css("display","none");
 }
 
 $(document).ready(function(){

@@ -7,7 +7,7 @@ function getBoards(scope,log) {
         url: "/search/" + scope,
         type: "GET",
         async: false,
-
+        contentType: "application/json",
         success: data => {
 
             data.forEach(e => {
@@ -31,7 +31,7 @@ function getBoards(scope,log) {
 function insertHtml(Board) {
 
     console.log("insert check");
-
+    console.log(Board.like_cnt);
     let html = `
                  <div class='section'> 
                
@@ -46,13 +46,13 @@ function insertHtml(Board) {
                         </div>
                     </div>
 
-                    <span id='main_img'><img src=${Board.img_url}></span>
+                    <span id='main_img'><img class="print_img" src=${Board.img_url}></span>
 
                     <!-- icon 모음 -->
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
-                            <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
+                            <img src='./img/heart.png' class='icon_img ${Board.id}_img' onclick="checkHeart(${Board.id})">
                                 <a href='javascript:;' onClick='javascript:showPopup()'>
                                     <img src='./img/message.png' onClick='javascript:black_block()' class='icon_img'>
                                 </a>
@@ -136,4 +136,5 @@ function checkHeart(boardid) {
             console.log("error2")
         }
     })
+    location.reload()
 }

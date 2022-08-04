@@ -79,7 +79,7 @@ function uploadToCloud(formObj) {
     let form = new FormData();
     form.append("image", file.files[0])
 
-    console.log("vvvvvvvvvvvvvvvvvv");
+
 
     let settings = {
         "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
@@ -91,11 +91,9 @@ function uploadToCloud(formObj) {
         "data": form
     };
 
-    console.log("eeeeeeeeeeeee")
+
 
     $.ajax(settings).done(function (response) {
-        console.log("fofofofofofo")
-        console.log(formObj);
 
         let jx = JSON.parse(response);
         $('#img_url').val(`"${jx.data.url}"`);

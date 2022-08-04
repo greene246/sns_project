@@ -16,12 +16,6 @@
             int log = (Integer) session.getAttribute("log");
 
     %>
-
-    <div class="serve_section">
-        serve
-
-    </div>
-
     <div class="black" onclick="javascript:cancel()"></div>
     <div class="contents_detail" style="display: none">
         <div class="detail_img">

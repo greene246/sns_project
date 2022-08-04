@@ -39,12 +39,6 @@ public class UserController {
             url = "/?check=chcek";
         }
 
-//        session.setAttribute("user_id",result.getUser_id());
-//        session.setAttribute("name",result.getName());
-//        session.setAttribute("email",result.getEmail());
-//        session.setAttribute("user_pw",result.getUser_pw());
-//        session.setAttribute("thumbnail", result.getThumbnail());
-
         session.setAttribute("log",result.getId());
 
         try {
@@ -86,27 +80,26 @@ public class UserController {
     }
 
     // 회원탈퇴
-    @PostMapping("/deleteUser")
-    public void deleteUser(@RequestParam(name="user_id") String user_id,
-                           @RequestParam(name="name") String name,
-                           @RequestParam(name="email") String email,
+    // 회원탈퇴
+    @PostMapping("/removeUser")
+    public void deleteUser(@RequestParam(name="log") int log,
                            @RequestParam(name="user_pw") String user_pw,
                            HttpServletRequest request,
                            HttpServletResponse response){
         HttpSession session = request.getSession();
 
-        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
 
         String url = "";
-        if(userService.checkUser(user) != null) {
-            userService.deleteUser(userService.checkUser(user));
+        if(userService.readLog(log).getUser_pw().equals(user_pw)){
+            userService.deleteUser(userService.readLog(log));
             session.invalidate();
             System.out.println("회원탈퇴 성공");
             url ="/";
         }
+
         else{
             System.out.println("회원정보 확인");
-            url = "/deleteUser";
+            url = "/deleteUser?check=check";
         }
 
         try {
@@ -308,8 +301,7 @@ public class UserController {
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
         String temp = userService.findThumbnailById(id);
-        System.out.println(id);
-        System.out.println(temp);
+
         return temp;
 
     }

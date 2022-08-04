@@ -12,24 +12,30 @@ public class MainController {
     }
 
     @RequestMapping("/main")
-    public String main(){
+    public String main() {
         return "main";
     }
 
     @RequestMapping("/myPage")
-    public String myPage(){
+    public String myPage() {
         return "myPage";
     }
 
-    @RequestMapping("/writeForm")
-    public String writeForm(){
-        return "writeForm";
-    };
-
     @RequestMapping("/updateMyInfo")
-    public String updateMyInfo(){
+    public String updateMyInfo() {
         return "updateMyInfo";
     }
+
+    @RequestMapping("/writeForm")
+    public String writeForm() {
+        return "writeForm";
+    }
+
+    @RequestMapping("/deleteForm")
+    public String deleteForm() {
+        return "deleteForm";
+    }
+
 
     @RequestMapping("/updateMyPw")
     public String updateMyPw() {
@@ -37,20 +43,34 @@ public class MainController {
     }
 
     @RequestMapping("/join")
-    public String join(){ return "join"; }
+    public String join() {
+        return "join";
+    }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(){ return "deleteUser"; }
+    public String deleteUser() {
+        return "deleteUser";
+    }
 
     @RequestMapping("/userPage")
-    public String userPage(){ return "userPage"; }
+    public String userPage() {
+        return "userPage";
+    }
 
     @RequestMapping("/findIdPage")
-    public String findIdPage(){ return "findIdPage"; }
+    public String findIdPage() {
+        return "findIdPage";
+    }
 
     @RequestMapping("/findPwPage")
-    public String findPw(){ return "findPwPage"; }
+    public String findPw() {
+        return "findPwPage";
+    }
 
     @RequestMapping("/logout")
-    public String logout(){ return "logout"; }
+    public String logout() {
+        return "logout";
+    }
 }
+
+

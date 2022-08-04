@@ -1,8 +1,6 @@
 package com.example.sns.sns_project.service;
 
-import com.example.sns.sns_project.domain.BoardRepository;
-import com.example.sns.sns_project.domain.BoardRequestDto;
-import com.example.sns.sns_project.domain.BoardVO;
+import com.example.sns.sns_project.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +22,9 @@ public class BoardService {
     }
 
     @Transactional
-    public void deleteBoard(int id){
-        boardRepository.deleteById(id);
+    public void deleteBoard(BoardRequestDto boardRequestDto){
+        int del_id = boardRequestDto.getId();
+        boardRepository.deleteById(del_id);
     }
 
 
@@ -43,6 +42,7 @@ public class BoardService {
 
         return boards;
     }
+
 }
 
 

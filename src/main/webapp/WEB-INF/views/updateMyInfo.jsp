@@ -47,5 +47,10 @@
     }
 %>
 
+    </div>
+
+</div>
 </body>
+<script src="js/update.js"></script>
+<script src="js/writeJs.js"></script>
 </html>

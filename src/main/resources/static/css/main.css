@@ -12,6 +12,10 @@
     width: 100px;
 }
 
+.main_section{
+
+}
+
 .section{
     /*flex-grow: 1;*/
     display : flex;

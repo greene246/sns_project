@@ -32,18 +32,16 @@ public class BoardService {
 
     // 컨텐츠 DB 탐색색
 //   public void search(int a){
-   public List<BoardVO> search(int a){
+    public List<BoardVO> search(int a){
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
 
         for(int i = 0; i < boards.size(); i++) {
             System.out.print(boards.get(i).getId()+" ");
-           System.out.println(boards.get(i).getUser_id());
+            System.out.println(boards.get(i).getUser_id());
         }
         System.out.println("=========================================");
         return boards;
     }
-
-
 }
 
 

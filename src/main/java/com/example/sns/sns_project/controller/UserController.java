@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // log_in 성주현
+    // login
     @PostMapping("/login")
     public void loginUser(@RequestParam(name="user_id") String user_id, @RequestParam(name="user_pw") String user_pw, HttpServletRequest request , HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -53,7 +53,7 @@ public class UserController {
         }
     }
 
-    // join 성주현
+    // 회원가입
     @PostMapping("/joinUser")
     public void addUser(@RequestParam(name="user_id") String user_id,
                         @RequestParam(name="user_pw") String user_pw,
@@ -63,9 +63,7 @@ public class UserController {
 
         String thumbnail = "https://i.postimg.cc/2jtmv9kZ/user.png";
 
-
         UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email,thumbnail);
-
 
         String url = "";
 
@@ -86,26 +84,28 @@ public class UserController {
         }
     }
 
-    // signout 성주현
-    @PostMapping("/removeUser")
-    public void deleteUser(@RequestParam(name="log") int log,
+    // 회원탈퇴
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestParam(name="user_id") String user_id,
+                           @RequestParam(name="name") String name,
+                           @RequestParam(name="email") String email,
                            @RequestParam(name="user_pw") String user_pw,
                            HttpServletRequest request,
                            HttpServletResponse response){
         HttpSession session = request.getSession();
 
+        UserRequestDto user = new UserRequestDto(user_id,user_pw,name,email);
 
         String url = "";
-        if(userService.readLog(log).getUser_pw().equals(user_pw)){
-            userService.deleteUser(userService.readLog(log));
+        if(userService.checkUser(user) != null) {
+            userService.deleteUser(userService.checkUser(user));
             session.invalidate();
             System.out.println("회원탈퇴 성공");
             url ="/";
         }
-
         else{
             System.out.println("회원정보 확인");
-            url = "/deleteUser?check=check";
+            url = "/deleteUser";
         }
 
         try {
@@ -115,8 +115,33 @@ public class UserController {
         }
     }
 
+    // 이름, 이메일 변경
+    @ResponseBody
+    @PostMapping("/update")
+    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
+//        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
+        System.out.println(userRequestDto.getUser_id());
+        boolean check = userService.updateUser(userRequestDto);
 
-    // 이름, 이메일 변경 성주현
+        if(check){
+            System.out.println("프로필 사진, 이름, 이메일 변경 성공");
+        }
+        else{
+            System.out.println("프로필 사진, 이름, 이메일 업데이트 실패");
+        }
+
+        String url = "";
+        url = "/updateMyInfo";
+
+        try {
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /*// 이름, 이메일 변경
     @PostMapping("/update")
     public void updateUser(@RequestParam(name="user_id") String user_id,
                            @RequestParam(name="name") String name,
@@ -150,10 +175,9 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    // 비번 바꾸기 성주현
-    @PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
+    /*@PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
     public void updatePw(@RequestParam(name="name") String name,
                          @RequestParam(name="email") String email,
                          @RequestParam(name="user_id") String user_id,
@@ -190,9 +214,8 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    // 유져찾기 성주현
     @PostMapping("/getUser")
     @ResponseBody
     public String getUser(@RequestBody UserRequestDto userRequestDto){
@@ -290,8 +313,5 @@ public class UserController {
 
     }
 
-
-
 }
-
 

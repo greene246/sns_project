@@ -16,7 +16,7 @@
 <body>
 <%if(request.getParameter("check")!= null){ %>
 <script>
-  alert("회원정보를 확인하세요.");
+    alert("회원정보를 확인하세요.");
 </script>
 
 <%}%>
@@ -45,5 +45,8 @@
   </div>
   <%--<c:import url="/WEB-INF/views/footer.jsp"/>--%>
 </div>
+
+<script src="script/validation.js"></script>
+
 </body>
 </html>

@@ -32,13 +32,15 @@ public class BoardController {
     public void deleteBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException{
         boardService.deleteBoard(boardRequestDto);
 
+        String url = "/main";
+        try{
+//            request.getRequestDispatcher(url).forward(request,response);
+        }catch (Exception e){
+            e.printStackTrace();
     }
-
+    }
     @GetMapping("/search/{num}")
-//    public List<BoardVO> search(@RequestParam(name = "a") int a){
     public List<BoardVO> search(@PathVariable("num") int num){
-//    public void search(@PathVariable("num") int num){
         return boardService.search(num);
-//        boardService.search(num);
     }
 }

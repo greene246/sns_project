@@ -39,7 +39,7 @@
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 1000px;
+    width: 900px;
 }
 
 .myImage{
@@ -47,6 +47,6 @@
 }
 
 .imgSize{
-    width: 300px;
+    width: 280px;
 }
 

@@ -1,7 +1,5 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.service.UserService;
-
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 

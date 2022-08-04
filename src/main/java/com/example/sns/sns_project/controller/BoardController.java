@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.example.sns.sns_project.domain.BoardRepository;
 
 import java.util.List;
 
@@ -37,14 +36,10 @@ public class BoardController {
             request.getRequestDispatcher(url).forward(request,response);
         }catch (Exception e){
             e.printStackTrace();
-        }
     }
-//    @GetMapping("/search")
+    }
     @GetMapping("/search/{num}")
-//    public List<BoardVO> search(@RequestParam(name = "a") int a){
     public List<BoardVO> search(@PathVariable("num") int num){
-//    public void search(@PathVariable("num") int num){
         return boardService.search(num);
-//        boardService.search(num);
     }
 }

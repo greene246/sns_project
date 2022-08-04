@@ -1,4 +1,3 @@
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -11,16 +10,14 @@
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
     <%
-        String user_id = (String) session.getAttribute("user_id");
-        String name = (String) session.getAttribute("name");
+        int log = (Integer) session.getAttribute("log");
     %>
 <div class="wrap">
     <div class="myPageBody">
         <span class="img"><img src="./img/도라에몽.png"></span>
-        <span class="id"><%=user_id%></span>
-        <span class="name"><%=name%></span>
 
         <input type="button" class="followBtn" name="followBtn" value="팔로우">
+        <input type="button" class="followingBtn" name="following" value="팔로잉">
 
 
     </div>

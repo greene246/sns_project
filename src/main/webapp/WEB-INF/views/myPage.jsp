@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/myPage.css">
     <title>myPage</title>
 </head>
-<body>
-<c:import url="/WEB-INF/views/header.jsp"></c:import>
-<div class="wrap">
 <%
     if(session.getAttribute("log") == null) {
         String url = "/";
@@ -18,6 +15,9 @@
     else{
         int log = (Integer) session.getAttribute("log");
 %>
+<body>
+<c:import url="/WEB-INF/views/header.jsp"></c:import>
+<div class="wrap">
     <div class="myPageBody">
 
         <div class="thumbnail"></div>

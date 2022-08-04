@@ -1,5 +1,4 @@
 .myPageBody{
-    height: 30vw;
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -38,5 +37,16 @@
 
 .myPageContent{
     display: flex;
-    padding: 60px;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 1000px;
 }
+
+.myImage{
+    padding: 10px;
+}
+
+.imgSize{
+    width: 300px;
+}
+

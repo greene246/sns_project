@@ -8,7 +8,7 @@ function myPageUser(log){
 
         user_id = result.user_id;
         let user_name = result.name;
-        let thumbnail = `<img src=${result.thumbnail} style="width: 200px;">`;
+        let thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
 
         myPageContents(user_id);
 
@@ -46,7 +46,7 @@ function printContent(Board) {
     console.log(thumbnail);
 
     let html = `
-        <div class="myImage"><img style="width: 150px;" src=${thumbnail}></div>
+        <div class="myImage"><img class="imgSize" src=${thumbnail}></div>
     `;
     $('.myPageContent').append(html);
 

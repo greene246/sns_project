@@ -20,23 +20,33 @@ function black_block(){
 // });
 
 
-//팝업창을 보여준다.
-showPopup = function() {
-    $(".pop1").show();
-    $(".pop1").center();
+// 댓글 클릭 시 보여준다.
+function showPopup(){
+    $(".contents_detail").css("display", "block");
+    scrollDisable()
 }
 
 // 추가 버튼 클릭 시
 function writeForm(){
     $('.write_wrap').css("display","block");
+    scrollDisable()
+}
 
+// 스크롤 강제 막기
+function scrollDisable(){
+    $('html, body').addClass('hidden');
+}
+// 스크롤 작동
+function scrollAble(){
+    $('html, body').removeClass('hidden');
 }
 
 //팝업창에 여백클릭스 cancel
 cancel = function() {
-    $(".pop1").css("display","none");
-    $(".black").css("display","none");
+    $(".contents_detail").css("display","none");
     $('.write_wrap').css("display","none");
+    $(".black").css("display","none");
+    scrollAble()
 }
 
 $(document).ready(function(){

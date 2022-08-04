@@ -10,9 +10,9 @@ function getBoards(scope,log) {
 
         success: data => {
             data.forEach(e => {
-                insertHtml(e);
-                _userid = e.id;
                 _log = log;
+                _userid = e.id;
+                insertHtml(e, _log);
                  getThumbnail(e.user_id);
                  checkDibs(_userid,_log);
             })
@@ -54,8 +54,8 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                <a href='javascript:;' onClick='javascript:showPopup()'>
-                                    <img src='./img/message.png' onClick='javascript:black_block()' class='icon_img'>
+                                <a onClick='showPopup(), black_block()'>
+                                    <img src='./img/message.png' class='icon_img'>
                                 </a>
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
@@ -63,17 +63,19 @@ function insertHtml(Board, log) {
                         <span><img src='./img/bookmark_off.png' class='icon_img'></span>
 
                     </div>
-
-                    <span class='word'> 좋아요 ${Board.like_cnt}개</span>
-                    <span class='id'>${Board.user_id}</span>
-
-                    <div className='main3' id='contents'>${Board.contents}</div>
-                    <div className='main4' id='createdAt'>${Board.createdAt}</div>
+                    
+                    <div class="text_sources">
+                        <span class='word'> 좋아요 ${Board.like_cnt}개</span>
+                        <span class='id'>${Board.user_id}</span>
+                        <span className='main3' id='contents'>${Board.contents}</span>
+                        <span className='main4' id='createdAt'>${Board.createdAt}</span>
+                        <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
+                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                    </div>
                 </div>
             `;
 
-    $('.all_contents').append(html);
-
+    $('.main_section').append(html);
 }
 //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
 function getThumbnail(userId) {
@@ -141,23 +143,32 @@ function checkHeart(boardid) {
 }
 
 // 댓글 업로드
-function upload_comments(log, board_id){
-    let user_id = log;
+function upload_comments(log, board_id, comments_id){
+    // log = 로그인 중인 user의 id값
+    // board_id = 댓글을 작성한 보드의 id값
+    // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    let comments = $(`#${comments_id}`).val();
 
-    console.log($('.comments').val())
-    console.log(board_id);
-    console.log(user_id);
+    const requestData = {
+        "user_id" : log,
+        "board_id" : board_id,
+        "comment" : comments
+    };
 
+    console.log(requestData)
+
+    $.ajax({
+        url : '/upload_comments',
+        method : 'POST',
+        data : JSON.stringify(requestData),
+        contentType: "application/json"
+    }).success(result => {
+        console.log("comments upload success");
+        $(`#${comments_id}`).val('');
+    }).fail(error=>{
+        console.log("comments upload fail");
+    })
 }
-
-$('#comments').keypress(e=>{
-    alert("asd");
-    console.log(e.target());
-    // let ll = $($(e.target).parents('.section')).find('#hidden_id').val();
-    // let dd = $($(e.target).parents('.section'));
-    // console.log(dd);
-    // console.log(ll);
-})
 
 // // 해당 테이블에 찜 확인 출력
 // function checkDibs(userid,log) {

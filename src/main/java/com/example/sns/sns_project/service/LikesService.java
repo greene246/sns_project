@@ -43,8 +43,6 @@ public class LikesService {
             }
         }
 
-        System.out.println("check: "+check);
-
         return check;
 
     }

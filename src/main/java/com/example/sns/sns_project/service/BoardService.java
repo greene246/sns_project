@@ -1,8 +1,6 @@
 package com.example.sns.sns_project.service;
 
-import com.example.sns.sns_project.domain.BoardRepository;
-import com.example.sns.sns_project.domain.BoardRequestDto;
-import com.example.sns.sns_project.domain.BoardVO;
+import com.example.sns.sns_project.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,9 +37,9 @@ public class BoardService {
             System.out.print(boards.get(i).getId()+" ");
             System.out.println(boards.get(i).getUser_id());
         }
-        System.out.println("=========================================");
         return boards;
     }
+
 }
 
 

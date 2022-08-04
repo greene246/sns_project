@@ -29,18 +29,21 @@ public class BoardController {
 
     @DeleteMapping("/delete_board")
     @ResponseBody
-    public void deleteBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException{
+    public void deleteBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
         boardService.deleteBoard(boardRequestDto);
 
         String url = "/main";
-        try{
+        try {
 //            request.getRequestDispatcher(url).forward(request,response);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
     }
-    }
+
     @GetMapping("/search/{num}")
-    public List<BoardVO> search(@PathVariable("num") int num){
+    public List<BoardVO> search(@PathVariable("num") int num) {
         return boardService.search(num);
     }
+
+
 }

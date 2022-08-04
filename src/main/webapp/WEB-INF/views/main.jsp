@@ -2,25 +2,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/views/header.jsp"/>
-
-<div class="main_wrap">
-    <input type="hidden" value="cntBoards()">
-    <div class="all_contents">
     <%
         if(session.getAttribute("log") == null) {
             String url = "/";
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
         else {
             int log = (Integer) session.getAttribute("log");
 
     %>
-
-    <div class="serve_section">
-        serve
+<div class="main_wrap">
+    <div class="all_contents">
+    <div class="main_section">
 
     </div>
 
+    <div class="serve_section">
+        serve
+    </div>
+
+</div>
     <div class="black" onclick="javascript:cancel()"></div>
     <div class="contents_detail" style="display: none">
         <div class="detail_img">
@@ -32,11 +33,11 @@
     </div>
     <c:import url="/WEB-INF/views/writeForm.jsp"/>
 </div>
-</div>
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script>
     getBoards(0,<%=log%>);
 </script>
+<%}%>
 </body>
-<html>
+</html>

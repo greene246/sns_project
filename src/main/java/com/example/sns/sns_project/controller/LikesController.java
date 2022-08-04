@@ -22,9 +22,6 @@ public class LikesController {
 
     @GetMapping("/dibsSearch")
     public boolean dibsSearch(@RequestParam(name = "boardid") int boardid, @RequestParam(name = "log") int log){
-        System.out.println("board_id: "+boardid);
-        System.out.println("log: "+log);
-
         boolean check = likesService.dibsSearch(boardid,log);
 
 //        false가 떠야

@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/common.css">
     <title>updateMyInfo</title>
 </head>
-<body>
-<c:import url="/WEB-INF/views/header.jsp"></c:import>
-<div class="wrap">
     <%
         if(session.getAttribute("log") == null) {
             String url = "/";
@@ -18,6 +15,10 @@
         else {
             int log = (Integer) session.getAttribute("log");
     %>
+<body>
+<c:import url="/WEB-INF/views/header.jsp"></c:import>
+<div class="wrap">
+    <div class="_wrap">
     <div class="menu">
         <div>
             <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>

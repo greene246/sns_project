@@ -1,3 +1,6 @@
+._wrap{
+    overflow: hidden;
+}
 
 .content{
     text-align: center;

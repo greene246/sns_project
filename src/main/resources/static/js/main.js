@@ -1,4 +1,3 @@
-let $thumb;
 let _userid;
 let _log;
 //Boards DB에 있느 값을 가져온다.
@@ -15,8 +14,8 @@ function getBoards(scope,log) {
                 _userid = e.id;
                 _log = log;
                 insertHtml(e, _log);
-                 getThumbnail(e.user_id);
-                 checkDibs(_userid,_log);
+                getThumbnail(e.user_id);
+                checkDibs(_userid,_log);
             })
         },
         fail: function () {
@@ -31,8 +30,6 @@ function getBoards(scope,log) {
 //메인 출력 부분
 function insertHtml(Board, log) {
 
-    console.log("insert check");
-    console.log(Board.like_cnt);
     let html = `
                  <div class='section'> 
                
@@ -43,6 +40,7 @@ function insertHtml(Board, log) {
                         <div id='userid'>
                             <a>${Board.user_id}</a>
                         </div>
+                        
                     </div>
 
                     <span id='main_img'><img src=${Board.img_url} class="print_img"></span>
@@ -58,7 +56,6 @@ function insertHtml(Board, log) {
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
                         <!-- 북마크 -->
-
                         <span><img src='./img/bookmark_off.png' class='icon_img'></span>
                     </div>
                     
@@ -66,16 +63,18 @@ function insertHtml(Board, log) {
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
-                        <span className='main4' id='createdAt'>${Board.createdAt}</span>
+                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
                         <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
                         <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
                     </div>
+                    
                 </div>
                 
                     <div class="black" onclick="javascript:cancel()"></div>
                         <div class="contents_detail" style="display: none">
                         <div class="detail_img">
-                            <img src="/img/cute.JPG">
+                            <img src=${Board.img_url}>
+                            <!--  <img src="/img/cute.JPG">-->
                         </div>
                         <div class="detail_coments">
                             <h1>test 댓글창</h1>
@@ -86,14 +85,14 @@ function insertHtml(Board, log) {
     $('.main_section').append(html);
 }
  //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
-function getThumbnail(userId) {
+function getThumbnail(userid) {
     $.ajax({
-        url: "/getThumbnail?id=" + userId,
+        url: "/getThumbnail?id=" + userid,
         type: "GET",
         async: false,
         contentType: "application/json",
         success: data => {
-             $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
+             $('.'+userid+'_info').prop('src', data.replace(/"/gi,""));
         },
         fail: function () {
             console.log("fail2")
@@ -129,7 +128,6 @@ function checkDibs(userid,log) {
  //하트 찜하기
 function checkHeart(boardid) {
 
-    console.log("boardid: "+boardid)
     $.ajax({
         url: "/dibsSearch?boardid=" + boardid + "&log=" + _log,
         type: "GET",
@@ -159,7 +157,6 @@ function upload_comments(log, board_id, comments_id){
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
     let comments = $(`#${comments_id}`).val();
-    console.log(comments);
     const requestData = {
         "user_id" : log,
         "board_id" : board_id,
@@ -181,3 +178,24 @@ function upload_comments(log, board_id, comments_id){
     })
 }
 
+
+// 댓글 출력
+function showComment(){
+
+    $.ajax({
+        url: "/dibsSearch?boardid=" + boardid + "&log=" + _log,
+        type: "GET",
+        async: false,
+        contentType: "application/json",
+        success: data => {
+
+        },
+        fail: function () {
+            console.log("fail3")
+        },
+        error: function () {
+            console.log("error3")
+        }
+    })
+
+}

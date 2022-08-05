@@ -23,6 +23,16 @@
 
     </div>
 
+<%--    <div class="black" onclick="javascript:cancel()"></div>--%>
+<%--    <div class="contents_detail" style="display: none">--%>
+<%--        <div class="detail_img">--%>
+<%--            <img src=${Board.img_url}>--%>
+<%--            <!--  <img src="/img/cute.JPG">-->--%>
+<%--        </div>--%>
+<%--        <div class="detail_coments">--%>
+<%--            <h1>test 댓글창</h1>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
     <c:import url="/WEB-INF/views/writeForm.jsp"/>
 </div>

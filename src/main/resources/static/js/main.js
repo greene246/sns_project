@@ -77,15 +77,16 @@ function insertHtml(Board, log) {
 // Serve 출력 부분
 function serveShow(log){
     console.log("serve 출력 js")
-  //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
         url: "/getUser?log=" + log,
         type: "GET",
         async: false,
         contentType: "application/json",
         success: data => {
+
             let html = `
-                     <img src=${data.img_url}>
+           
+                     <span id="profile_img_wrap"><img src="${data.thumbnail}" class="profile_img1"></span>
                      <div class='profile_box'>${data.user_id}</div>
             `;
 
@@ -170,17 +171,17 @@ function checkHeart(boardid) {
 
  // 댓글 업로드
 function upload_comments(log, board_id, comments_id){
+
     // log = 로그인 중인 user의 id값
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
+
     let comments = $(`#${comments_id}`).val();
     const requestData = {
         "user_id" : log,
         "board_id" : board_id,
         "comment" : comments
     };
-c
-    console.log(requestData)
 
     $.ajax({
         url : '/upload_comments',

@@ -3,7 +3,6 @@
     min-height:100%;
     overflow:hidden !important;
     touch-action:none;
-
 }
 .main_wrap {
     display: flex;
@@ -36,8 +35,14 @@
     padding: 8px;
 }
 
+
 .profile_img{
     height: 100%;
+    border-radius: 50%;
+}
+
+.profile_img1{
+    height: 12%;
     border-radius: 50%;
 }
 
@@ -139,20 +144,6 @@
     width: 1000px;
     height: 500px;
 }
-
-/*.pop1 img {*/
-/*    !*position: absolute;*!*/
-/*    !*width: 80%;*!*/
-/*    !*top: 50%;*!*/
-/*    !*left: 50%;*!*/
-/*    !*transform: translate(-50%, -50%);*!*/
-
-/*    max-height: 450px;*/
-/*    max-width: 450px;*/
-/*    aspect-ratio: 692.8 / 921;*/
-/*    flex-basis: 450.8px;*/
-
-/*}*/
 
 .black {
     opacity: 0.45;

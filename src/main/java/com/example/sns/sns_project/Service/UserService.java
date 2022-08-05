@@ -62,13 +62,16 @@ public class UserService {
         userRepository.deleteById(userVO.getId());
     }
 
-    // update
+    // 회원정보 update
     @Transactional
     public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
+        System.out.println("SIZE : " + user.size());
+
         for(int i=0; i<user.size(); i++) {
             if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
+                System.out.println("userId : " + user.get(i).getUser_id());
                 user.get(i).update(userRequestDto);
                 return true;
             }
@@ -76,15 +79,19 @@ public class UserService {
         return false;
     }
 
-    /*public UserVO readLog(int log){
-        UserVO user = userRepository.findById(log).orElseThrow(
-                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
-        );
-        System.out.println(user.getUser_id());
-        System.out.println(user.getThumbnail());
+    // 비밀번호 update
+    @Transactional
+    public boolean updateUserPw(UserRequestDto userRequestDto) {
+        List<UserVO> user = userRepository.findAll();
 
-        return user;
-    }*/
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
+                user.get(i).updatePw(userRequestDto);
+                return true;
+            }
+        }
+        return false;
+    }
 
     // read
     public UserVO readUser(UserRequestDto userRequestDto){

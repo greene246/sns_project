@@ -33,14 +33,36 @@
             <div class="user_id"></div><br>
         </div>
 
-        <div class="update_user"></div>  <%--값출력--%>
+        <form method="post">
+            <input type="hidden" name="user_id" id="user_id" value="">
+
+            <div class="_img">프로필 사진</div><br>
+            <div class="image-container">
+
+                <input type="hidden" name="img_url" id="img_url">
+                <input type="hidden" name="preview" id="preview" value="">
+                <img style="width: 150px;" id="preview-image" src=""><br>
+                <input type="file" id="input_img" onchange="show_img(event)">
+            </div>
+
+            <div class="_name">이름</div>
+            <input type="text" name="name" class="name" value="" placeholder="이름" required><br>
+
+            <div class="_email">이메일</div>
+            <input type="email" name="email" class="email" value="" placeholder="이메일" required><br>
+
+            <div class="button">
+                <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">
+            </div>
+
+        </form>
 
     </div>
 
 </div>
 
 <script>$(document).ready(function(){
-    updateUser(<%=log%>);
+    getUpdateId(<%=log%>);
 })
 </script>
 <script src="js/update.js"></script>

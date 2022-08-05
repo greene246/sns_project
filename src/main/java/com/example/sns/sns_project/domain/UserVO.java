@@ -56,6 +56,7 @@ public class UserVO extends Timestamp {
 
     }
 
+    // 비밀번호 업뎃
     public void updatePw(UserRequestDto userRequestDto){
         this.user_pw = userRequestDto.getUser_pw();
     }

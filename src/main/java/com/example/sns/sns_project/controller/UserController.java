@@ -109,12 +109,15 @@ public class UserController {
         }
     }
 
-    // 이름, 이메일 변경
+    // 프로필 사진, 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
     public void updateUser(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response){
-//        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
+        System.out.println("userID : " + userRequestDto.getUser_id());
+
         boolean check = userService.updateUser(userRequestDto);
+
+        System.out.println("check: " + check);
 
         if(check){
             System.out.println("프로필 사진, 이름, 이메일 변경 성공");
@@ -133,47 +136,9 @@ public class UserController {
         }
     }
 
-
-    /*// 이름, 이메일 변경
-    @PostMapping("/update")
-    public void updateUser(@RequestParam(name="user_id") String user_id,
-                           @RequestParam(name="name") String name,
-                           @RequestParam(name = "email") String email,
-                           @RequestParam(name="user_pw") String user_pw,
-                           @RequestParam(name="img_url") String thumbnail,
-                           HttpServletRequest request, HttpServletResponse response){
-
-        HttpSession session = request.getSession();
-
-        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
-
-        boolean check = userService.updateUser(userRequestDto);
-
-        if(check){
-            session.setAttribute("name",userRequestDto.getName());
-            session.setAttribute("email",userRequestDto.getEmail());
-            session.setAttribute("user_pw",userRequestDto.getUser_pw());
-            session.setAttribute("thumbnail",userRequestDto.getThumbnail());
-
-            System.out.println("프로필 사진, 이름, 이메일 변경 성공");
-        }
-        else{
-            System.out.println("프로필 사진, 이름, 이메일 업데이트 실패");
-        }
-        String url = "";
-        url = "/updateMyInfo";
-
-        try {
-            response.sendRedirect(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
     // 비밀번호 업데이트
     @PostMapping("/updatePw")
     public void updatePw(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response) {
-
         boolean check = userService.updateUserPw(userRequestDto);
 
         if(check){
@@ -193,46 +158,6 @@ public class UserController {
         }
 
     }
-
-    // 새 비밀번호, 새 비밀번호 확인
-    /*@PostMapping("/updatePw")
-    public void updatePw(@RequestParam(name="name") String name,
-                         @RequestParam(name="email") String email,
-                         @RequestParam(name="user_id") String user_id,
-                         @RequestParam(name="pw_new") String pw_new,
-                         @RequestParam(name="pw_check") String pw_check,
-                         @RequestParam(name="pw_past") String pw_past,
-                         @RequestParam(name="thumbnail") String thumbnail,
-                         HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-
-        String user_pw = (String) session.getAttribute("user_pw");
-        if(pw_new.equals(pw_check) && pw_past.equals(user_pw)){
-
-            UserRequestDto userRequestDto = new UserRequestDto(user_id, pw_new, name, email, thumbnail);
-            boolean check = userService.updateUser(userRequestDto);
-
-            if(check){
-                session.setAttribute("name",userRequestDto.getName());
-                session.setAttribute("email",userRequestDto.getEmail());
-                session.setAttribute("user_pw",userRequestDto.getUser_pw());
-                session.setAttribute("thumbnail",userRequestDto.getThumbnail());
-
-                System.out.println("비밀번호 업데이트 성공");
-            }
-        }
-        else{
-            System.out.println("비밀번호 입력 오류");
-        }
-        String url = "";
-        url = "/updateMyPw";
-
-        try{
-            response.sendRedirect(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 
     @PostMapping("/getUser")
     @ResponseBody

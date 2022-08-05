@@ -2,11 +2,15 @@ let user_id;
 let name;
 let thumbnail;
 
-function userPageUser(log){
+function userPageUser(userId) {
+    console.log('userId: ' + userId);
     $.ajax({
-        url : "/getInfo?log=" + log,
-        type : "POST"
+        url: "/getUserId?userId='" + userId+"'",
+        type: "POST"
     }).done(result => {
+        console.log(result);
+
+        location.href='/userPage?ppp=' + result;
 
         user_id = result.user_id;
         name = result.name;
@@ -20,25 +24,31 @@ function userPageUser(log){
     })
 }
 
-function userPageContents(user_id){
+function userPageContents(userId) {
 
     $.ajax({
-        url : "/myContent/" + user_id,
-        type : "POST",
-        async : false,
-        contentType : "application/json",
+        url: "/myContent/" + userId,
+        type: "POST",
+        async: false,
+        contentType: "application/json",
+        //
+        // success : data => {
+        //     data.forEach(e => {
+        //         printContent(e);
+        //     })
+        // },
+        // fail : function () {
+        //     console.log("fail");
+        // },
+        // error : function () {
+        //     console.log("error");
+        // }
+    }).done(data => {
+        data.forEach(e => {
+            printContent(e);
+        })
+        location.href="/userPage";
 
-        success : data => {
-            data.forEach(e => {
-                printContent(e);
-            })
-        },
-        fail : function () {
-            console.log("fail");
-        },
-        error : function () {
-            console.log("error");
-        }
     })
 }
 

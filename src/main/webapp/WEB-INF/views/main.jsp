@@ -32,6 +32,7 @@
 </div>
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
+<script src="./js/userPage.js"></script>
 <script>
     getBoards(0,<%=log%>);
     getBoards(1,<%=log%>);

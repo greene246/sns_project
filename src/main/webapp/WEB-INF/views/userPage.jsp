@@ -9,7 +9,8 @@
 </head>
 <body>
 <%
-    int log = (Integer) session.getAttribute("log");
+//    int log = (Integer) session.getAttribute("log");
+    String userId = (String) request.getParameter("userId");
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -29,7 +30,7 @@
 </div>
 
 <script>$(document).ready(function(){
-    myPageUser(<%=log%>);
+    userPageUser('<%=userId%>');
 })
 </script>
 <script src="js/userPage.js"></script>

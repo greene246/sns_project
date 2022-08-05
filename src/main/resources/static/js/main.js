@@ -37,7 +37,7 @@ function insertHtml(Board, log) {
                     
                      <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
                      
-                        <div id='userid' onclick="location.href='/userPage'" value="${Board.user_id}">
+                        <div id='userid' onclick="location.href='/userPage?userId=${Board.user_id}'" value="${Board.user_id}">
                             <a>${Board.user_id}</a>
                         </div>
                         

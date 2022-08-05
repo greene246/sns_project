@@ -4,7 +4,6 @@ $('#user_id').change(e => {
         "user_id" : $('#user_id').val()
     }
 
-
     $.ajax({
         url: "/getUser",
         type: "POST",

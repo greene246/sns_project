@@ -157,6 +157,7 @@ public class UserController {
 
     }
 
+    // 회원가입때 아이디 중복 검사
     @PostMapping("/getUser")
     @ResponseBody
     public String getUser(@RequestBody UserRequestDto userRequestDto){
@@ -208,6 +209,7 @@ public class UserController {
         }
     }
 
+    // 비밀번호 찾기
     @PostMapping("/findPw")
     public void findPw(@RequestParam(name="user_id") String user_id,
                        @RequestParam (name="name") String name,
@@ -240,6 +242,7 @@ public class UserController {
 
     }
 
+    // 유저 고유코드 받아서 유저 정보 리턴
     @PostMapping("/getInfo")
     public UserVO getInfo(@RequestParam(name="log") int log) {
         return userService.readLog(log);
@@ -259,6 +262,13 @@ public class UserController {
         System.out.println("log: " + log);
         return userService.findUser(log);
     }
+
+    // 유저 아이디 받아서 유저 정보 리턴
+    @PostMapping("/getUserId")
+    public UserVO getUserId(@RequestParam(name="user_id") String user_id){
+        return userService.readUserId(user_id);
+    }
+
 
 }
 

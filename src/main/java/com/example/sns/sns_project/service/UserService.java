@@ -138,4 +138,13 @@ public class UserService {
         return user;
     }
 
+    /*@Transactional
+    public UserVO readLog(String user_id){
+        UserVO user = userRepository.findById(log).orElseThrow(
+                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
+        );
+
+        return user;
+    }*/
+
 }

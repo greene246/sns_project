@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<UserVO , Integer> {
 
@@ -13,7 +15,7 @@ public interface UserRepository extends JpaRepository<UserVO , Integer> {
     @Query(value = "select thumbnail from sns.users where user_id=?1", nativeQuery = true)
     public String findThumbnailById(String id);
 
-    @Query(value = "select * from sns.users where user_id=?1", nativeQuery = true)
-    public String findIUserById(int id);
+    @Query(value = "select * from sns.users where id=?1", nativeQuery = true)
+    public UserVO findIUserById(int id);
 
 }

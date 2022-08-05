@@ -4,9 +4,9 @@ $('.msg').click(e => {
     let img_src = $($(e.target).parents('.section')).find('.profile_img').prop('src');
     let user_id = $($(e.target).parents('.section')).find('.user_id').text();
 
-    console.log(img_src);
     $('.detail_profile_img').attr("src", img_src);
-    $('.detail_user_id').append(user_id);
+    let html = `<span>${user_id}</span>`
+    $('.detail_user_id').append(html);
 })
 
 window.onclick = function (event) {

@@ -2,7 +2,6 @@ let $thumb;
 let _userid;
 let _log;
 function getBoards(scope,log) {
-    let list;
     $.ajax({
         url: "/search/" + scope,
         type: "GET",
@@ -24,12 +23,10 @@ function getBoards(scope,log) {
             console.log("error1")
         }
     })
-    return list;
 }
 
 function insertHtml(Board, log) {
 
-    console.log("insert check");
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
@@ -137,14 +134,11 @@ function upload_comments(log, board_id, comments_id){
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
     let comments = $(`#${comments_id}`).val();
-    console.log(comments);
     const requestData = {
         "user_id" : log,
         "board_id" : board_id,
         "comment" : comments
     };
-
-    console.log(requestData)
 
     $.ajax({
         url : '/upload_comments',

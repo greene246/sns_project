@@ -1,3 +1,5 @@
+let arr = new Array();
+
 // 팝업창
 jQuery.fn.center = function () {
     this.css("position","absolute");
@@ -12,16 +14,16 @@ function file_upload_pop(log){
     $(".black").css("display","block");
     $(".write_wrap").css("display","block");
     $(".contents_detail").css("display","none");
-    who_am_(log);
+    who_am_i(log);
     scrollDisable();
 }
 
 // 댓글 아이콘 클릭 시
 function detail_comments_pop(board, board_id, log){
     $(".black").css("display","block");
+    $(".write_wrap").css("display","none");
     $(".contents_detail").css("display","block");
     showPopup(board,board_id);
-    $(".write_wrap").css("display","none");
     who_am_i(log);
 }
 
@@ -33,7 +35,7 @@ $(".close").on("click", e=>{
 
 function when_close(){
     $('#detail_profile_img').attr("src",'');
-    $('.detail_user_id').children().remove();
+    $('.detail_user_id').children('span').remove();
     scrollAble();
 }
 
@@ -42,7 +44,7 @@ function showPopup(board, board_id){
     $(".contents_detail").css("display", "flex");
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
-    scrollDisable()
+    scrollDisable();
 
     $.ajax({
         url : "/commentsLoad?board_id=" + board_id,
@@ -52,12 +54,20 @@ function showPopup(board, board_id){
     }).success(result =>{
         console.log("comments loading success");
         console.log(result);
+
+        result.forEach(e =>{
+            arr.push(e.user_id);
+        })
+
         $.ajax({
-            url : "/getUseridWhithBoardid?board_id="+board_id,
+            url : "/getUserLists",
             type : "POST",
+            data : JSON.stringify(arr),
             async: false,
             contentType: "application/json"
         }).success(e=>{
+            console.log(e);
+
             comments_view(result);
 
         }).fail(error=>{

@@ -37,8 +37,8 @@ public class UserController {
 
         String url = "";
         if (result != null && result.getUser_id().equals(user_id) && result.getUser_pw().equals(user_pw)) {
-            url = "/main";
             session.setAttribute("log",result.getId());
+            url = "/main";
         } else {
             url = "/?check=chcek";
         }
@@ -283,6 +283,7 @@ public class UserController {
     public UserVO getInfo(@RequestParam(name="log") int log){
         return userService.readLog(log);
     }
+
 
 }
 

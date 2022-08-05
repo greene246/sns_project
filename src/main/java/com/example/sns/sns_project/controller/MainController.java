@@ -57,6 +57,10 @@ public class MainController {
     @RequestMapping("/logout")
     public String logout(){ return "logout"; }
 
+    @RequestMapping("/follow")
+    public String follow(){ return "follow"; }
+
+
 
 
 }

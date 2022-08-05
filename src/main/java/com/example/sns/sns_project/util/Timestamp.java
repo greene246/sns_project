@@ -11,11 +11,13 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass // 나를 상속받은 자식클래스에게 멤버변수를 컬럼으로 부여함
 @EntityListeners(AuditingEntityListener.class) // - 실시간으로 테이블 변화를 지켜봄
+
 public class Timestamp {
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime modifiedAt;
+
 
 }

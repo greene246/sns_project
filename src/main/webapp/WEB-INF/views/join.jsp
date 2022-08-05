@@ -25,7 +25,7 @@
         <form id="join" method="post" action="/joinUser">
             <h3>몬스타그램</h3>
             <h4 class="h4">친구들의 사진과 동영상을 보려면 가입하세요.</h4>
-            <input type="text" name="user_id" id="user_id" placeholder="ID" class="req" required><br>
+            <input type="text" name="user_id" id="user_id" placeholder="ID" class="req" pattern="[A-Za-z0-9]*" required><br>
             <span style="display: none" name="msg_err" id="msg_err" class="msg">사용할 수 없는 아이디입니다.<br></span>
             <span style="display: none" name="msg_ok" id="msg_ok" class="msg">사용할 수 있는 아이디입니다.<br></span>
             <input type="password" name="user_pw" id="user_pw" placeholder="Password" class="req" required><br>

@@ -12,10 +12,10 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 
-@Service
-public class UserService {
+    @Service
+    public class UserService {
 
-    @Autowired
+        @Autowired
     private UserRepository userRepository;
 
     // id 찾기
@@ -109,6 +109,8 @@ public class UserService {
 
         return user;
     }
+
+
 
 
 }

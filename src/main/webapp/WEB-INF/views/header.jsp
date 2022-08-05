@@ -15,7 +15,14 @@
 </head>
 
 <body>
-
+    <%
+  if(session.getAttribute("log") == null) {
+    String url = "/";
+    response.sendRedirect(url);
+  }
+  else{
+    int log = (Integer) session.getAttribute("log");
+%>
 <div id="total_wrap">
     <div class="header">
         <div class="header_contents_wrap">
@@ -30,3 +37,4 @@
             </div>
         </div>
     </div>
+<%}%>

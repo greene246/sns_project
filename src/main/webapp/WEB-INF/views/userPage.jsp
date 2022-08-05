@@ -10,21 +10,22 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-<%
-  String user_id = (String) session.getAttribute("user_id");
-  String name = (String) session.getAttribute("name");
-%>
+
 <div class="wrap">
   <div class="myPageBody">
     <span class="img"><img src="./img/도라에몽.png"></span>
-    <span class="id"><%=user_id%></span>
-    <span class="name"><%=name%></span>
+    <span class="id"></span>
+    <span class="name"></span>
 
     <input type="button" class="followBtn" name="followBtn" value="팔로우">
 
 
   </div>
 </div>
-
+<script>$(document).ready(function(){
+  getUser(<%=log%>);
+})
+</script>
+<script src="js/user.js"></script>
 </body>
 </html>

@@ -1,86 +1,86 @@
-let check = false;
+let fileNo = 0;
+let filesArr = new Array();
 
-// 사진 imgBB에 업로드
+// 사진 클라우드에 업로드 후 data 받아와서 hidden에 넣어줌
+function uploadImg(){
+    let form = new FormData();
+    form.append("image", filesArr[0]);
+    let settings = {
+        "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
+        "method": "POST",
+        "timeout": 0,
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form,
+        sync: false,
+        fail : error => {
+            console.log("image upload fail");
+        }
+    };
+    callUploadApi(settings);
+}
 
-function uploadToCloud(formObj) {
-    if (check) {
-        let file = document.getElementById('input_img');
-        let form = new FormData();
-        form.append("image", file.files[0])
 
-        console.log("vvvvvvvvvvvvvvvvvv");
-
-        let settings = {
-            "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
-            "method": "POST",
-            "timeout": 0,
-            "processData": false,
-            "mimeType": "multipart/form-data",
-            "contentType": false,
-            "data": form
-        };
-
-        console.log("eeeeeeeeeeeee")
-
-        $.ajax(settings).done(function (response) {
-            console.log("fofofofofofo")
-            console.log(formObj);
-
+function callUploadApi(settings){
+    $.ajax(settings)
+        .done(response => {
             let jx = JSON.parse(response);
-            $('#img_url').val(`"${jx.data.url}"`);
-            $('#delete_url').val(`"${jx.data.delete_url}"`);
-
             // jx.data.id의 값도 저장해야함 - 삭제 시 필요
-            //$('#write_form').submit();
-            formObj.submit();
+            $('#img_url').val(jx.data.url);
+            $('#del_url').val(jx.data.delete_url);
 
-        }).fail(error => {
-            console.log(error)
+            let boardJson = {
+                "url" : "/upload",
+                "method" : "POST",
+                "contentType" : "application/json",
+                "data" : JSON.stringify({
+                    "user_id" : $('#user_id').val(),
+                    "img_url" : $('#img_url').val(),
+                    "contents" : $('#contents').val(),
+                    "public_scope" : $('#scope').val(),
+                    "delete_url" : $('#del_url').val(),
+                })
+            };
+
+            $.ajax(boardJson)
+                .done(result => {
+                    console.log($('#contents').val());
+                    console.log("uploadImg success");
+                    // location.reload();
+                })
         })
-    }
-    else{
-        let thumbnail = $('#preview').val();
-
-        $('#img_url').val(thumbnail);
-
-        formObj.submit();
-    }
+        .fail(error =>{
+            console.log(error);
+        })
 }
 
 // 고른 사진 띄워주기
-function setThumbnail(event) {
+function setThumbnail(obj) {
+    const maxFileCnt = 1; // 최대 첨부 가능 파일 개수
+    let attFileCnt = $('.img_thumbnail').length;  // 기존 첨부된 파일 개수
+    let remainCnt = maxFileCnt - attFileCnt;    // 첨부할 수 있는 남은 개수
+    let curFileCnt = obj.files.length;
 
-    let reader = new FileReader();
+    // 개수 확인
+    if(curFileCnt > remainCnt)
+        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.")
+    else{
+        for(const file of obj.files){
+            // 파일 배열에 담기
+            let reader = new FileReader();
+            reader.onload = function(event) {
 
-    reader.onload = function (event) {
-        let img = document.createElement("img");
-        img.setAttribute("src", event.target.result);
-        $('#image_container').append(img);
-
-    };
-    reader.readAsDataURL(event.target.files[0]);
-
-}
-
-// 프로필 사진 바꾸기
-const inputImage = document.getElementById("input_img");
-inputImage.addEventListener("change", e => {
-    readImage(e.target);
-})
-
-function readImage(input) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-
-        reader.onload = e => {
-            const previewImage = document.getElementById("preview-image");
-
-            previewImage.src = e.target.result;
+                // 띄우기
+                let img = document.createElement("img");
+                img.setAttribute("src", event.target.result);
+                img.setAttribute("class", "img_thumbnail");
+                img.setAttribute("id", "file_" + fileNo);
+                $('#image_container').append(img);
+                fileNo++;
+                filesArr.push(file);
+            };
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(input.files[0]);
     }
 }
-
-$('#input_img').on("change", e => {
-    check = true;
-})

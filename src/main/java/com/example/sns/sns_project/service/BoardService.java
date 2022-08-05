@@ -28,16 +28,13 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-
     // 컨텐츠 DB 탐색
-//   public void search(int a){
     public List<BoardVO> search(int a){
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
         return boards;
     }
     @Transactional
     //like count ++
-
     public void UpLikeCount(int boardid){
         List<BoardVO> boards = boardRepository.findBoardsById(boardid);
         List<BoardVO> users = boardRepository.findAll();

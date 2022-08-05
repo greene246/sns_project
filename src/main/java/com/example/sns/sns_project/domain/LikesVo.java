@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="boards")
+@Table(name="likes")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +25,6 @@ public class LikesVo {
     private int board_id;
 
     public LikesVo(LikesRequestDto likesRequestDto){
-        this.id = likesRequestDto.getId();
         this.user_id = likesRequestDto.getUser_id();
         this.board_id = likesRequestDto.getBoard_id();
     }

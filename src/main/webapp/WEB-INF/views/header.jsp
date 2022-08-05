@@ -13,6 +13,15 @@
     <title>Main</title>
     <title>header</title>
 </head>
+    <%
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        else {
+            int log = (Integer) session.getAttribute("log");
+
+    %>
 <body>
 <div id="total_wrap">
     <div class="header">
@@ -20,7 +29,7 @@
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <a onclick="writeForm(), black_block()">
+                <a onclick="writeForm(<%=log%>), black_block()">
                     <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>
                 <p class="myPage" onclick="location.href='/myPage'"><img class="header_img" src="img/myPage.png"></p>
@@ -28,3 +37,4 @@
             </div>
         </div>
     </div>
+<%}%>

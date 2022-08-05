@@ -16,4 +16,8 @@ public class BoardRequestDto {
     private int public_scope;
     private String delete_url;
 
+    public BoardRequestDto(String user_id, int like_cnt){
+        this.user_id = user_id;
+        this.like_cnt = like_cnt;
+    }
 }

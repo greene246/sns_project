@@ -21,6 +21,7 @@ function uploadImg(){
     callUploadApi(settings);
 }
 
+
 function callUploadApi(settings){
     $.ajax(settings)
         .done(response => {
@@ -44,9 +45,11 @@ function callUploadApi(settings){
 
             $.ajax(boardJson)
                 .done(result => {
-                    console.log(result);
+                    console.log($('#contents').val());
+                    console.log("uploadImg success");
+                    // location.reload();
                 })
-    })
+        })
         .fail(error =>{
             console.log(error);
         })

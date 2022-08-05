@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -32,7 +34,7 @@ public class UserController {
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        if (result.getUser_pw().equals(user.getUser_pw())) {
+        if (result != null && result.getUser_id().equals(user.getUser_id()) && result.getUser_pw().equals(user.getUser_pw())) {
             url = "/main";
         } else {
             url = "/?check=chcek";
@@ -305,6 +307,14 @@ public class UserController {
         System.out.println(temp);
         return temp;
 
+    }
+
+    @PostMapping("/getUseridWhithBoardid")
+    public UserVO getUserid(@RequestParam(name="board_id")int board_id){
+        System.out.println("board_id : " + board_id);
+        userService.getUwithB(board_id);
+
+        return null;
     }
 
 }

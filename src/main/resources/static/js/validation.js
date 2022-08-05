@@ -6,31 +6,68 @@ jQuery.fn.center = function () {
 
     return this;
 }
-// $(".subsBtn").on('click', e=>{
-//     $(".black").css("display","block");
-// });
 
-function black_block(){
+// 추가 클릭 시 창 띄우기
+function file_upload_pop(log){
     $(".black").css("display","block");
+    $(".write_wrap").css("display","block");
+    $(".contents_detail").css("display","none");
+    who_am_(log);
+    scrollDisable();
 }
-// $(".cancel").on('click', e=>{
-//     $(".pop1").css("display","none");
-//     $(".black").css("display","none");
-//
-// });
 
+// 댓글 아이콘 클릭 시
+function detail_comments_pop(board, board_id, log){
+    $(".black").css("display","block");
+    $(".contents_detail").css("display","block");
+    showPopup(board,board_id);
+    $(".write_wrap").css("display","none");
+    who_am_i(log);
+}
+
+// x 버튼 클릭 시 창 닫기
+$(".close").on("click", e=>{
+    $(".black").css("display","none");
+    when_close();
+})
+
+function when_close(){
+    $('#detail_profile_img').attr("src",'');
+    $('.detail_user_id').children().remove();
+    scrollAble();
+}
 
 // 댓글 클릭 시 보여준다.
-function showPopup(){
-    $(".contents_detail").css("display", "block");
+function showPopup(board, board_id){
+    $(".contents_detail").css("display", "flex");
+    let board_img = $(`#${board}`).attr("src");
+    $("#detail_img_main").attr("src", board_img);
     scrollDisable()
-}
 
-// 추가 버튼 클릭 시
-function writeForm(log){
-    $('.write_wrap').css("display","block");
-    who_am_i(log);
-    scrollDisable()
+    $.ajax({
+        url : "/commentsLoad?board_id=" + board_id,
+        type: "POST",
+        async : false,
+        contentType : "application/json"
+    }).success(result =>{
+        console.log("comments loading success");
+        console.log(result);
+        $.ajax({
+            url : "/getUseridWhithBoardid?board_id="+board_id,
+            type : "POST",
+            async: false,
+            contentType: "application/json"
+        }).success(e=>{
+            comments_view(result);
+
+        }).fail(error=>{
+            console.log("userList loading fail")
+        })
+
+    }).fail(error =>{
+        console.log("comments loading fail");
+    })
+
 }
 
 // 스크롤 강제 막기
@@ -40,14 +77,6 @@ function scrollDisable(){
 // 스크롤 작동
 function scrollAble(){
     $('html, body').removeClass('hidden');
-}
-
-//팝업창에 여백클릭스 cancel
-cancel = function() {
-    $(".contents_detail").css("display","none");
-    $('.write_wrap').css("display","none");
-    $(".black").css("display","none");
-    scrollAble()
 }
 
 $(document).ready(function(){
@@ -94,12 +123,19 @@ function who_am_i(log){
         url: "/getInfo?log="+log,
         type : "POST"
     }).done(result => {
-
         let user_id = result.user_id;
-        console.log(user_id)
 
         $('#user_id').val(user_id);
     })
 }
 
 
+// 댓글 띄우기
+function comments_view(result){
+    for(let i=0; i<result.length; i++){
+        let html = `
+            <div class="comment_section"></div>
+`
+
+    }
+}

@@ -30,40 +30,28 @@ function getBoards(scope,log) {
 function insertHtml(Board, log) {
 
     console.log("insert check");
-
     let html = `
-                 <div class='section'> 
-               
+                 <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
-                    
-                    <!-- <span id="contents"><img class="thum_img_target"></span>-->
-                   <!--  <span id="contents"><img class="thum_img_target"></span>-->
-                     
-                    <!-- <span class="profile_img_wrap"><img class="thum_img_target"></span>-->
                      <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
-                     
                         <div id='userid'>
-                            <a>${Board.user_id}</a>
+                            <a class="user_id">${Board.user_id}</a>
                         </div>
                     </div>
-
-                    <span id='main_img'><img src=${Board.img_url} class="print_img"></span>
-
+                    <span id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></span>
                     <!-- icon 모음 -->
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                <a onClick='showPopup(), black_block()'>
-                                    <img src='./img/message.png' class='icon_img'>
-                                </a>
+<!--                                <a onclick='detail_comments_pop("img_${Board.id}", ${Board.id}, ${log})'>-->
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})">
+<!--                                </a>-->
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
                         <!-- 북마크 -->
                         <span><img src='./img/bookmark_off.png' class='icon_img'></span>
-
                     </div>
-                    
                     <div class="text_sources">
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
@@ -77,6 +65,7 @@ function insertHtml(Board, log) {
 
     $('.main_section').append(html);
 }
+
 //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
 function getThumbnail(userId) {
     $.ajax({
@@ -148,7 +137,7 @@ function upload_comments(log, board_id, comments_id){
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
     let comments = $(`#${comments_id}`).val();
-
+    console.log(comments);
     const requestData = {
         "user_id" : log,
         "board_id" : board_id,
@@ -169,6 +158,9 @@ function upload_comments(log, board_id, comments_id){
         console.log("comments upload fail");
     })
 }
+
+
+
 
 // // 해당 테이블에 찜 확인 출력
 // function checkDibs(userid,log) {

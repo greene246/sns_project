@@ -14,11 +14,13 @@
     <title>header</title>
 </head>
     <%
-    if(session.getAttribute("log") == null) {
-        String url = "/";
-        response.sendRedirect(url);
-    }
-    int log = (int) session.getAttribute("log");
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        else {
+            int log = (Integer) session.getAttribute("log");
+
 %>
 <body>
 <div id="total_wrap">
@@ -27,7 +29,7 @@
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <a onclick="writeForm(<%=log%>), black_block()">
+                <a onclick="file_upload_pop(<%=log%>)"><!--, writeForm(<%=log%>)"-->
                     <p class="writeBoard">추가</p>
                 </a>
                 <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
@@ -35,3 +37,4 @@
             </div>
         </div>
     </div>
+<%}%>

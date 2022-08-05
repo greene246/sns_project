@@ -1,5 +1,6 @@
 package com.example.sns.sns_project.controller;
 
+import com.example.sns.sns_project.domain.BoardVO;
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -304,6 +307,13 @@ public class UserController {
 
         return temp;
 
+    }
+    //log 값을 사용해 해당 유저의 정보를 가져온다.
+    @GetMapping("/getUser/{log}")
+    public UserVO getUser(@PathVariable("log") int log){
+        System.out.println("Usercontroller에 들어옴");
+        System.out.println("log: " + log);
+        return userService.findUser(log);
     }
 
 }

@@ -50,7 +50,7 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                <a onClick='showPopup(), black_block()'>
+                                <a onclick="showPopup(), black_block()">
                                     <img src='./img/message.png' class='icon_img'>
                                 </a>
                                 <img src='./img/direct.png' class='icon_img'>
@@ -63,27 +63,44 @@ function insertHtml(Board, log) {
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
-                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
+                        <span className='main4' id='createdAt'>${Board.createdAt.substring(0,10)}</span>
                         <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
                         <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
                     </div>
                     
                 </div>
-                
-                    <div class="black" onclick="javascript:cancel()"></div>
-                        <div class="contents_detail" style="display: none">
-                        <div class="detail_img">
-                            <img src=${Board.img_url}>
-                            <!--  <img src="/img/cute.JPG">-->
-                        </div>
-                        <div class="detail_coments">
-                            <h1>test 댓글창</h1>
-                        </div>
-                    </div>
             `;
 
     $('.main_section').append(html);
 }
+
+// Serve 출력 부분
+function serveShow(log){
+    console.log("serve 출력 js")
+  //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
+    $.ajax({
+        url: "/getUser?log=" + log,
+        type: "GET",
+        async: false,
+        contentType: "application/json",
+        success: data => {
+            let html = `
+                     <img src=${data.img_url}>
+                     <div class='profile_box'>${data.user_id}</div>
+            `;
+
+            $('.serve_section').append(html);
+        },
+        fail: function () {
+            console.log("fail4")
+        },
+        error: function () {
+            console.log("error4")
+        }
+    })
+
+}
+
  //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
 function getThumbnail(userid) {
     $.ajax({
@@ -162,7 +179,7 @@ function upload_comments(log, board_id, comments_id){
         "board_id" : board_id,
         "comment" : comments
     };
-
+c
     console.log(requestData)
 
     $.ajax({
@@ -176,26 +193,4 @@ function upload_comments(log, board_id, comments_id){
     }).fail(error=>{
         console.log("comments upload fail");
     })
-}
-
-
-// 댓글 출력
-function showComment(){
-
-    $.ajax({
-        url: "/dibsSearch?boardid=" + boardid + "&log=" + _log,
-        type: "GET",
-        async: false,
-        contentType: "application/json",
-        success: data => {
-
-        },
-        fail: function () {
-            console.log("fail3")
-        },
-        error: function () {
-            console.log("error3")
-        }
-    })
-
 }

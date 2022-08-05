@@ -4,6 +4,7 @@ import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -124,4 +125,10 @@ public class UserService {
         return userRepository.findThumbnailById(id);
     }
 
+
+    public UserVO findUser(int log){
+        UserVO user = userRepository.findUserVOByLog(log);
+        System.out.println("sss: "+user.getId());
+        return user;
+    }
 }

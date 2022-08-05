@@ -174,9 +174,28 @@ public class UserController {
     @PostMapping("/updatePw")
     public void updatePw(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response) {
 
+        boolean check = userService.updateUserPw(userRequestDto);
+
+        if(check){
+            System.out.println("비밀번호 업뎃 성공");
+        }
+        else{
+            System.out.println("비밀번호 업뎃 실패");
+        }
+
+        String url = "";
+        url = "/updateMyPw";
+
+        try {
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    /*@PostMapping("/updatePw")   // 새 비밀번호, 새 비밀번호 확인
+    // 새 비밀번호, 새 비밀번호 확인
+    /*@PostMapping("/updatePw")
     public void updatePw(@RequestParam(name="name") String name,
                          @RequestParam(name="email") String email,
                          @RequestParam(name="user_id") String user_id,

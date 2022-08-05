@@ -42,5 +42,4 @@
 %>
 
 </body>
-<script src="js/myPage.js"></script>
 </html>

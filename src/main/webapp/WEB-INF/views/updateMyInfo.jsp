@@ -52,5 +52,4 @@
 
 </div>
 </body>
-<script src="js/update.js"></script>
 </html>

@@ -31,6 +31,7 @@ function updateUser(log){
         type : "POST"
     }).done(result => {
         console.log(result);
+
         let user_id = result.user_id;
         let user_pw = result.user_pw;
 
@@ -41,7 +42,6 @@ function updateUser(log){
         let html = `
             <form method="post">
                 <input type="hidden" name="user_id" id="user_id" value=${user_id}>
-                <input type="hidden" name="user_pw" id="user_pw" value=${user_pw}>
             
                 <div class="_img">프로필 사진</div><br>
                 <div class="image-container">

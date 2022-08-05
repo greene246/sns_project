@@ -2,7 +2,7 @@ let user_id;
 
 function myPageUser(log){
     $.ajax({
-        url: "/getInfo?log="+log,
+        url : "/getInfo?log="+log,
         type : "POST"
     }).done(result => {
 
@@ -42,11 +42,11 @@ function myPageContents(user_id){
 }
 
 function printContent(Board) {
-    let thumbnail = Board.img_url;
-    console.log(thumbnail);
+    let Content_img = Board.img_url;
+    console.log(Content_img);
 
     let html = `
-        <div class="myImage"><img class="imgSize" src=${thumbnail}></div>
+        <div class="myImage"><img class="imgSize" src=${Content_img}></div>
     `;
     $('.myPageContent').append(html);
 

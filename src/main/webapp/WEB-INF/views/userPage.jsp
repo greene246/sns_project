@@ -8,19 +8,31 @@
     <title>userPage</title>
 </head>
 <body>
+<%
+    int log = (Integer) session.getAttribute("log");
+%>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-    <%
-        int log = (Integer) session.getAttribute("log");
-    %>
 <div class="wrap">
     <div class="myPageBody">
-        <span class="img"><img src="./img/도라에몽.png"></span>
+
+        <div class="thumbnail"></div>
+        <div class="user_id"></div>
+        <div class="name"></div>
 
         <input type="button" class="followBtn" name="followBtn" value="팔로우">
         <input type="button" class="followingBtn" name="following" value="팔로잉">
 
     </div>
+
+    <div class="userPageContent"></div>
+
 </div>
+
+<script>$(document).ready(function(){
+    myPageUser(<%=log%>);
+})
+</script>
+<script src="js/userPage.js"></script>
 
 </body>
 </html>

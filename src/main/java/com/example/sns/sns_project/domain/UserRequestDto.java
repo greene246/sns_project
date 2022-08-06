@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UserRequestDto {
-    int id;
+    private int id;
+
     private String user_id,user_pw,name,email,thumbnail;
 
     // login
@@ -18,6 +19,14 @@ public class UserRequestDto {
     }
 
     // join
+    public UserRequestDto(String user_id, String user_pw, String name, String email, String thumbnail){
+        this.user_id = user_id;
+        this.user_pw = user_pw;
+        this.name = name;
+        this.email = email;
+        this.thumbnail = thumbnail;
+    }
+
     public UserRequestDto(String user_id, String user_pw, String name, String email){
         this.user_id = user_id;
         this.user_pw = user_pw;
@@ -26,14 +35,6 @@ public class UserRequestDto {
     }
 
     public UserRequestDto(String name, String email, String thumbnail){
-        this.name = name;
-        this.email = email;
-        this.thumbnail = thumbnail;
-    }
-
-    public UserRequestDto(String user_id, String user_pw, String name, String email, String thumbnail){
-        this.user_id = user_id;
-        this.user_pw = user_pw;
         this.name = name;
         this.email = email;
         this.thumbnail = thumbnail;

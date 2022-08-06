@@ -45,7 +45,11 @@ public class BoardVO extends Timestamp {
         this.like_cnt = boardRequestDto.getLike_cnt();
         this.public_scope = boardRequestDto.getPublic_scope();
         this.delete_url = boardRequestDto.getDelete_url();
+
     }
 
-
+    public void update(BoardRequestDto boardRequestDto){
+        this.user_id = boardRequestDto.getUser_id();
+        this.like_cnt = boardRequestDto.getLike_cnt();
+    }
 }

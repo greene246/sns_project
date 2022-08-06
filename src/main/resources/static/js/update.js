@@ -1,157 +1,80 @@
-// 새 비밀번호 체크
-$('#pw_check').change(e=>{
-    let newPw = $('#pw_new').val();
-    let pw_ch = $('#pw_check').val();
-    if(newPw !== pw_ch){
-        $('#msg_error').show();
+let user_id;
+let thumbnail;
+let name;
+let email;
 
-    }else{
-        $('#msg_error').hide();
-    }
-})
-
-// 이전 비밀번호 체크
-$('#pw_past').change(e => {
-    let pw_past = $('#pw_past').val();
-    let user_pw = $('#user_pw').val();
-
-    if(pw_past === user_pw){
-        $('#msg_ok').show();
-        $('#msg_err').hide();
-    } else {
-        $('#msg_err').show();
-        $('#msg_ok').hide();
-    }
-})
-
-
-
-
-function deleteBoard(){
-    // 이거 data 안에 값들 수정하셈
-    let boardJson = {
-        "url" : "/delete",
-        "method" : "DELETE",
-        "contentType" : "application/json",
-        "data" : JSON.stringify({
-            "user_id" : $('#user_id').val(),
-            "img_url" : $('#img_url').val(),
-            "contents" : $('#contents').val(),
-        })
-    };
-    $.ajax(boardJson)
-        .done(result => {
-
-        })
-}
-})
-
-// 프사, 이름, 이메일 업데이트
-function updateUser(log){
+function getUpdateId(log){
     $.ajax({
-        url : "/getInfo?log=" + log,
-        type : "POST"
+        url: "/getInfo?log=" + log,
+        type: "POST"
     }).done(result => {
-        console.log(result);
-        let user_id = result.user_id;
-        let user_pw = result.user_pw;
+        user_id = result.user_id;
+        thumbnail = result.thumbnail;
+        name = result.name;
+        email = result.email;
 
-        let thumbnail = result.thumbnail;
-        let user_name = result.name;
-        let user_email = result.email;
-
-        let html = `
-            <form method="post">
-                <input type="hidden" name="user_id" id="user_id" value=${user_id}>
-                <input type="hidden" name="user_pw" id="user_pw" value=${user_pw}>
-            
-                <div class="_img">프로필 사진</div><br>
-                <div class="image-container">
-                            
-                            <input type="hidden" name="img_url" id="img_url">
-                            <input type="hidden" name="preview" id="preview" value=${thumbnail}>
-                            <img style="width: 150px;" id="preview-image" src=${thumbnail}><br>
-                            <input type="file" id="input_img" onchange="show_img(event)">
-                        </div>
-                
-                <div class="_name">이름</div>
-                <input type="text" name="name" class="name" value="${user_name}" placeholder="이름" required><br>
-                
-                <div class="_email">이메일</div>
-                <input type="email" name="email" class="email" value="${user_email}" placeholder="이메일" required><br>
-                
-                <div class="button">
-                    <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">
-                </div>
-                
-            </form>
-        `;
-
-        $('.user_id').append(user_id);
-        $('.update_user').append(html);
+        $('#user_id').attr('value', user_id);
+        $('.name').attr('value',name);
+        $('.email').attr('value',email);
+        $('#preview').attr('value',thumbnail);
+        $('#preview-image').attr('src',thumbnail);
     })
 }
 
 let check = false;
 
+$('#input_img').change(e => {
+    check = true;
+})
+
 // 사진 imgBB에 업로드
 function uploadToCloud(formObj) {
-    // if (check) {
-    let file = document.getElementById('input_img');
-    let form = new FormData();
-    form.append("image", file.files[0])
+    if (check) {
+        let file = document.getElementById('input_img');
+        let form = new FormData();
+        form.append("image", file.files[0])
 
-    console.log("vvvvvvvvvvvvvvvvvv");
+        let settings = {
+            "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
+            "method": "POST",
+            "timeout": 0,
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+        };
 
-    let settings = {
-        "url": "https://api.imgbb.com/1/upload?key=edba169056567b7c42f2872b96c425af",
-        "method": "POST",
-        "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false,
-        "data": form
-    };
+        $.ajax(settings).done(function (response) {
 
-    console.log("eeeeeeeeeeeee")
+            let jx = JSON.parse(response);
+            $('#img_url').val(`${jx.data.url}`);
+            $('#delete_url').val(`${jx.data.delete_url}`);
 
-    $.ajax(settings).done(function (response) {
-        console.log("fofofofofofo")
-        console.log(formObj);
+            // jx.data.id의 값도 저장해야함 - 삭제 시 필요
+            //$('#write_form').submit();
 
-        let jx = JSON.parse(response);
-        $('#img_url').val(`"${jx.data.url}"`);
-        $('#delete_url').val(`"${jx.data.delete_url}"`);
+            update(formObj);
 
-        // jx.data.id의 값도 저장해야함 - 삭제 시 필요
-        //$('#write_form').submit();
+        }).fail(error => {
+            console.log(error)
+        })
+    } else {
+        let thumbnail = $('#preview').val();
+
+        $('#img_url').val(thumbnail);
 
         update(formObj);
-
-    }).fail(error => {
-        console.log(error)
-    })
-    // }
-    // else{
-    //     let thumbnail = $('#preview').val();
-    //
-    //     $('#img_url').val(thumbnail);
-    //
-    //     formObj.submit();
-    // }
+    }
 }
 
 function update(formObj){
     const requestData = {
         "user_id" : $('#user_id').val(),
-        "user_pw" : $('#user_pw').val(),
         "thumbnail" : $('#img_url').val(),
         "name" : $('.name').val(),
         "email" : $('.email').val()
     }
-    console.log("이미지유알엘 : " + $(`#img_url`).val());
 
-    console.log(requestData);
     $.ajax({
         url: "/update",
         type: "POST",
@@ -160,10 +83,12 @@ function update(formObj){
 
         success: data => {
             console.log("success");
+            alert("회원정보 수정이 완료되었습니다.");
             // formObj.submit();
         },
         fail: function () {
             console.log("fail");
+            alert("회원정보 수정 오류");
         },
         error: function () {
             console.log("error")
@@ -181,7 +106,3 @@ function show_img(){
     };
     reader.readAsDataURL(event.target.files[0]);
 }
-
-$('#input_img').on("change", e => {
-    check = true;
-})

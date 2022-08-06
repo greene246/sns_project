@@ -1,5 +1,4 @@
 .myPageBody{
-    height: 30vw;
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -35,3 +34,31 @@
 .btn{
     grid-area: btn;
 }
+
+.myPageContent{
+    display: flex;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
+.myImage{
+    padding: 10px;
+}
+
+.imgSize{
+    width: 280px;
+}
+
+/*userPage*/
+.userPageContent{
+    display: flex;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
+.userImage{
+    padding: 10px;
+}
+

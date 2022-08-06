@@ -1,12 +1,14 @@
 let _userid;
 let _log;
+//Boards DB에 있느 값을 가져온다.
 function getBoards(scope,log) {
     $.ajax({
         url: "/search/" + scope,
         type: "GET",
         async: false,
-
+        contentType: "application/json",
         success: data => {
+
             data.forEach(e => {
                 _log = log;
                 _userid = e.id;
@@ -23,14 +25,14 @@ function getBoards(scope,log) {
         }
     })
 }
-
+//메인 출력 부분
 function insertHtml(Board, log) {
 
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
                      <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
-                        <div id='userid'>
+                        <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}'" value="${Board.user_id}">
                             <a class="user_id">${Board.user_id}</a>
                         </div>
                     </div>
@@ -64,15 +66,42 @@ function insertHtml(Board, log) {
     $('.main_section').append(html);
 }
 
-//유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
-function getThumbnail(userId) {
+// Serve 출력 부분
+function serveShow(log){
+    console.log("serve 출력 js")
+    //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
-        url: "/getThumbnail?id=" + userId,
+        url: "/getUser?log=" + log,
         type: "GET",
         async: false,
         contentType: "application/json",
         success: data => {
-             $('.'+userId+'_info').prop('src', data.replace(/"/gi,""));
+            let html = `
+                     <img src=${data.img_url}>
+                     <div class='profile_box'>${data.user_id}</div>
+            `;
+
+            $('.serve_section').append(html);
+        },
+        fail: function () {
+            console.log("fail4")
+        },
+        error: function () {
+            console.log("error4")
+        }
+    })
+
+}
+
+//유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
+function getThumbnail(userid) {
+    $.ajax({
+        url: "/getThumbnail?id=" + userid,
+        type: "GET",
+        async: false,
+        contentType: "application/json",
+        success: data => {
+            $('.'+userid+'_info').prop('src', data.replace(/"/gi,""));
         },
         fail: function () {
             console.log("fail2")
@@ -82,7 +111,8 @@ function getThumbnail(userId) {
         }
     })
 }
-// // 해당 테이블에 찜 확인 출력
+
+// 해당 테이블에 찜 확인 출력
 function checkDibs(userid,log) {
 
     $.ajax({
@@ -106,7 +136,7 @@ function checkDibs(userid,log) {
 
 //하트 찜하기
 function checkHeart(boardid) {
-    console.log("boardid: "+boardid)
+
     $.ajax({
         url: "/dibsSearch?boardid=" + boardid + "&log=" + _log,
         type: "GET",
@@ -127,6 +157,7 @@ function checkHeart(boardid) {
             console.log("error2")
         }
     })
+    location.reload()
 }
 
 // 댓글 업로드

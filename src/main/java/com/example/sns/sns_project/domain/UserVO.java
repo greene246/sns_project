@@ -5,6 +5,7 @@ import com.example.sns.sns_project.util.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,9 +52,13 @@ public class UserVO extends Timestamp {
         this.user_id = userRequestDto.getUser_id();
         this.name = userRequestDto.getName();
         this.email = userRequestDto.getEmail();
-        this.user_pw = userRequestDto.getUser_pw();
         this.thumbnail = userRequestDto.getThumbnail();
 
+    }
+
+    // 비밀번호 업뎃
+    public void updatePw(UserRequestDto userRequestDto){
+        this.user_pw = userRequestDto.getUser_pw();
     }
 
 }

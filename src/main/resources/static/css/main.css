@@ -3,7 +3,6 @@
     min-height:100%;
     overflow:hidden !important;
     touch-action:none;
-
 }
 .main_wrap {
     display: flex;
@@ -204,9 +203,8 @@
     height: 20px;
 }
 .print_img{
-    width:auto;
+    width: 330px;
 }
-
 
 .black {
     display: none;

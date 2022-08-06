@@ -50,7 +50,7 @@ function callUploadApi(settings){
                     console.log("uploadImg success");
                     // location.reload();
                 })
-    })
+        })
         .fail(error =>{
             console.log(error);
         })

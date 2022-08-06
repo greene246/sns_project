@@ -9,5 +9,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public class LikesRequestDto {
     private int id, user_id, board_id;
-
+    public LikesRequestDto(int user_id, int board_id){
+        this.user_id = user_id;
+        this.board_id = board_id;
+    }
 }

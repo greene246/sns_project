@@ -47,7 +47,7 @@ function showPopup(board, board_id) {
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
     $('#detail_board_id').val(board_id);
-    scrollDisable();
+    // scrollDisable();
 
     $.ajax({
         url: "/commentsLoad?board_id=" + board_id,
@@ -78,12 +78,14 @@ function showPopup(board, board_id) {
 
 // 스크롤 강제 막기
 function scrollDisable(){
-    $('html, body').addClass('hidden');
+    $('html, body').css("overflow", "hidden")
 }
 // 스크롤 작동
 function scrollAble(){
-    $('html, body').removeClass('hidden');
+    $('html, body').css("overflow","visible")
 }
+
+
 
 $(document).ready(function(){
 
@@ -156,4 +158,46 @@ console.log(result[i].comment);
             `
         $('.all_comments').append(html);
     }
+}
+
+// 댓글 업로드
+function upload_comments(log, board_id, comments_id){
+    // log = 로그인 중인 user의 id값
+    // board_id = 댓글을 작성한 보드의 id값
+    // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    let comments;
+    if(board_id == ''){
+        board_id = $('#detail_board_id').val();
+        comments = $("#detail_comments_val").val();
+    }
+    else{
+        comments = $(`#${comments_id}`).val();
+    }
+
+    if(comments == ''){
+        alert("댓글은 1자 이상 작성해주세요");
+        return;
+    }
+
+    console.log(board_id);
+    console.log(comments);
+
+    const requestData = {
+        "user_id" : log,
+        "board_id" : board_id,
+        "comment" : comments
+    };
+
+    $.ajax({
+        url : '/upload_comments',
+        method : 'POST',
+        data : JSON.stringify(requestData),
+        contentType: "application/json"
+    }).success(result => {
+        console.log("comments upload success");
+        $(`#${comments_id}`).val('');
+        $("#detail_comments_val").val('');
+    }).fail(error=>{
+        console.log("comments upload fail");
+    })
 }

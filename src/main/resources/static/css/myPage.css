@@ -39,11 +39,13 @@
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 900px;
+    width: 901px;
 }
 
 .myImage{
-    padding: 10px;
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
 }
 
 .imgSize{
@@ -55,10 +57,12 @@
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 900px;
+    width: 901px;
 }
 
 .userImage{
-    padding: 10px;
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
 }
 

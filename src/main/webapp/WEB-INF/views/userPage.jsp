@@ -32,10 +32,10 @@
 </div>
 
 <script>$(document).ready(function(){
-    userPageUser('<%=user_id%>');
+    userPageUser(<%=log%>, '<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>
-<%--<script src="js/myPage.js"></script>--%>
+<script src="js/validation.js"></script>
 </body>
 </html>

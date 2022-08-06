@@ -1,24 +1,23 @@
-let user_id;
+let userId;
 let name;
 let thumbnail;
 
-function userPageUser(userId) {
-    console.log('userId: ' + userId);
+function userPageUser(user_id) {
+    console.log('user_id: ' + user_id);
+
     $.ajax({
-        url: "/getUserId?userId='" + userId+"'",
+        url: "/getUserId?user_id=" + user_id,
         type: "POST"
     }).done(result => {
         console.log(result);
 
-        location.href='/userPage?ppp=' + result;
-
-        user_id = result.user_id;
+        userId = result.user_id;
         name = result.name;
         thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
 
-        userPageContents(user_id);
+        userPageContents(userId);
 
-        $('.user_id').append(user_id);
+        $('.user_id').append(userId);
         $('.name').append(name);
         $('.thumbnail').append(thumbnail);
     })
@@ -47,8 +46,6 @@ function userPageContents(userId) {
         data.forEach(e => {
             printContent(e);
         })
-        location.href="/userPage";
-
     })
 }
 
@@ -59,6 +56,6 @@ function printContent(Board) {
     let html = `
         <div class="userImage"><img class="imgSize" src=${Content_img}></div>
     `;
-    $('userPageContent').append(html);
+    $('.userPageContent').append(html);
 
 }

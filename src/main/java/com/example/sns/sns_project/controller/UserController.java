@@ -248,6 +248,12 @@ public class UserController {
         return userService.readLog(log);
     }
 
+    // 유저 아이디 받아서 유저 정보 리턴
+    @PostMapping("/getUserId")
+    public UserVO getUserId(@RequestParam(name="user_id") String user_id){
+        return userService.readUserId(user_id);
+    }
+
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
         String temp = userService.findThumbnailById(id);
@@ -263,11 +269,6 @@ public class UserController {
         return userService.findUser(log);
     }
 
-    // 유저 아이디 받아서 유저 정보 리턴
-    @PostMapping("/getUserId")
-    public UserVO getUserId(@RequestParam(name="user_id") String user_id){
-        return userService.readUserId(user_id);
-    }
 
 
 }

@@ -50,3 +50,15 @@
     width: 280px;
 }
 
+/*userPage*/
+.userPageContent{
+    display: flex;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
+.userImage{
+    padding: 10px;
+}
+

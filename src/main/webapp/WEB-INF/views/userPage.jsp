@@ -9,8 +9,8 @@
 </head>
 <body>
 <%
-//    int log = (Integer) session.getAttribute("log");
-    String userId = (String) request.getParameter("userId");
+    int log = (Integer) session.getAttribute("log");
+    String user_id = (String) request.getParameter("user_id");
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -20,8 +20,10 @@
         <div class="user_id"></div>
         <div class="name"></div>
 
-        <input type="button" class="followBtn" name="followBtn" value="팔로우">
-        <input type="button" class="followingBtn" name="following" value="팔로잉">
+        <div class="btn">
+            <input type="button" class="followBtn" name="followBtn" value="팔로우">
+            <input type="button" class="followingBtn" name="following" value="팔로잉">
+        </div>
 
     </div>
 
@@ -30,10 +32,10 @@
 </div>
 
 <script>$(document).ready(function(){
-    userPageUser('<%=userId%>');
+    userPageUser('<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>
-
+<script src="js/myPage.js"></script>
 </body>
 </html>

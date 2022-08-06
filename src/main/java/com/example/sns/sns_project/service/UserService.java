@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,7 +30,6 @@ public class UserService {
 
     public UserVO findName(String name) {
         List<UserVO> user = userRepository.findAll();
-
         for(int i=0; i<user.size(); i++) {
             if(user.get(i).getName().equals(name))
                 return user.get(i);
@@ -62,31 +62,14 @@ public class UserService {
         userRepository.deleteById(userVO.getId());
     }
 
-    // 회원정보 update
+    // update
     @Transactional
-    public boolean updateUser(UserRequestDto userRequestDto) {
+    public boolean updateUser(UserRequestDto userRequestDto){
         List<UserVO> user = userRepository.findAll();
 
-        System.out.println("SIZE : " + user.size());
-
         for(int i=0; i<user.size(); i++) {
-            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
-                System.out.println("userId : " + user.get(i).getUser_id());
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())){
                 user.get(i).update(userRequestDto);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // 비밀번호 update
-    @Transactional
-    public boolean updateUserPw(UserRequestDto userRequestDto) {
-        List<UserVO> user = userRepository.findAll();
-
-        for(int i=0; i<user.size(); i++) {
-            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
-                user.get(i).updatePw(userRequestDto);
                 return true;
             }
         }
@@ -117,7 +100,6 @@ public class UserService {
         }
         return null;
     }
-
     @Transactional
     public UserVO readLog(int log){
         UserVO user = userRepository.findById(log).orElseThrow(
@@ -126,25 +108,18 @@ public class UserService {
 
         return user;
     }
-
-    //    @Transactional
     public String findThumbnailById(String id){
         return userRepository.findThumbnailById(id);
     }
 
-    public UserVO findUser(int log){
-        UserVO user = userRepository.findUserVOByLog(log);
-        System.out.println("sss: "+user.getId());
-        return user;
+    public List<UserVO> getUser_list(String[] userArr){
+        List<UserVO> users = new ArrayList<>();
+        for(int i=0; i<userArr.length; i++){
+            System.out.println(i+" : "+userArr[i]);
+            UserVO temp = userRepository.findIUserById(Integer.parseInt(userArr[i]));
+            users.add(temp);
+        }
+        return users;
     }
-
-    /*@Transactional
-    public UserVO readLog(String user_id){
-        UserVO user = userRepository.findById(log).orElseThrow(
-                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
-        );
-
-        return user;
-    }*/
 
 }

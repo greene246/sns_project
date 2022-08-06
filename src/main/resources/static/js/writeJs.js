@@ -1,6 +1,5 @@
 let fileNo = 0;
 let filesArr = new Array();
-
 // 사진 클라우드에 업로드 후 data 받아와서 hidden에 넣어줌
 function uploadImg(){
     let form = new FormData();
@@ -18,6 +17,7 @@ function uploadImg(){
             console.log("image upload fail");
         }
     };
+
     callUploadApi(settings);
 }
 
@@ -30,6 +30,8 @@ function callUploadApi(settings){
             $('#img_url').val(jx.data.url);
             $('#del_url').val(jx.data.delete_url);
 
+            console.log($('#b_contents').val());
+
             let boardJson = {
                 "url" : "/upload",
                 "method" : "POST",
@@ -37,7 +39,7 @@ function callUploadApi(settings){
                 "data" : JSON.stringify({
                     "user_id" : $('#user_id').val(),
                     "img_url" : $('#img_url').val(),
-                    "contents" : $('#contents').val(),
+                    "contents" : $('#b_contents').val(),
                     "public_scope" : $('#scope').val(),
                     "delete_url" : $('#del_url').val(),
                 })
@@ -45,7 +47,6 @@ function callUploadApi(settings){
 
             $.ajax(boardJson)
                 .done(result => {
-                    console.log($('#contents').val());
                     console.log("uploadImg success");
                     // location.reload();
                 })

@@ -257,7 +257,6 @@ public class UserController {
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
         String temp = userService.findThumbnailById(id);
-
         return temp;
     }
 
@@ -269,7 +268,16 @@ public class UserController {
         return userService.findUser(log);
     }
 
+    @PostMapping("/getUserLists")
+    @ResponseBody
+    public List<UserVO> getUserList(@RequestBody String userList) {
+        if (userList.length() > 1) {
+            userList = userList.substring(1, userList.length() - 1);
+        }
+        String[] userArr = userList.split(",");
 
+        return userService.getUser_list(userArr);
+    }
 
 }
 

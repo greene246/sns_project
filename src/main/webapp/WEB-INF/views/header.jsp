@@ -29,7 +29,7 @@
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <a onclick="writeForm(<%=log%>), black_block()">
+                <a onclick="file_upload_pop(<%=log%>)">
                     <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>
                 <p class="myPage" onclick="location.href='/myPage'"><img class="header_img" src="img/myPage.png"></p>

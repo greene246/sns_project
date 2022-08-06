@@ -300,10 +300,7 @@ public class UserController {
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
         String temp = userService.findThumbnailById(id);
-        System.out.println(id);
-        System.out.println(temp);
         return temp;
-
     }
 
     @PostMapping("/getUserLists")

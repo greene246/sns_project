@@ -28,18 +28,42 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-
-    // 컨텐츠 DB 탐색색
-//   public void search(int a){
+    // 컨텐츠 DB 탐색
     public List<BoardVO> search(int a){
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
-
-        for(int i = 0; i < boards.size(); i++) {
-            System.out.print(boards.get(i).getId()+" ");
-            System.out.println(boards.get(i).getUser_id());
-        }
-        System.out.println("=========================================");
         return boards;
+    }
+    @Transactional
+    //like count ++
+    public void UpLikeCount(int boardid){
+        List<BoardVO> boards = boardRepository.findBoardsById(boardid);
+        List<BoardVO> users = boardRepository.findAll();
+
+        int like = boards.get(0).getLike_cnt()+1;
+        BoardRequestDto boardRequestDto = new BoardRequestDto(boards.get(0).getUser_id(),like);
+
+        for(int i = 0; i < users.size(); i++){
+            if(boards.get(0).getId() == users.get(i).getId()){
+                users.get(i).update(boardRequestDto);
+            }
+        }
+    }
+
+    //like count --
+    public void DownLikeCount(int boardid){
+        List<BoardVO> boards = boardRepository.findBoardsById(boardid);
+        List<BoardVO> users = boardRepository.findAll();
+        int like = boards.get(0).getLike_cnt()-1;
+
+            BoardRequestDto boardRequestDto = new BoardRequestDto(boards.get(0).getUser_id(),like);
+
+            for(int i = 0; i < users.size(); i++){
+                if(boards.get(0).getId() == users.get(i).getId()){
+                    users.get(i).update(boardRequestDto);
+                }
+            }
+
+
     }
 }
 

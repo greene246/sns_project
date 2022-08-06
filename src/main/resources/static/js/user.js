@@ -29,7 +29,7 @@ function getUser(log){
 
         let user_id = result.user_id;
         let user_name = result.name;
-        let thumbnail = `<img src=${result.thumbnail}>`;
+        let thumbnail = `<img src=${result.thumbnail} style="width: 150px;">`;
 
         $('.user_id').append(user_id);
         $('.name').append(user_name);

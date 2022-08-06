@@ -4,6 +4,7 @@ import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,17 +65,26 @@ public class UserService {
 
     // update
     @Transactional
-    public boolean updateUser(UserRequestDto userRequestDto){
+    public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
         for(int i=0; i<user.size(); i++) {
-            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())){
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
                 user.get(i).update(userRequestDto);
                 return true;
             }
         }
         return false;
     }
+
+    /*public UserVO readLog(int log){
+        UserVO user = userRepository.findById(log).orElseThrow(
+                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
+        );
+        System.out.println(user.getUser_id());
+        System.out.println(user.getThumbnail());
+        return user;
+    }*/
 
     // read
     public UserVO readUser(UserRequestDto userRequestDto){
@@ -106,8 +116,6 @@ public class UserService {
         UserVO user = userRepository.findById(log).orElseThrow(
                 () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
         );
-        System.out.println(user.getUser_id());
-        System.out.println(user.getThumbnail());
 
         return user;
     }
@@ -117,4 +125,9 @@ public class UserService {
         return userRepository.findThumbnailById(id);
     }
 
+
+    public UserVO findUser(int log){
+        UserVO user = userRepository.findUserVOByLog(log);
+        return user;
+    }
 }

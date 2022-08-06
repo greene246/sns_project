@@ -18,15 +18,36 @@ function black_block(){
 //     $(".black").css("display","none");
 //
 // });
-//팝업창을 보여준다.
-showPopup = function() {
-    $(".pop1").show();
-    $(".pop1").center();
+
+
+// 댓글 클릭 시 보여준다.
+function showPopup(){
+    $(".contents_detail").css("display", "block");
+    scrollDisable()
 }
+
+// 추가 버튼 클릭 시
+function writeForm(log){
+    $('.write_wrap').css("display","block");
+    who_am_i(log);
+    scrollDisable()
+}
+
+// 스크롤 강제 막기
+function scrollDisable(){
+    $('html, body').addClass('hidden');
+}
+// 스크롤 작동
+function scrollAble(){
+    $('html, body').removeClass('hidden');
+}
+
 //팝업창에 여백클릭스 cancel
 cancel = function() {
-    $(".pop1").css("display","none");
+    $(".contents_detail").css("display","none");
+    $('.write_wrap').css("display","none");
     $(".black").css("display","none");
+    scrollAble()
 }
 
 $(document).ready(function(){
@@ -67,6 +88,16 @@ $(document).ready(function(){
     });
 });
 
+// 버튼 클릭시 나의 아이디 받아오기
+function who_am_i(log){
+    $.ajax({
+        url: "/getInfo?log="+log,
+        type : "POST"
+    }).done(result => {
 
+        let user_id = result.user_id;
+        console.log(user_id)
 
-
+        $('#user_id').val(user_id);
+    })
+}

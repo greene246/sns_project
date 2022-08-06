@@ -36,6 +36,6 @@
 })
 </script>
 <script src="js/userPage.js"></script>
-<script src="js/myPage.js"></script>
+<%--<script src="js/myPage.js"></script>--%>
 </body>
 </html>

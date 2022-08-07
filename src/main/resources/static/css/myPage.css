@@ -1,16 +1,8 @@
 .myPageBody{
     padding-top: 50px;
+    padding-left: 120px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    /*display: grid;
-    grid-template-columns: 300px 200px 200px 200px;
-    grid-template-rows: repeat(3, 30%);
-    grid-template-areas:
-    'img user_id btn btn'
-    'img name'
-    ;*/
+    flex-direction: row;
 }
 
 .myPageBody > span{
@@ -24,15 +16,18 @@
 }
 
 .user_id{
-    grid-area: user_id;
+    font-size: 33px;
 }
 
 .name{
-    grid-area: name;
+    padding-top: 20px;
 }
 
 .btn{
-    grid-area: btn;
+    margin-left: 40px;
+    background-color: white;
+    border-radius: calc(100vw * (20 / 1920));
+    /*width: 100px;*/
 }
 
 .myPageContent{
@@ -48,8 +43,25 @@
     margin: 5px;
 }
 
+._userIdName{
+    display: flex;
+    flex-direction: column;
+    padding-left: 80px;
+}
+
+._userIdBtn{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
 .imgSize{
     width: 280px;
+    transition: 0.5s;
+}
+
+.imgSize:hover{
+    transform: scale(1.1);
 }
 
 /*userPage*/

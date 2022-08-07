@@ -21,10 +21,14 @@
     <div class="myPageBody">
 
         <div class="thumbnail"></div>
-        <span class="user_id"></span>
-        <span class="name"></span>
+        <div class="_userIdName">
+            <div class="_userIdBtn">
+                <span class="user_id"></span>
+                <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
+            </div>
+            <span class="name"></span>
+        </div>
 
-        <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
 
     </div>
 

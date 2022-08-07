@@ -17,13 +17,17 @@
     <div class="myPageBody">
 
         <div class="thumbnail"></div>
-        <div class="user_id"></div>
-        <div class="name"></div>
-
-        <div class="btn">
-            <input type="button" class="followBtn" name="followBtn" value="팔로우">
-            <input type="button" class="followingBtn" name="following" value="팔로잉">
+        <div class="_userIdName">
+            <div class="_userIdBtn">
+                <div class="user_id"></div>
+                <div class="btn">
+                    <input type="button" class="followBtn" name="followBtn" value="팔로우">
+                    <input type="button" class="followingBtn" name="following" value="팔로잉">
+                </div>
+            </div>
+            <div class="name"></div>
         </div>
+
 
     </div>
 

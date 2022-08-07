@@ -1,3 +1,6 @@
+._wrap{
+    overflow: hidden;
+}
 
 .content{
     text-align: center;
@@ -47,6 +50,11 @@
     grid-area: img;
 }
 
+/*08.04*/
+.update_user{
+    text-align: center;
+}
+
 /*updateMyInfo*/
 .c_header{
     padding-bottom: 30px;
@@ -55,6 +63,10 @@
 #myContent{
     position: relative;
     padding: 45px 50px 95px;
+}
+
+#updateMyContent{
+    text-align: center;
 }
 
 .tableMyInfo{

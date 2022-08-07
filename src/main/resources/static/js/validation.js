@@ -1,3 +1,5 @@
+let arr = new Array();
+
 // 팝업창
 jQuery.fn.center = function () {
     this.css("position","absolute");
@@ -6,36 +8,98 @@ jQuery.fn.center = function () {
 
     return this;
 }
-$(".subsBtn").on('click', e=>{
+
+// 추가 클릭 시 창 띄우기
+function file_upload_pop(log){
     $(".black").css("display","block");
-});
-
-$(".cancel").on('click', e=>{
-    $(".pop1").css("display","none");
-    $(".black").css("display","none");
-
-});
-//팝업창을 보여준다.
-showPopup = function() {
-    $(".pop1").show();
-    $(".pop1").center();
+    $(".write_wrap").css("display","block");
+    $(".contents_detail").css("display","none");
+    who_am_i(log);
+    scrollDisable();
 }
-//팝업창에 여백클릭스 cancel
-cancel1 = function() {
-    $(".pop1").css("display","none");
-    $(".black").css("display","none");
+
+// 댓글 아이콘 클릭 시
+function detail_comments_pop(board, board_id, log){
+    $(".black").css("display","block");
+    $(".write_wrap").css("display","none");
+    $(".contents_detail").css("display","block");
+    showPopup(board,board_id);
+    who_am_i(log);
 }
+
+// x 버튼 클릭 시 창 닫기
+$(".close").on("click", e=>{
+    $(".black").css("display","none");
+    when_close();
+})
+
+function when_close(){
+    $('#detail_profile_img').attr("src",'');
+    $('.detail_user_id').children('span').remove();
+    scrollAble();
+}
+
+// 댓글 클릭 시 보여준다.
+function showPopup(board, board_id){
+    $(".contents_detail").css("display", "flex");
+    let board_img = $(`#${board}`).attr("src");
+    $("#detail_img_main").attr("src", board_img);
+    scrollDisable();
+
+    $.ajax({
+        url : "/commentsLoad?board_id=" + board_id,
+        type: "POST",
+        async : false,
+        contentType : "application/json"
+    }).success(result =>{
+        console.log("comments loading success");
+        console.log(result);
+
+        result.forEach(e =>{
+            arr.push(e.user_id);
+        })
+
+        $.ajax({
+            url : "/getUserLists",
+            type : "POST",
+            data : JSON.stringify(arr),
+            async: false,
+            contentType: "application/json"
+        }).success(e=>{
+            console.log(e);
+
+            comments_view(result);
+
+        }).fail(error=>{
+            console.log("userList loading fail")
+        })
+
+    }).fail(error =>{
+        console.log("comments loading fail");
+    })
+
+}
+
+// 스크롤 강제 막기
+function scrollDisable(){
+    $('html, body').addClass('hidden');
+}
+// 스크롤 작동
+function scrollAble(){
+    $('html, body').removeClass('hidden');
+}
+
 $(document).ready(function(){
 
     $('.box').each(function(){
-        var content = $(this).children('.content');
-        var content_txt = content.text();
-        var content_txt_short = content_txt.substring(0,100)+"...";
-        var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+        let content = $(this).children('.content');
+        let content_txt = content.text();
+        let content_txt_short = content_txt.substring(0,48)+"...";
+        let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
         $(this).append(btn_more);
 
-        if(content_txt.length >= 100){
+        if(content_txt.length >= 48){
             content.html(content_txt_short)
 
         }else{
@@ -63,60 +127,25 @@ $(document).ready(function(){
     });
 });
 
-////////////////////////
-$("#id").change(e =>{
-    console.log($("#id").val());
-
+// 버튼 클릭시 나의 아이디 받아오기
+function who_am_i(log){
     $.ajax({
-        url : `/user?id=${$("#id").val()}`,
-        method : "POST",
+        url: "/getInfo?log="+log,
+        type : "POST"
     }).done(result => {
-        console.log(result);
-        console.log(typeof result);
-        if(result ===""){
-            $("#msg_error").hide();
-            $("#msg_ok").show();
-        }
-        else{
-            $("#msg_error").show();
-            $("#msg_ok").hide();
-        }
-    });
+        let user_id = result.user_id;
 
-    // 2) @RequestBody
-    const requestData = {
-        "id" : $("#id").val(),
-        "pw" : $("#password").val()
-    }
-
-    $.ajax({
-        url : "/v1/search/user",
-        // method : POST,
-        type : "POST",
-        data : JSON.stringify(requestData),
-        contentType : "application/json"
-    }).done(result => {
-        console.log(result);
+        $('#user_id').val(user_id);
     })
-}).fail(error => {
-    console.log(error.responseText);
-})
-function checkUser(){
-    const requestData = {
-        "id" : $("#userId").val(),
-        "pw" : $("#userPw").val()
-    }
+}
 
-    $.ajax({
-        url : "/user",
-        // method : "POST",
-        type : "POST",
-        data : JSON.stringify(requestData),
-        contentType : "application/json"
-    }).success(result =>{
-        console.log(result);
-    }).fail(error => {
-        console.log(error.responseText);
-    })
-    document.getElementById('#login').submit();
+
+// 댓글 띄우기
+function comments_view(result){
+    for(let i=0; i<result.length; i++){
+        let html = `
+            <div class="comment_section"></div>
+`
+
+    }
 }

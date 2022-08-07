@@ -8,22 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class BoardRequestDto {
-    int id;
-    String user_id;
-    String img_url;
-    String contents;
-    int like_cnt;
-    int public_scope;
-    String delete_url;
+    private int id;
+    private String user_id;
+    private String img_url;
+    private String contents;
+    private int like_cnt;
+    private int public_scope;
+    private String delete_url;
 
-    public BoardRequestDto(String user_id,String img_url, String contents, int like_cnt, int public_scope, String delete_url){
+    public BoardRequestDto(String user_id, int like_cnt){
         this.user_id = user_id;
-        this.img_url =img_url;
-        this.contents = contents;
         this.like_cnt = like_cnt;
-        this.public_scope = public_scope;
-        this.delete_url = delete_url;
     }
-
 }
-

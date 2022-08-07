@@ -13,26 +13,26 @@
     <title>Main</title>
     <title>header</title>
 </head>
-
-<body>
     <%
-  if(session.getAttribute("log") == null) {
-    String url = "/";
-    response.sendRedirect(url);
-  }
-  else{
-    int log = (Integer) session.getAttribute("log");
-%>
+        if(session.getAttribute("log") == null) {
+            String url = "/";
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        else {
+            int log = (Integer) session.getAttribute("log");
+
+    %>
+<body>
 <div id="total_wrap">
     <div class="header">
         <div class="header_contents_wrap">
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <a href="javascript:;" onclick="showWriteForm()",>
-                    <p class="writeBoard">추가</p>
+                <a onclick="file_upload_pop(<%=log%>)">
+                    <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>
-                <p class="myPage" onclick="location.href='/myPage'">마이페이지</p>
+                <p class="myPage" onclick="location.href='/myPage'"><img class="header_img" src="img/myPage.png"></p>
                 <p class="logout" onclick="location.href='/logout'">로그아웃</p>
             </div>
         </div>

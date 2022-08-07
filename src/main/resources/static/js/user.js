@@ -3,6 +3,7 @@ $('#user_id').change(e => {
     const requestData = {
         "user_id" : $('#user_id').val()
     }
+
     $.ajax({
         url: "/getUser",
         type: "POST",
@@ -24,11 +25,13 @@ function getUser(log){
         url: "/getInfo?log="+log,
         type : "POST"
     }).done(result => {
+
         let user_id = result.user_id;
         let user_name = result.name;
+        let thumbnail = `<img src=${result.thumbnail} style="width: 200px;">`;
 
         $('.user_id').append(user_id);
         $('.name').append(user_name);
+        $('.thumbnail').append(thumbnail);
     })
-
 }

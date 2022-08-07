@@ -3,36 +3,51 @@ package com.example.sns.sns_project.controller;
 import com.example.sns.sns_project.domain.BoardRequestDto;
 import com.example.sns.sns_project.domain.BoardVO;
 import com.example.sns.sns_project.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 @RestController
 public class BoardController {
     @Autowired
     private BoardService boardService;
 
     @PostMapping("/upload")
-    public void createBoard(
-            @RequestParam(name="user_id")String user_id, @RequestParam(name="img_url")String img_url,
-            @RequestParam(name="delete_url")String delete_url, @RequestParam(name="contents")String contents,
-            @RequestParam(name="public_scope")int public_scope, HttpServletResponse response, HttpServletRequest request
-    ) {
-        HttpSession session = request.getSession();
-        BoardRequestDto b_dto = new BoardRequestDto(user_id, img_url, contents,0, public_scope, delete_url);
-        boardService.createBoard(b_dto);
+    @ResponseBody
+    public void creatMultiBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
+        boardService.createBoard(boardRequestDto);
+
+        response.sendRedirect("/main");
+    }
+
+    @DeleteMapping("/delete_board")
+    @ResponseBody
+    public void deleteBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
+        boardService.deleteBoard(boardRequestDto);
 
         String url = "/main";
-        try{
-            request.getRequestDispatcher(url).forward(request,response);
-        }catch (Exception e){
+        try {
+//            request.getRequestDispatcher(url).forward(request,response);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    @GetMapping("/search/{num}")
+    public List<BoardVO> search(@PathVariable("num") int num) {
+        return boardService.search(num);
+    }
+
+    // 유저 아이디 받아서 그 유저가 쓴 게시물 죄다 가져오기
+    @PostMapping("/myContent/{user_id}")
+    public List<BoardVO> myContent(@PathVariable("user_id") String user_id){
+        return boardService.myContent(user_id);
+    }
 }

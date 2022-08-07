@@ -1,4 +1,3 @@
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -9,23 +8,34 @@
   <title>userPage</title>
 </head>
 <body>
+<%
+  int log = (Integer) session.getAttribute("log");
+  String user_id = (String) request.getParameter("user_id");
+%>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-
 <div class="wrap">
   <div class="myPageBody">
-    <span class="img"><img src="./img/도라에몽.png"></span>
-    <span class="id"></span>
-    <span class="name"></span>
 
-    <input type="button" class="followBtn" name="followBtn" value="팔로우">
+    <div class="thumbnail"></div>
+    <div class="user_id"></div>
+    <div class="name"></div>
 
+    <div class="btn">
+      <input type="button" class="followBtn" name="followBtn" value="팔로우" onclick="follow('<%=log%>','<%=user_id%>')">
+      <input type="button" class="unFollowBtn" name="unFollowBtn" value="언팔로우" onclick="unfollow('<%=log%>','<%=user_id%>')">
+    </div>
 
   </div>
+
+  <div class="userPageContent"></div>
+
 </div>
+
 <script>$(document).ready(function(){
-  getUser(<%=log%>);
+  userPageUser('<%=user_id%>');
 })
 </script>
-<script src="js/user.js"></script>
+<script src="js/userPage.js"></script>
+<script src="js/follow.js"></script>
 </body>
 </html>

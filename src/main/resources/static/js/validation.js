@@ -19,7 +19,7 @@ function file_upload_pop(log) {
 }
 
 // 댓글 아이콘 클릭 시
-function detail_comments_pop(board_user, board, board_id, log) {
+function detail_comments_pop(board_user, board, board_id, log, contents) {
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
@@ -30,6 +30,7 @@ function detail_comments_pop(board_user, board, board_id, log) {
     let profile_img = board_user + "_info";
     let target_url = $(`.${profile_img}`).attr("src");
     let target_name = `<span>${board_user}</span>`;
+    let target_contents = `${contents}`;
     $(".detail_profile_img").attr("src", target_url);
 
     if(!comment_check){
@@ -38,6 +39,9 @@ function detail_comments_pop(board_user, board, board_id, log) {
     }
 
 
+
+    $('._contents').empty();
+    $('._contents').append(target_contents);
 
     showPopup(board, board_id, log);
     who_am_i(log);

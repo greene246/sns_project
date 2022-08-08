@@ -50,6 +50,11 @@
                 <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                 <div class="_user_id"></div>
             </div>
+
+            <div class="contents">
+                <a class="_contents"></a>
+            </div>
+
             <div class="all_comments">
 
             </div>

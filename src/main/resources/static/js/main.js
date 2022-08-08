@@ -44,7 +44,7 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})">
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
 <!--                                </a>-->
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
@@ -58,7 +58,7 @@ function insertHtml(Board, log) {
                         <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
                         <div class="input_comments">
                             <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
-                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}')">
                         </div>
                     </div>
                 </div>
@@ -69,6 +69,7 @@ function insertHtml(Board, log) {
 
 // Serve 출력 부분
 function serveShow(log){
+    console.log("serve 출력 js")
     //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
         url: "/getUser/" + log,

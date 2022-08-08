@@ -46,9 +46,9 @@
 <script src="./js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
+
 <script>
     getBoards(0,<%=log%>);
-    getBoards(1,<%=log%>);
     serveShow(<%=log%>);
     <%}%>
 </script>

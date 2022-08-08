@@ -273,8 +273,11 @@
 }
 
 .comments_owner{
+    display: flex;
+    align-items: center;
     height: 10%;
     margin: 10px;
+
 }
 .detail_profile_img{
     height: 100%;

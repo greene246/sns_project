@@ -70,6 +70,11 @@ public class BoardService {
 
         return boards;
     }
+
+    // 내 게시물 지우기
+    public void deleteMyContent(int id){
+        boardRepository.deleteById(id);
+    }
 }
 
 

@@ -75,11 +75,12 @@ function deleteContent(id){
 function printContent(log, Board) {
     let Content_img = Board.img_url;
     console.log(Content_img);
+    console.log('유저아이디 : ' + `${Board.user_id}`);
 
     let html = `
         <div class="myImage">
             <input type="button" value="삭제" class="del_btn" onclick="deleteContent(${Board.id})">
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
         </div>
     `;
     $('.myPageContent').append(html);

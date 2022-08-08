@@ -50,7 +50,7 @@ function insertHtml(Board, log) {
                          <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})">
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.id}_img', ${Board.id}, ${log})">
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
                         <!-- 북마크 -->
@@ -63,7 +63,7 @@ function insertHtml(Board, log) {
                         <span className='main3' id='contents'>${Board.contents}</span>
                         <span className='main4' id='createdAt'>${Board.createdAt.substring(0,10)}</span>
                         <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
-                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', '${Board.id}_img')">
+                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', '${Board.thumbnail}_img')">
                     </div>
                     
                 </div>
@@ -86,7 +86,6 @@ function serveShow(log){
                      <img src=${data.img_url}>
                      <div class='profile_box'>${data.user_id}</div>
             `;
-
             $('.serve_section').append(html);
         },
         fail: function () {

@@ -24,7 +24,7 @@ function detail_comments_pop(board, board_id, log) {
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
-    showPopup(board, board_id);
+    showPopup(board, board_id, log);
     who_am_i(log);
 }
 
@@ -42,12 +42,11 @@ function when_close() {
 }
 
 // 댓글 클릭 시 보여준다.
-function showPopup(board, board_id) {
+function showPopup(board, board_id, log) {
     $(".contents_detail").css("display", "flex");
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
     $('#detail_board_id').val(board_id);
-    // scrollDisable();
 
     $.ajax({
         url: "/commentsLoad?board_id=" + board_id,
@@ -84,45 +83,6 @@ function scrollDisable() {
 function scrollAble() {
     $('html, body').css("overflow", "visible")
 }
-
-
-$(document).ready(function () {
-
-    $('.box').each(function () {
-        let content = $(this).children('.content');
-        let content_txt = content.text();
-        let content_txt_short = content_txt.substring(0, 48) + "...";
-        let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
-
-        $(this).append(btn_more);
-
-        if (content_txt.length >= 48) {
-            content.html(content_txt_short)
-
-        } else {
-            btn_more.hide()
-        }
-
-        btn_more.click(toggle_content);
-        // 아래 bind가 안 되는 이유는??
-        // btn_more.bind('click',toggle_content);
-
-        function toggle_content() {
-            if ($(this).hasClass('short')) {
-                // 접기 상태
-                $(this).html('더보기');
-                content.html(content_txt_short)
-                $(this).removeClass('short');
-            } else {
-                // 더보기 상태
-                $(this).html('접기');
-                content.html(content_txt);
-                $(this).addClass('short');
-
-            }
-        }
-    });
-});
 
 // 버튼 클릭시 나의 아이디 받아오기
 function who_am_i(log) {
@@ -172,9 +132,10 @@ function comments_view(result, result2, log) {
             $('.all_comments').append(html);
         }
     }
+}
 
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id) {
+    function upload_comments(log, board_id, comments_id,board) {
         // log = 로그인 중인 user의 id값
         // board_id = 댓글을 작성한 보드의 id값
         // $(`#${comments_id}`).val() = 작성한 댓글 내용
@@ -206,9 +167,10 @@ function comments_view(result, result2, log) {
             data: JSON.stringify(requestData),
             contentType: "application/json"
         }).success(result => {
-            console.log("comments upload success");
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
+            $('.all_comments').empty();
+            detail_comments_pop(board, board_id, log)
         }).fail(error => {
             console.log("comments upload fail");
         })

@@ -19,7 +19,6 @@
     </div>
 </div>
 <div class="black">
-
     <c:import url="/WEB-INF/views/writeForm.jsp"/>
 
     <div class="contents_detail">
@@ -37,7 +36,7 @@
             </div>
             <div class="input_comments">
                 <input type="text" placeholder="댓글달기" id="detail_comments_val">
-                <input type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}', 'comments_${Board.img_url}')">
+                <input type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}', '${Board.id}_img')">
             </div>
         </div>
     </div>
@@ -49,8 +48,8 @@
 <script src="./js/eventJs.js"></script>
 <script>
     getBoards(0,<%=log%>);
-    serveShow(<%=log%>);
     getBoards(1,<%=log%>);
+    serveShow(<%=log%>);
     <%}%>
 </script>
 </body>

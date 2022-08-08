@@ -124,7 +124,7 @@ public class UserService {
         UserVO user = userRepository.findById(log).orElseThrow(
                 () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
         );
-        System.out.println(user.getUser_id());
+
         return user;
     }
 

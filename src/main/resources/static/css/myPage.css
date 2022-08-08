@@ -1,16 +1,8 @@
 .myPageBody{
     padding-top: 50px;
+    padding-left: 120px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    /*display: grid;
-    grid-template-columns: 300px 200px 200px 200px;
-    grid-template-rows: repeat(3, 30%);
-    grid-template-areas:
-    'img user_id btn btn'
-    'img name'
-    ;*/
+    flex-direction: row;
 }
 
 .myPageBody > span{
@@ -24,15 +16,18 @@
 }
 
 .user_id{
-    grid-area: user_id;
+    font-size: 33px;
 }
 
 .name{
-    grid-area: name;
+    padding-top: 20px;
 }
 
 .btn{
-    grid-area: btn;
+    margin-left: 40px;
+    background-color: white;
+    border-radius: calc(100vw * (20 / 1920));
+    /*width: 100px;*/
 }
 
 .myPageContent{
@@ -43,11 +38,47 @@
 }
 
 .myImage{
-    padding: 10px;
+    border: 1px solid lightslategray;
+    margin: 7px;
+    display: flex;
+    background-color: black;
+    align-items: center;
+}
+
+._userIdName{
+    display: flex;
+    flex-direction: column;
+    padding-left: 80px;
+}
+
+._userIdBtn{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
 }
 
 .imgSize{
-    width: 280px;
+    width: 284px;
+    transition: 0.5s;
+}
+
+.imgSize:hover{
+    transform: scale(1.1);
+}
+
+.comments_owner{
+    height: 10%;
+    margin: 10px;
+}
+
+.__thumbnail{
+    height: 100%;
+    border-radius: 50%;
+}
+
+._mainThumbnail{
+    width: 180px;
+    border-radius: 50%;
 }
 
 /*userPage*/
@@ -59,5 +90,32 @@
 }
 
 .userImage{
-    padding: 10px;
+    /*padding: 4px;*/
+    border: 1px solid lightslategray;
+    margin: 7px;
+    display: flex;
+    background-color: black;
+    align-items: center;
+}
+
+.btn input[type="button"]{
+    margin-left: 40px;
+    border-radius: 6px;
+    color: #eeeeee;
+    border: none;
+    cursor: pointer;
+    background-color: cornflowerblue;
+    height: 33px;
+    width: 86px;
+}
+.follow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+._userId_Btn{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
 }

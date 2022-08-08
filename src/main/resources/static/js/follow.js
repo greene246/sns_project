@@ -14,7 +14,6 @@ function follow(log,user_id) {
         data: JSON.stringify(log),
         contentType: "application/json"
     }).done(result => {
-        console.log(result);
         following = result;
 
         const data = {
@@ -29,10 +28,9 @@ function follow(log,user_id) {
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(r => {
-            console.log(r);
             $('.followBtn').css("display", "none")
             $('.unFollowBtn').css("display", "block")
-
+            followCount(log, user_id);
         })
     })
 }
@@ -45,7 +43,6 @@ function unfollow(log, user_id) {
         data: JSON.stringify(log),
         contentType: "application/json"
     }).done(result => {
-        console.log(result);
         following = result;
 
         const data = {
@@ -59,48 +56,110 @@ function unfollow(log, user_id) {
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(r => {
-            console.log(r);
             $('.followBtn').css("display", "block")
             $('.unFollowBtn').css("display", "none")
-
+            followCount(log, user_id);
         })
     })
 }
 
-function checkFollow(log, user_id){
+function checkFollow(log, user_id) {
     follower = user_id;
-    console.log("aaa"+following);
-    console.log("ddd"+follower);
     $.ajax({
         url: "/getUserIdfl?log=" + log,
         type: "POST",
         data: JSON.stringify(log),
         contentType: "application/json"
     }).done(result => {
-        console.log("bbb"+result);
         following = result;
 
         const data = {
             "following_id": following,
             "follower_id": follower
         }
-        console.log(data);
         $.ajax({
             url: "/followCheck",
-            type : "POST",
+            type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json"
-        }).done(result=>{
-            console.log(result)
-            if(result == false){
+        }).done(result => {
+            if (result == false) {
                 $('.followBtn').css("display", "block")
                 $('.unFollowBtn').css("display", "none")
-            }
-            else{
+            } else {
                 $('.unFollowBtn').css("display", "block")
                 $('.followBtn').css("display", "none")
             }
         })
 
+    })
+
+
+}
+
+
+function followCount(log, user_id) {
+    follower = user_id;
+    $.ajax({
+        url: "/getUserIdfl?log=" + log,
+        type: "POST",
+        data: JSON.stringify(log),
+        contentType: "application/json"
+    }).done(result => {
+        following = result;
+
+        const data = {
+            "following_id": following,
+            "follower_id": follower
+        }
+        console.log("data : "+data)
+        $.ajax({
+            url: "/followCount",
+            type: "POST",
+
+            data: JSON.stringify(data),
+            contentType: "application/json"
+        }).done(result => {
+            console.log(result)
+
+            let follower = result.follower.length;
+            let following = result.following.length;
+
+            $('.followCnt').empty();
+            $('.followingCnt').empty();
+            $('.followCnt').append("팔로워 " + follower);
+            $('.followingCnt').append("팔로우 " + following);
+        })
+    })
+}
+
+function myFollowCnt(log) {
+    $.ajax({
+        url: "/getUserIdfl?log=" + log,
+        type: "POST",
+        data: JSON.stringify(log),
+        contentType: "application/json"
+    }).done(result => {
+        following = result
+
+        const data = {
+            "following_id": following
+        }
+        console.log(data);
+        $.ajax({
+            url: "/followCount",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json"
+        }).done(result =>{
+            console.log(result);
+            let follower = result.follower.length;
+            let following = result.following.length;
+
+            $('.followCnt').empty();
+            $('.followingCnt').empty();
+            $('.followCnt').append("팔로워 " + follower);
+            $('.followingCnt').append("팔로우 " + following);
+        })
     })
 }

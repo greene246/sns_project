@@ -23,9 +23,21 @@ function detail_comments_pop(board, board_id, log){
     $(".black").css("display","block");
     $(".write_wrap").css("display","none");
     $(".contents_detail").css("display","block");
+    $("#detail_board_id").val(board_id);
     showPopup(board,board_id);
     who_am_i(log);
 }
+
+/*// 사진 클릭 시
+function detail_img_pop(board, board_id, log){
+    $(".black").css("display","block");
+
+    $(".write_wrap").css("display","none");
+    $(".pageBody").css("display","block");
+    $("#detail_board_id").val(board_id);
+    showPopup(board,board_id);
+    who_am_i(log);
+}*/
 
 // x 버튼 클릭 시 창 닫기
 $(".close").on("click", e=>{
@@ -36,58 +48,55 @@ $(".close").on("click", e=>{
 function when_close(){
     $('#detail_profile_img').attr("src",'');
     $('.detail_user_id').children('span').remove();
+    $('.all_comments').children('div').remove();
     scrollAble();
 }
 
 // 댓글 클릭 시 보여준다.
-function showPopup(board, board_id){
+function showPopup(board, board_id) {
     $(".contents_detail").css("display", "flex");
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
-    scrollDisable();
+    $('#detail_board_id').val(board_id);
+    // scrollDisable();
 
     $.ajax({
-        url : "/commentsLoad?board_id=" + board_id,
+        url: "/commentsLoad?board_id=" + board_id,
         type: "POST",
-        async : false,
-        contentType : "application/json"
-    }).success(result =>{
+        async: false,
+        contentType: "application/json"
+    }).done(result => {
         console.log("comments loading success");
         console.log(result);
 
-        result.forEach(e =>{
+        result.forEach(e => {
             arr.push(e.user_id);
         })
 
         $.ajax({
-            url : "/getUserLists",
-            type : "POST",
-            data : JSON.stringify(arr),
+            url: "/getUserLists",
+            type: "POST",
+            data: JSON.stringify(arr),
             async: false,
             contentType: "application/json"
-        }).success(e=>{
-            console.log(e);
+        }).done(result2=>{
+            comments_view(result, result2);
+            arr = new Array();
 
-            comments_view(result);
-
-        }).fail(error=>{
-            console.log("userList loading fail")
         })
-
-    }).fail(error =>{
-        console.log("comments loading fail");
     })
-
 }
 
 // 스크롤 강제 막기
 function scrollDisable(){
-    $('html, body').addClass('hidden');
+    $('html, body').css("overflow", "hidden")
 }
 // 스크롤 작동
 function scrollAble(){
-    $('html, body').removeClass('hidden');
+    $('html, body').css("overflow","visible")
 }
+
+
 
 $(document).ready(function(){
 
@@ -141,11 +150,73 @@ function who_am_i(log){
 
 
 // 댓글 띄우기
-function comments_view(result){
-    for(let i=0; i<result.length; i++){
-        let html = `
-            <div class="comment_section"></div>
-`
+function comments_view(result, result2){
+// result = 댓글 정보
+// result2 = 댓글 쓴 유저의 정보
 
+    console.log(result);
+    console.log(result2);
+
+    for(let i=0; i<result.length; i++){
+        console.log(result[i].comment);
+        let html = `
+            <div class="comment_section">
+                <div class="commented_user_info">
+                    <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                </div>
+                <div class="comments_info">
+                    <h1>${result2[i].user_id}</h1>
+                    <span class="commented">${result[i].comment}</span>
+                </div>
+            </div>
+            `
+        $('.all_comments').append(html);
     }
+}
+
+// 댓글 업로드
+function upload_comments(log, board_id, comments_id){
+    // log = 로그인 중인 user의 id값
+    // board_id = 댓글을 작성한 보드의 id값
+    // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    console.log("log : " + log);
+    console.log("board_id : " + board_id)
+    console.log("comments_id : " + comments_id)
+
+
+    let comments;
+    if(board_id == ''){
+        board_id = $('#detail_board_id').val();
+        comments = $("#detail_comments_val").val();
+    }
+    else{
+        comments = $(`#${comments_id}`).val();
+    }
+
+    if(comments == ''){
+        alert("댓글은 1자 이상 작성해주세요");
+        return;
+    }
+
+    console.log(board_id);
+    console.log(comments);
+
+    const requestData = {
+        "user_id" : log,
+        "board_id" : board_id,
+        "comment" : comments
+    };
+
+    $.ajax({
+        url : '/upload_comments',
+        method : 'POST',
+        data : JSON.stringify(requestData),
+        contentType: "application/json"
+    }).success(result => {
+        console.log("comments upload success");
+        $(`#${comments_id}`).val('');
+        $("#detail_comments_val").val('');
+    }).fail(error=>{
+        console.log("comments upload fail");
+    })
 }

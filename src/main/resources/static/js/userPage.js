@@ -2,7 +2,12 @@ let userId;
 let name;
 let thumbnail;
 
-function userPageUser(user_id) {
+let _thumbnail;
+
+let log; // userLog
+let _id // myLog
+
+function userPageUser(id, user_id) {
     console.log('user_id: ' + user_id);
 
     $.ajax({
@@ -13,17 +18,32 @@ function userPageUser(user_id) {
 
         userId = result.user_id;
         name = result.name;
-        thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
+        thumbnail = `<img class="_mainThumbnail" src=${result.thumbnail}>`;
 
-        userPageContents(userId);
+        _thumbnail = `<img class="__thumbnail" src=${result.thumbnail}>`;
 
-        $('.user_id').append(userId);
-        $('.name').append(name);
-        $('.thumbnail').append(thumbnail);
+        log = result.id;
+        _id = id;
+
+        if(id === log){
+            location.href = '/myPage';
+        }
+        else {
+            userPageContents(_id, userId);
+
+            $('.user_id').append(userId);
+            $('.name').append(name);
+            $('.thumbnail').append(thumbnail);
+
+            $('._user_id').append(userId);
+            $('._thumbnail').append(_thumbnail);
+
+            $('.id').append(log);
+        }
     })
 }
 
-function userPageContents(userId) {
+function userPageContents(id, userId) {
 
     $.ajax({
         url: "/myContent/" + userId,
@@ -44,17 +64,18 @@ function userPageContents(userId) {
         // }
     }).done(data => {
         data.forEach(e => {
-            printContent(e);
+            printContent(_id, e);
         })
     })
 }
 
-function printContent(Board) {
+function printContent(id, Board) {
     let Content_img = Board.img_url;
     console.log('이미지' + Content_img);
 
+
     let html = `
-        <div class="userImage"><img class="imgSize" src=${Content_img}></div>
+        <div class="userImage"><img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}></div>
     `;
     $('.userPageContent').append(html);
 

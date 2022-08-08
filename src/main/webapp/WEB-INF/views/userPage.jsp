@@ -11,6 +11,7 @@
 <%
   int log = (Integer) session.getAttribute("log");
   String user_id = (String) request.getParameter("user_id");
+
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -33,6 +34,7 @@
 
 <script>$(document).ready(function(){
   userPageUser('<%=user_id%>');
+  checkFollow('<%=log%>','<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>

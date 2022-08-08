@@ -18,8 +18,7 @@ public class FollowController {
     @PostMapping("/following")
     @ResponseBody
     public void following(@RequestBody FollowRequestDto followRequestDto){
-        System.out.println(followRequestDto.getFollower_id());
-        System.out.println(followRequestDto.getFollowing_id());
+
 
         int id = followService.findId(followRequestDto.getFollower_id(), followRequestDto.getFollowing_id());
 
@@ -37,4 +36,21 @@ public class FollowController {
             followService.remove(id);
 
     }
+
+    @PostMapping("/followCheck")
+    @ResponseBody
+    public boolean followCheck(@RequestBody FollowRequestDto followRequestDto){
+        System.out.println("asd"+followRequestDto.getFollower_id());
+        System.out.println("qwe"+followRequestDto.getFollowing_id());
+        boolean check = followService.followCheck(followRequestDto.getFollower_id(),followRequestDto.getFollowing_id());
+        if (check)
+
+            return true;
+        else
+            return false;
+    }
+
 }
+
+
+

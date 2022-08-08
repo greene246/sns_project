@@ -38,4 +38,18 @@ public class FollowService {
         followRepository.deleteById(id);
     }
 
+    public boolean followCheck(String follower_id, String following_id) {
+        List<FollowVO> follow = followRepository.findAll();
+
+        for (int i = 0; i < follow.size(); i++) {
+            if (follower_id.equals(follow.get(i).getFollower_id())
+                    && following_id.equals(follow.get(i).getFollowing_id())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 }

@@ -28,6 +28,17 @@ function detail_comments_pop(board, board_id, log){
     who_am_i(log);
 }
 
+// 사진 클릭 시
+function detail_img_pop(board, board_id, log){
+    $(".wrap").css("display","block");
+
+    $(".write_wrap").css("display","none");
+    $(".pageBody").css("display","block");
+    $("#detail_board_id").val(board_id);
+    showPopup(board,board_id);
+    who_am_i(log);
+}
+
 // x 버튼 클릭 시 창 닫기
 $(".close").on("click", e=>{
     $(".black").css("display","none");

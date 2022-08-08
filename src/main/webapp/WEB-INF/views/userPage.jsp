@@ -14,28 +14,33 @@
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
-    <div class="myPageBody">
+    <c:import url="/WEB-INF/views/writeForm.jsp"/>
 
-        <div class="thumbnail"></div>
-        <div class="_userIdName">
-            <div class="_userIdBtn">
-                <div class="user_id"></div>
-                <div class="btn">
-                    <input type="button" class="followBtn" name="followBtn" value="팔로우">
-                    <input type="button" class="followingBtn" name="following" value="팔로잉">
+    <div class="pageBody">
+
+        <div class="myPageBody">
+            <input type="hidden" value="" id="detail_board_id">
+
+            <div class="thumbnail"></div>
+            <div class="_userIdName">
+                <div class="_userIdBtn">
+                    <div class="user_id"></div>
+                    <div class="btn">
+                        <input type="button" class="followBtn" name="followBtn" value="팔로우">
+                        <input type="button" class="followingBtn" name="following" value="팔로잉">
+                    </div>
                 </div>
+                <div class="name"></div>
             </div>
-            <div class="name"></div>
+
         </div>
 
-
+        <div class="userPageContent"></div>
     </div>
-
-    <div class="userPageContent"></div>
 
 </div>
 
-<script>$(document).ready(function(){
+<script>$(document).ready(function () {
     userPageUser(<%=log%>, '<%=user_id%>');
 })
 </script>

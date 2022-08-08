@@ -67,7 +67,7 @@ function printContent(id, Board) {
     console.log('이미지' + Content_img);
 
     let html = `
-        <div class="userImage"><img class="imgSize" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}></div>
+        <div class="userImage"><img class="imgSize" onclick="detail_img_pop('img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}></div>
     `;
     $('.userPageContent').append(html);
 

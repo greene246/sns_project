@@ -25,6 +25,7 @@
 </div>
 </div>
     <div class="black">
+        
         <c:import url="/WEB-INF/views/writeForm.jsp"/>
 
         <div class="contents_detail">

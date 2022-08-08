@@ -1,4 +1,5 @@
 let arr = new Array();
+let comment_check = false;
 
 // 팝업창
 jQuery.fn.center = function () {
@@ -31,11 +32,13 @@ function detail_comments_pop(board_user, board, board_id, log, contents) {
     let target_url = $(`.${profile_img}`).attr("src");
     let target_name = `<span>${board_user}</span>`;
     let target_contents = `${contents}`;
-    $(".detail_profile_img").attr("src", target_url);
-    $('.detail_user_id').append(target_name);
+    if(!comment_check){
+        $(".detail_profile_img").attr("src", target_url);
+        $('.detail_user_id').append(target_name);
 
-    $('._contents').empty();
-    $('._contents').append(target_contents);
+        $('._contents').empty();
+        $('._contents').append(target_contents);
+    }
 
     showPopup(board, board_id, log);
     who_am_i(log);
@@ -52,6 +55,8 @@ function when_close() {
     $('.detail_user_id').children('span').remove();
     $('.all_comments').children('div').remove();
     scrollAble();
+
+    comment_check = false;
 }
 
 // 댓글 클릭 시 보여준다.
@@ -185,11 +190,14 @@ function comments_view(result, result2, log) {
             </div>
             `
         }
-            $('.all_comments').append(html);
+
+        $('.all_comments').append(html);
+        comment_check = true;
     }
 }
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id, board, board_user, contents) {
+    function upload_comments(log, board_id, comments_id, board, board_user) {
+
         // log = 로그인 중인 user의 id값
         // board_id = 댓글을 작성한 보드의 id값
         // $(`#${comments_id}`).val() = 작성한 댓글 내용
@@ -205,11 +213,6 @@ function comments_view(result, result2, log) {
             alert("댓글은 1자 이상 작성해주세요");
             return;
         }
-
-        console.log(board_id);
-        console.log(comments);
-
-        console.log(contents);
 
         const requestData = {
             "user_id": log,

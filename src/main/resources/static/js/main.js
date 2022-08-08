@@ -55,8 +55,10 @@ function insertHtml(Board, log) {
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
                         <span className='main4' id='createdAt'>${Board.createdAt}</span>
-                        <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
-                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                        <div class="input_comments">
+                            <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
+                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                        </div>
                     </div>
                 </div>
             `;
@@ -163,7 +165,23 @@ function upload_comments(log, board_id, comments_id){
     // log = 로그인 중인 user의 id값
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
-    let comments = $(`#${comments_id}`).val();
+    let comments;
+    if(board_id == ''){
+        board_id = $('#detail_board_id').val();
+        comments = $("#detail_comments_val").val();
+    }
+    else{
+        comments = $(`#${comments_id}`).val();
+    }
+
+    if(comments == ''){
+        alert("댓글은 1자 이상 작성해주세요");
+        return;
+    }
+
+    console.log(board_id);
+    console.log(comments);
+
     const requestData = {
         "user_id" : log,
         "board_id" : board_id,
@@ -178,6 +196,7 @@ function upload_comments(log, board_id, comments_id){
     }).success(result => {
         console.log("comments upload success");
         $(`#${comments_id}`).val('');
+        $("#detail_comments_val").val('');
     }).fail(error=>{
         console.log("comments upload fail");
     })

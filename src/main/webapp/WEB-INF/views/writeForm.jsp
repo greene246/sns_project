@@ -21,6 +21,6 @@
             <option value="1">친구만 공개</option>
             <option value="2">비공개</option>
         </select>
-        <input type="button" id="write" onclick="uploadImg(form)" value="올리기"></input>
+        <input type="button" id="write" onclick="uploadImg(form)" value="올리기">
     </form>
 </div>

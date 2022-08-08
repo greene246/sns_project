@@ -23,6 +23,7 @@ function detail_comments_pop(board, board_id, log){
     $(".black").css("display","block");
     $(".write_wrap").css("display","none");
     $(".contents_detail").css("display","block");
+    $("#detail_board_id").val(board_id);
     showPopup(board,board_id);
     who_am_i(log);
 }
@@ -36,48 +37,43 @@ $(".close").on("click", e=>{
 function when_close(){
     $('#detail_profile_img').attr("src",'');
     $('.detail_user_id').children('span').remove();
+    $('.all_comments').children('div').remove();
     scrollAble();
 }
 
 // 댓글 클릭 시 보여준다.
-function showPopup(board, board_id){
+function showPopup(board, board_id) {
     $(".contents_detail").css("display", "flex");
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
+    $('#detail_board_id').val(board_id);
     scrollDisable();
 
     $.ajax({
-        url : "/commentsLoad?board_id=" + board_id,
+        url: "/commentsLoad?board_id=" + board_id,
         type: "POST",
-        async : false,
-        contentType : "application/json"
-    }).success(result =>{
+        async: false,
+        contentType: "application/json"
+    }).done(result => {
         console.log("comments loading success");
         console.log(result);
 
-        result.forEach(e =>{
+        result.forEach(e => {
             arr.push(e.user_id);
         })
 
         $.ajax({
-            url : "/getUserLists",
-            type : "POST",
-            data : JSON.stringify(arr),
+            url: "/getUserLists",
+            type: "POST",
+            data: JSON.stringify(arr),
             async: false,
             contentType: "application/json"
-        }).success(e=>{
-            console.log(e);
+        }).done(result2=>{
+            comments_view(result, result2);
 
-            comments_view(result);
 
-        }).fail(error=>{
-            console.log("userList loading fail")
         })
-
-    }).fail(error =>{
-        console.log("comments loading fail");
     })
-
 }
 
 // 스크롤 강제 막기
@@ -141,11 +137,23 @@ function who_am_i(log){
 
 
 // 댓글 띄우기
-function comments_view(result){
-    for(let i=0; i<result.length; i++){
-        let html = `
-            <div class="comment_section"></div>
-`
+function comments_view(result, result2){
+// result = 댓글 정보
+// result2 = 댓글 쓴 유저의 정보
 
+    for(let i=0; i<result.length; i++){
+console.log(result[i].comment);
+        let html = `
+            <div class="comment_section">
+                <div class="commented_user_info">
+                    <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                </div>
+                <div class="comments_info">
+                    <h1>${result2[i].user_id}</h1>
+                    <span class="commented">${result[i].comment}</span>
+                </div>
+            </div>
+            `
+        $('.all_comments').append(html);
     }
 }

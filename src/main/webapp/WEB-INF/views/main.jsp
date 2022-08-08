@@ -9,7 +9,7 @@
     }
     else {
         int log = (Integer) session.getAttribute("log");
-
+        System.out.println("log:" + log);
 %>
 
 <div class="main_wrap">
@@ -48,9 +48,11 @@
 <script src="./js/eventJs.js"></script>
 
 <script>
-    getBoards(0,<%=log%>);
     serveShow(<%=log%>);
-    <%}%>
+    getBoards(0,<%=log%>);
+    getBoards(1,<%=log%>);
+
 </script>
+<%}%>
 </body>
 </html>

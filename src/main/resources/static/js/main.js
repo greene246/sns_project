@@ -55,7 +55,7 @@ function insertHtml(Board, log) {
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
-                        <span className='main4' id='createdAt'>${Board.createdAt}</span>
+                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
                         <div class="input_comments">
                             <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
                             <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
@@ -69,10 +69,9 @@ function insertHtml(Board, log) {
 
 // Serve 출력 부분
 function serveShow(log){
-    console.log("serve 출력 js")
     //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
-        url: "/getUser?log=" + log,
+        url: "/getUser/" + log,
         type: "GET",
         async: false,
         contentType: "application/json",
@@ -90,8 +89,7 @@ function serveShow(log){
         error: function () {
             console.log("error4")
         }
-    })
-
+     })
 }
 
 //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다

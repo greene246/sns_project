@@ -1,9 +1,8 @@
 .myPageBody{
     padding-top: 50px;
+    padding-left: 120px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: row;
 }
 
 .myPageBody > span{
@@ -17,28 +16,64 @@
 }
 
 .user_id{
-    grid-area: user_id;
+    font-size: 33px;
 }
 
 .name{
-    grid-area: name;
+    padding-top: 20px;
 }
 
 .btn{
-    grid-area: btn;
+    margin-left: 40px;
+    background-color: white;
+    border-radius: calc(100vw * (20 / 1920));
+    /*width: 100px;*/
 }
 
 .myPageContent{
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 900px;
+    width: 901px;
 }
 
 .myImage{
-    padding: 10px;
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
+}
+
+._userIdName{
+    display: flex;
+    flex-direction: column;
+    padding-left: 80px;
+}
+
+._userIdBtn{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
 }
 
 .imgSize{
     width: 280px;
+    transition: 0.5s;
+}
+
+.imgSize:hover{
+    transform: scale(1.1);
+}
+
+/*userPage*/
+.userPageContent{
+    display: flex;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 901px;
+}
+
+.userImage{
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
 }

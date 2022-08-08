@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/myPage.css">
     <title>myPage</title>
 </head>
-<body>
-
-<c:import url="/WEB-INF/views/header.jsp"></c:import>
 <%
     if(session.getAttribute("log") == null) {
         String url = "/";
@@ -18,27 +15,32 @@
     else{
         int log = (Integer) session.getAttribute("log");
 %>
+<body>
+<c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
     <div class="myPageBody">
 
         <div class="thumbnail"></div>
-        <span class="user_id"></span>
-        <span class="name"></span>
+        <div class="_userIdName">
+            <div class="_userIdBtn">
+                <span class="user_id"></span>
+                <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
+            </div>
+            <span class="name"></span>
+        </div>
 
-        <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
-        myPage 입니다.
+
     </div>
 
-    <div class="myPageContent">
+    <div class="myPageContent"></div>
 
-    </div>
 </div>
 
 <script>$(document).ready(function(){
-    getUser(<%=log%>);
+    myPageUser(<%=log%>);
 })
 </script>
-<script src="js/user.js"></script>
+<script src="js/myPage.js"></script>
 <%
     }
 %>

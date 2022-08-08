@@ -4,11 +4,11 @@ import com.example.sns.sns_project.domain.UserRepository;
 import com.example.sns.sns_project.domain.UserRequestDto;
 import com.example.sns.sns_project.domain.UserVO;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,13 +63,16 @@ public class UserService {
         userRepository.deleteById(userVO.getId());
     }
 
-    // update
+    // 회원정보 update
     @Transactional
     public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
+        System.out.println("SIZE : " + user.size());
+
         for(int i=0; i<user.size(); i++) {
             if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
+                System.out.println("userId : " + user.get(i).getUser_id());
                 user.get(i).update(userRequestDto);
                 return true;
             }
@@ -77,14 +80,19 @@ public class UserService {
         return false;
     }
 
-    /*public UserVO readLog(int log){
-        UserVO user = userRepository.findById(log).orElseThrow(
-                () -> new IllegalArgumentException("존재하지않는 사용자입니다.")
-        );
-        System.out.println(user.getUser_id());
-        System.out.println(user.getThumbnail());
-        return user;
-    }*/
+    // 비밀번호 update
+    @Transactional
+    public boolean updateUserPw(UserRequestDto userRequestDto) {
+        List<UserVO> user = userRepository.findAll();
+
+        for(int i=0; i<user.size(); i++) {
+            if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
+                user.get(i).updatePw(userRequestDto);
+                return true;
+            }
+        }
+        return false;
+    }
 
     // read
     public UserVO readUser(UserRequestDto userRequestDto){
@@ -125,9 +133,18 @@ public class UserService {
         return userRepository.findThumbnailById(id);
     }
 
-
     public UserVO findUser(int log){
-        UserVO user = userRepository.findUserVOByLog(log);
-        return user;
+
+        return userRepository.findUserVOByLog(log);
     }
+
+    public List<UserVO> getUser_list(String[] userArr){
+        List<UserVO> users = new ArrayList<>();
+        for(int i=0; i<userArr.length; i++){
+            UserVO temp = userRepository.findIUserById(Integer.parseInt(userArr[i]));
+            users.add(temp);
+        }
+        return users;
+    }
+
 }

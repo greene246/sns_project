@@ -1,18 +1,16 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.domain.BoardVO;
+import com.example.sns.sns_project.service.UserService;
+
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
-import com.example.sns.sns_project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -83,7 +81,6 @@ public class UserController {
     }
 
     // 회원탈퇴
-    // 회원탈퇴
     @PostMapping("/removeUser")
     public void deleteUser(@RequestParam(name="log") int log,
                            @RequestParam(name="user_pw") String user_pw,
@@ -112,12 +109,12 @@ public class UserController {
         }
     }
 
-    // 이름, 이메일 변경
+    // 프로필 사진, 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
-    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
-//        UserRequestDto userRequestDto = new UserRequestDto(user_id, user_pw, name, email, thumbnail);
-        System.out.println(userRequestDto.getUser_id());
+    public void updateUser(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response){
+        System.out.println("userID : " + userRequestDto.getUser_id());
+
         boolean check = userService.updateUser(userRequestDto);
 
         if(check){
@@ -136,6 +133,31 @@ public class UserController {
             e.printStackTrace();
         }
     }
+
+    // 비밀번호 업데이트
+    @PostMapping("/updatePw")
+    public void updatePw(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response) {
+        boolean check = userService.updateUserPw(userRequestDto);
+
+        if(check){
+            System.out.println("비밀번호 업뎃 성공");
+        }
+        else{
+            System.out.println("비밀번호 업뎃 실패");
+        }
+
+        String url = "";
+        url = "/updateMyPw";
+
+        try {
+            response.sendRedirect(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // 회원가입때 아이디 중복 검사
     @PostMapping("/getUser")
     @ResponseBody
     public String getUser(@RequestBody UserRequestDto userRequestDto){
@@ -187,6 +209,7 @@ public class UserController {
         }
     }
 
+    // 비밀번호 찾기
     @PostMapping("/findPw")
     public void findPw(@RequestParam(name="user_id") String user_id,
                        @RequestParam (name="name") String name,
@@ -219,20 +242,41 @@ public class UserController {
 
     }
 
+    // 유저 고유코드 받아서 유저 정보 리턴
     @PostMapping("/getInfo")
-    public UserVO getInfo(@RequestParam(name="log") int log){
+    public UserVO getInfo(@RequestParam(name="log") int log) {
         return userService.readLog(log);
+    }
+
+    // 유저 아이디 받아서 유저 정보 리턴
+    @PostMapping("/getUserId")
+    public UserVO getUserId(@RequestParam(name="user_id") String user_id){
+        return userService.readUserId(user_id);
     }
 
     @GetMapping("/getThumbnail")
     public String getThumbnail(@RequestParam(name = "id") String id) {
-        return userService.findThumbnailById(id);
+        String temp = userService.findThumbnailById(id);
+        return temp;
     }
+
     //log 값을 사용해 해당 유저의 정보를 가져온다.
-    @GetMapping("/getUser")
-    public UserVO getUser(@RequestParam(name = "log") int log){
+    @GetMapping("/getUser/{log}")
+    public UserVO getUser(@PathVariable("log") int log){
+        System.out.println("Usercontroller에 들어옴");
+        System.out.println("log: " + log);
         return userService.findUser(log);
     }
 
-}
+    @PostMapping("/getUserLists")
+    @ResponseBody
+    public List<UserVO> getUserList(@RequestBody String userList) {
+        if (userList.length() > 1) {
+            userList = userList.substring(1, userList.length() - 1);
+        }
+        String[] userArr = userList.split(",");
 
+        return userService.getUser_list(userArr);
+    }
+
+}

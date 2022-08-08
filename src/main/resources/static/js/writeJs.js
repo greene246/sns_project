@@ -18,9 +18,9 @@ function uploadImg(){
             console.log("image upload fail");
         }
     };
+
     callUploadApi(settings);
 }
-
 
 function callUploadApi(settings){
     $.ajax(settings)
@@ -30,6 +30,8 @@ function callUploadApi(settings){
             $('#img_url').val(jx.data.url);
             $('#del_url').val(jx.data.delete_url);
 
+            console.log($('#b_contents').val());
+
             let boardJson = {
                 "url" : "/upload",
                 "method" : "POST",
@@ -37,7 +39,7 @@ function callUploadApi(settings){
                 "data" : JSON.stringify({
                     "user_id" : $('#user_id').val(),
                     "img_url" : $('#img_url').val(),
-                    "contents" : $('#contents').val(),
+                    "contents" : $('#b_contents').val(),
                     "public_scope" : $('#scope').val(),
                     "delete_url" : $('#del_url').val(),
                 })
@@ -45,9 +47,8 @@ function callUploadApi(settings){
 
             $.ajax(boardJson)
                 .done(result => {
-                    console.log($('#contents').val());
                     console.log("uploadImg success");
-                    // location.reload();
+                    location.reload();
                 })
         })
         .fail(error =>{
@@ -76,11 +77,36 @@ function setThumbnail(obj) {
                 img.setAttribute("src", event.target.result);
                 img.setAttribute("class", "img_thumbnail");
                 img.setAttribute("id", "file_" + fileNo);
+
                 $('#image_container').append(img);
                 fileNo++;
                 filesArr.push(file);
             };
             reader.readAsDataURL(file);
         }
+        // 화면이 바꾸는 것 같은 효과
+        $('#upload_section1').css("display", "none");
+        $('#upload_section2').css("display", "flex");
     }
+}
+
+// 파일 선택 취소 버튼
+function del_img(){
+    $('#image_container').empty();
+    $('#input_img').val('');
+    $('#upload_section1').css("display", "flex");
+    $('#upload_section2').css("display", "none");
+}
+
+// > 버튼 클릭 시 내용 작성 섹션 로드
+function next_section(){
+    $('#upload_section2').css("display", "none");
+    $('#upload_section3').css("display", "flex");
+}
+
+// 글쓰기 도중 뒤로가기
+function back_btn(){
+    $('#b_contents').val('');
+    $('#upload_section2').css("display", "flex");
+    $('#upload_section3').css("display", "none");
 }

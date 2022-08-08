@@ -13,6 +13,10 @@ public interface BoardRepository extends JpaRepository<BoardVO, Integer> {
      @Query(value = "select * from boards where public_scope = ?1 order by  created_at DESC ", nativeQuery = true)
      List<BoardVO> findBoardsByPublicScopeOrderByCreatedAtDesc(int public_scope);
 
-     @Query(value = "select * from boards where id = ?1", nativeQuery = true)
+     @Query(value = "select * from boards where user_id = ?1 order by  created_at DESC", nativeQuery = true)
+     List<BoardVO> findBoardsByUserId(String user_id);
+
+     @Query(value = "select * from boards where id = ?1 order by  created_at DESC", nativeQuery = true)
      List<BoardVO> findBoardsById(int id);
+
 }

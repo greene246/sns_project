@@ -1,4 +1,3 @@
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -9,22 +8,43 @@
     <title>userPage</title>
 </head>
 <body>
+<%
+    int log = (Integer) session.getAttribute("log");
+    String user_id = (String) request.getParameter("user_id");
+%>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
-    <%
-        String user_id = (String) session.getAttribute("user_id");
-        String name = (String) session.getAttribute("name");
-    %>
 <div class="wrap">
-    <div class="myPageBody">
-        <span class="img"><img src="./img/도라에몽.png"></span>
-        <span class="id"><%=user_id%></span>
-        <span class="name"><%=name%></span>
+    <c:import url="/WEB-INF/views/writeForm.jsp"/>
 
-        <input type="button" class="followBtn" name="followBtn" value="팔로우">
+    <div class="pageBody">
 
+        <div class="myPageBody">
+            <input type="hidden" value="" id="detail_board_id">
 
+            <div class="thumbnail"></div>
+            <div class="_userIdName">
+                <div class="_userIdBtn">
+                    <div class="user_id"></div>
+                    <div class="btn">
+                        <input type="button" class="followBtn" name="followBtn" value="팔로우">
+                        <input type="button" class="followingBtn" name="following" value="팔로잉">
+                    </div>
+                </div>
+                <div class="name"></div>
+            </div>
+
+        </div>
+
+        <div class="userPageContent"></div>
     </div>
+
 </div>
 
+<script>$(document).ready(function () {
+    userPageUser(<%=log%>, '<%=user_id%>');
+})
+</script>
+<script src="js/userPage.js"></script>
+<script src="js/validation.js"></script>
 </body>
 </html>

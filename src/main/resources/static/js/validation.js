@@ -1,4 +1,5 @@
 let arr = new Array();
+let comment_check = false;
 
 // 팝업창
 jQuery.fn.center = function () {
@@ -24,14 +25,19 @@ function detail_comments_pop(board_user, board, board_id, log) {
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
-
-
     // 디테일 창에서의 작성자 정보
+
+
     let profile_img = board_user + "_info";
     let target_url = $(`.${profile_img}`).attr("src");
-    let target_name = `<span>${board_user}</span>`;
     $(".detail_profile_img").attr("src", target_url);
-    $('.detail_user_id').append(target_name);
+
+    if(!comment_check){
+        let target_name = `<span>${board_user}</span>`;
+        $('.detail_user_id').append(target_name);
+    }
+
+
 
     showPopup(board, board_id, log);
     who_am_i(log);
@@ -184,10 +190,11 @@ function comments_view(result, result2, log) {
             `
         }
             $('.all_comments').append(html);
+            comment_check = true;
     }
 }
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id) {
+    function upload_comments(log, board_id, comments_id, img_id, user_id) {
         // log = 로그인 중인 user의 id값
         // board_id = 댓글을 작성한 보드의 id값
         // $(`#${comments_id}`).val() = 작성한 댓글 내용
@@ -204,9 +211,6 @@ function comments_view(result, result2, log) {
             return;
         }
 
-        console.log(board_id);
-        console.log(comments);
-
         const requestData = {
             "user_id": log,
             "board_id": board_id,
@@ -222,21 +226,25 @@ function comments_view(result, result2, log) {
             console.log("comments upload success");
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
+            $('.all_comments').empty();
+            detail_comments_pop(user_id, img_id, board_id, log);
+
+
         }).fail(error => {
             console.log("comments upload fail");
         })
     }
 
 
-
+// 댓글 삭제
 function del_comments(target_id) {
-    console.log(target_id);
     $.ajax({
         url: "/del_comment?comments=" + target_id,
         method: "post",
         contentType: "application/json"
     }).done(result => {
-
+        $('.all_comments').empty();
+        detail_comments_pop(user_id, img_id, board_id, log);
         console.log("delete_comment success")
 
     })

@@ -77,8 +77,10 @@ function serveShow(log){
         contentType: "application/json",
         success: data => {
             let html = `
-                     <img src=${data.img_url}>
-                     <div class='profile_box'>${data.user_id}</div>
+                    <div class="serve_block" onclick="location.href='/myPage'">
+                         <img src=${data.thumbnail} class="profile_img1">
+                         <div class='profile_box'>${data.user_id}</div>
+                     </div>
             `;
 
             $('.serve_section').append(html);

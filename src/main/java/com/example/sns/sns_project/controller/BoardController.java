@@ -50,4 +50,11 @@ public class BoardController {
     public List<BoardVO> myContent(@PathVariable("user_id") String user_id){
         return boardService.myContent(user_id);
     }
+
+    // 본인 게시물 지우기
+    @PostMapping("/deleteMyContent/{id}")
+    public void deleteMyContent(@PathVariable("id") int id){
+
+        boardService.deleteMyContent(id);
+    }
 }

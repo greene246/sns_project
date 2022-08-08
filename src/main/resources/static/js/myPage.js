@@ -48,13 +48,37 @@ function myPageContents(log, userId){
     })
 }
 
+function deleteContent(id){
+    console.log(id);
+
+    $.ajax({
+        url: "/deleteMyContent/" + id,
+        type: "POST",
+        contentType: "application/json",
+
+        success: function () {
+            alert("삭제되었슴둥");
+            console.log("삭제되었슴둥");
+            location.reload();
+        },
+        fail: function () {
+            alert("실패했습둥");
+            console.log("실패했습둥");
+        },
+        error: function () {
+            alert("오류떴슴둥");
+            console.log("오류떴슴둥");
+        }
+    })
+}
+
 function printContent(log, Board) {
     let Content_img = Board.img_url;
     console.log(Content_img);
 
     let html = `
         <div class="myImage">
-            <input type="button" value="삭제" class="del_btn">
+            <input type="button" value="삭제" class="del_btn" onclick="deleteContent(${Board.id})">
             <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
         </div>
     `;

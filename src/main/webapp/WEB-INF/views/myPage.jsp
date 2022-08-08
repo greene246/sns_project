@@ -46,6 +46,7 @@
                 <div class="comments_owner">
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
+                    <div class="__comments"></div>
                 </div>
                 <div class="all_comments">
 

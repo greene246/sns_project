@@ -25,6 +25,7 @@ function detail_comments_pop(board_user, board, board_id, log) {
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
 
+    console.log('contents : ' + board);
 
     // 디테일 창에서의 작성자 정보
     let profile_img = board_user + "_info";
@@ -54,8 +55,6 @@ function when_close() {
 function showPopup(board, board_id, log) {
     console.log("board : " + board)
     $(".contents_detail").css("display", "flex");
-
-
 
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
@@ -187,7 +186,7 @@ function comments_view(result, result2, log) {
     }
 }
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id) {
+    function upload_comments(log, board_id, comments_id, board, board_user) {
         // log = 로그인 중인 user의 id값
         // board_id = 댓글을 작성한 보드의 id값
         // $(`#${comments_id}`).val() = 작성한 댓글 내용
@@ -222,6 +221,9 @@ function comments_view(result, result2, log) {
             console.log("comments upload success");
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
+            $('.all_comments').empty();
+            detail_comments_pop(board_user,board, board_id, log);
+
         }).fail(error => {
             console.log("comments upload fail");
         })

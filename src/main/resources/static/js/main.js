@@ -42,7 +42,6 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-<!--                                <a onclick='detail_comments_pop("img_${Board.id}", ${Board.id}, ${log})'>-->
                                     <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})">
 <!--                                </a>-->
                                 <img src='./img/direct.png' class='icon_img'>

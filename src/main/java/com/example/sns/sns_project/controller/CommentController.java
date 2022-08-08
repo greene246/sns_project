@@ -28,4 +28,10 @@ public class CommentController {
     public List<CommentVO> commentsLoad(@RequestParam(name="board_id")int board_id){
         return commentService.comments_load(board_id);
     }
+
+    @PostMapping("/del_comment")
+    public void del_comment(@RequestParam(name="comments")int id){
+        System.out.println(id);
+        commentService.delete_comments(id);
+    }
 }

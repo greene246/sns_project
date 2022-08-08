@@ -53,8 +53,11 @@ function printContent(log, Board) {
     console.log(Content_img);
 
     let html = `
-        <div class="myImage"><img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}></div>
+        <div class="myImage">
+            <input type="button" value="삭제" class="del_btn">
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
+        </div>
     `;
     $('.myPageContent').append(html);
-
 }
+

@@ -29,7 +29,6 @@
             <span class="name"></span>
         </div>
 
-
     </div>
 
     <div class="myPageContent"></div>
@@ -65,8 +64,8 @@
     myPageUser(<%=log%>);
 })
 </script>
-<script src="js/myPage.js"></script>
-<script src="js/validation.js"></script>
+<script src="./js/myPage.js"></script>
+<script src="./js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <%

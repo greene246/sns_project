@@ -275,6 +275,8 @@
 .comments_owner{
     height: 10%;
     margin: 10px;
+    display: flex;
+    align-items: center;
 }
 .detail_profile_img{
     height: 100%;

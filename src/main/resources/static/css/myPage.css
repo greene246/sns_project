@@ -41,6 +41,7 @@
     border: 1px solid lightslategray;
     margin: 7px;
     display: flex;
+    flex-direction: column;
     background-color: black;
     align-items: center;
 }
@@ -97,4 +98,7 @@
     background-color: black;
     align-items: center;
 }
-
+.del_btn{
+    position: relative;
+    left: 120px;
+}

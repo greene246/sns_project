@@ -46,6 +46,7 @@
                 <div class="comments_owner">
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
+                    <input type="image" src="img/delBtn.png" class="del_btn" onclick=deleteContent(<%=log%>)>
                 </div>
 
                 <div class="contents">

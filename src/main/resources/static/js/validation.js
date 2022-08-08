@@ -1,5 +1,8 @@
 let arr = new Array();
 let comment_check = false;
+let _userid1;
+let _img_id;
+let _board_id;
 
 // 팝업창
 jQuery.fn.center = function () {
@@ -226,7 +229,9 @@ function comments_view(result, result2, log) {
             data: JSON.stringify(requestData),
             contentType: "application/json"
         }).success(result => {
-            console.log("comments upload success");
+            _userid1 = board_user;
+            _img_id = board;
+            _board_id = board_id;
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
             $('.all_comments').empty();
@@ -247,7 +252,7 @@ function del_comments(target_id) {
         contentType: "application/json"
     }).done(result => {
 
-        console.log("delete_comment success")
-
+        $('.all_comments').empty();
+        detail_comments_pop(_userid1,_img_id, _board_id, _log);
     })
 }

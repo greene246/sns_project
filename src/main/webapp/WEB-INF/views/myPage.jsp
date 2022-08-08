@@ -29,7 +29,6 @@
             <span class="name"></span>
         </div>
 
-
     </div>
 
     <div class="myPageContent"></div>
@@ -47,6 +46,7 @@
                 <div class="comments_owner">
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
+                    <div class="__comments"></div>
                 </div>
                 <div class="all_comments">
 
@@ -65,8 +65,8 @@
     myPageUser(<%=log%>);
 })
 </script>
-<script src="js/myPage.js"></script>
-<script src="js/validation.js"></script>
+<script src="./js/myPage.js"></script>
+<script src="./js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <%

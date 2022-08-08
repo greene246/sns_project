@@ -36,13 +36,16 @@ function insertHtml(Board, log) {
                             <a class="user_id">${Board.user_id}</a>
                         </div>
                     </div>
-                    <span id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></span>
+                    <div class="main_img_wrap">
+                        <div id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></div>
+                    </div>
                     <!-- icon 모음 -->
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
                                     <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})">
+<!--                                </a>-->
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
                         <!-- 북마크 -->
@@ -52,10 +55,10 @@ function insertHtml(Board, log) {
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
-                          <span className='main4' id='createdAt'>${Board.createdAt.substring(0,10)}</span>
+                        <span className='main4' id='createdAt'>${Board.createdAt}</span>
                         <div class="input_comments">
                             <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
-                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}' , '${Board.user_id}')">
+                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
                         </div>
                     </div>
                 </div>
@@ -157,5 +160,3 @@ function checkHeart(boardid) {
     })
     location.reload()
 }
-
-

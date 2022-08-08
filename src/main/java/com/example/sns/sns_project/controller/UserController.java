@@ -278,5 +278,12 @@ public class UserController {
         return userService.getUser_list(userArr);
     }
 
+    //로그값으로 유저 ID불러옴
+    @PostMapping("/getUserIdfl")
+    public String getUserId(@RequestParam(name="log") int log) {
+        System.out.println("asasas : "+log);
+        return userService.readLog(log).getUser_id();
+    }
+
 }
 

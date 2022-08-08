@@ -1,5 +1,4 @@
 let arr = new Array();
-let comment_check = false;
 
 // 팝업창
 jQuery.fn.center = function () {
@@ -25,11 +24,12 @@ function detail_comments_pop(board_user, board, board_id, log) {
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
+
+
     // 디테일 창에서의 작성자 정보
-
-
     let profile_img = board_user + "_info";
     let target_url = $(`.${profile_img}`).attr("src");
+    let target_name = `<span>${board_user}</span>`;
     $(".detail_profile_img").attr("src", target_url);
 
     if(!comment_check){
@@ -189,8 +189,7 @@ function comments_view(result, result2, log) {
             </div>
             `
         }
-        $('.all_comments').append(html);
-        comment_check = true;
+            $('.all_comments').append(html);
     }
 }
 // 댓글 업로드
@@ -206,10 +205,10 @@ function upload_comments(log, board_id, comments_id, img_id, user_id) {
         comments = $(`#${comments_id}`).val();
     }
 
-    if (comments == '') {
-        alert("댓글은 1자 이상 작성해주세요");
-        return;
-    }
+        if (comments == '') {
+            alert("댓글은 1자 이상 작성해주세요");
+            return;
+        }
 
     const requestData = {
         "user_id": log,

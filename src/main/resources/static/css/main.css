@@ -39,11 +39,13 @@
     height: 100%;
     border-radius: 50%;
 }
-
+.main_img_wrap{
+    flex-grow: 1;
+}
 #main_img{
-    height: 50%;
+    height: 100%;
+    position: relative;
     overflow: hidden;
-    align-self: center;
 }
 
 .contents_img{
@@ -203,7 +205,13 @@
     height: 20px;
 }
 .print_img{
-    width: 330px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
 }
 
 .black {
@@ -273,11 +281,10 @@
 }
 
 .comments_owner{
-    display: flex;
-    align-items: center;
     height: 10%;
     margin: 10px;
-
+    display: flex;
+    align-items: center;
 }
 .detail_profile_img{
     height: 100%;
@@ -305,4 +312,8 @@
 
 .commented_user_info{
     height: 100%;
+}
+.input_comments{
+    display: flex;
+    justify-content: space-between;
 }

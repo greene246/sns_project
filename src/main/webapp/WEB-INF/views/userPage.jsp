@@ -22,8 +22,8 @@
             <div class="_userIdBtn">
                 <div class="user_id"></div>
                 <div class="btn">
-                    <input type="button" class="followBtn" name="followBtn" value="팔로우">
-                    <input type="button" class="followingBtn" name="following" value="팔로잉">
+                    <input type="button" class="followBtn" name="followBtn" value="팔로우" onclick="follow('<%=log%>','<%=user_id%>')">
+                    <input type="button" class="unFollowBtn" name="unFollowBtn" value="언팔로우" onclick="unfollow('<%=log%>','<%=user_id%>')">
                 </div>
             </div>
             <div class="name"></div>
@@ -63,11 +63,13 @@
 
 <script>$(document).ready(function () {
     userPageUser(<%=log%>, '<%=user_id%>');
+    checkFollow('<%=log%>','<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>
 <script src="js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
+<script src="js/follow.js"></script>
 </body>
 </html>

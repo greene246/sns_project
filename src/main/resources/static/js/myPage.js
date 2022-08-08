@@ -50,26 +50,25 @@ function myPageContents(log, userId){
 
 function deleteContent(id){
     console.log(id);
+    if(confirm("삭제하시겠슴둥?")){
+        $.ajax({
+            url: "/deleteMyContent/" + id,
+            type: "POST",
+            contentType: "application/json",
 
-    $.ajax({
-        url: "/deleteMyContent/" + id,
-        type: "POST",
-        contentType: "application/json",
+            success: function () {
+                alert("삭제되었슴둥");
+                location.reload();
+            },
+            fail: function () {
+                alert("실패했습둥");
+            },
+            error: function () {
+                alert("오류떴슴둥");
+            }
+        })
+    }
 
-        success: function () {
-            alert("삭제되었슴둥");
-            console.log("삭제되었슴둥");
-            location.reload();
-        },
-        fail: function () {
-            alert("실패했습둥");
-            console.log("실패했습둥");
-        },
-        error: function () {
-            alert("오류떴슴둥");
-            console.log("오류떴슴둥");
-        }
-    })
 }
 
 function printContent(log, Board) {

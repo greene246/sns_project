@@ -189,7 +189,7 @@ function comments_view(result, result2, log) {
     }
 }
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id, board, board_user) {
+    function upload_comments(log, board_id, comments_id, board, board_user, contents) {
         // log = 로그인 중인 user의 id값
         // board_id = 댓글을 작성한 보드의 id값
         // $(`#${comments_id}`).val() = 작성한 댓글 내용
@@ -209,6 +209,8 @@ function comments_view(result, result2, log) {
         console.log(board_id);
         console.log(comments);
 
+        console.log(contents);
+
         const requestData = {
             "user_id": log,
             "board_id": board_id,
@@ -225,7 +227,7 @@ function comments_view(result, result2, log) {
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
             $('.all_comments').empty();
-            detail_comments_pop(board_user,board, board_id, log);
+            detail_comments_pop(board_user,board, board_id, log, contents);
 
         }).fail(error => {
             console.log("comments upload fail");

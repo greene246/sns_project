@@ -28,16 +28,16 @@ function detail_comments_pop(board, board_id, log){
     who_am_i(log);
 }
 
-// 사진 클릭 시
+/*// 사진 클릭 시
 function detail_img_pop(board, board_id, log){
-    $(".wrap").css("display","block");
+    $(".black").css("display","block");
 
     $(".write_wrap").css("display","none");
     $(".pageBody").css("display","block");
     $("#detail_board_id").val(board_id);
     showPopup(board,board_id);
     who_am_i(log);
-}
+}*/
 
 // x 버튼 클릭 시 창 닫기
 $(".close").on("click", e=>{
@@ -81,7 +81,7 @@ function showPopup(board, board_id) {
             contentType: "application/json"
         }).done(result2=>{
             comments_view(result, result2);
-
+            arr = new Array();
 
         })
     })
@@ -154,6 +154,9 @@ function comments_view(result, result2){
 // result = 댓글 정보
 // result2 = 댓글 쓴 유저의 정보
 
+    console.log(result);
+    console.log(result2);
+
     for(let i=0; i<result.length; i++){
 console.log(result[i].comment);
         let html = `
@@ -176,6 +179,11 @@ function upload_comments(log, board_id, comments_id){
     // log = 로그인 중인 user의 id값
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    console.log("log : " + log);
+    console.log("board_id : " + board_id)
+    console.log("comments_id : " + comments_id)
+
+
     let comments;
     if(board_id == ''){
         board_id = $('#detail_board_id').val();

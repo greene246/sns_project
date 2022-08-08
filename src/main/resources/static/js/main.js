@@ -36,7 +36,9 @@ function insertHtml(Board, log) {
                             <a class="user_id">${Board.user_id}</a>
                         </div>
                     </div>
-                    <span id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></span>
+                    <div class="main_img_wrap">
+                        <div id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></div>
+                    </div>
                     <!-- icon 모음 -->
                     <div class='icon'>
                         <!-- 좋아요 / 댓글 / 디엠 -->

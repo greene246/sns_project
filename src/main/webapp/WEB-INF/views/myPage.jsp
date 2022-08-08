@@ -8,11 +8,10 @@
     <title>myPage</title>
 </head>
 <%
-    if(session.getAttribute("log") == null) {
+    if (session.getAttribute("log") == null) {
         String url = "/";
         request.getRequestDispatcher(url).forward(request, response);
-    }
-    else{
+    } else {
         int log = (Integer) session.getAttribute("log");
 %>
 <body>
@@ -24,7 +23,8 @@
         <div class="_userIdName">
             <div class="_userIdBtn">
                 <span class="user_id"></span>
-                <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
+                <input type="button" class="btn" name="updateBtn" value="프로필 편집"
+                       onclick="location.href='/updateMyInfo'"><br>
             </div>
             <span class="name"></span>
         </div>
@@ -34,13 +34,41 @@
 
     <div class="myPageContent"></div>
 
+    <div class="black">
+
+        <c:import url="/WEB-INF/views/writeForm.jsp"/>
+
+        <div class="contents_detail">
+            <input type="hidden" value="" id="detail_board_id">
+            <div class="detail_img">
+                <img src="" id="detail_img_main">
+            </div>
+            <div class="detail_comments">
+                <div class="comments_owner">
+                    <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
+                    <div class="_user_id"></div>
+                </div>
+                <div class="all_comments">
+
+                </div>
+                <div class="input_comments">
+                    <input type="text" placeholder="댓글달기" id="detail_comments_val">
+                    <input type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}')">
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<script>$(document).ready(function(){
+<script>$(document).ready(function () {
     myPageUser(<%=log%>);
 })
 </script>
 <script src="js/myPage.js"></script>
+<script src="js/validation.js"></script>
+<script src="./js/writeJs.js"></script>
+<script src="./js/eventJs.js"></script>
 <%
     }
 %>

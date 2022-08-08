@@ -47,8 +47,8 @@
         </div>
         <div class="detail_comments">
             <div class="comments_owner">
-                <span id="profile_img_wrap"><div class="thumbnail"></div></span>
-                <div class="user_id"></div>
+                <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
+                <div class="_user_id"></div>
             </div>
             <div class="all_comments">
 
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<script>$(document).ready(function(){
+<script>$(document).ready(function () {
     userPageUser(<%=log%>, '<%=user_id%>');
 })
 </script>

@@ -2,6 +2,8 @@ let userId;
 let name;
 let thumbnail;
 
+let _thumbnail;
+
 let log; // userLog
 let _id // myLog
 
@@ -16,7 +18,9 @@ function userPageUser(id, user_id) {
 
         userId = result.user_id;
         name = result.name;
-        thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
+        thumbnail = `<img class="_mainThumbnail" src=${result.thumbnail}>`;
+
+        _thumbnail = `<img class="__thumbnail" src=${result.thumbnail}>`;
 
         log = result.id;
         _id = id;
@@ -30,6 +34,9 @@ function userPageUser(id, user_id) {
             $('.user_id').append(userId);
             $('.name').append(name);
             $('.thumbnail').append(thumbnail);
+
+            $('._user_id').append(userId);
+            $('._thumbnail').append(_thumbnail);
 
             $('.id').append(log);
         }

@@ -78,7 +78,7 @@ function setThumbnail(obj) {
                 img.setAttribute("class", "img_thumbnail");
                 img.setAttribute("id", "file_" + fileNo);
 
-                $('#image_container').append(img);
+                $('#image_contain').append(img);
                 fileNo++;
                 filesArr.push(file);
             };
@@ -92,7 +92,7 @@ function setThumbnail(obj) {
 
 // 파일 선택 취소 버튼
 function del_img(){
-    $('#image_container').empty();
+    $('#image_contain').empty();
     $('#input_img').val('');
     $('#upload_section1').css("display", "flex");
     $('#upload_section2').css("display", "none");

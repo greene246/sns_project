@@ -14,7 +14,7 @@
 }
 
 .close {
-    position: relative;
+    position: absolute;
     right: 22px;
     top: 18px;
 }
@@ -44,6 +44,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    height: 100%;
 }
 #section2_main{
     display: flex;
@@ -69,4 +70,26 @@
 #section3_main{
     display: flex;
     justify-content: space-around;
+}
+.img_thumbnail{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+#write_form{
+    flex-direction: column;
+    height: 100%;
+}
+#image_contain{
+    position:relative;
+    overflow: hidden;
+    height: 100%;
+}
+#image_container{
+    flex-grow:1;
 }

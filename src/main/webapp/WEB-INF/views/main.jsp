@@ -53,10 +53,10 @@
 <script src="./js/validation.js"></script>
 <script src="./js/main.js"></script>
 <script src="./js/writeJs.js"></script>
+<script src="./js/eventJs.js"></script>
 <script>
     getBoards(0,<%=log%>);
 </script>
-<script src="./js/eventJs.js"></script>
-<%}%>
 </body>
 </html>
+<%}%>

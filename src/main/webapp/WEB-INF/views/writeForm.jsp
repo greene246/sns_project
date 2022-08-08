@@ -34,7 +34,11 @@
                 <span>자르기</span>
                 <input type="button" class="next_btn" value="다음" onclick="next_section()">
             </div>
-            <div id="image_container"></div>
+            <div id="image_container">
+                <div id="image_contain">
+
+                </div>
+            </div>
         </div>
 
 

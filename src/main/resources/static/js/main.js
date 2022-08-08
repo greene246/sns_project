@@ -47,12 +47,10 @@ function insertHtml(Board, log) {
 
                     <!-- icon 모음 -->
                     <div class='icon'>
-                        <!-- 좋아요 / 댓글 / 디엠 -->
+                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                <a onclick="showPopup(), black_block()">
-                                    <img src='./img/message.png' class='icon_img'>
-                                </a>
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})">
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>
                         <!-- 북마크 -->
@@ -65,7 +63,7 @@ function insertHtml(Board, log) {
                         <span className='main3' id='contents'>${Board.contents}</span>
                         <span className='main4' id='createdAt'>${Board.createdAt.substring(0,10)}</span>
                         <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
-                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                        <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', '${Board.id}_img')">
                     </div>
                     
                 </div>
@@ -179,7 +177,7 @@ function upload_comments(log, board_id, comments_id){
         "board_id" : board_id,
         "comment" : comments
     };
-c
+
     console.log(requestData)
 
     $.ajax({

@@ -230,7 +230,7 @@ function comments_view(result, result2, log) {
             $(`#${comments_id}`).val('');
             $("#detail_comments_val").val('');
             $('.all_comments').empty();
-            detail_comments_pop(board_user,board, board_id, log, contents);
+            detail_comments_pop(board_user,board, board_id, log);
 
         }).fail(error => {
             console.log("comments upload fail");

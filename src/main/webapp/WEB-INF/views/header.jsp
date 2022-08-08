@@ -28,7 +28,9 @@
         <div class="header_contents_wrap">
             <a href="/main" id="logo">LOGO</a>
             <div class="topMenu">
-                <input type="text" class="search" name="search" placeholder="검색">
+                <form>
+                    <input type="text" class="search" name="search" placeholder="검색">
+                </form>
                 <a onclick="file_upload_pop(<%=log%>)">
                     <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>

@@ -63,16 +63,13 @@ public class UserService {
         userRepository.deleteById(userVO.getId());
     }
 
-    // 회원정보 update
+    // update
     @Transactional
     public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
-        System.out.println("SIZE : " + user.size());
-
         for(int i=0; i<user.size(); i++) {
             if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
-                System.out.println("userId : " + user.get(i).getUser_id());
                 user.get(i).update(userRequestDto);
                 return true;
             }
@@ -134,13 +131,15 @@ public class UserService {
     }
 
     public UserVO findUser(int log){
-
-        return userRepository.findUserVOByLog(log);
+        UserVO user = userRepository.findUserVOByLog(log);
+        System.out.println("sss: "+user.getId());
+        return user;
     }
 
     public List<UserVO> getUser_list(String[] userArr){
         List<UserVO> users = new ArrayList<>();
         for(int i=0; i<userArr.length; i++){
+            System.out.println(i+" : "+userArr[i]);
             UserVO temp = userRepository.findIUserById(Integer.parseInt(userArr[i]));
             users.add(temp);
         }

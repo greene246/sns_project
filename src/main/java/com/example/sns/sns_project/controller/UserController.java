@@ -1,16 +1,18 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.service.UserService;
-
+import com.example.sns.sns_project.domain.BoardVO;
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
+import com.example.sns.sns_project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -81,6 +83,7 @@ public class UserController {
     }
 
     // 회원탈퇴
+    // 회원탈퇴
     @PostMapping("/removeUser")
     public void deleteUser(@RequestParam(name="log") int log,
                            @RequestParam(name="user_pw") String user_pw,
@@ -109,12 +112,10 @@ public class UserController {
         }
     }
 
-    // 프로필 사진, 이름, 이메일 변경
+    // 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
-    public void updateUser(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response){
-        System.out.println("userID : " + userRequestDto.getUser_id());
-
+    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
         boolean check = userService.updateUser(userRequestDto);
 
         if(check){
@@ -209,7 +210,6 @@ public class UserController {
         }
     }
 
-    // 비밀번호 찾기
     @PostMapping("/findPw")
     public void findPw(@RequestParam(name="user_id") String user_id,
                        @RequestParam (name="name") String name,
@@ -242,7 +242,6 @@ public class UserController {
 
     }
 
-    // 유저 고유코드 받아서 유저 정보 리턴
     @PostMapping("/getInfo")
     public UserVO getInfo(@RequestParam(name="log") int log) {
         return userService.readLog(log);
@@ -280,3 +279,4 @@ public class UserController {
     }
 
 }
+

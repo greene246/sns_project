@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class BoardRequestDto {
-    String user_id;
-    String img_url;
-    String contents;
-    int like_cnt;
-    int public_scope;
-    String delete_url;
+    private int id;
+    private String user_id;
+    private String img_url;
+    private String contents;
+    private int like_cnt;
+    private int public_scope;
+    private String delete_url;
 
     public BoardRequestDto(String user_id, int like_cnt){
         this.user_id = user_id;

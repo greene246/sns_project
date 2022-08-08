@@ -33,4 +33,8 @@ public class CommentService {
         }
         return loaded_comments;
     }
+
+    public void delete_comments(int id){
+        commentRepository.deleteById(id);
+    }
 }

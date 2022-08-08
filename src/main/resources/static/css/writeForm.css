@@ -70,3 +70,6 @@
     display: flex;
     justify-content: space-around;
 }
+.img_thumbnail{
+    object-fit: contain;
+}

@@ -31,10 +31,10 @@ public class BoardVO extends Timestamp {
     @Column(name="like_cnt")
     private int like_cnt;
 
-    @Column(name="public_scope")
+    @Column(name="public_scope" ,nullable = false)
     private int public_scope;
 
-    @Column(name="delete_url")
+    @Column(name="delete_url" , nullable = false)
     private String delete_url;
 
 

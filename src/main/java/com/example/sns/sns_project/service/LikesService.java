@@ -22,7 +22,7 @@ public class LikesService {
         int num = 0;
         for(int i=0; i<user.size(); i++) {
             if(user.get(i).getUser_id() == likesVo.getUser_id() && user.get(i).getBoard_id() == likesVo.getBoard_id())
-                 num = user.get(i).getId();
+                num = user.get(i).getId();
         }
         return num;
     }

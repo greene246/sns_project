@@ -52,8 +52,6 @@ a {
     height: 100vh;
     margin: 0 auto;
     padding-top: 60px;
-
-    overflow: hidden;
 }
 #total_wrap{
     display : flex;

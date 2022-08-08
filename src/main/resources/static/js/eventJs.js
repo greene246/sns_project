@@ -17,3 +17,4 @@ window.onclick = function (event) {
         when_close();
     }
 }
+

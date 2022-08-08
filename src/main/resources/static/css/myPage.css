@@ -64,6 +64,21 @@
     transform: scale(1.1);
 }
 
+.comments_owner{
+    height: 10%;
+    margin: 10px;
+}
+
+.__thumbnail{
+    height: 100%;
+    border-radius: 50%;
+}
+
+._mainThumbnail{
+    width: 180px;
+    border-radius: 50%;
+}
+
 /*userPage*/
 .userPageContent{
     display: flex;

@@ -1,4 +1,6 @@
-let user_id;
+let userId;
+
+let _thumbnail;
 
 function myPageUser(log){
     $.ajax({
@@ -6,22 +8,27 @@ function myPageUser(log){
         type : "POST"
     }).done(result => {
 
-        user_id = result.user_id;
+        userId = result.user_id;
         let user_name = result.name;
-        let thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
+        let thumbnail = `<img class="_mainThumbnail" src=${result.thumbnail}>`;
 
-        myPageContents(user_id);
+        _thumbnail = `<img class="__thumbnail" src=${result.thumbnail}>`;
 
-        $('.user_id').append(user_id);
+        myPageContents(log, userId);
+
+        $('.user_id').append(userId);
         $('.name').append(user_name);
         $('.thumbnail').append(thumbnail);
+
+        $('._user_id').append(userId);
+        $('._thumbnail').append(_thumbnail);
     })
 }
 
-function myPageContents(user_id){
+function myPageContents(log, userId){
 
     $.ajax({
-        url: "/myContent/" + user_id,
+        url: "/myContent/" + userId,
         type: "POST",
         async: false,
         contentType: "application/json",
@@ -29,7 +36,7 @@ function myPageContents(user_id){
         success: data => {
 
             data.forEach(e => {
-                printContent(e);
+                printContent(log, e);
             })
         },
         fail: function () {
@@ -41,12 +48,12 @@ function myPageContents(user_id){
     })
 }
 
-function printContent(Board) {
+function printContent(log, Board) {
     let Content_img = Board.img_url;
     console.log(Content_img);
 
     let html = `
-        <div class="myImage"><img class="imgSize" src=${Content_img}></div>
+        <div class="myImage"><img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}></div>
     `;
     $('.myPageContent').append(html);
 

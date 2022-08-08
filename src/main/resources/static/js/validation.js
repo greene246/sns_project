@@ -172,7 +172,7 @@ function comments_view(result, result2, log) {
             $('.all_comments').append(html);
         }
     }
-
+}
 // 댓글 업로드
     function upload_comments(log, board_id, comments_id) {
         // log = 로그인 중인 user의 id값
@@ -214,16 +214,17 @@ function comments_view(result, result2, log) {
         })
     }
 
-    function del_comments(target_id) {
-        console.log(target_id);
-        $.ajax({
-            url: "/del_comment?comments=" + target_id,
-            method: "post",
-            contentType: "application/json"
-        }).done(result => {
 
-            console.log("delete_comment success")
 
-        })
-    }
+function del_comments(target_id) {
+    console.log(target_id);
+    $.ajax({
+        url: "/del_comment?comments=" + target_id,
+        method: "post",
+        contentType: "application/json"
+    }).done(result => {
+
+        console.log("delete_comment success")
+
+    })
 }

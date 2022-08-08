@@ -80,7 +80,7 @@ function printContent(log, Board) {
     let html = `
         <div class="myImage">
             <input type="button" value="삭제" class="del_btn" onclick="deleteContent(${Board.id})">
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
         </div>
     `;
     $('.myPageContent').append(html);

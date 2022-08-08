@@ -27,6 +27,7 @@ function getBoards(scope,log) {
 }
 //메인 출력 부분
 function insertHtml(Board, log) {
+    console.log('contentsss' + Board.contents);
 
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
@@ -44,7 +45,7 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})">
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
 <!--                                </a>-->
                                 <img src='./img/direct.png' class='icon_img'>
                         </div>

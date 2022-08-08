@@ -77,7 +77,7 @@ function printContent(id, Board) {
 
     let html = `
         <div class="userImage">
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}>
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id}, '${Board.contents}')" src=${Content_img}>
         </div>
     `;
     $('.userPageContent').append(html);

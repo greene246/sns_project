@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/views/header.jsp"/>
+
     <%
         if(session.getAttribute("log") == null) {
             String url = "/";
@@ -11,7 +12,7 @@
             int log = (Integer) session.getAttribute("log");
 
     %>
-
+<c:import url="/WEB-INF/views/searchResult.jsp"/>
 <div class="main_wrap">
     <div class="all_contents">
     <div class="main_section">

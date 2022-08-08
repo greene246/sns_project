@@ -32,8 +32,10 @@ function detail_comments_pop(board_user, board, board_id, log, contents) {
     let target_url = $(`.${profile_img}`).attr("src");
     let target_name = `<span>${board_user}</span>`;
     let target_contents = `${contents}`;
-    $(".detail_profile_img").attr("src", target_url);
-    $('.detail_user_id').append(target_name);
+    if (!comment_check) {
+        $(".detail_profile_img").attr("src", target_url);
+        $('.detail_user_id').append(target_name);
+    }
 
     $('._contents').empty();
     $('._contents').append(target_contents);
@@ -52,6 +54,7 @@ function when_close() {
     $('#detail_profile_img').attr("src", '');
     $('.detail_user_id').children('span').remove();
     $('.all_comments').children('div').remove();
+    comment_check = false;
     scrollAble();
 }
 
@@ -59,7 +62,6 @@ function when_close() {
 function showPopup(board, board_id, log) {
     console.log("board : " + board)
     $(".contents_detail").css("display", "flex");
-
 
 
     let board_img = $(`#${board}`).attr("src");
@@ -188,50 +190,52 @@ function comments_view(result, result2, log) {
             </div>
             `
         }
-            $('.all_comments').append(html);
+        $('.all_comments').append(html);
+        comment_check = true;
     }
 }
+
 // 댓글 업로드
-    function upload_comments(log, board_id, comments_id, img_id, user_id) {
-        // log = 로그인 중인 user의 id값
-        // board_id = 댓글을 작성한 보드의 id값
-        // $(`#${comments_id}`).val() = 작성한 댓글 내용
-        let comments;
-        if (board_id == '') {
-            board_id = $('#detail_board_id').val();
-            comments = $("#detail_comments_val").val();
-        } else {
-            comments = $(`#${comments_id}`).val();
-        }
-
-        if (comments == '') {
-            alert("댓글은 1자 이상 작성해주세요");
-            return;
-        }
-
-        const requestData = {
-            "user_id": log,
-            "board_id": board_id,
-            "comment": comments
-        };
-
-        $.ajax({
-            url: '/upload_comments',
-            method: 'POST',
-            data: JSON.stringify(requestData),
-            contentType: "application/json"
-        }).success(result => {
-            console.log("comments upload success");
-            $(`#${comments_id}`).val('');
-            $("#detail_comments_val").val('');
-            $('.all_comments').empty();
-            detail_comments_pop(user_id, img_id, board_id, log);
-
-
-        }).fail(error => {
-            console.log("comments upload fail");
-        })
+function upload_comments(log, board_id, comments_id, img_id, user_id) {
+    // log = 로그인 중인 user의 id값
+    // board_id = 댓글을 작성한 보드의 id값
+    // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    let comments;
+    if (board_id == '') {
+        board_id = $('#detail_board_id').val();
+        comments = $("#detail_comments_val").val();
+    } else {
+        comments = $(`#${comments_id}`).val();
     }
+
+    if (comments == '') {
+        alert("댓글은 1자 이상 작성해주세요");
+        return;
+    }
+
+    const requestData = {
+        "user_id": log,
+        "board_id": board_id,
+        "comment": comments
+    };
+
+    $.ajax({
+        url: '/upload_comments',
+        method: 'POST',
+        data: JSON.stringify(requestData),
+        contentType: "application/json"
+    }).success(result => {
+        console.log("comments upload success");
+        $(`#${comments_id}`).val('');
+        $("#detail_comments_val").val('');
+        $('.all_comments').empty();
+        detail_comments_pop(user_id, img_id, board_id, log);
+
+
+    }).fail(error => {
+        console.log("comments upload fail");
+    })
+}
 
 
 // 댓글 삭제
@@ -247,3 +251,44 @@ function del_comments(target_id) {
 
     })
 }
+
+$('#search_btn').on("click", e => {
+    $('.search_result').empty();
+    $('.searched_section').css("display", "none");
+    if ($('.search').val() == '') {
+        alert("1글자 이상 검색해주세요");
+    }
+        $('.search_result').empty();
+        $.ajax({
+            url: "/searchUser?user_name=" + $('.search').val(),
+            method: "post",
+            contentType: "application/json"
+        }).done(result => {
+            console.log(result);
+            for (let i = 0; i < result.length; i++) {
+                let user_id = result[i].user_id;
+                let name = result[i].name;
+                let thumbnail = result[i].thumbnail;
+                let html = `<div class="searchedUser">
+                            <div class="img_section">
+                                <img src="${thumbnail}" class="search_img">
+                            </div>
+                            <div class="searched_user_id">
+                                <span>${user_id}</span>
+                            </div>
+                            <div class="searched_user_name">
+                                <span>${name}</span>
+                            </div>
+                        </div>`
+
+                $('.search_result').append(html);
+            }
+                $('.searched_section').css("display", "block");
+
+        })
+})
+
+$('.close_result').on("click", e=>{
+    $('.search_result').empty();
+    $('.searched_section').css("display", "none");
+})

@@ -149,4 +149,10 @@ public class UserService {
         return users;
     }
 
+    public List<UserVO> readUserByName(String user_name){
+        String searchName = '%' + user_name + '%';
+        System.out.println(searchName);
+        return userRepository.findbyUserName(searchName);
+    }
+
 }

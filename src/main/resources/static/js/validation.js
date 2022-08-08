@@ -19,12 +19,21 @@ function file_upload_pop(log) {
 }
 
 // 댓글 아이콘 클릭 시
-function detail_comments_pop(board, board_id, log) {
+function detail_comments_pop(board_user, board, board_id, log) {
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
-    showPopup(board, board_id);
+
+
+    // 디테일 창에서의 작성자 정보
+    let profile_img = board_user + "_info";
+    let target_url = $(`.${profile_img}`).attr("src");
+    let target_name = `<span>${board_user}</span>`;
+    $(".detail_profile_img").attr("src", target_url);
+    $('.detail_user_id').append(target_name);
+
+    showPopup(board, board_id, log);
     who_am_i(log);
 }
 
@@ -42,8 +51,12 @@ function when_close() {
 }
 
 // 댓글 클릭 시 보여준다.
-function showPopup(board, board_id) {
+function showPopup(board, board_id, log) {
+    console.log("board : " + board)
     $(".contents_detail").css("display", "flex");
+
+
+
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
     $('#detail_board_id').val(board_id);
@@ -69,8 +82,8 @@ function showPopup(board, board_id) {
             async: false,
             contentType: "application/json"
         }).done(result2 => {
-            comments_view(result, result2, log);
             arr = new Array();
+            comments_view(result, result2, log);
         })
     })
 }
@@ -169,8 +182,8 @@ function comments_view(result, result2, log) {
                 </div>
             </div>
             `
-            $('.all_comments').append(html);
         }
+            $('.all_comments').append(html);
     }
 }
 // 댓글 업로드

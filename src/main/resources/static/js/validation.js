@@ -19,20 +19,23 @@ function file_upload_pop(log) {
 }
 
 // 댓글 아이콘 클릭 시
-function detail_comments_pop(board_user, board, board_id, log) {
+function detail_comments_pop(board_user, board, board_id, log, contents) {
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
     $("#detail_board_id").val(board_id);
 
-    console.log('contents : ' + board);
 
     // 디테일 창에서의 작성자 정보
     let profile_img = board_user + "_info";
     let target_url = $(`.${profile_img}`).attr("src");
     let target_name = `<span>${board_user}</span>`;
+    let target_contents = `${contents}`;
     $(".detail_profile_img").attr("src", target_url);
     $('.detail_user_id').append(target_name);
+
+    $('._contents').empty();
+    $('._contents').append(target_contents);
 
     showPopup(board, board_id, log);
     who_am_i(log);

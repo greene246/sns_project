@@ -1,0 +1,72 @@
+#write_form > div{
+    width: 100%;
+}
+
+#upload_section1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#upload_section1 > * {
+    padding: 22px;
+}
+
+.close {
+    position: relative;
+    right: 22px;
+    top: 18px;
+}
+
+.btn_upload{
+    width: 150px;
+    height: 30px;
+    background:lightblue;
+    border: 1px solid rgb(77, 77, 77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_upload:hover{
+    background: #1877f2;
+    color: #fff;
+}
+
+#input_img{
+    display: none;
+}
+#upload_section2 {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#section2_main{
+    display: flex;
+    justify-content: space-around;
+}
+#upload_section2 > * {
+    padding: 22px;
+}
+
+#upload_section3 {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#upload_section3 > * {
+    padding: 22px;
+}
+#b_contents{
+    margin: 15px;
+    height: 400px;
+    resize: none;
+}
+#section3_main{
+    display: flex;
+    justify-content: space-around;
+}

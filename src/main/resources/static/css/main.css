@@ -241,11 +241,13 @@
 
 /* Modal Content */
 .write_wrap {
+    position: absolute;
     background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
+    margin: 9% 30%;
+    width: 40%;
+    height: 70%;
     border: 1px solid #888;
-    width: 80%;
+    border-radius: 8%;
 }
 /*.write_wrap{*/
 /*    position: absolute;*/

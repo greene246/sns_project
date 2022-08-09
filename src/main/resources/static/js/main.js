@@ -58,7 +58,7 @@ function insertHtml(Board, log) {
                         <span className='main4' id='createdAt'>${(Board.createdAt).substring(0, 10)}</span>
                             <div class="input_comments">
                             <textarea id="comments_${Board.id}" placeholder="친구와 소통해봐요!" class="text_area"></textarea>
-                            <input type="button" class="detail_btn" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}', 'contents_${Board.contents}')">
+                            <input type="button" class="detail_btn" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
                         </div>
                     </div>
                 </div>

@@ -35,3 +35,26 @@ function getUser(log){
         $('.thumbnail').append(thumbnail);
     })
 }
+
+// function deleteUser(log){
+//     const data = {
+//         "id" : log,
+//         "user_pw" : $('#user_pw').val()
+//     }
+//     if (confirm("정말로 탈퇴하시겠습니까?")){
+//         $.ajax({
+//             url: "/removeUser",
+//             type: "POST",
+//             data: JSON.stringify(data),
+//             contentType: "application/json",
+//
+//             // success: function(){
+//             // location.reload();
+//
+//             // }
+//         })
+//
+//
+//
+//     }
+// }

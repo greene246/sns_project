@@ -7,13 +7,16 @@
     <title>Index</title>
 </head>
 <body>
-<%if(request.getParameter("check")!= null){ %>
+<%if(request.getParameter("check")!= null){%>
 <script>
     alert("회원정보를 확인하세요.");
 </script>
-
 <%}%>
-
+    <%if(request.getParameter("delete")!= null){%>
+<script>
+    alert("회원탈퇴가 완료되었습니다.");
+</script>
+<%}%>
 <div class="wrap">
     <div class="mainimg">
         <img class="main" src="/img/cute.JPG">
@@ -36,5 +39,5 @@
             </div>
         </form>
     </div>
-<script src="script/validation.js"></script>
+<script src="js/validation.js"></script>
 <c:import url="/WEB-INF/views/footer.jsp"/>

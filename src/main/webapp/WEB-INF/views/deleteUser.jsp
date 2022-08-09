@@ -6,7 +6,14 @@
     <link rel="stylesheet" href="css/update.css">
     <link rel="stylesheet" href="css/common.css">
     <title>회원 탈퇴</title>
-</head>
+</head
+<%
+    if (session.getAttribute("log") == null) {
+        String url = "/";
+        response.sendRedirect(url);
+    } else {
+        int log = (Integer) session.getAttribute("log");
+%>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -18,13 +25,7 @@
 
         <%}%>
 
-        <%
-            if (session.getAttribute("log") == null) {
-                String url = "/";
-                response.sendRedirect(url);
-            } else {
-                int log = (Integer) session.getAttribute("log");
-        %>
+
         <div class="menu">
             <div>
                 <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
@@ -45,11 +46,10 @@
 
                         <input type="hidden" name="log" value="<%=log%>">
 
-
                         <p class="_pw">비밀번호</p> <input type="password" name="user_pw" id="user_pw" required><br>
                     </div>
                     <div class="button">
-                        <input type="submit" name="delete" value="탈퇴">
+                        <input type="submit" name="delete" value="탈퇴" <%--onclick="deleteUser(<%=log%>)"--%>>
                     </div>
 
                 </div>

@@ -31,7 +31,7 @@ public class LikesController {
         boolean check = likesService.dibsSearch(boardid,log);
         LikesRequestDto likesRequestDto = new LikesRequestDto(log,boardid);
 
-        //false 일때 db에 값을 넣고
+        // false 일때 db에 값을 넣고
         // true 일때 db에 값을 삭제한다.
         if(check){
             boardService.DownLikeCount(boardid);

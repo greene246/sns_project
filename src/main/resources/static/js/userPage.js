@@ -50,18 +50,6 @@ function userPageContents(id, userId) {
         type: "POST",
         async: false,
         contentType: "application/json",
-        //
-        // success : data => {
-        //     data.forEach(e => {
-        //         printContent(e);
-        //     })
-        // },
-        // fail : function () {
-        //     console.log("fail");
-        // },
-        // error : function () {
-        //     console.log("error");
-        // }
     }).done(data => {
         data.forEach(e => {
             printContent(_id, e);

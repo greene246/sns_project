@@ -22,7 +22,6 @@ function uploadImg(){
     callUploadApi(settings);
 }
 
-
 function callUploadApi(settings){
     $.ajax(settings)
         .done(response => {

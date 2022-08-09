@@ -84,4 +84,3 @@ function printContent(log, Board) {
     `;
     $('.myPageContent').append(html);
 }
-

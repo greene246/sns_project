@@ -1,5 +1,6 @@
 let _userid;
 let _log;
+let _contents;
 //Boards DB에 있느 값을 가져온다.
 function getBoards(scope,log) {
     $.ajax({
@@ -27,6 +28,7 @@ function getBoards(scope,log) {
 }
 //메인 출력 부분
 function insertHtml(Board, log) {
+    console.log('contentsss' + Board.contents);
 
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
@@ -55,10 +57,10 @@ function insertHtml(Board, log) {
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
                         <span className='main3' id='contents'>${Board.contents}</span>
-                        <span className='main4' id='createdAt'>${Board.createdAt}</span>
-                        <div class="input_comments">
-                            <textarea id="comments_${Board.id}" placeholder="친구와 소통해봐요!" class="text_area"></textarea>
-                            <input type="button" class="input_btn" value="게시" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}')">
+                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
+                            <div class="input_comments">
+                            <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
+                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}', 'contents_${Board.contents}')">
                         </div>
                     </div>
                 </div>
@@ -72,14 +74,16 @@ function serveShow(log){
     console.log("serve 출력 js")
     //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
-        url: "/getUser?log=" + log,
+        url: "/getUser/" + log,
         type: "GET",
         async: false,
         contentType: "application/json",
         success: data => {
             let html = `
-                     <img src=${data.img_url}>
-                     <div class='profile_box'>${data.user_id}</div>
+                    <div class="serve_block" onclick="location.href='/myPage'">
+                         <img src=${data.thumbnail} class="profile_img1">
+                         <div class='profile_box'>${data.user_id}</div>
+                     </div>
             `;
 
             $('.serve_section').append(html);
@@ -90,8 +94,7 @@ function serveShow(log){
         error: function () {
             console.log("error4")
         }
-    })
-
+     })
 }
 
 //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다

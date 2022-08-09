@@ -26,6 +26,7 @@ public class CommentService {
     public List<CommentVO> comments_load(int board_id){
         List<CommentVO> comments = commentRepository.findAll();
         List<CommentVO> loaded_comments = new ArrayList<>();
+
         for(int i=0; i<comments.size(); i++){
             if(comments.get(i).getBoard_id() == board_id){
                 loaded_comments.add(comments.get(i));

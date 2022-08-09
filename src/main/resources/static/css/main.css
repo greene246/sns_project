@@ -43,6 +43,16 @@ div{
     border-radius: 50%;
     border: 1px solid lightslategrey;
 }
+.serve_block{
+    display: flex;
+    align-items: center;
+}
+.profile_img1{
+
+    height: 62px;
+    margin: 22px;
+    border-radius: 50%;
+}
 .main_img_wrap{
     flex-grow: 1;
 }

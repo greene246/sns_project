@@ -139,7 +139,7 @@ function comments_view(result, result2, log) {
                     <h1>${result2[i].user_id}</h1>
                     <span class="commented">${result[i].comment}</span>
                 </div>
-                <div class="set_comments"><a onclick="del_comments('${result[i].id}')">삭제</a></div>
+                <div class="set_comments"><a onclick="del_comments('${result[i].id}')"><img src="img/delBtn.png" class="del_cbtn"></a></div>
             </div>
             `;
         } else {
@@ -236,7 +236,7 @@ $('#search_btn').on("click", e => {
             let user_id = result[i].user_id;
             let name = result[i].name;
             let thumbnail = result[i].thumbnail;
-            let html = `<div class="searchedUser">
+            let html = `<div class="searchedUser" onclick="location.href='/userPage?user_id=${user_id}'">
                             <div class="img_section">
                                 <img src="${thumbnail}" class="search_img">
                             </div>

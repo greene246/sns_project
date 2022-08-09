@@ -26,13 +26,12 @@
 
     %>
 <body>
-<div id="total_wrap">
     <div class="header">
         <div class="header_contents_wrap">
             <a href="/main" id="logo"><img src="img/logo.png" style="height: 50px"></a>
             <div class="search_area">
                 <input type="text" class="search" name="search" placeholder="검색">
-                <input type="button" value="검색" id="search_btn">
+                <input type="button" value="찾기" id="search_btn">
             </div>
             <div class="topMenu">
                 <a onclick="file_upload_pop(<%=log%>)">

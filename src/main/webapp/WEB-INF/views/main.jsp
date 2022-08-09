@@ -41,9 +41,9 @@
             <div class="all_comments">
 
             </div>
-            <div class="input_comments">
-                <input type="text" placeholder="댓글달기" id="detail_comments_val">
-                <input type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}')">
+            <div class="input_comment">
+                <textarea type="text" placeholder="댓글달기" id="detail_comments_val"></textarea>
+                <input class="detail_btn" type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}')">
             </div>
         </div>
     </div>

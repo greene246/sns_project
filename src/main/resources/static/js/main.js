@@ -32,7 +32,7 @@ function insertHtml(Board, log) {
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
-                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
+                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}'"></span>
                         <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}'" value="${Board.user_id}">
                             <a class="user_id">${Board.user_id}</a>
                         </div>
@@ -58,7 +58,7 @@ function insertHtml(Board, log) {
                         <span className='main4' id='createdAt'>${(Board.createdAt).substring(0, 10)}</span>
                             <div class="input_comments">
                             <textarea id="comments_${Board.id}" placeholder="친구와 소통해봐요!" class="text_area"></textarea>
-                            <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}', 'contents_${Board.contents}')">
+                            <input type="button" class="detail_btn" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}', 'contents_${Board.contents}')">
                         </div>
                     </div>
                 </div>

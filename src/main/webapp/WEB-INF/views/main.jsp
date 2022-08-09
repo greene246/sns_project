@@ -57,8 +57,8 @@
     serveShow(<%=log%>);
     getBoards(0,<%=log%>);
     getBoards(1,<%=log%>);
-
+    <%}%>
 </script>
 </body>
 </html>
-<%}%>
+

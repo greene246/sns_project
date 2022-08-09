@@ -50,26 +50,25 @@ function myPageContents(log, userId){
 
 function deleteContent(id){
     console.log(id);
+    if(confirm("삭제하시겠슴둥?")){
+        $.ajax({
+            url: "/deleteMyContent/" + id,
+            type: "POST",
+            contentType: "application/json",
 
-    $.ajax({
-        url: "/deleteMyContent/" + id,
-        type: "POST",
-        contentType: "application/json",
+            success: function () {
+                alert("삭제되었슴둥");
+                location.reload();
+            },
+            fail: function () {
+                alert("실패했습둥");
+            },
+            error: function () {
+                alert("오류떴슴둥");
+            }
+        })
+    }
 
-        success: function () {
-            alert("삭제되었슴둥");
-            console.log("삭제되었슴둥");
-            location.reload();
-        },
-        fail: function () {
-            alert("실패했습둥");
-            console.log("실패했습둥");
-        },
-        error: function () {
-            alert("오류떴슴둥");
-            console.log("오류떴슴둥");
-        }
-    })
 }
 
 function printContent(log, Board) {
@@ -79,7 +78,7 @@ function printContent(log, Board) {
 
     let html = `
         <div class="myImage">
-            <input type="button" value="삭제" class="del_btn" onclick="deleteContent(${Board.id})">
+<!--            <input type="image" src="img/delBtn.png" class="del_btn" onclick="deleteContent(${Board.id})">-->
             <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
         </div>
     `;

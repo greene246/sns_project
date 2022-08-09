@@ -82,3 +82,10 @@
 .tableMyInfo > tr{
     border: 1px solid black;
 }
+
+#input_img{
+    margin-left: 70px;
+}
+.name, .email{
+    text-align: center;
+}

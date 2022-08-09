@@ -131,6 +131,8 @@
     white-space: nowrap;
     width: 200px;
     padding: 5px;
+    height: 15%;
+    overflow: hidden;
 }
 
 /*///////////////////////////////////*/

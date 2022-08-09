@@ -27,7 +27,6 @@ function getBoards(scope,log) {
 }
 //메인 출력 부분
 function insertHtml(Board, log) {
-    console.log('contentsss' + Board.contents);
 
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>

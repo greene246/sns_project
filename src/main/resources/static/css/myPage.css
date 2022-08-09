@@ -38,10 +38,9 @@
 }
 
 .myImage{
-    border: 1px solid lightslategray;
+    /*border: 1px solid lightslategray;*/
     margin: 7px;
     display: flex;
-    flex-direction: column;
     background-color: black;
     align-items: center;
 }
@@ -59,7 +58,7 @@
 }
 
 .imgSize{
-    width: 284px;
+    width: 286px;
     transition: 0.5s;
 }
 
@@ -92,7 +91,7 @@
 
 .userImage{
     /*padding: 4px;*/
-    border: 1px solid lightslategray;
+    /*border: 1px solid lightslategray;*/
     margin: 7px;
     display: flex;
     background-color: black;
@@ -101,4 +100,5 @@
 .del_btn{
     position: relative;
     left: 120px;
+    width: 25px;
 }

@@ -1,5 +1,8 @@
 let arr = new Array();
 let comment_check = false;
+let _userid1;
+let _img_id;
+let _board_id;
 
 // 팝업창
 jQuery.fn.center = function () {
@@ -37,8 +40,9 @@ function detail_comments_pop(board_user, board, board_id, log, contents) {
         $('.detail_user_id').append(target_name);
     }
 
-    $('._contents').empty();
-    $('._contents').append(target_contents);
+        $('._contents').empty();
+        $('._contents').append(target_contents);
+    }
 
     showPopup(board, board_id, log);
     who_am_i(log);
@@ -62,7 +66,6 @@ function when_close() {
 function showPopup(board, board_id, log) {
     console.log("board : " + board)
     $(".contents_detail").css("display", "flex");
-
 
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
@@ -194,61 +197,62 @@ function comments_view(result, result2, log) {
         comment_check = true;
     }
 }
-
 // 댓글 업로드
-function upload_comments(log, board_id, comments_id, img_id, user_id) {
-    // log = 로그인 중인 user의 id값
-    // board_id = 댓글을 작성한 보드의 id값
-    // $(`#${comments_id}`).val() = 작성한 댓글 내용
-    let comments;
-    if (board_id == '') {
-        board_id = $('#detail_board_id').val();
-        comments = $("#detail_comments_val").val();
-    } else {
-        comments = $(`#${comments_id}`).val();
+    function upload_comments(log, board_id, comments_id, board, board_user) {
+
+        // log = 로그인 중인 user의 id값
+        // board_id = 댓글을 작성한 보드의 id값
+        // $(`#${comments_id}`).val() = 작성한 댓글 내용
+        let comments;
+        if (board_id == '') {
+            board_id = $('#detail_board_id').val();
+            comments = $("#detail_comments_val").val();
+        } else {
+            comments = $(`#${comments_id}`).val();
+        }
+
+        if (comments == '') {
+            alert("댓글은 1자 이상 작성해주세요");
+            return;
+        }
+
+        const requestData = {
+            "user_id": log,
+            "board_id": board_id,
+            "comment": comments
+        };
+
+        $.ajax({
+            url: '/upload_comments',
+            method: 'POST',
+            data: JSON.stringify(requestData),
+            contentType: "application/json"
+        }).success(result => {
+            _userid1 = board_user;
+            _img_id = board;
+            _board_id = board_id;
+            $(`#${comments_id}`).val('');
+            $("#detail_comments_val").val('');
+            $('.all_comments').empty();
+            detail_comments_pop(board_user,board, board_id, log);
+
+        }).fail(error => {
+            console.log("comments upload fail");
+        })
     }
-
-    if (comments == '') {
-        alert("댓글은 1자 이상 작성해주세요");
-        return;
-    }
-
-    const requestData = {
-        "user_id": log,
-        "board_id": board_id,
-        "comment": comments
-    };
-
-    $.ajax({
-        url: '/upload_comments',
-        method: 'POST',
-        data: JSON.stringify(requestData),
-        contentType: "application/json"
-    }).success(result => {
-        console.log("comments upload success");
-        $(`#${comments_id}`).val('');
-        $("#detail_comments_val").val('');
-        $('.all_comments').empty();
-        detail_comments_pop(user_id, img_id, board_id, log);
-
-
-    }).fail(error => {
-        console.log("comments upload fail");
-    })
-}
 
 
 // 댓글 삭제
 function del_comments(target_id) {
+    console.log(target_id);
     $.ajax({
         url: "/del_comment?comments=" + target_id,
         method: "post",
         contentType: "application/json"
     }).done(result => {
-        $('.all_comments').empty();
-        detail_comments_pop(user_id, img_id, board_id, log);
-        console.log("delete_comment success")
 
+        $('.all_comments').empty();
+        detail_comments_pop(_userid1,_img_id, _board_id, _log);
     })
 }
 

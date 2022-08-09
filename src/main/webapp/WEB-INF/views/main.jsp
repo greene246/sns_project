@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <c:import url="/WEB-INF/views/header.jsp"/>
 
     <%
@@ -13,6 +12,7 @@
 
     %>
 <c:import url="/WEB-INF/views/searchResult.jsp"/>
+</div>
 <div class="main_wrap">
     <div class="all_contents">
         <div class="main_section"></div>
@@ -41,9 +41,9 @@
             <div class="all_comments">
 
             </div>
-            <div class="input_comments">
-                <input type="text" placeholder="댓글달기" id="detail_comments_val">
-                <input type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}')">
+            <div class="input_comment">
+                <textarea type="text" placeholder="댓글달기" id="detail_comments_val"></textarea>
+                <input class="detail_btn" type="button" value="댓글" onclick="upload_comments_in_detail(<%=log%>)">
             </div>
         </div>
     </div>

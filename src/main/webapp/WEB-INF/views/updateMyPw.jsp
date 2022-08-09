@@ -17,6 +17,7 @@
     %>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+<c:import url="/WEB-INF/views/searchResult.jsp"/>
 <div class = "wrap">
     <div class="_wrap">
 
@@ -62,6 +63,7 @@
 })
 </script>
 <script src="js/updatePw.js"></script>
+<script src="./js/validation.js"></script>
 <%
     }
 %>

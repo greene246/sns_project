@@ -10,8 +10,13 @@
 </head>
 <body>
 <%
-    int log = (Integer) session.getAttribute("log");
-    String user_id = (String) request.getParameter("user_id");
+    if (session.getAttribute("log") == null) {
+        String url = "/";
+        response.sendRedirect(url);
+    }
+    else {
+        int log = (Integer) session.getAttribute("log");
+        String user_id = (String) request.getParameter("user_id");
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -28,6 +33,7 @@
             </div>
             <div class="name"></div>
             <div class="follow">
+                <div class="boardCnt"></div>
                 <div class="followCnt"></div>
                 <div class="followingCnt"></div>
             </div>
@@ -74,6 +80,7 @@
     userPageUser(<%=log%>, '<%=user_id%>');
     checkFollow('<%=log%>','<%=user_id%>');
     followCount('<%=log%>','<%=user_id%>');
+    CommentCount('<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>
@@ -81,5 +88,8 @@
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <script src="js/follow.js"></script>
+<%
+    }
+%>
 </body>
 </html>

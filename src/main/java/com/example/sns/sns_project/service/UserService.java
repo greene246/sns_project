@@ -132,7 +132,6 @@ public class UserService {
 
     public UserVO findUser(int log){
         UserVO user = userRepository.findUserVOByLog(log);
-        System.out.println("sss: "+user.getId());
         return user;
     }
 
@@ -147,7 +146,6 @@ public class UserService {
 
     public List<UserVO> readUserByName(String user_name){
         String searchName = '%' + user_name + '%';
-        System.out.println(searchName);
         return userRepository.findbyUserName(searchName);
     }
 

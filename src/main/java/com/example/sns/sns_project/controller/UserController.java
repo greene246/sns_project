@@ -83,6 +83,7 @@ public class UserController {
     }
 
     // 회원탈퇴
+    // 회원탈퇴
     @PostMapping("/removeUser")
     public void deleteUser(@RequestParam(name="log") int log,
                            @RequestParam(name="user_pw") String user_pw,
@@ -111,7 +112,7 @@ public class UserController {
         }
     }
 
-    // 프로필 사진, 이름, 이메일 변경
+    // 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
     public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
@@ -209,7 +210,6 @@ public class UserController {
         }
     }
 
-    // 비밀번호 찾기
     @PostMapping("/findPw")
     public void findPw(@RequestParam(name="user_id") String user_id,
                        @RequestParam (name="name") String name,
@@ -242,7 +242,6 @@ public class UserController {
 
     }
 
-    // 유저 고유코드 받아서 유저 정보 리턴
     @PostMapping("/getInfo")
     public UserVO getInfo(@RequestParam(name="log") int log) {
         return userService.readLog(log);
@@ -263,10 +262,9 @@ public class UserController {
     //log 값을 사용해 해당 유저의 정보를 가져온다.
     @GetMapping("/getUser/{log}")
     public UserVO getUser(@PathVariable("log") int log){
-        System.out.println("Usercontroller에 들어옴");
-        System.out.println("log: " + log);
         return userService.findUser(log);
     }
+
 
     @PostMapping("/getUserLists")
     @ResponseBody
@@ -282,7 +280,6 @@ public class UserController {
     //로그값으로 유저 ID불러옴
     @PostMapping("/getUserIdfl")
     public String getUserId(@RequestParam(name="log") int log) {
-        System.out.println("asasas : "+log);
         return userService.readLog(log).getUser_id();
     }
 

@@ -57,4 +57,16 @@ public class BoardController {
 
         boardService.deleteMyContent(id);
     }
+    // log 값으로 게시물 개수 가져오기
+    @PostMapping("/myCommentCount/{log}")
+    public int myCommentCount(@PathVariable("log") int log){
+        return boardService.myCommentCount(log);
+    }
+    //유저의 아이디로 게시물 개수 가져오기
+    @PostMapping("/CommentCount/{user_id}")
+    public int CommentCount(@PathVariable("user_id") String user_id){
+        return boardService.CommentCount(user_id);
+    }
+
+
 }

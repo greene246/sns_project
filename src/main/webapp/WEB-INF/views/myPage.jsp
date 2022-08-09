@@ -10,7 +10,7 @@
 <%
     if (session.getAttribute("log") == null) {
         String url = "/";
-        request.getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect(url);
     } else {
         int log = (Integer) session.getAttribute("log");
 %>
@@ -27,6 +27,7 @@
             </div>
             <span class="name"></span>
             <div class="follow">
+                <div class="boardCnt"></div>
                 <div class="followCnt"></div>
                 <div class="followingCnt"></div>
             </div>
@@ -72,10 +73,12 @@
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
     myFollowCnt(<%=log%>);
+    myCommentCount(<%=log%>);
+
 })
 </script>
-<script src="./js/myPage.js"></script>
-<script src="./js/validation.js"></script>
+<script src="js/myPage.js"></script>
+<script src="js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <script src="/js/follow.js"></script>

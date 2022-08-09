@@ -7,6 +7,7 @@ let follower; //팔로우 눌리는사람
 function follow(log,user_id) {
     follower = user_id;
     $.ajax({
+
         url: "/getUserIdfl?log=" + log,
         type: "POST",
         data: JSON.stringify(log),

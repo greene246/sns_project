@@ -84,6 +84,7 @@ function update(formObj){
         success: data => {
             console.log("success");
             alert("회원정보 수정이 완료되었습니다.");
+            location.href="/myPage";
             // formObj.submit();
         },
         fail: function () {

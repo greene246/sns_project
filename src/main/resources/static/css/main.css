@@ -431,12 +431,3 @@ div{
     height: 45%;
     align-self: self-start;
 }
-
-
-#userid{
-    cursor: pointer;
-}
-
-._profile_box{
-    cursor: pointer;
-}

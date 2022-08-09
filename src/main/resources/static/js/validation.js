@@ -12,11 +12,11 @@ jQuery.fn.center = function () {
 
 // 추가 클릭 시 창 띄우기
 function file_upload_pop(log) {
+    scrollDisable();
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "block");
     $(".contents_detail").css("display", "none");
     who_am_i(log);
-    scrollDisable();
 }
 
 // 댓글 아이콘 클릭 시
@@ -40,7 +40,7 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
 
     $(".detail_profile_img").attr("src", target_url);
 
-    if(!comment_check){
+    if (!comment_check) {
         $('.detail_user_id').empty();
         $('.detail_user_id').append(target_name);
         $('._contents').empty();
@@ -62,6 +62,7 @@ function when_close() {
     $('#detail_profile_img').attr("src", '');
     $('.detail_user_id').children('span').remove();
     $('.all_comments').children('div').remove();
+    $('.detail_comments_val').val('');
     scrollAble();
 
     comment_check = false;
@@ -69,19 +70,19 @@ function when_close() {
 
 // 댓글 클릭 시 보여준다.
 function showPopup(board, board_id, user_log) {
+    scrollDisable();
     // 게시글 img아이디, 게시글의 id값, 나의 id값
     $(".contents_detail").css("display", "flex");
 
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
     $('#detail_board_id').val(board_id);
-    // scrollDisable();
 
     comment_load(board_id, user_log)
 }
 
 // 댓글 정보 불러오기
-function comment_load(board_id, user_log){
+function comment_load(board_id, user_log) {
     $.ajax({
         url: "/commentsLoad?board_id=" + board_id,
         type: "POST",
@@ -111,12 +112,12 @@ function comment_load(board_id, user_log){
 
 // 스크롤 강제 막기
 function scrollDisable() {
-    $('html, body').css("overflow", "hidden")
+    $('#body').css("overflow", "hidden");
 }
 
 // 스크롤 작동
 function scrollAble() {
-    $('html, body').css("overflow", "visible")
+    $('#body').css("overflow", "visible");
 }
 
 
@@ -142,27 +143,34 @@ function comments_view(result, result2, user_log, board_id) {
     let html;
     for (let i = 0; i < result.length; i++) {
         if (result2[i].id == user_log) {
-            html = `<div class="comment_section">
-                <div class="commented_user_info">
-                    <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+            html = `
+                <div class="comment_section">
+                    <div class="comment_profile">
+                        <div class="commented_user_info">
+                            <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                        </div>
+                        <div class="comments_info">
+                            <h1>${result2[i].user_id}</h1>
+                            <span class="commented">${result[i].comment}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="set_comments"><a onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})"><img src="img/delBtn.png" class="del_cbtn"></a></div>
+                    </div>
                 </div>
-                <div class="comments_info">
-                    <h1>${result2[i].user_id}</h1>
-                    <span class="commented">${result[i].comment}</span>
-                </div>
-                <div class="set_comments"><a onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})"><img src="img/delBtn.png" class="del_cbtn"></a></div>
-            </div>
             `;
         } else {
 
             html = `
-            <div class="comment_section">
-                <div class="commented_user_info">
-                    <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
-                </div>
-                <div class="comments_info">
-                    <h1>${result2[i].user_id}</h1>
-                    <span class="commented">${result[i].comment}</span>
+                <div class="comment_section">
+                    <div class="comment_profile">
+                        <div class="commented_user_info">
+                            <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                        </div>
+                    <div class="comments_info">
+                        <h1>${result2[i].user_id}</h1>
+                        <span class="commented">${result[i].comment}</span>
+                    </div>
                 </div>
             </div>
             `
@@ -172,6 +180,7 @@ function comments_view(result, result2, user_log, board_id) {
         comment_check = true;
     }
 }
+
 // 댓글 업로드
 function upload_comments_in_detail(user_log) {
     // log = 로그인 중인 user의 id값
@@ -256,8 +265,8 @@ function del_comments(target_id, board_id, user_id) {
 $('#search_btn').on("click", e => {
     $('.search_result').empty();
     $('.searched_section').css("display", "none");
-    if ($('.search').val() == '') {
-        alert("1글자 이상 검색해주세요");
+    if ($('.search').val().length < 2) {
+        alert("2글자 이상 검색해주세요");
         return;
     }
     $('.search_result').empty();
@@ -266,12 +275,17 @@ $('#search_btn').on("click", e => {
         method: "post",
         contentType: "application/json"
     }).done(result => {
-        console.log(result);
-        for (let i = 0; i < result.length; i++) {
-            let user_id = result[i].user_id;
-            let name = result[i].name;
-            let thumbnail = result[i].thumbnail;
-            let html = `<div class="searchedUser" onclick="location.href='/userPage?user_id=${user_id}'">
+        if (result.length < 1) {
+            let html = `<div style="position: relative; top: 12px; left: 82px;">
+                            <span>검색 결과가 없습니다.</span>
+                        </div>`
+            $('.search_result').append(html);
+        } else {
+            for (let i = 0; i < result.length; i++) {
+                let user_id = result[i].user_id;
+                let name = result[i].name;
+                let thumbnail = result[i].thumbnail;
+                let html = `<div class="searchedUser" onclick="location.href='/userPage?user_id=${user_id}'">
                             <div class="img_section">
                                 <img src="${thumbnail}" class="search_img">
                             </div>
@@ -283,18 +297,19 @@ $('#search_btn').on("click", e => {
                             </div>
                         </div>`
 
-            $('.search_result').append(html);
+                $('.search_result').append(html);
+            }
         }
         $('.searched_section').css("display", "block");
-
     })
 })
 
-$('.close_result').on("click", e => {
-    if($('.search').val().length < 3){
-        alert('2글자 이상 작성해주세요');
-        return
-    }
+$('.cancel_btn').on("click", e => {
+    $('.search_result').empty();
+    $('.searched_section').css("display", "none");
+})
+
+$('.search_area').focusout(e=>{
     $('.search_result').empty();
     $('.searched_section').css("display", "none");
 })

@@ -25,7 +25,7 @@
             int log = (Integer) session.getAttribute("log");
 
     %>
-<body>
+<body id="body">
     <div class="header">
         <div class="header_contents_wrap">
             <a href="/main" id="logo"><img src="img/logo.png" style="height: 50px"></a>

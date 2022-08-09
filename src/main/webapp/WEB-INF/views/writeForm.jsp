@@ -4,7 +4,7 @@
     <span class="close">&times;</span>
     <form method="post" id="write_form" action="/upload">
         <!-- POST로 넘겨 작업 할 소스들 -->
-        <div class="sources">
+        <div class="sources" style="display: none">
             <input type="hidden" name="user_id" id="user_id">    <!-- getAttribute로 user_id 추출 -->
             <input type='hidden' id='img_url' name='img_url'>
             <input type='hidden' id='del_url' name='del_url'>

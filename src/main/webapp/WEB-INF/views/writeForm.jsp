@@ -12,7 +12,7 @@
 
         <!-- section1 : 파일 업로드 버튼-->
         <div id="upload_section1">
-            <div id="section1_main">
+            <div id="section1_main" class="write_section">
                 <span>새 게시물 만들기</span>
             </div>
             <div>
@@ -29,7 +29,7 @@
         <!-- section2 : 파일 선택 후 사진 미리보기 -->
         <!-- 이미지 선택 후 이미지가 담기는 구역 -->
         <div id="upload_section2" style="display: none">
-            <div id="section2_main">
+            <div id="section2_main" class="write_section" >
                 <input type="button" class="del_img" value="이전" onclick="del_img()">
                 <span>자르기</span>
                 <input type="button" class="next_btn" value="다음" onclick="next_section()">
@@ -44,7 +44,7 @@
 
         <!-- section3 : 게시글에 대한 내용 / 범위 작성 후 업로드 하는 최종 구간-->
         <div id="upload_section3" style="display: none">
-            <div id="section3_main">
+            <div id="section3_main" class="write_section" >
                 <input type="button" class="back_btn" value="이전" onclick="back_btn()">
                 <select name="public_scope" id="scope">
                     <option value="0" selected>전체 공개</option>

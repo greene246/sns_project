@@ -1,16 +1,18 @@
 package com.example.sns.sns_project.controller;
 
-import com.example.sns.sns_project.service.UserService;
-
+import com.example.sns.sns_project.domain.BoardVO;
 import com.example.sns.sns_project.domain.UserVO;
 import com.example.sns.sns_project.domain.UserRequestDto;
 
+import com.example.sns.sns_project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -112,9 +114,7 @@ public class UserController {
     // 프로필 사진, 이름, 이메일 변경
     @ResponseBody
     @PostMapping("/update")
-    public void updateUser(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response){
-        System.out.println("userID : " + userRequestDto.getUser_id());
-
+    public void updateUser(@RequestBody UserRequestDto userRequestDto,  HttpServletRequest request, HttpServletResponse response){
         boolean check = userService.updateUser(userRequestDto);
 
         if(check){
@@ -284,6 +284,11 @@ public class UserController {
     public String getUserId(@RequestParam(name="log") int log) {
         System.out.println("asasas : "+log);
         return userService.readLog(log).getUser_id();
+    }
+
+    @PostMapping("/searchUser")
+    public List<UserVO> searchUser(@RequestParam(name="user_name")String user_name){
+        return userService.readUserByName(user_name);
     }
 
 }

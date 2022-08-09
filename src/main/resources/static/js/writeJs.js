@@ -13,7 +13,7 @@ function uploadImg(){
         "mimeType": "multipart/form-data",
         "contentType": false,
         "data": form,
-        sync: false,
+        async: false,
         fail : error => {
             console.log("image upload fail");
         }
@@ -21,7 +21,6 @@ function uploadImg(){
 
     callUploadApi(settings);
 }
-
 
 function callUploadApi(settings){
     $.ajax(settings)

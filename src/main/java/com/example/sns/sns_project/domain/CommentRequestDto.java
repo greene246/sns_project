@@ -11,3 +11,4 @@ public class CommentRequestDto {
     private int user_id, board_id;
     private String comment;
 }
+

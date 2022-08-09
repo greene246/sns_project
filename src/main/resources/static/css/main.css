@@ -390,3 +390,6 @@ div{
     display: flex;
     flex-grow: 1;
 }
+.box{
+    word-break: break-all;
+}

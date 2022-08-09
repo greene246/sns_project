@@ -120,7 +120,6 @@ function followCount(log, user_id) {
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(result => {
-            console.log(result)
 
             let follower = result.follower.length;
             let following = result.following.length;
@@ -143,16 +142,15 @@ function myFollowCnt(log) {
         following = result
 
         const data = {
-            "following_id": following
+            "following_id": following,
+            "follower_id": following
         }
-        console.log(data);
         $.ajax({
-            url: "/followCount",
+            url: "/myFollowCount",
             type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(result =>{
-            console.log(result);
             let follower = result.follower.length;
             let following = result.following.length;
 

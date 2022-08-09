@@ -60,7 +60,6 @@ public class FollowService {
         HashMap<String, List<FollowVO>> follows = new HashMap<>();
 
 
-        int cnt = 0;
         for (int i = 0; i < follow.size(); i++) {
             if (follower_id.equals(follow.get(i).getFollower_id())) {
                 follower.add(follow.get(i));
@@ -75,17 +74,27 @@ public class FollowService {
         return follows;
     }
 
-    //유저페이지 팔로우 수
-    public int followingCount(String follower_id){
+    //마이페이지 팔로우 수
+    public HashMap<String, List<FollowVO>> myFollowCount(String follower_id) {
+        System.out.println("aaa"+follower_id);
         List<FollowVO> follow = followRepository.findAll();
-        int cnt = 0;
+        List<FollowVO> follower = new ArrayList<>();
+        List<FollowVO> following = new ArrayList<>();
+        HashMap<String, List<FollowVO>> follows = new HashMap<>();
+
+
         for (int i = 0; i < follow.size(); i++) {
-            if (follower_id.equals(follow.get(i).getFollower_id())) {
-                cnt ++;
+            if (follower_id.equals(follow.get(i).getFollowing_id())) {
+                follower.add(follow.get(i));
             }
-            return cnt;
+            if(follower_id.equals(follow.get(i).getFollower_id())){
+                following.add(follow.get(i));
+            }
         }
-        return -1;
+        follows.put("follower", follower);
+        follows.put("following", following);
+
+        return follows;
     }
 
 }

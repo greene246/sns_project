@@ -74,7 +74,7 @@
 <script src="js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
-<script src="./js/follow.js"></script>
+<script src="/js/follow.js"></script>
 <%
   }
 %>

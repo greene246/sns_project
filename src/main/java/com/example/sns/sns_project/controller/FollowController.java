@@ -61,13 +61,12 @@ public class FollowController {
         return follows;
     }
 
-    @PostMapping("/followingCount")
+    @PostMapping("/myFollowCount")
     @ResponseBody
-    public int followingCount(@RequestBody FollowRequestDto followRequestDto){
-        int cnt = followService.followingCount(followRequestDto.getFollower_id());
-        System.out.println("cnt : "+cnt);
-        if(cnt != -1)
-            return cnt;
-    return -1;
+    public HashMap<String, List<FollowVO>> myFollowCount(@RequestBody FollowRequestDto followRequestDto){
+        System.out.println(followRequestDto.getFollower_id());
+        HashMap<String, List<FollowVO>> follows = followService.myFollowCount(followRequestDto.getFollower_id());
+
+        return follows;
     }
 }

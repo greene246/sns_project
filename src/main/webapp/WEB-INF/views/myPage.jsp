@@ -31,6 +31,11 @@
                 <div class="followCnt"></div>
                 <div class="followingCnt"></div>
             </div>
+            <div class="ft">
+                <span>게시물</span>
+                <span>팔로워</span>
+                <span>팔로우</span>
+            </div>
         </div>
 
     </div>

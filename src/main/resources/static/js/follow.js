@@ -126,8 +126,8 @@ function followCount(log, user_id) {
 
             $('.followCnt').empty();
             $('.followingCnt').empty();
-            $('.followCnt').append("팔로워 " + follower);
-            $('.followingCnt').append("팔로우 " + following);
+            $('.followCnt').append(follower);
+            $('.followingCnt').append(following);
         })
     })
 }
@@ -156,8 +156,8 @@ function myFollowCnt(log) {
 
             $('.followCnt').empty();
             $('.followingCnt').empty();
-            $('.followCnt').append("팔로워 " + follower);
-            $('.followingCnt').append("팔로우 " + following);
+            $('.followCnt').append(follower);
+            $('.followingCnt').append(following);
         })
     })
 }

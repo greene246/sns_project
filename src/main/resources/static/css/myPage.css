@@ -114,7 +114,12 @@
 }
 .follow{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.ft{
+    display: flex;
+    justify-content: space-around;
     margin-top: 20px;
 }
 ._userId_Btn{
@@ -129,7 +134,7 @@
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 901px;
+    width: 1000px;
 }
 
 .userImage{

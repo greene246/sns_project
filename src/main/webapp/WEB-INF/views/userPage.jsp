@@ -32,8 +32,14 @@
       </div>
       <div class="name"></div>
       <div class="follow">
+        <div class="">게시물 수</div>
         <div class="followCnt"></div>
         <div class="followingCnt"></div>
+      </div>
+      <div class="ft">
+        <span>게시물</span>
+        <span>팔로워</span>
+        <span>팔로우</span>
       </div>
     </div>
 

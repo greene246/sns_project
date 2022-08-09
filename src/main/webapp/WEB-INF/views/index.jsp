@@ -36,9 +36,5 @@
             </div>
         </form>
     </div>
-</div>
-
 <script src="script/validation.js"></script>
-
-</body>
-</html>
+<c:import url="/WEB-INF/views/footer.jsp"/>

@@ -19,16 +19,6 @@
 <div class="wrap">
   <div class="myPageBody">
 
-        <div class="thumbnail"></div>
-        <div class="_userIdName">
-            <div class="_userIdBtn">
-                <span class="user_id"></span>
-                <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
-            </div>
-            <span class="name"></span>
-        </div>
-
-
     <div class="thumbnail"></div>
     <div class="_userIdName">
       <div class="_userIdBtn">
@@ -38,12 +28,18 @@
       </div>
       <span class="name"></span>
       <div class="follow">
+        <div class="">게시물 수</div>
         <div class="followCnt"></div>
         <div class="followingCnt"></div>
       </div>
-    </div>
+      <div class="ft">
+        <span>게시물</span>
+        <span>팔로워</span>
+        <span>팔로우</span>
+      </div>
 
-    <div class="myPageContent"></div>
+
+    </div>
 
 
 

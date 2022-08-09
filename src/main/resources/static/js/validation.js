@@ -236,7 +236,7 @@ $('#search_btn').on("click", e => {
             let user_id = result[i].user_id;
             let name = result[i].name;
             let thumbnail = result[i].thumbnail;
-            let html = `<div class="searchedUser">
+            let html = `<div class="searchedUser" onclick="location.href='/userPage?user_id=${user_id}'">
                             <div class="img_section">
                                 <img src="${thumbnail}" class="search_img">
                             </div>

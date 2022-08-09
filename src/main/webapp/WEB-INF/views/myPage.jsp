@@ -23,10 +23,13 @@
         <div class="_userIdName">
             <div class="_userIdBtn">
                 <span class="user_id"></span>
-                <input type="button" class="btn" name="updateBtn" value="프로필 편집"
-                       onclick="location.href='/updateMyInfo'"><br>
+                <div class="btn_" name="updateBtn_" onclick="location.href='/updateMyInfo'"><img class="updateImg" src="img/update.png"></div>
             </div>
             <span class="name"></span>
+            <div class="follow">
+                <div class="followCnt"></div>
+                <div class="followingCnt"></div>
+            </div>
         </div>
 
     </div>
@@ -68,12 +71,14 @@
 
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
+    myFollowCnt(<%=log%>);
 })
 </script>
 <script src="./js/myPage.js"></script>
 <script src="./js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
+<script src="/js/follow.js"></script>
 <%
     }
 %>

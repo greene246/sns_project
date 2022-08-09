@@ -67,6 +67,8 @@
 
 #updateMyContent{
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .tableMyInfo{
@@ -83,9 +85,90 @@
     border: 1px solid black;
 }
 
-#input_img{
+/*#input_img{
     margin-left: 70px;
+}*/
+/*.name, .email{
+    text-align: center;
+}*/
+
+.image-container{
+    padding: 20px;
 }
+
+.__name{
+    padding-bottom: 17px;
+}
+
+.__email{
+    padding-bottom: 35px;
+}
+
 .name, .email{
+    margin: 5px;
+    height: 35px;
+    width: 250px;
     text-align: center;
 }
+
+.name:focus{
+     background-color: white;
+ }
+.name:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.email:focus{
+    background-color: white;
+}
+.email:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes border-focus {
+    from {
+        border-radius: 0;
+    }
+    to {
+        border-radius: 15px;
+    }
+}
+
+input[type=file]::file-selector-button {
+    margin-left: 20px;
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 15px;
+    cursor: pointer;
+}
+input[type=file]::file-selector-button:hover {
+     background: rgb(77,77,77);
+     color: #fff;
+ }
+
+/*
+.uploadBtn{
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploadBtn:hover {
+     background: rgb(77,77,77);
+     color: #fff;
+ }
+
+#input_img{
+    display: none;
+}*/

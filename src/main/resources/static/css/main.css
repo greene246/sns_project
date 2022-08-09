@@ -9,7 +9,7 @@ div{
 }
 .main_wrap {
     display: flex;
-    padding: 10px 15% 0 25%;
+    padding: 90px 15% 0 25%;
 }
 .all_contents{
     display: flex;
@@ -20,6 +20,7 @@ div{
 }
 #profile_img_wrap{
     width: 100px;
+    cursor: pointer;
 }
 .section{
     /*flex-grow: 1;*/
@@ -42,6 +43,7 @@ div{
     height: 100%;
     border-radius: 50%;
     border: 1px solid lightslategrey;
+    cursor: pointer;
 }
 .serve_block{
     display: flex;
@@ -392,4 +394,12 @@ div{
 }
 .box{
     word-break: break-all;
+}
+
+#userid{
+    cursor: pointer;
+}
+
+._profile_box{
+    cursor: pointer;
 }

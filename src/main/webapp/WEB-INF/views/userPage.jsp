@@ -27,6 +27,10 @@
                 </div>
             </div>
             <div class="name"></div>
+            <div class="follow">
+                <div class="followCnt"></div>
+                <div class="followingCnt"></div>
+            </div>
         </div>
 
 
@@ -69,6 +73,7 @@
 <script>$(document).ready(function () {
     userPageUser(<%=log%>, '<%=user_id%>');
     checkFollow('<%=log%>','<%=user_id%>');
+    followCount('<%=log%>','<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>

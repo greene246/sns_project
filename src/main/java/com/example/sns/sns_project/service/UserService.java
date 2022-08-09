@@ -134,15 +134,13 @@ public class UserService {
     }
 
     public UserVO findUser(int log){
-        UserVO user = userRepository.findUserVOByLog(log);
-        System.out.println("sss: "+user.getId());
-        return user;
+
+        return userRepository.findUserVOByLog(log);
     }
 
     public List<UserVO> getUser_list(String[] userArr){
         List<UserVO> users = new ArrayList<>();
         for(int i=0; i<userArr.length; i++){
-            System.out.println(i+" : "+userArr[i]);
             UserVO temp = userRepository.findIUserById(Integer.parseInt(userArr[i]));
             users.add(temp);
         }

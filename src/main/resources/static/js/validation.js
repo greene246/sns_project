@@ -26,18 +26,19 @@ function detail_comments_pop(board, board_id, log){
     $("#detail_board_id").val(board_id);
     showPopup(board,board_id);
     who_am_i(log);
+
 }
 
-/*// 사진 클릭 시
+// 사진 클릭 시
 function detail_img_pop(board, board_id, log){
-    $(".black").css("display","block");
+    $(".wrap").css("display","block");
 
     $(".write_wrap").css("display","none");
     $(".pageBody").css("display","block");
     $("#detail_board_id").val(board_id);
     showPopup(board,board_id);
     who_am_i(log);
-}*/
+}
 
 // x 버튼 클릭 시 창 닫기
 $(".close").on("click", e=>{
@@ -58,7 +59,6 @@ function showPopup(board, board_id) {
     let board_img = $(`#${board}`).attr("src");
     $("#detail_img_main").attr("src", board_img);
     $('#detail_board_id').val(board_id);
-    // scrollDisable();
 
     $.ajax({
         url: "/commentsLoad?board_id=" + board_id,
@@ -81,8 +81,6 @@ function showPopup(board, board_id) {
             contentType: "application/json"
         }).done(result2=>{
             comments_view(result, result2);
-            arr = new Array();
-
         })
     })
 }
@@ -95,8 +93,6 @@ function scrollDisable(){
 function scrollAble(){
     $('html, body').css("overflow","visible")
 }
-
-
 
 $(document).ready(function(){
 
@@ -154,11 +150,7 @@ function comments_view(result, result2){
 // result = 댓글 정보
 // result2 = 댓글 쓴 유저의 정보
 
-    console.log(result);
-    console.log(result2);
-
     for(let i=0; i<result.length; i++){
-        console.log(result[i].comment);
         let html = `
             <div class="comment_section">
                 <div class="commented_user_info">
@@ -172,18 +164,14 @@ function comments_view(result, result2){
             `
         $('.all_comments').append(html);
     }
+
 }
 
 // 댓글 업로드
-function upload_comments(log, board_id, comments_id){
+function upload_comments(log, board_id, comments_id, board){
     // log = 로그인 중인 user의 id값
     // board_id = 댓글을 작성한 보드의 id값
     // $(`#${comments_id}`).val() = 작성한 댓글 내용
-    console.log("log : " + log);
-    console.log("board_id : " + board_id)
-    console.log("comments_id : " + comments_id)
-
-
     let comments;
     if(board_id == ''){
         board_id = $('#detail_board_id').val();
@@ -197,9 +185,6 @@ function upload_comments(log, board_id, comments_id){
         alert("댓글은 1자 이상 작성해주세요");
         return;
     }
-
-    console.log(board_id);
-    console.log(comments);
 
     const requestData = {
         "user_id" : log,
@@ -216,7 +201,10 @@ function upload_comments(log, board_id, comments_id){
         console.log("comments upload success");
         $(`#${comments_id}`).val('');
         $("#detail_comments_val").val('');
+        $('.all_comments').empty();
+        detail_comments_pop(board, board_id, log)
     }).fail(error=>{
         console.log("comments upload fail");
     })
+
 }

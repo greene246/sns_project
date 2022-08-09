@@ -14,14 +14,8 @@
 
 <div class="main_wrap">
     <div class="all_contents">
-        <div class="main_section">
-
-        </div>
-
-        <div class="serve_section">
-            serve
-        </div>
-
+        <div class="main_section"></div>
+        <div class="serve_section"></div>
     </div>
 </div>
 <div class="black">
@@ -55,6 +49,8 @@
 <script src="./js/writeJs.js"></script>
 <script>
     getBoards(0,<%=log%>);
+    getBoards(1,<%=log%>);
+    serveShow(<%=log%>);
 </script>
 <script src="./js/eventJs.js"></script>
 <%}%>

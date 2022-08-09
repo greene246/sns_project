@@ -2,10 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/myPage.css">
-  <title>myPage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/myPage.css">
+    <title>myPage</title>
 </head>
 <%
   if (session.getAttribute("log") == null) {
@@ -18,6 +18,16 @@
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
   <div class="myPageBody">
+
+        <div class="thumbnail"></div>
+        <div class="_userIdName">
+            <div class="_userIdBtn">
+                <span class="user_id"></span>
+                <input type="button" class="btn" name="updateBtn" value="프로필 편집" onclick="location.href='/updateMyInfo'"><br>
+            </div>
+            <span class="name"></span>
+        </div>
+
 
     <div class="thumbnail"></div>
     <div class="_userIdName">
@@ -32,6 +42,9 @@
         <div class="followingCnt"></div>
       </div>
     </div>
+
+    <div class="myPageContent"></div>
+
 
 
   </div>
@@ -64,6 +77,7 @@
   </div>
 
 </div>
+
 
 <script>$(document).ready(function () {
   myPageUser(<%=log%>);

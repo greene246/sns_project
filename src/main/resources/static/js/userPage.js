@@ -2,8 +2,6 @@ let userId;
 let name;
 let thumbnail;
 
-let _thumbnail;
-
 let log; // userLog
 let _id // myLog
 
@@ -18,9 +16,7 @@ function userPageUser(id, user_id) {
 
         userId = result.user_id;
         name = result.name;
-        thumbnail = `<img class="_mainThumbnail" src=${result.thumbnail}>`;
-
-        _thumbnail = `<img class="__thumbnail" src=${result.thumbnail}>`;
+        thumbnail = `<img src=${result.thumbnail} style="width: 180px;">`;
 
         log = result.id;
         _id = id;
@@ -35,9 +31,6 @@ function userPageUser(id, user_id) {
             $('.name').append(name);
             $('.thumbnail').append(thumbnail);
 
-            $('._user_id').append(userId);
-            $('._thumbnail').append(_thumbnail);
-
             $('.id').append(log);
         }
     })
@@ -50,18 +43,6 @@ function userPageContents(id, userId) {
         type: "POST",
         async: false,
         contentType: "application/json",
-        //
-        // success : data => {
-        //     data.forEach(e => {
-        //         printContent(e);
-        //     })
-        // },
-        // fail : function () {
-        //     console.log("fail");
-        // },
-        // error : function () {
-        //     console.log("error");
-        // }
     }).done(data => {
         data.forEach(e => {
             printContent(_id, e);
@@ -73,9 +54,8 @@ function printContent(id, Board) {
     let Content_img = Board.img_url;
     console.log('이미지' + Content_img);
 
-
     let html = `
-        <div class="userImage"><img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}></div>
+        <div class="userImage"><img class="imgSize" onclick="detail_img_pop('img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}></div>
     `;
     $('.userPageContent').append(html);
 

@@ -64,32 +64,10 @@ function printContent(log, Board) {
     $('.myPageContent').append(html);
 }
 
-function deleteBoardId(id){
-    $.ajax({
-        url : "/getInfo?log="+id,
-        type : "POST",
-    }).done(result => {
-        userId = result.user_id;
+function deleteBoardId(){
+    let __boardId = $('#detail_board_id').val();
 
-        deleteBoardUserId(userId);
-
-        console.log("userIduserId : " + userId);
-    })
-}
-
-function deleteBoardUserId(_userId){
-    $.ajax({
-        url: "/myContent/" + userId,
-        type: "POST",
-        async: false,
-        contentType: "application/json",
-    }).done(result => {
-        boardId = result.id;
-
-        console.log('boardIdboardId : ' + boardId)
-
-        deleteContent(boardId);
-    })
+    deleteContent(__boardId);
 }
 
 function deleteContent(id){

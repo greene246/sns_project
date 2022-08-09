@@ -2,6 +2,8 @@ let userId;
 
 let _thumbnail;
 
+let boardId;
+
 function myPageUser(log){
     $.ajax({
         url : "/getInfo?log="+log,
@@ -48,6 +50,48 @@ function myPageContents(log, userId){
     })
 }
 
+function printContent(log, Board) {
+    let Content_img = Board.img_url;
+    console.log(Content_img);
+    console.log('유저아이디 : ' + `${Board.user_id}`);
+
+    let html = `
+        <div class="myImage">
+<!--            <input type="image" src="img/delBtn.png" class="del_btn" onclick="deleteContent(${Board.id})">-->
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
+        </div>
+    `;
+    $('.myPageContent').append(html);
+}
+
+function deleteBoardId(id){
+    $.ajax({
+        url : "/getInfo?log="+id,
+        type : "POST",
+    }).done(result => {
+        userId = result.user_id;
+
+        deleteBoardUserId(userId);
+
+        console.log("userIduserId : " + userId);
+    })
+}
+
+function deleteBoardUserId(_userId){
+    $.ajax({
+        url: "/myContent/" + userId,
+        type: "POST",
+        async: false,
+        contentType: "application/json",
+    }).done(result => {
+        boardId = result.id;
+
+        console.log('boardIdboardId : ' + boardId)
+
+        deleteContent(boardId);
+    })
+}
+
 function deleteContent(id){
     console.log(id);
     if(confirm("삭제하시겠슴둥?")){
@@ -70,18 +114,3 @@ function deleteContent(id){
     }
 
 }
-
-function printContent(log, Board) {
-    let Content_img = Board.img_url;
-    console.log(Content_img);
-    console.log('유저아이디 : ' + `${Board.user_id}`);
-
-    let html = `
-        <div class="myImage">
-<!--            <input type="image" src="img/delBtn.png" class="del_btn" onclick="deleteContent(${Board.id})">-->
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
-        </div>
-    `;
-    $('.myPageContent').append(html);
-}
-

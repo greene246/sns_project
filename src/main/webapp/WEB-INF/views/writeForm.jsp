@@ -12,7 +12,7 @@
 
         <!-- section1 : 파일 업로드 버튼-->
         <div id="upload_section1">
-            <div id="section1_main">
+            <div id="section1_main" class="write_section">
                 <span>새 게시물 만들기</span>
             </div>
             <div>

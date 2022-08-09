@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap"
@@ -26,10 +29,12 @@
 <div id="total_wrap">
     <div class="header">
         <div class="header_contents_wrap">
-            <a href="/main" id="logo">LOGO</a>
-            <div class="topMenu">
-                <input type="button" value="검색" id="search_btn">
+            <a href="/main" id="logo"><img src="img/logo.png" style="height: 50px"></a>
+            <div class="search_area">
                 <input type="text" class="search" name="search" placeholder="검색">
+                <input type="button" value="검색" id="search_btn">
+            </div>
+            <div class="topMenu">
                 <a onclick="file_upload_pop(<%=log%>)">
                     <p class="writeBoard"><img class="header_img" src="img/add.jpg"></p>
                 </a>

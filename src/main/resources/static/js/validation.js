@@ -23,7 +23,7 @@ function file_upload_pop(log) {
 }
 
 // 댓글 아이콘 클릭 시
-function detail_comments_pop(board_user, board, board_id, log__, contents) {
+function detail_comments_pop(board_user, board, board_id, log, contents) {
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");

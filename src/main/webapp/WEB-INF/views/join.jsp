@@ -38,8 +38,6 @@
             <input type="button" value="로그인 하러가기" onclick="location.href='/'">
         </form>
     </div>
-</div>
 
 <script src="js/user.js"></script>
-</body>
-</html>
+<c:import url="/WEB-INF/views/footer.jsp"/>

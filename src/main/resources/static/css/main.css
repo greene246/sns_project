@@ -42,6 +42,7 @@
 .serve_block{
     display: flex;
     align-items: center;
+    border-bottom: 1px solid
 }
 .profile_img1{
 

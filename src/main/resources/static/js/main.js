@@ -1,6 +1,5 @@
 let _userid;
 let _log;
-let _contents;
 //Boards DB에 있느 값을 가져온다.
 function getBoards(scope,log) {
     $.ajax({
@@ -52,6 +51,7 @@ function insertHtml(Board, log) {
                     <div class="text_sources">
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
+                        
                         <div class="box">
                             <div class="content"> ${Board.contents}</div>
                         </div>
@@ -169,7 +169,7 @@ $(document).ready(function () {
     $('.box').each(function () {
         let content = $(this).children('.content');
         let content_txt = content.text();
-        let content_txt_short = content_txt.substring(0,10) + "...";
+        let content_txt_short = content_txt.substring(0,10) + " ...";
         let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
         $(this).append(btn_more);

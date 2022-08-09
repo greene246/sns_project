@@ -102,3 +102,25 @@
     position: relative;
     left: 120px;
 }
+
+.btn input[type="button"]{
+    margin-left: 40px;
+    border-radius: 6px;
+    color: #eeeeee;
+    border: none;
+    cursor: pointer;
+    background-color: cornflowerblue;
+    height: 33px;
+    width: 86px;
+}
+.follow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+._userId_Btn{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}

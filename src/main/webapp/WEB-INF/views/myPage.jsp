@@ -10,7 +10,7 @@
 <%
     if (session.getAttribute("log") == null) {
         String url = "/";
-        request.getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect(url);
     } else {
         int log = (Integer) session.getAttribute("log");
 %>
@@ -27,7 +27,12 @@
                        onclick="location.href='/updateMyInfo'"><br>
             </div>
             <span class="name"></span>
+            <div class="follow">
+                <div class="followCnt"></div>
+                <div class="followingCnt"></div>
+            </div>
         </div>
+
 
     </div>
 
@@ -47,11 +52,6 @@
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
                 </div>
-
-                <div class="contents">
-                    <a class="_contents"></a>
-                </div>
-
                 <div class="all_comments">
 
                 </div>
@@ -67,12 +67,14 @@
 
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
+    myFollowCnt(<%=log%>);
 })
 </script>
-<script src="./js/myPage.js"></script>
-<script src="./js/validation.js"></script>
+<script src="js/myPage.js"></script>
+<script src="js/validation.js"></script>
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
+<script src="/js/follow.js"></script>
 <%
     }
 %>

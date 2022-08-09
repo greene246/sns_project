@@ -1,4 +1,3 @@
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -8,10 +7,14 @@
     <link rel="stylesheet" href="css/myPage.css">
     <title>userPage</title>
 </head>
-<body>
-<%
-    int log = (Integer) session.getAttribute("log");
-    String user_id = (String) request.getParameter("user_id");
+<body><%
+    if (session.getAttribute("log") == null) {
+        String url = "/";
+        response.sendRedirect(url);
+    }
+    else {
+        int log = (Integer) session.getAttribute("log");
+        String user_id = (String) request.getParameter("user_id");
 %>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
 <div class="wrap">
@@ -19,7 +22,7 @@
 
         <div class="thumbnail"></div>
         <div class="_userIdName">
-            <div class="_userIdBtn">
+            <div class="_userId_Btn">
                 <div class="user_id"></div>
                 <div class="btn">
                     <input type="button" class="followBtn" name="followBtn" value="팔로우" onclick="follow('<%=log%>','<%=user_id%>')">
@@ -27,6 +30,10 @@
                 </div>
             </div>
             <div class="name"></div>
+            <div class="follow">
+                <div class="followCnt"></div>
+                <div class="followingCnt"></div>
+            </div>
         </div>
 
 
@@ -50,11 +57,6 @@
                 <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                 <div class="_user_id"></div>
             </div>
-
-            <div class="contents">
-                <a class="_contents"></a>
-            </div>
-
             <div class="all_comments">
 
             </div>
@@ -69,6 +71,7 @@
 <script>$(document).ready(function () {
     userPageUser(<%=log%>, '<%=user_id%>');
     checkFollow('<%=log%>','<%=user_id%>');
+    followCount('<%=log%>','<%=user_id%>');
 })
 </script>
 <script src="js/userPage.js"></script>
@@ -76,5 +79,8 @@
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <script src="js/follow.js"></script>
+<%
+    }
+%>
 </body>
 </html>

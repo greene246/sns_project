@@ -2,12 +2,16 @@ package com.example.sns.sns_project.controller;
 
 
 import com.example.sns.sns_project.domain.FollowRequestDto;
+import com.example.sns.sns_project.domain.FollowVO;
 import com.example.sns.sns_project.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class FollowController {
@@ -40,8 +44,7 @@ public class FollowController {
     @PostMapping("/followCheck")
     @ResponseBody
     public boolean followCheck(@RequestBody FollowRequestDto followRequestDto){
-        System.out.println("asd"+followRequestDto.getFollower_id());
-        System.out.println("qwe"+followRequestDto.getFollowing_id());
+
         boolean check = followService.followCheck(followRequestDto.getFollower_id(),followRequestDto.getFollowing_id());
         if (check)
 
@@ -50,6 +53,20 @@ public class FollowController {
             return false;
     }
 
+    @PostMapping("/followCount")
+    @ResponseBody
+    public HashMap<String, List<FollowVO>> followCount(@RequestBody FollowRequestDto followRequestDto){
+        HashMap<String, List<FollowVO>> follows = followService.followCount(followRequestDto.getFollower_id());
+
+        return follows;
+    }
+
+    @PostMapping("/myFollowCount")
+    @ResponseBody
+    public HashMap<String, List<FollowVO>> myFollowCount(@RequestBody FollowRequestDto followRequestDto){
+        System.out.println(followRequestDto.getFollower_id());
+        HashMap<String, List<FollowVO>> follows = followService.myFollowCount(followRequestDto.getFollower_id());
+
+        return follows;
+    }
 }
-
-

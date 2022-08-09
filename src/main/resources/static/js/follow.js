@@ -126,8 +126,8 @@ function followCount(log, user_id) {
 
             $('.followCnt').empty();
             $('.followingCnt').empty();
-            $('.followCnt').append("팔로워 " + follower);
-            $('.followingCnt').append("팔로우 " + following);
+            $('.followCnt').append(follower);
+            $('.followingCnt').append(following);
         })
     })
 }
@@ -156,8 +156,8 @@ function myFollowCnt(log) {
 
             $('.followCnt').empty();
             $('.followingCnt').empty();
-            $('.followCnt').append("팔로워 " + follower);
-            $('.followingCnt').append("팔로우 " + following);
+            $('.followCnt').append(follower);
+            $('.followingCnt').append(following);
         })
     })
 }
@@ -172,7 +172,7 @@ function CommentCount(user_id){
         contentType: "application/json",
 
         success: data => {
-            $('.boardCnt').append("개시물수 " + data);
+            $('.boardCnt').append(data);
         },
         fail: function () {
             console.log("fail");
@@ -193,7 +193,7 @@ function myCommentCount(log){
         contentType: "application/json",
 
         success: data => {
-            $('.boardCnt').append("개시물수 " + data);
+            $('.boardCnt').append(data);
         },
         fail: function () {
             console.log("fail");

@@ -34,15 +34,13 @@
     display: flex;
     padding-top: 60px;
     flex-wrap: wrap;
-    width: 900px;
+    width: 901px;
 }
 
 .myImage{
-    /*border: 1px solid lightslategray;*/
-    margin: 7px;
-    display: flex;
-    background-color: black;
-    align-items: center;
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
 }
 
 ._userIdName{
@@ -58,7 +56,13 @@
 }
 
 .imgSize{
-    width: 286px;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.imgSize:hover{
+    transform: scale(1.1);
+    width: 284px;
     transition: 0.5s;
 }
 
@@ -91,16 +95,11 @@
 
 .userImage{
     /*padding: 4px;*/
-    /*border: 1px solid lightslategray;*/
+    border: 1px solid lightslategray;
     margin: 7px;
     display: flex;
     background-color: black;
     align-items: center;
-}
-.del_btn{
-    position: relative;
-    left: 120px;
-    width: 25px;
 }
 
 .btn input[type="button"]{
@@ -109,13 +108,18 @@
     color: #eeeeee;
     border: none;
     cursor: pointer;
-    background-color: cornflowerblue;
+    background-color: #CC82EE;
     height: 33px;
     width: 86px;
 }
 .follow{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.ft{
+    display: flex;
+    justify-content: space-around;
     margin-top: 20px;
 }
 ._userId_Btn{
@@ -123,4 +127,18 @@
     flex-direction: row;
     text-align: center;
     align-items: center;
+}
+
+/*userPage*/
+.userPageContent{
+    display: flex;
+    padding-top: 60px;
+    flex-wrap: wrap;
+    width: 1000px;
+}
+
+.userImage{
+    padding: 4px;
+    border: 1px solid lightslategray;
+    margin: 5px;
 }

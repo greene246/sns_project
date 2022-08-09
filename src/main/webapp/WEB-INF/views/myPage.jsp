@@ -32,7 +32,15 @@
                 <div class="followCnt"></div>
                 <div class="followingCnt"></div>
             </div>
+            <div class="ft">
+                <span>게시물</span>
+                <span>팔로워</span>
+                <span>팔로우</span>
+            </div>
+
+
         </div>
+
 
 
     </div>
@@ -52,7 +60,6 @@
                 <div class="comments_owner">
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
-                    <input type="image" src="img/delBtn.png" class="del_btn" onclick=deleteContent(<%=log%>)>
                 </div>
                 <div class="all_comments">
 
@@ -67,11 +74,11 @@
 
 </div>
 
+
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
     myFollowCnt(<%=log%>);
     myCommentCount(<%=log%>);
-
 })
 </script>
 <script src="js/myPage.js"></script>

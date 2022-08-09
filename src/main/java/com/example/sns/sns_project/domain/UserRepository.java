@@ -21,8 +21,10 @@ public interface UserRepository extends JpaRepository<UserVO , Integer> {
     @Query(value = "select * from sns.users where id=?1", nativeQuery = true)
     public UserVO findIUserById(int id);
 
-    @Query(value = "select * from sns.users where user_id like ?1", nativeQuery = true)
+    @Query(value = "select * from sns.users where user_id like ?1 ", nativeQuery = true)
     public List<UserVO> findbyUserName(String user_name);
 
+    @Query(value = "select user_id from sns.users where id = ?1", nativeQuery = true)
+    public String findUserIdById(int log);
 }
 

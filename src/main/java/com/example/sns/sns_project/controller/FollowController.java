@@ -34,7 +34,6 @@ public class FollowController {
     public void unFollowing(@RequestBody FollowRequestDto followRequestDto){
 
         int id = followService.findId(followRequestDto.getFollower_id(),followRequestDto.getFollowing_id());
-        System.out.println(id);
 
         if (id != -1)
             followService.remove(id);
@@ -64,7 +63,6 @@ public class FollowController {
     @PostMapping("/myFollowCount")
     @ResponseBody
     public HashMap<String, List<FollowVO>> myFollowCount(@RequestBody FollowRequestDto followRequestDto){
-        System.out.println(followRequestDto.getFollower_id());
         HashMap<String, List<FollowVO>> follows = followService.myFollowCount(followRequestDto.getFollower_id());
 
         return follows;

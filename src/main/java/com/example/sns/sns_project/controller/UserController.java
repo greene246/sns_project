@@ -262,8 +262,6 @@ public class UserController {
     //log 값을 사용해 해당 유저의 정보를 가져온다.
     @GetMapping("/getUser/{log}")
     public UserVO getUser(@PathVariable("log") int log){
-        System.out.println("Usercontroller에 들어옴");
-        System.out.println("log: " + log);
         return userService.findUser(log);
     }
 
@@ -282,7 +280,6 @@ public class UserController {
     //로그값으로 유저 ID불러옴
     @PostMapping("/getUserIdfl")
     public String getUserId(@RequestParam(name="log") int log) {
-        System.out.println("asasas : "+log);
         return userService.readLog(log).getUser_id();
     }
 

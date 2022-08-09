@@ -28,6 +28,7 @@
             </div>
             <span class="name"></span>
             <div class="follow">
+                <div class="boardCnt"></div>
                 <div class="followCnt"></div>
                 <div class="followingCnt"></div>
             </div>
@@ -69,6 +70,8 @@
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
     myFollowCnt(<%=log%>);
+    myCommentCount(<%=log%>);
+
 })
 </script>
 <script src="js/myPage.js"></script>

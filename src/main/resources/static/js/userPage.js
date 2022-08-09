@@ -59,9 +59,6 @@ function userPageContents(id, userId) {
 
 function printContent(id, Board) {
     let Content_img = Board.img_url;
-    console.log('이미지' + Content_img);
-    console.log('유저아이디 : ' + `${Board.user_id}`);
-
 
     let html = `
         <div class="userImage">

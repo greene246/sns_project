@@ -31,7 +31,6 @@ public class CommentController {
 
     @PostMapping("/del_comment")
     public void del_comment(@RequestParam(name="comments")int id){
-        System.out.println(id);
         commentService.delete_comments(id);
     }
 }

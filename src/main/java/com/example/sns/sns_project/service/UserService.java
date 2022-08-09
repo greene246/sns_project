@@ -146,7 +146,6 @@ public class UserService {
 
     public List<UserVO> readUserByName(String user_name){
         String searchName = '%' + user_name + '%';
-        System.out.println(searchName);
         return userRepository.findbyUserName(searchName);
     }
 

@@ -97,7 +97,7 @@ function checkFollow(log, user_id) {
 
 }
 
-
+// 상대방 팔로워 카운트
 function followCount(log, user_id) {
     follower = user_id;
     $.ajax({
@@ -131,7 +131,7 @@ function followCount(log, user_id) {
         })
     })
 }
-
+// 내 팔로워 카운트
 function myFollowCnt(log) {
     $.ajax({
         url: "/getUserIdfl?log=" + log,
@@ -160,4 +160,47 @@ function myFollowCnt(log) {
             $('.followingCnt').append("팔로우 " + following);
         })
     })
+}
+// log = 아이디 뽑아서 코멘트 가서 개수 출력
+// 내 게시물 개수
+function CommentCount(user_id){
+
+    $.ajax({
+        url: "/CommentCount/" + user_id,
+        type: "POST",
+        async: false,
+        contentType: "application/json",
+
+        success: data => {
+            $('.boardCnt').append("개시물수 " + data);
+        },
+        fail: function () {
+            console.log("fail");
+        },
+        error: function () {
+            console.log("error");
+        }
+    })
+
+}
+
+function myCommentCount(log){
+
+    $.ajax({
+        url: "/myCommentCount/" + log,
+        type: "POST",
+        async: false,
+        contentType: "application/json",
+
+        success: data => {
+            $('.boardCnt').append("개시물수 " + data);
+        },
+        fail: function () {
+            console.log("fail");
+        },
+        error: function () {
+            console.log("error");
+        }
+    })
+
 }

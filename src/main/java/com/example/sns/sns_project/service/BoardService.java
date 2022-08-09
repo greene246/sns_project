@@ -15,6 +15,9 @@ public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     // 1. Create
     public void createBoard(BoardRequestDto boardRequestDto){
         BoardVO board = new BoardVO(boardRequestDto);
@@ -74,6 +77,32 @@ public class BoardService {
     // 내 게시물 지우기
     public void deleteMyContent(int id){
         boardRepository.deleteById(id);
+    }
+
+    //내 게시물 개수 확인.
+    public int myCommentCount( int log ){
+        int number = 0;
+        String temp = userRepository.findUserIdById(log);
+        List<BoardVO> board = boardRepository.findAll();
+        for(int i = 0; i < board.size(); i++){
+            if(board.get(i).getUser_id().equals(temp)){
+                number++;
+            }
+        }
+        return number;
+    }
+    //상대방 게시물 카운트
+    public int CommentCount(String user_id){
+        int number = 0;
+
+        List<BoardVO> board = boardRepository.findAll();
+        for(int i = 0; i < board.size(); i++){
+            if(board.get(i).getUser_id().equals(user_id)){
+                number++;
+            }
+        }
+        return number;
+
     }
 }
 

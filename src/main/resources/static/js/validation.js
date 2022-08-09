@@ -257,6 +257,7 @@ $('#search_btn').on("click", e => {
     $('.searched_section').css("display", "none");
     if ($('.search').val() == '') {
         alert("1글자 이상 검색해주세요");
+        return;
     }
         $('.search_result').empty();
         $.ajax({

@@ -319,52 +319,6 @@
     display: flex;
     justify-content: space-between;
 }
-.search_result{
-    width: 500px;
-    max-height: 400px;
-    min-height: 100px;
-}
-.img_section{
-    height: 100px;
-    position:relative;
-}
-.search_img{
-    height: 70%;
-    border-radius: 50%;
-    border: 1px solid lightslategrey;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.searchedUser{
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.searchedUser > *{
-    margin-right: 15px;
-    width: 33%;
-}
-.searched_section{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 15%;
-    left: 65%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    box-shadow: 5px 10px 20px 1px lightslategrey;
-    background-color: white;
-}
-.close_result{
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    right: 6px;
-}
 .cancel_btn{
     position: relative;
     right: 110px;

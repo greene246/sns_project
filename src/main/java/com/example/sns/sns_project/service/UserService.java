@@ -132,7 +132,6 @@ public class UserService {
 
     public UserVO findUser(int log){
         UserVO user = userRepository.findUserVOByLog(log);
-        System.out.println("sss: "+user.getId());
         return user;
     }
 

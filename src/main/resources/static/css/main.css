@@ -100,6 +100,7 @@
 .icon_img {
     height: 24px;
     width: 24px;
+    margin-right: 12px;
 }
 
 .profile_wrap > span {
@@ -167,7 +168,12 @@
 /*    flex-basis: 450.8px;*/
 
 /*}*/
+.box {margin:20px auto;}
+.content {
+    width:800px;
+    padding:10px;
 
+}
 
 
 .popTop {
@@ -328,4 +334,7 @@
 .input_comments{
     display: flex;
     justify-content: space-between;
+}
+.three{
+    margin: 10px;
 }

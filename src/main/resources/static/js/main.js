@@ -45,16 +45,19 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
-                                <img src='./img/direct.png' class='icon_img'>
+                            <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">                      
                         </div>
-                        <!-- 북마크 -->
-                        <span><img src='./img/bookmark_off.png' class='icon_img'></span>
+
                     </div>
                     <div class="text_sources">
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         <span class='id'>${Board.user_id}</span>
-                        <span className='main3' id='contents'>${Board.contents}</span>
+                        <div class="box">
+                            <div class="content"> ${Board.contents}</div>
+                        </div>
+
+                         
+                     
                         <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
                             <div class="input_comments">
                             <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
@@ -161,3 +164,38 @@ function checkHeart(boardid) {
     })
     location.reload()
 }
+
+$(document).ready(function () {
+    $('.box').each(function () {
+        let content = $(this).children('.content');
+        let content_txt = content.text();
+        let content_txt_short = content_txt.substring(0,10) + "...";
+        let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+
+        $(this).append(btn_more);
+
+        if (content_txt.length >= 10) {
+            content.html(content_txt_short)
+
+        } else {
+            btn_more.hide()
+        }
+
+        btn_more.click(toggle_content);
+
+        function toggle_content() {
+            if ($(this).hasClass('short')) {
+                // 접기 상태
+                $(this).html('더보기');
+                content.html(content_txt_short)
+                $(this).removeClass('short');
+            } else {
+                // 더보기 상태
+                $(this).html('접기');
+                content.html(content_txt);
+                $(this).addClass('short');
+
+            }
+        }
+    });
+});

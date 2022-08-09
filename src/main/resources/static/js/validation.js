@@ -172,10 +172,10 @@ function upload_comments(log, board_id, comments_id, img_id, user_id, contents) 
         comments = $(`#${comments_id}`).val();
     }
 
-        if (comments == '') {
-            alert("댓글은 1자 이상 작성해주세요");
-            return;
-        }
+    if (comments == '') {
+        alert("댓글은 1자 이상 작성해주세요");
+        return;
+    }
 
     const requestData = {
         "user_id": log,
@@ -214,3 +214,46 @@ function del_comments(target_id) {
         detail_comments_pop(_userid1, _img_id, _board_id, _log);
     })
 }
+
+// 검색기능
+$('#search_btn').on("click", e => {
+    $('.search_result').empty();
+    $('.searched_section').css("display", "none");
+    if ($('.search').val() == '') {
+        alert("1글자 이상 검색해주세요");
+        return;
+    }
+    $('.search_result').empty();
+    $.ajax({
+        url: "/searchUser?user_name=" + $('.search').val(),
+        method: "post",
+        contentType: "application/json"
+    }).done(result => {
+        console.log(result);
+        for (let i = 0; i < result.length; i++) {
+            let user_id = result[i].user_id;
+            let name = result[i].name;
+            let thumbnail = result[i].thumbnail;
+            let html = `<div class="searchedUser">
+                            <div class="img_section">
+                                <img src="${thumbnail}" class="search_img">
+                            </div>
+                            <div class="searched_user_id">
+                                <span>${user_id}</span>
+                            </div>
+                            <div class="searched_user_name">
+                                <span>${name}</span>
+                            </div>
+                        </div>`
+
+            $('.search_result').append(html);
+        }
+        $('.searched_section').css("display", "block");
+
+    })
+})
+
+$('.close_result').on("click", e => {
+    $('.search_result').empty();
+    $('.searched_section').css("display", "none");
+})

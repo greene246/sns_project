@@ -93,3 +93,6 @@
 #image_container{
     flex-grow:1;
 }
+.write_section{
+    border-bottom: 1px solid #dbdbdb;
+}

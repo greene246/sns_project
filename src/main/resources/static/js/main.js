@@ -1,5 +1,6 @@
 let _userid;
 let _log;
+let _contents;
 //Boards DB에 있느 값을 가져온다.
 function getBoards(scope,log) {
     $.ajax({
@@ -44,21 +45,19 @@ function insertHtml(Board, log) {
                         <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                            <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">                      
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
                         </div>
-
                     </div>
                     <div class="text_sources">
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
+                        
                         <span class='id'>${Board.user_id}</span>
                         
                         <div class="box">
-                            <div class="content"> ${Board.contents}</div>
+                            <span className='main3' id='contents' class="content">${Board.contents}</span>
                         </div>
-
-                         
-                     
-                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0,10)}</span>
+                        
+                        <span className='main4' id='createdAt'>${(Board.createdAt).substring(0, 10)}</span>
                             <div class="input_comments">
                             <input type="text" id="comments_${Board.id}" placeholder="친구와 소통해봐요!">
                             <input type="button" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}', 'img_${Board.id}', '${Board.user_id}', 'contents_${Board.contents}')">
@@ -165,6 +164,7 @@ function checkHeart(boardid) {
     location.reload()
 }
 
+// 더보기 생성
 $(document).ready(function () {
     $('.box').each(function () {
         let content = $(this).children('.content');

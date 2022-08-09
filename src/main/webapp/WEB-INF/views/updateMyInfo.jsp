@@ -45,14 +45,18 @@
                         <input type="hidden" name="img_url" id="img_url">
                         <input type="hidden" name="preview" id="preview" value="">
                         <img style="width: 150px;" id="preview-image" src=""><br>
-                        <input type="file" id="input_img" onchange="show_img(event)">
+                        <input type="file" name="input_img" id="input_img" onchange="show_img(event)">
                     </div>
 
-                    <div class="_name">이름</div>
-                    <input type="text" name="name" class="name" value="" placeholder="이름" required><br>
+                    <div class="__name">
+                        <div class="_name">이름</div>
+                        <input type="text" name="name" class="name" value="" placeholder="이름" required><br>
+                    </div>
 
-                    <div class="_email">이메일</div>
-                    <input type="email" name="email" class="email" value="" placeholder="이메일" required><br>
+                    <div class="__email">
+                        <div class="_email">이메일</div>
+                        <input type="email" name="email" class="email" value="" placeholder="이메일" required><br>
+                    </div>
 
                     <div class="button">
                         <input type="button" name="update" value="수정" onclick="uploadToCloud(form)">

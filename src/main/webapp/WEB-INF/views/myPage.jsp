@@ -23,8 +23,7 @@
         <div class="_userIdName">
             <div class="_userIdBtn">
                 <span class="user_id"></span>
-                <input type="button" class="btn" name="updateBtn" value="프로필 편집"
-                       onclick="location.href='/updateMyInfo'"><br>
+                <div class="btn_" name="updateBtn_" onclick="location.href='/updateMyInfo'"><img class="updateImg" src="img/update.png"></div>
             </div>
             <span class="name"></span>
             <div class="follow">
@@ -37,11 +36,7 @@
                 <span>팔로워</span>
                 <span>팔로우</span>
             </div>
-
-
         </div>
-
-
 
     </div>
 
@@ -60,7 +55,13 @@
                 <div class="comments_owner">
                     <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                     <div class="_user_id"></div>
+                    <input type="image" src="img/delBtn.png" class="del_btn" onclick=deleteBoardId()>
                 </div>
+
+                <div class="contents">
+                    <a class="_contents"></a>
+                </div>
+
                 <div class="all_comments">
 
                 </div>
@@ -74,11 +75,11 @@
 
 </div>
 
-
 <script>$(document).ready(function () {
     myPageUser(<%=log%>);
     myFollowCnt(<%=log%>);
     myCommentCount(<%=log%>);
+
 })
 </script>
 <script src="js/myPage.js"></script>

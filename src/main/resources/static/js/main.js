@@ -32,7 +32,7 @@ function insertHtml(Board, log) {
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
-                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info"></span>
+                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}'"></span>
                         <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}'" value="${Board.user_id}">
                             <a class="user_id">${Board.user_id}</a>
                         </div>
@@ -82,7 +82,7 @@ function serveShow(log){
             let html = `
                     <div class="serve_block" onclick="location.href='/myPage'">
                          <img src=${data.thumbnail} class="profile_img1">
-                         <div class='profile_box'>${data.user_id}</div>
+                         <div class='_profile_box'>${data.user_id}</div>
                      </div>
             `;
 

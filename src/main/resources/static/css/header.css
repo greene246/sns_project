@@ -4,9 +4,11 @@
 .header{
     text-align: center;
     width: 100%;
-    background-color: #eee6df;
-    opacity: 0.6;
+    background-color: #ffffff;
     justify-content: space-between;
+    box-shadow: 0 0 7px grey;
+    position: fixed;
+    z-index: 1;
 }
 .header_contents_wrap{
     max-height: 60px;

@@ -2,6 +2,8 @@ let userId;
 
 let _thumbnail;
 
+let boardId;
+
 function myPageUser(log){
     $.ajax({
         url : "/getInfo?log="+log,
@@ -48,6 +50,23 @@ function myPageContents(log, userId){
     })
 }
 
+function printContent(log, Board) {
+    let Content_img = Board.img_url;
+
+    let html = `
+        <div class="myImage">
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
+        </div>
+    `;
+    $('.myPageContent').append(html);
+}
+
+function deleteBoardId(){
+    let __boardId = $('#detail_board_id').val();
+
+    deleteContent(__boardId);
+}
+
 function deleteContent(id){
     console.log(id);
     if(confirm("삭제하시겠슴둥?")){
@@ -68,15 +87,5 @@ function deleteContent(id){
             }
         })
     }
-}
 
-function printContent(log, Board) {
-    let Content_img = Board.img_url;
-
-    let html = `
-        <div class="myImage">
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
-        </div>
-    `;
-    $('.myPageContent').append(html);
 }

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/myPage.css">
     <title>userPage</title>
 </head>
-<body><%
+<body>
+<%
     if (session.getAttribute("log") == null) {
         String url = "/";
         response.sendRedirect(url);
@@ -23,7 +24,7 @@
 
         <div class="thumbnail"></div>
         <div class="_userIdName">
-            <div class="_userId_Btn">
+            <div class="_userIdBtn">
                 <div class="user_id"></div>
                 <div class="btn">
                     <input type="button" class="followBtn" name="followBtn" value="팔로우" onclick="follow('<%=log%>','<%=user_id%>')">
@@ -64,6 +65,11 @@
                 <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
                 <div class="_user_id"></div>
             </div>
+
+            <div class="contents">
+                <a class="_contents"></a>
+            </div>
+
             <div class="all_comments">
 
             </div>

@@ -19,6 +19,8 @@ function myPageUser(log){
         myPageContents(log, userId);
 
         $('.user_id').append(userId);
+        $('#user_id').val(userId);
+
         $('.name').append(user_name);
         $('.thumbnail').append(thumbnail);
 

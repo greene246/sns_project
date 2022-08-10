@@ -22,13 +22,14 @@ function getBoards(scope, log) {
 
 //메인 출력 부분
 function insertHtml(Board, log) {
+    let my_id = $('._profile_box').attr("value");
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
                          <span id="profile_img_wrap">
-                            <img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}'">
+                            <img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}&my_id=${my_id}'">
                          </span>
-                        <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}'" value="${Board.user_id}">
+                        <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}&my_id=${my_id}'" value="${Board.user_id}">
                             <a class="user_id">${Board.user_id}</a>
                         </div>
                     </div>
@@ -75,11 +76,12 @@ function serveShow(log) {
             let html = `
                     <div class="serve_block" onclick="location.href='/myPage'">
                          <img src=${data.thumbnail} class="profile_img1">
-                         <div class='_profile_box' value="${data.user_id}">${data.user_id}</div>
+                         <div class='__profile_box' value="${data.user_id}">${data.user_id}</div>
                      </div>
             `;
 
             $('.serve_section').append(html);
+            $('#user_id').val(data.user_id);
         },
         fail: function () {
             console.log("fail4")

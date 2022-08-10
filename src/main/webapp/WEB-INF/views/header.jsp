@@ -2,12 +2,11 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap"
-      rel="stylesheet">
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <link rel="stylesheet" href="css/header.css">
@@ -28,9 +27,9 @@
 <body id="body">
     <div class="header">
         <div class="header_contents_wrap">
-            <a href="/main" id="logo"><img src="img/logo.png" style="height: 50px"></a>
+            <a href="/main" id="logo"><img src="img/logo.PNG" style="height: 36px"></a>
             <div class="search_area">
-                <input type="text" class="search" name="search" placeholder="검색">
+                <input type="text" class="search" name="search" placeholder="아이디를 검색하세요">
                 <input type="button" value="찾기" id="search_btn">
             </div>
             <div class="topMenu">

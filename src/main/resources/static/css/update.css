@@ -1,3 +1,4 @@
+
 ._wrap{
     overflow: hidden;
 }
@@ -7,7 +8,7 @@
 }
 
 .menu{
-    background-color: #f6e1ffa8;
+    background-color: #f6e1ff5c;
     width: 100vw;
     height: 40px;
 }
@@ -194,6 +195,22 @@ input[type=file]::file-selector-button:hover {
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
+
+#user_pw{
+    margin: 5px;
+    height: 35px;
+    width: 250px;
+    text-align: center;
+}
+#user_pw:focus{
+    background-color: white;
+}
+#user_pw:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
 
 /*
 .uploadBtn{

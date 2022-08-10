@@ -9,6 +9,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">
     <link rel="stylesheet" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Join</title>
@@ -23,7 +26,7 @@
 <div class="wrap">
     <div class="joinbox">
         <form id="join" method="post" action="/joinUser">
-            <h3>몬스타그램</h3>
+            <img src="img/logo.PNG" class="__logo">
             <h4 class="h4">친구들의 사진과 동영상을 보려면 가입하세요.</h4>
             <input type="text" name="user_id" id="user_id" placeholder="ID" class="req" required><br>
             <span style="display: none" name="msg_err" id="msg_err" class="msg">사용할 수 없는 아이디입니다.<br></span>

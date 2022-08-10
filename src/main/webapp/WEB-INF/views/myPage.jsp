@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/myPage.css">
@@ -28,14 +31,9 @@
             </div>
             <span class="name"></span>
             <div class="follow">
-                <div class="boardCnt"></div>
-                <div class="followCnt"></div>
-                <div class="followingCnt"></div>
-            </div>
-            <div class="ft">
-                <span>게시물</span>
-                <span>팔로워</span>
-                <span>팔로우</span>
+                <span>게시물</span><div class="boardCnt"></div>
+                <span>팔로워</span><div class="followCnt"></div>
+                <span>팔로우</span><div class="followingCnt"></div>
             </div>
         </div>
 
@@ -54,9 +52,11 @@
             </div>
             <div class="detail_comments">
                 <div class="comments_owner">
-                    <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
-                    <div class="_user_id"></div>
-                    <input type="image" src="img/delBtn.png" class="del_btn" onclick=deleteBoardId()>
+                    <div class="comments_owner_section">
+                        <span id="profile_img_wrap"><div class="_thumbnail"></div></span>
+                        <div class="_user_id"></div>
+                    </div>
+                    <input type="image" src="img/delBtn.png" class="del_btn_section" onclick=deleteBoardId()>
                 </div>
 
                 <div class="contents">
@@ -67,8 +67,8 @@
 
                 </div>
                 <div class="input_comment">
-                    <input type="text" placeholder="댓글달기" id="detail_comments_val">
-                    <input class="detail_btn" type="button" value="댓글" onclick="upload_comments(<%=log%>, '', 'comments_${Board.id}')">
+                    <input type="text" placeholder="친구와 소통해보세요!" id="detail_comments_val">
+                    <input class="detail_btn" type="button" value="댓글" onclick="upload_comments_in_detail(<%=log%>)">
                 </div>
             </div>
         </div>

@@ -1,7 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/WEB-INF/views/header.jsp"/>
-
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">
+    <style>
+        *{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body>
     <%
         if(session.getAttribute("log") == null) {
             String url = "/";
@@ -30,8 +40,11 @@
         </div>
         <div class="detail_comments">
             <div class="comments_owner">
-                <span id="profile_img_wrap"><img class="detail_profile_img"></span>
-                <a class="detail_user_id"></a>
+                <div class="comments_owner_section">
+                    <span id="profile_img_wrap"><img class="detail_profile_img"></span>
+                    <a class="detail_user_id"></a>
+                </div>
+                <div class="del_btn_section"></div>
             </div>
 
             <div class="contents">
@@ -42,7 +55,7 @@
 
             </div>
             <div class="input_comment">
-                <textarea type="text" placeholder="댓글달기" id="detail_comments_val"></textarea>
+                <textarea type="text" placeholder="친구와 소통해보세요!" id="detail_comments_val"></textarea>
                 <input class="detail_btn" type="button" value="댓글" onclick="upload_comments_in_detail(<%=log%>)">
             </div>
         </div>

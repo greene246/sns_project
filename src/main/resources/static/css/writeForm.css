@@ -1,3 +1,4 @@
+
 #write_form > div{
     width: 100%;
 }
@@ -22,7 +23,8 @@
 .btn_upload{
     width: 150px;
     height: 30px;
-    background:lightblue;
+    background:#CC82EE;
+    color: #faeeff;
     border: 1px solid rgb(77, 77, 77);
     border-radius: 10px;
     font-weight: 500;
@@ -33,8 +35,8 @@
 }
 
 .btn_upload:hover{
-    background: #1877f2;
-    color: #fff;
+    background:#faeeff;
+    color: #CC82EE;
 }
 
 #input_img{
@@ -95,4 +97,11 @@
 }
 .write_section{
     border-bottom: 1px solid #dbdbdb;
+}
+.next_btn, .del_img, .back_btn, #write{
+    background:transparent;
+    color: #CC82EE;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
 }

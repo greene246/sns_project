@@ -14,6 +14,7 @@
 %>
 <script>
   alert("회원님의 비밀번호는 <%=pw%> 입니다");
+  location.href="/";
 </script>
 <%}
   if (request.getParameter("check") != null) {%>

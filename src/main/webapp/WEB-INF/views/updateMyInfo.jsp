@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/update.css">
     <link rel="stylesheet" href="css/common.css">
@@ -45,7 +48,7 @@
 
                         <input type="hidden" name="img_url" id="img_url">
                         <input type="hidden" name="preview" id="preview" value="">
-                        <img style="width: 150px;" id="preview-image" src=""><br>
+                        <img style="width: 150px; height: 150px" id="preview-image" src=""><br>
                         <input type="file" name="input_img" id="input_img" onchange="show_img(event)">
                     </div>
 

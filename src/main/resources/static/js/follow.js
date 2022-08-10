@@ -19,7 +19,6 @@ function follow(log,user_id) {
             "follower_id": follower
         }
 
-        console.log(data);
         $.ajax({
             url: "/following",
             type: "POST",
@@ -110,7 +109,6 @@ function followCount(log, user_id) {
             "following_id": following,
             "follower_id": follower
         }
-        console.log("data : "+data)
         $.ajax({
             url: "/followCount",
             type: "POST",

@@ -20,8 +20,8 @@ function file_upload_pop(log) {
 
 // 댓글 아이콘 클릭 시
 function detail_comments_pop(user_id, board, board_id, user_log, contents) {
-    console.log($('._profile_box').attr("value"));
-    let my_id = $('._profile_box').attr("value");
+    console.log($('.__profile_box').attr("value"));
+    let my_id = $('.__profile_box').attr("value");
     // user_id 게시글 작성자
     // board 게시글 img 아이디
     // board_id 게시글의 id값
@@ -41,12 +41,13 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
     let target_contents = `${contents}`;
 
     $(".detail_profile_img").attr("src", target_url);
-
+    console.log(my_id)
+    console.log(user_id)
     if(my_id == user_id){
         $('.del_btn_detail_profile').remove();
         let html = `<input type="image" src="img/delBtn.png" class="del_btn_detail_profile" onclick=deleteBoardId1()>`
 
-        $('.comments_owner').append(html);
+        $('.del_btn_section').append(html);
     }
 
     if (!comment_check) {

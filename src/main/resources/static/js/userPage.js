@@ -7,7 +7,7 @@ let _thumbnail;
 let log; // userLog
 let _id // myLog
 
-function userPageUser(id, user_id) {
+function userPageUser(id, user_id ,my_id) {
     console.log('user_id: ' + user_id);
 
     $.ajax({
@@ -32,6 +32,7 @@ function userPageUser(id, user_id) {
             userPageContents(_id, userId);
 
             $('.user_id').append(userId);
+            $('#user_id').val(my_id);
             $('.name').append(name);
             $('.thumbnail').append(thumbnail);
 

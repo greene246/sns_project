@@ -36,13 +36,13 @@ public class UserController {
         UserVO result = userService.readUserId(user.getUser_id());
 
         String url = "";
-        if (result.getUser_pw().equals(user.getUser_pw())) {
+        if (result != null && result.getUser_id().equals(user_id) && result.getUser_pw().equals(user_pw)) {
+            session.setAttribute("log",result.getId());
             url = "/main";
         } else {
             url = "/?check=chcek";
         }
 
-        session.setAttribute("log",result.getId());
 
         try {
             response.sendRedirect(url);
@@ -83,33 +83,18 @@ public class UserController {
     }
 
     // 회원탈퇴
-    // 회원탈퇴
     @PostMapping("/removeUser")
-    public void deleteUser(@RequestParam(name="log") int log,
-                           @RequestParam(name="user_pw") String user_pw,
+    @ResponseBody
+    public void deleteUser(@RequestBody UserRequestDto userRequestDto,
                            HttpServletRequest request,
                            HttpServletResponse response){
         HttpSession session = request.getSession();
 
-
         String url = "";
-        if(userService.readLog(log).getUser_pw().equals(user_pw)){
-            userService.deleteUser(userService.readLog(log));
-            session.invalidate();
-            System.out.println("회원탈퇴 성공");
-            url ="/";
-        }
 
-        else{
-            System.out.println("회원정보 확인");
-            url = "/deleteUser?check=check";
-        }
-
-        try {
-            response.sendRedirect(url);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        userService.deleteUser(userService.readLog(userRequestDto.getId()));
+        session.invalidate();
+        System.out.println("회원탈퇴 성공");
     }
 
     // 이름, 이메일 변경
@@ -210,6 +195,7 @@ public class UserController {
         }
     }
 
+    // 비밀번호 찾기
     @PostMapping("/findPw")
     public void findPw(@RequestParam(name="user_id") String user_id,
                        @RequestParam (name="name") String name,

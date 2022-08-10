@@ -2,6 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+    <!-- favicon image -->
+    <link rel="shortcut icon" href="https://monstagramfavicon.s3.ap-northeast-2.amazonaws.com/monstagram_fabicon.png">
+
+    <meta property="og:title" content="MONSTAGRAM">
+    <meta property="og:description" content="서로의 일상을 공유해보세요">
+    <meta property="og:image" content="https://monstagramfavicon.s3.ap-northeast-2.amazonaws.com/logo.PNG">
+
+    <!-- ... -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400&display=swap">

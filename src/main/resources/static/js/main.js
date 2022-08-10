@@ -73,7 +73,7 @@ function serveShow(log) {
         success: data => {
             let html = `
                     <div class="serve_block" onclick="location.href='/myPage'">
-                         <img src=${data.thumbnail} class="profile_img1">
+                        <div class="profile_wrap"><img src=${data.thumbnail} class="profile_img1"></div>
                          <div class='_profile_box' value="${data.user_id}">${data.user_id}</div>
                      </div>
             `;

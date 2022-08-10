@@ -8,6 +8,7 @@
       rel="stylesheet">
 <html>
 <head>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <link rel="stylesheet" href="css/header.css">
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="css/common.css">
     <title>Main</title>
     <title>header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
     <%
         if(session.getAttribute("log") == null) {

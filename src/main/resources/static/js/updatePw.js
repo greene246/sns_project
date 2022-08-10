@@ -35,6 +35,7 @@ function _update(){
             success: data => {
                 console.log("success");
                 alert("비밀번호 수정이 완료되었습니다.");
+                location.href="/myPage";
                 // form.submit();
             },
             fail: function () {

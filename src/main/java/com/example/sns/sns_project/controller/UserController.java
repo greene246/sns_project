@@ -93,8 +93,8 @@ public class UserController {
         String url = "";
 
             userService.deleteUser(userService.readLog(userRequestDto.getId()));
-            System.out.println("회원탈퇴 성공");
             session.invalidate();
+            System.out.println("회원탈퇴 성공");
     }
 
     // 프로필 사진, 이름, 이메일 변경

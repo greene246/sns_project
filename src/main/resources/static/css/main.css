@@ -9,7 +9,7 @@ div{
 }
 .main_wrap {
     display: flex;
-    padding: 10px 15% 0 25%;
+    padding: 90px 15% 0 25%;
 }
 .all_contents{
     display: flex;
@@ -20,6 +20,7 @@ div{
 }
 #profile_img_wrap{
     width: 100px;
+    cursor: pointer;
 }
 .section{
     /*flex-grow: 1;*/
@@ -42,6 +43,7 @@ div{
     height: 100%;
     border-radius: 50%;
     border: 1px solid lightslategrey;
+    cursor: pointer;
 }
 .serve_block{
     display: flex;
@@ -104,6 +106,7 @@ div{
 .icon_img {
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .profile_wrap > span {
@@ -422,9 +425,13 @@ div{
     height: 10%;
 }
 .del_cbtn{
+
     height: 20px;
 }
-.set_comments{
+.set_comments {
     height: 45%;
     align-self: self-start;
+}
+.del_btn_detail_profile{
+    height: 20px;
 }

@@ -90,15 +90,16 @@ function setThumbnail(obj) {
     }
 }
 
-// 파일 선택 취소 버튼
+// 파일 선택 취소
 function del_img(){
     $('#image_contain').empty();
     $('#input_img').val('');
     $('#upload_section1').css("display", "flex");
     $('#upload_section2').css("display", "none");
+    $('#upload_section3').css("display", "none");
 }
 
-// > 버튼 클릭 시 내용 작성 섹션 로드
+// 다음 버튼 클릭 시 내용 작성 섹션 로드
 function next_section(){
     $('#upload_section2').css("display", "none");
     $('#upload_section3').css("display", "flex");

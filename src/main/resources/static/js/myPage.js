@@ -72,7 +72,7 @@ function deleteBoardId(){
 
 function deleteContent(id){
     console.log(id);
-    if(confirm("삭제하시겠슴둥?")){
+    if(confirm("게시물을 삭제하시겠습니까?")){
         $.ajax({
             url: "/deleteMyContent/" + id,
             type: "POST",

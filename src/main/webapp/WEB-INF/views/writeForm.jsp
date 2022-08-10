@@ -48,7 +48,6 @@
                 <input type="button" class="back_btn" value="이전" onclick="back_btn()">
                 <select name="public_scope" id="scope">
                     <option value="0" selected>전체 공개</option>
-                    <option value="1">친구만 공개</option>
                     <option value="2">비공개</option>
                 </select>
                 <input type="button" id="write" onclick="uploadImg(form)" value="게시">

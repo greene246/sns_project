@@ -16,16 +16,18 @@ function file_upload_pop(log) {
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "block");
     $(".contents_detail").css("display", "none");
-    who_am_i(log);
 }
 
 // 댓글 아이콘 클릭 시
 function detail_comments_pop(user_id, board, board_id, user_log, contents) {
+    console.log($('._profile_box').attr("value"));
+    let my_id = $('._profile_box').attr("value");
     // user_id 게시글 작성자
     // board 게시글 img 아이디
     // board_id 게시글의 id값
     // log 로그인 중인 user의 id값
     // contents 게시글의 내용
+
     $(".black").css("display", "block");
     $(".write_wrap").css("display", "none");
     $(".contents_detail").css("display", "block");
@@ -40,6 +42,13 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
 
     $(".detail_profile_img").attr("src", target_url);
 
+    if(my_id == user_id){
+        $('.del_btn_detail_profile').remove();
+        let html = `<input type="image" src="img/delBtn.png" class="del_btn_detail_profile" onclick=deleteBoardId1()>`
+
+        $('.comments_owner').append(html);
+    }
+
     if (!comment_check) {
         $('.detail_user_id').empty();
         $('.detail_user_id').append(target_name);
@@ -49,7 +58,6 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
 
     showPopup(board, board_id, user_log);
     // 게시글 img아이디, 게시글의 id값, 나의 id값
-    who_am_i(user_log);
 }
 
 // x 버튼 클릭 시 창 닫기
@@ -63,6 +71,7 @@ function when_close() {
     $('.detail_user_id').children('span').remove();
     $('.all_comments').children('div').remove();
     $('.detail_comments_val').val('');
+    del_img();
     scrollAble();
 
     comment_check = false;
@@ -119,20 +128,6 @@ function scrollDisable() {
 function scrollAble() {
     $('#body').css("overflow", "visible");
 }
-
-
-// 버튼 클릭시 나의 아이디 받아오기
-function who_am_i(log) {
-    $.ajax({
-        url: "/getInfo?log=" + log,
-        type: "POST"
-    }).done(result => {
-        let user_id = result.user_id;
-
-        $('#user_id').val(user_id);
-    })
-}
-
 
 // 댓글 띄우기
 function comments_view(result, result2, user_log, board_id) {
@@ -313,3 +308,32 @@ $('.search_area').focusout(e=>{
     $('.search_result').empty();
     $('.searched_section').css("display", "none");
 })
+
+function deleteBoardId1(){
+    let __boardId = $('#detail_board_id').val();
+
+    deleteContent1(__boardId);
+}
+
+
+function deleteContent1(id){
+    if(confirm("삭제하시겠슴둥?")){
+        $.ajax({
+            url: "/deleteMyContent/" + id,
+            type: "POST",
+            contentType: "application/json",
+
+            success: function () {
+                alert("삭제되었슴둥");
+                location.reload();
+            },
+            fail: function () {
+                alert("실패했습둥");
+            },
+            error: function () {
+                alert("오류떴슴둥");
+            }
+        })
+    }
+
+}

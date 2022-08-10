@@ -23,11 +23,11 @@
 <div class="wrap">
     <div class="_wrap">
         <div class="menu">
-            <div>
-                <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
-                <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
-                <p class="deleteUser" onclick="location.href='/deleteUser'">회원탈퇴</p>
-            </div>
+
+            <p class="updateMe" onclick="location.href='/updateMyInfo'">내 프로필</p>
+            <p class="updatePw" onclick="location.href='/updateMyPw'">비밀번호 변경</p>
+            <p class="deleteUser" onclick="location.href='/deleteUser'">회원탈퇴</p>
+
         </div>
 
         <div id="myContent">
@@ -48,7 +48,7 @@
 
                         <input type="hidden" name="img_url" id="img_url">
                         <input type="hidden" name="preview" id="preview" value="">
-                        <img style="width: 150px; height: 150px" id="preview-image" src=""><br>
+                        <img style="width: 150px; height: 150px; margin-bottom: 30px" id="preview-image" src=""><br>
                         <input type="file" name="input_img" id="input_img" onchange="show_img(event)">
                     </div>
 

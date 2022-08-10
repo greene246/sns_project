@@ -1,6 +1,10 @@
 
 ._wrap{
-    overflow: hidden;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .content{
@@ -9,22 +13,21 @@
 
 .menu{
     background-color: #f6e1ff5c;
-    width: 100vw;
     height: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .menu div{
-    width: 80vw;
-    margin-left: 10vw;
-    margin-top: 15px;
     font-size: 12pt;
     display: flex;
-    padding-top: 13px;
+
 }
 
 .menu p{
     position: relative;
-    margin-right: 4vw;
     cursor: pointer;
 }
 .updateUser{
@@ -49,6 +52,7 @@
 
 .updateTitle{
     font-size: 25px;
+    padding-bottom: 30px;
 }
 
 .img img{

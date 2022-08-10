@@ -31,12 +31,6 @@ public class MainController {
         return "writeForm";
     }
 
-    @RequestMapping("/deleteForm")
-    public String deleteForm() {
-        return "deleteForm";
-    }
-
-
     @RequestMapping("/updateMyPw")
     public String updateMyPw() {
         return "updateMyPw";

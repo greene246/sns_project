@@ -16,8 +16,8 @@
 
 <div class="wrap">
   <div class="mainimg">
-    <img class="main" src="/img/cute.JPG">
-
+    <img class="main" src="/img/iphone.jpeg">
+    <img class="main" src="/img/iphone.jpeg">
   </div>
   <div class="loginbox">
     <form id="login" method="post" action="/login">

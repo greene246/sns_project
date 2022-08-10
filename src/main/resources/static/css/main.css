@@ -48,10 +48,13 @@ div{
 .serve_block{
     display: flex;
     align-items: center;
+    background-color: #faeeff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 5px 3px 10px 2px #dbdbdb;
 }
 .profile_img1{
-
-    height: 62px;
+    height: 60px;
+    width: 60px;
     margin: 22px;
     border-radius: 50%;
 }
@@ -93,7 +96,7 @@ div{
 .serve_section {
     margin-left: 50px;
     width: 30%;
-    height: 500px;
+    height: max-content;
     background-color: #eee;
 }
 
@@ -317,7 +320,7 @@ div{
     display:flex;
     flex-direction: column;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 .comment_section{
     display: flex;
@@ -362,7 +365,7 @@ div{
     right: 41%;
     top: 7%;
     background-color: #ffffff;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: 5px 3px 10px 2px gray;
 }
 .cancel_btn{
@@ -411,7 +414,7 @@ div{
 .detail_btn{
     background-color: transparent;
     border: none;
-    color: #0095f6;
+    color: #CC82EE;
     cursor:pointer;
 }
 #detail_comments_val{

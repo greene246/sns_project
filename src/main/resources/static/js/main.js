@@ -1,38 +1,32 @@
 let _userid;
 let _log;
-let _contents;
+
 //Boards DB에 있느 값을 가져온다.
-function getBoards(scope,log) {
+function getBoards(scope, log) {
     $.ajax({
         url: "/search/" + scope,
         type: "GET",
         async: false,
-        contentType: "application/json",
-        success: data => {
-
-            data.forEach(e => {
-                _log = log;
-                _userid = e.id;
-                insertHtml(e, _log);
-                 getThumbnail(e.user_id);
-                 checkDibs(_userid,_log);
-            })
-        },
-        fail: function () {
-            console.log("fail1")
-        },
-        error: function () {
-            console.log("error1")
-        }
+        contentType: "application/json"
+    }).done(data => {
+        data.forEach(e => {
+            _log = log;
+            _userid = e.id;
+            insertHtml(e, _log);
+            getThumbnail(e.user_id);
+            checkDibs(_userid, _log);
+        })
     })
 }
+
 //메인 출력 부분
 function insertHtml(Board, log) {
-
     let html = `
                  <div class='section author_${Board.user_id} bNum_${Board.id}'>
                     <div class='profile_box'>
-                     <span id="profile_img_wrap"><img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}'"></span>
+                         <span id="profile_img_wrap">
+                            <img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}'">
+                         </span>
                         <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}'" value="${Board.user_id}">
                             <a class="user_id">${Board.user_id}</a>
                         </div>
@@ -40,9 +34,7 @@ function insertHtml(Board, log) {
                     <div class="main_img_wrap">
                         <div id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></div>
                     </div>
-                    <!-- icon 모음 -->
                     <div class='icon'>
-                        <!-- 좋아요 / 댓글 / 디엠 -->
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
                                     <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
@@ -69,10 +61,8 @@ function insertHtml(Board, log) {
     $('.main_section').append(html);
 }
 
-$('.emoji-picker').loadEmojis();
-
 // Serve 출력 부분
-function serveShow(log){
+function serveShow(log) {
     console.log("serve 출력 js")
     //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
@@ -84,7 +74,7 @@ function serveShow(log){
             let html = `
                     <div class="serve_block" onclick="location.href='/myPage'">
                          <img src=${data.thumbnail} class="profile_img1">
-                         <div class='_profile_box'>${data.user_id}</div>
+                         <div class='_profile_box' value="${data.user_id}">${data.user_id}</div>
                      </div>
             `;
 
@@ -96,7 +86,7 @@ function serveShow(log){
         error: function () {
             console.log("error4")
         }
-     })
+    })
 }
 
 //유저 id를 이용해서 해당 아이디의 썸네일을 가져온다
@@ -107,7 +97,7 @@ function getThumbnail(userid) {
         async: false,
         contentType: "application/json",
         success: data => {
-            $('.'+userid+'_info').prop('src', data.replace(/"/gi,""));
+            $('.' + userid + '_info').prop('src', data.replace(/"/gi, ""));
         },
         fail: function () {
             console.log("fail2")
@@ -119,7 +109,7 @@ function getThumbnail(userid) {
 }
 
 // 해당 테이블에 찜 확인 출력
-function checkDibs(userid,log) {
+function checkDibs(userid, log) {
 
     $.ajax({
         url: "/likesSearch?userid=" + userid + "&log=" + log,
@@ -127,8 +117,8 @@ function checkDibs(userid,log) {
         async: false,
         contentType: "application/json",
         success: data => {
-            if(data == true) {
-                $('.'+userid+'_img').prop('src',"./img/fullhearts.png");
+            if (data == true) {
+                $('.' + userid + '_img').prop('src', "./img/fullhearts.png");
             }
         },
         fail: function () {
@@ -140,7 +130,7 @@ function checkDibs(userid,log) {
     })
 }
 
- //하트 찜하기
+//하트 찜하기
 function checkHeart(boardid) {
 
     $.ajax({
@@ -149,11 +139,10 @@ function checkHeart(boardid) {
         async: false,
         contentType: "application/json",
         success: data => {
-            if(data == true) {
-                $('.'+boardid+'_img').prop('src',"./img/heart.png");
-            }
-            else{
-                $('.'+boardid+'_img').prop('src',"./img/fullhearts.png");
+            if (data == true) {
+                $('.' + boardid + '_img').prop('src', "./img/heart.png");
+            } else {
+                $('.' + boardid + '_img').prop('src', "./img/fullhearts.png");
             }
         },
         fail: function () {
@@ -168,10 +157,11 @@ function checkHeart(boardid) {
 
 // 더보기 생성
 $(document).ready(function () {
+
     $('.box').each(function () {
         let content = $(this).children('.content');
         let content_txt = content.text();
-        let content_txt_short = content_txt.substring(0,10) + " ...";
+        let content_txt_short = content_txt.substring(0, 10) + "...";
         let btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
 
         $(this).append(btn_more);
@@ -184,6 +174,8 @@ $(document).ready(function () {
         }
 
         btn_more.click(toggle_content);
+        // 아래 bind가 안 되는 이유는??
+        // btn_more.bind('click',toggle_content);
 
         function toggle_content() {
             if ($(this).hasClass('short')) {

@@ -46,7 +46,6 @@ public class FollowController {
 
         boolean check = followService.followCheck(followRequestDto.getFollower_id(),followRequestDto.getFollowing_id());
         if (check)
-
             return true;
         else
             return false;

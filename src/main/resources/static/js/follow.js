@@ -171,6 +171,7 @@ function CommentCount(user_id){
         contentType: "application/json",
 
         success: data => {
+
             $('.boardCnt').append(data);
         },
         fail: function () {

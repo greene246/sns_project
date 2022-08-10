@@ -37,7 +37,7 @@ function callUploadApi(settings){
                 "method" : "POST",
                 "contentType" : "application/json",
                 "data" : JSON.stringify({
-                    "user_id" : $('#user_id').val(),
+                    "user_id" : $('._profile_box').attr('value'),
                     "img_url" : $('#img_url').val(),
                     "contents" : $('#b_contents').val(),
                     "public_scope" : $('#scope').val(),

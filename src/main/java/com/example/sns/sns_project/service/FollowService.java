@@ -82,10 +82,10 @@ public class FollowService {
 
 
         for (int i = 0; i < follow.size(); i++) {
-            if (follower_id.equals(follow.get(i).getFollowing_id())) {
+            if (follower_id.equals(follow.get(i).getFollower_id())) {
                 follower.add(follow.get(i));
             }
-            if(follower_id.equals(follow.get(i).getFollower_id())){
+            if(follower_id.equals(follow.get(i).getFollowing_id())){
                 following.add(follow.get(i));
             }
         }

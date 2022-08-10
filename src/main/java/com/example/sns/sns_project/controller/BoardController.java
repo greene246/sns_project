@@ -23,7 +23,6 @@ public class BoardController {
     @ResponseBody
     public void creatMultiBoard(@RequestBody BoardRequestDto boardRequestDto, HttpServletResponse response) throws ServletException, IOException {
         boardService.createBoard(boardRequestDto);
-
         response.sendRedirect("/main");
     }
 

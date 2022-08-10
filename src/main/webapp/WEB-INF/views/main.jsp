@@ -33,10 +33,9 @@
                 <span id="profile_img_wrap"><img class="detail_profile_img"></span>
                 <a class="detail_user_id"></a>
             </div>
-
-            <div class="contents">
-                <a class="_contents"></a>
-            </div>
+                <div class="contents">
+                      <a class="_contents"></a>
+                </div>
 
             <div class="all_comments">
 

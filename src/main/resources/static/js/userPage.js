@@ -60,11 +60,13 @@ function userPageContents(id, userId) {
 function printContent(id, Board) {
     let Content_img = Board.img_url;
 
-    let html = `
+    if(Board.public_scope != 2){
+        let html = `
         <div class="userImage">
             <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id}, '${Board.contents}')" src=${Content_img}>
         </div>
     `;
-    $('.userPageContent').append(html);
+        $('.userPageContent').append(html);
+    }
 
 }

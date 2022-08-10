@@ -97,7 +97,7 @@ public class BoardService {
 
         List<BoardVO> board = boardRepository.findAll();
         for(int i = 0; i < board.size(); i++){
-            if(board.get(i).getUser_id().equals(user_id)){
+            if(board.get(i).getUser_id().equals(user_id) && board.get(i).getPublic_scope() != 2){
                 number++;
             }
         }

@@ -1,29 +1,22 @@
 let _userid;
 let _log;
 let _contents;
+
 //Boards DB에 있느 값을 가져온다.
 function getBoards(scope, log) {
     $.ajax({
         url: "/search/" + scope,
         type: "GET",
         async: false,
-        contentType: "application/json",
-        success: data => {
-
-            data.forEach(e => {
-                _log = log;
-                _userid = e.id;
-                insertHtml(e, _log);
-                getThumbnail(e.user_id);
-                checkDibs(_userid, _log);
-            })
-        },
-        fail: function () {
-            console.log("fail1")
-        },
-        error: function () {
-            console.log("error1")
-        }
+        contentType: "application/json"
+    }).done(data => {
+        data.forEach(e => {
+            _log = log;
+            _userid = e.id;
+            insertHtml(e, _log);
+            getThumbnail(e.user_id);
+            checkDibs(_userid, _log);
+        })
     })
 }
 

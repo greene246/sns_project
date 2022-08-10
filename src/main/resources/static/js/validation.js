@@ -41,6 +41,7 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
     let target_contents = `${contents}`;
 
     $(".detail_profile_img").attr("src", target_url);
+    $(".detail_profile_img").attr("onclick", `location.href='/userPage?user_id=${user_id}'`);
     console.log(my_id)
     console.log(user_id)
     if(my_id == user_id){
@@ -313,21 +314,21 @@ function deleteBoardId1(){
 
 
 function deleteContent1(id){
-    if(confirm("삭제하시겠슴둥?")){
+    if(confirm("삭제하시겠습니까?")){
         $.ajax({
             url: "/deleteMyContent/" + id,
             type: "POST",
             contentType: "application/json",
 
             success: function () {
-                alert("삭제되었슴둥");
+                alert("삭제되었습니다.");
                 location.reload();
             },
             fail: function () {
-                alert("실패했습둥");
+                alert("실패했습니다.");
             },
             error: function () {
-                alert("오류떴슴둥");
+                alert("오류떴습니다.");
             }
         })
     }

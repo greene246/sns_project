@@ -74,7 +74,7 @@
 
       </div>
       <div class="input_comment">
-        <input type="text" placeholder="친구와 소통해보세요!" id="detail_comments_val">
+        <input type="text" placeholder="친구와 소통해보세요! (300자 이내)" id="detail_comments_val">
         <input class="detail_btn" type="button" value="댓글" onclick="upload_comments_in_detail(<%=log%>)">
       </div>
     </div>

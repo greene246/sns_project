@@ -81,14 +81,14 @@ function deleteContent(id){
             contentType: "application/json",
 
             success: function () {
-                alert("삭제되었슴둥");
+                alert("삭제되었습니다.");
                 location.reload();
             },
             fail: function () {
-                alert("실패했습둥");
+                alert("실패했습니다.");
             },
             error: function () {
-                alert("오류떴슴둥");
+                alert("오류떴습니다.");
             }
         })
     }

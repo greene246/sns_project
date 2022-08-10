@@ -41,7 +41,7 @@
         <div class="detail_comments">
             <div class="comments_owner">
                 <div class="comments_owner_section">
-                    <span id="profile_img_wrap"><img class="detail_profile_img"></span>
+                    <span id="profile_img_wrap"><img class="detail_profile_img" onclick="location.href='/'"></span>
                     <a class="detail_user_id"></a>
                 </div>
                 <div class="del_btn_section"></div>
@@ -55,7 +55,7 @@
 
             </div>
             <div class="input_comment">
-                <textarea type="text" placeholder="친구와 소통해보세요!" id="detail_comments_val"></textarea>
+                <textarea type="text" placeholder="친구와 소통해보세요! (300자 이내)" id="detail_comments_val"></textarea>
                 <input class="detail_btn" type="button" value="댓글" onclick="upload_comments_in_detail(<%=log%>)">
             </div>
         </div>

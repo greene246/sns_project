@@ -68,11 +68,9 @@ public class UserService {
     public boolean updateUser(UserRequestDto userRequestDto) {
         List<UserVO> user = userRepository.findAll();
 
-        System.out.println("SIZE : " + user.size());
 
         for(int i=0; i<user.size(); i++) {
             if(userRequestDto.getUser_id().equals(user.get(i).getUser_id())) {
-                System.out.println("userId : " + user.get(i).getUser_id());
                 user.get(i).update(userRequestDto);
                 return true;
             }

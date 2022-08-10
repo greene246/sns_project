@@ -40,7 +40,7 @@
 
             <span class="user_id"></span><br>
 
-            <form method="post" action="/removeUser">
+<%--            <form method="post" onsubmit="removeUser(<%=log%>)">--%>
                 <div class="content">
                     <div class="updateUser">
 
@@ -49,12 +49,12 @@
                         <p class="_pw">비밀번호</p> <input type="password" name="user_pw" id="user_pw" required><br>
                     </div>
                     <div class="button">
-                        <input type="submit" name="delete" value="탈퇴" <%--onclick="deleteUser(<%=log%>)"--%>>
+                        <input type="button" name="delete" value="탈퇴" onclick="removeUser(<%=log%>)">
                     </div>
 
                 </div>
 
-            </form>
+<%--            </form>--%>
 
         </div>
     </div>

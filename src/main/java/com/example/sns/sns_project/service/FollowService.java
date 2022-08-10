@@ -53,7 +53,6 @@ public class FollowService {
 
     //유저페이지 팔로워 수
     public HashMap<String, List<FollowVO>> followCount(String follower_id) {
-        System.out.println(follower_id);
         List<FollowVO> follow = followRepository.findAll();
         List<FollowVO> follower = new ArrayList<>();
         List<FollowVO> following = new ArrayList<>();
@@ -76,7 +75,6 @@ public class FollowService {
 
     //마이페이지 팔로우 수
     public HashMap<String, List<FollowVO>> myFollowCount(String follower_id) {
-        System.out.println("aaa"+follower_id);
         List<FollowVO> follow = followRepository.findAll();
         List<FollowVO> follower = new ArrayList<>();
         List<FollowVO> following = new ArrayList<>();

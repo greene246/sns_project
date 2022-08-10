@@ -322,7 +322,7 @@ div{
     display:flex;
     flex-direction: column;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 .comment_section{
     display: flex;
@@ -357,18 +357,18 @@ div{
     color: #0095f6;
 }
 .searched_section{
-    display : flex;
+    display: flex;
     flex-direction: column;
     position: fixed;
-    min-height: 40px;
-    max-height: 400px;
-    width: 300px;
+    min-height: 200px;
+    max-height: 450px;
+    width: 510px;
     z-index: 1;
-    right: 41%;
+    right: 38%;
     top: 7%;
     background-color: #ffffff;
-    overflow: scroll;
-    box-shadow: 5px 3px 10px 2px gray;
+    overflow: auto;
+    box-shadow: 5px 3px 10px 2px grey;
 }
 .cancel_btn{
     float: right;
@@ -383,6 +383,7 @@ div{
 }
 .searchedUser > *{
     width: 33%;
+
 }
 .searchedUser{
     display: flex;
@@ -394,6 +395,7 @@ div{
     border-radius: 50%;
     border: 1px solid lightslategrey;
     margin-left: 10px;
+    cursor: pointer;
 }
 .cancel_btn:hover,
 .cancel_btn:focus {
@@ -435,4 +437,10 @@ div{
 .set_comments{
     height: 45%;
     align-self: self-start;
+}
+.del_btn_detail_profile{
+    height: 20px;
+    position: relative;
+    left: 120px;
+    width: 25px;
 }

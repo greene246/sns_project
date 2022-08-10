@@ -304,11 +304,6 @@ $('.cancel_btn').on("click", e => {
     $('.searched_section').css("display", "none");
 })
 
-$('.search_area').focusout(e=>{
-    $('.search_result').empty();
-    $('.searched_section').css("display", "none");
-})
-
 function deleteBoardId1(){
     let __boardId = $('#detail_board_id').val();
 

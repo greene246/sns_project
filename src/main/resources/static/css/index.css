@@ -50,19 +50,31 @@ h3{
     bottom: 50px;
     height: 300px;
     z-index: 3;
-    transition: 0.5s;
+    transition: 1s;
 }
 .main2{
     width: auto;
     position: absolute;
     height: 300px;
     z-index: 4;
-    transition: 0.5s;
+    transition: 1s;
 }
-.main2:hover,
+.main1:hover{
+    transform: translate(-7px, -7px);
+    z-index: 5;
+}
+.main2:hover{
+    transform: translate(7px, 7px);
+    z-index: 1;
+}
+.main1 .main2{
+    clear: both;
+}
+
+/*.main2:hover,
 .main2:focus {
     z-index: 2;
-}
+}*/
 .hr-sect {
     display: flex;
     flex-basis: 100%;

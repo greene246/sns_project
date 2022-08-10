@@ -7,7 +7,7 @@
 }
 
 .menu{
-    background-color: #eee6df;
+    background-color: #f6e1ffa8;
     width: 100vw;
     height: 40px;
 }
@@ -37,7 +37,13 @@
     padding-top: 10px;
 }
 .button > input{
-    width: 80px;
+    border-radius: 15px;
+    color: #eeeeee;
+    border: none;
+    cursor: pointer;
+    background-color: #b66dd7;
+    height: 33px;
+    width: 86px;
 }
 
 .updateTitle{
@@ -149,6 +155,45 @@ input[type=file]::file-selector-button:hover {
      background: rgb(77,77,77);
      color: #fff;
  }
+
+#pw_past, #pw_new, #pw_check{
+    margin: 5px;
+    height: 35px;
+    width: 250px;
+    text-align: center;
+}
+
+.__pw{
+    padding-top: 45px;
+}
+.___pw{
+    padding-top: 15px;
+}
+
+#pw_past:focus{
+    background-color: white;
+}
+#pw_past:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+#pw_new:focus{
+    background-color: white;
+}
+#pw_new:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+#pw_check:focus{
+    background-color: white;
+}
+#pw_check:focus {
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
 
 /*
 .uploadBtn{

@@ -352,18 +352,18 @@ div{
     color: #0095f6;
 }
 .searched_section{
-    display : flex;
+    display: flex;
     flex-direction: column;
     position: fixed;
-    min-height: 40px;
-    max-height: 400px;
-    width: 300px;
+    min-height: 200px;
+    max-height: 450px;
+    width: 510px;
     z-index: 1;
-    right: 41%;
+    right: 38%;
     top: 7%;
     background-color: #ffffff;
     overflow: scroll;
-    box-shadow: 5px 3px 10px 2px gray;
+    box-shadow: 5px 3px 10px 2px grey;
 }
 .cancel_btn{
     float: right;

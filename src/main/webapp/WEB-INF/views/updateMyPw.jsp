@@ -39,11 +39,11 @@
                 <div class="updateUser">
                     <input type="hidden" name="user_id" id="user_id">
 
-                    <p class="_pw">이전 비밀번호</p> <input type="password" name="pw_past" id="pw_past" required><br>
+                    <div class="_pw">이전 비밀번호</div> <input type="password" name="pw_past" id="pw_past" required><br>
                         <span style="display: none" id="msg_err">비밀번호를 확인하세요</span>
                         <span style="display: none" id="msg_ok">비밀번호 일치</span>
-                    <p class="_pw">새 비밀번호</p> <input type="password" name="pw_new" id="pw_new" required><br>
-                    <p class="_pw">비밀번호 재확인</p> <input type="password" name="pw_check" id="pw_check" required><br>
+                    <div class="__pw">새 비밀번호</div> <input type="password" name="pw_new" id="pw_new" required><br>
+                    <div class="___pw">비밀번호 재확인</div> <input type="password" name="pw_check" id="pw_check" required><br>
                         <span style="display: none" id="msg_error">비밀번호가 일치하지 않습니다.</span>
                         <span style="display: none" id="msg_okay">비밀번호가 일치합니다.</span>
                 </div>

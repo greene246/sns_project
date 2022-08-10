@@ -45,9 +45,9 @@ function _update(){
             error: function () {
                 console.log("error")
             }
-        }).done(e => {
+        })/*.done(e => {
             location.reload();
-        })
+        })*/
     }
 }
 

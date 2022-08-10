@@ -27,6 +27,7 @@
 .updateImg{
     width: 38px;
     margin-left: 30px;
+    cursor: pointer;
 }
 
 .myPageContent{

@@ -147,7 +147,7 @@ function comments_view(result, result2, user_log, board_id) {
                 <div class="comment_section">
                     <div class="comment_profile">
                         <div class="commented_user_info">
-                            <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                            <span><img class="profile_img" src="${result2[i].thumbnail}" onclick="location.href='/myPage'"></span>
                         </div>
                         <div class="comments_info">
                             <h1>${result2[i].user_id}</h1>
@@ -165,7 +165,7 @@ function comments_view(result, result2, user_log, board_id) {
                 <div class="comment_section">
                     <div class="comment_profile">
                         <div class="commented_user_info">
-                            <span><img class="profile_img" src="${result2[i].thumbnail}"></span>
+                            <span><img class="profile_img" src="${result2[i].thumbnail}" onclick="location.href='/userPage?user_id=${result2[i].user_id}'"></span>
                         </div>
                     <div class="comments_info">
                         <h1>${result2[i].user_id}</h1>

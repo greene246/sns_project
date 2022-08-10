@@ -1,3 +1,5 @@
+let check;
+
 $('#user_id').change(e => {
 
     const requestData = {
@@ -67,3 +69,21 @@ function removeUser(log) {
         }
     })
 }
+
+function check_pw_val(){
+    let pw_val = /^[a-zA-z0-9]{4,12}$/; //비밀번호 유효성 검사
+
+    if (!pw_val.test($('#user_pw').val())) {
+        $('#msg_err_pw').css("display","block");
+        $('#msg_ok_pw').hide();
+        $('#user_pw').val('');
+        $('#user_pw').focus();
+        check=false;
+    }
+    else {
+        $('#msg_ok_pw').css("display","block");
+        $('#msg_err_pw').hide();
+        check=true;
+    }
+}
+

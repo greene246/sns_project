@@ -29,9 +29,11 @@
             <img src="img/logo.PNG" class="__logo">
             <h4 class="h4">친구들의 사진과 동영상을 보려면 가입하세요.</h4>
             <input type="text" name="user_id" id="user_id" placeholder="ID" class="req" required><br>
-            <span style="display: none" name="msg_err" id="msg_err" class="msg">사용할 수 없는 아이디입니다.<br></span>
-            <span style="display: none" name="msg_ok" id="msg_ok" class="msg">사용할 수 있는 아이디입니다.<br></span>
-            <input type="password" name="user_pw" id="user_pw" placeholder="Password" class="req" required><br>
+            <span style="display: none;" name="msg_err" id="msg_err" class="msg">사용할 수 없는 아이디입니다.<br></span>
+            <span style="display: none; color:limegreen;" name="msg_ok" id="msg_ok" class="msg">사용할 수 있는 아이디입니다.<br></span>
+            <input type="password" name="user_pw" id="user_pw" placeholder="Password" class="req" required onchange="check_pw_val()"><br>
+            <span style="display: none; color:red" name="msg_err_pw" id="msg_err_pw" class="msg">비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다.<br></span>
+            <span style="display: none; color:limegreen;" name="msg_ok" id="msg_ok_pw" class="msg">사용할 수 있는 비밀번호 입니다.<br></span>
             <input type="text" name="name" id="name" placeholder="이름" class="req" required><br>
             <input type="email" name="email" id="email" placeholder="이메일" class="req" required><br>
 

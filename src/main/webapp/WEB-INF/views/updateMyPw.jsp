@@ -48,7 +48,8 @@
                         <div class="__pw">새 비밀번호</div>
                         <input type="password" name="pw_new" id="pw_new" required><br>
                         <div class="___pw">비밀번호 재확인</div>
-                        <input type="password" name="pw_check" id="pw_check" required><br>
+                        <input type="password" name="pw_check" id="pw_check" required onchange="check_pw_val()"><br>
+                        <span style="display: none; color: red" id="msg_error_pw">비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다.</span>
                         <span style="display: none; color: red" id="msg_error">비밀번호가 일치하지 않습니다.</span>
                         <span style="display: none; color: limegreen" id="msg_okay">비밀번호가 일치합니다.</span>
                     </div>

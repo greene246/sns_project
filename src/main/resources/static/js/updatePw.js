@@ -1,5 +1,6 @@
 let user_id;
 let user_pw;
+let pw_check;
 
 function getUserId(log) {
     $.ajax({
@@ -17,8 +18,8 @@ function getUserId(log) {
 let check = false;
 
 function _update() {
-    if ($('#pw_past').val() !== user_pw || $('#pw_new').val() !== $('#pw_check').val()) {
-        alert("비밀버노를 화긴하세요");
+    if ($('#pw_check').val() == '' || $('#pw_past').val() !== user_pw || $('#pw_new').val() !== $('#pw_check').val()) {
+        alert("비밀번호를 확인하세요");
     } else {
         const requestData = {
             "user_id": $('#user_id').val(),
@@ -35,11 +36,10 @@ function _update() {
                 console.log("success");
                 alert("비밀번호 수정이 완료되었습니다.");
                 location.href = "/myPage";
-                // form.submit();
+
             },
             fail: function () {
                 console.log("fail");
-                alert("비밀번호 수정 오류");
             },
             error: function () {
                 console.log("error")
@@ -61,26 +61,27 @@ $('#pw_past').change(e => {
     }
 })
 
-$('#pw_check').change(e => {
+function check_pw_val(){
+    let pw_val = /^[a-zA-z0-9]{4,12}$/; //비밀번호 유효성 검사
 
-    if ($('#pw_new').val() !== $('#pw_check').val()) {
-        $('#msg_error').show();
+    if (!pw_val.test($('#pw_new').val()) || !pw_val.test($('#pw_check').val())) {
         $('#msg_okay').hide();
-    } else {
         $('#msg_error').hide();
-        $('#msg_okay').show();
-    }
-})
+        $('#msg_error_pw').show();
 
-$('#pw_new').change(e => {
-    console.log($('#pw_check').val())
-    if ($('#pw_check').val() != '') {
+        $('#pw_new').val('');
+        $('#pw_check').val('');
+        $('#pw_new').focus();
+    }
+    else {
         if ($('#pw_new').val() !== $('#pw_check').val()) {
-            $('#msg_error').show();
+            $('#msg_error_pw').hide();
             $('#msg_okay').hide();
+            $('#msg_error').show();
         } else {
+            $('#msg_error_pw').hide();
             $('#msg_error').hide();
             $('#msg_okay').show();
         }
     }
-})
+}

@@ -37,8 +37,6 @@
 
             <h2 class="updateTitle">회원 탈퇴</h2>
 
-            <span class="user_id"></span><br>
-
             <form method="post" action="/removeUser">
                 <div class="content">
                     <div class="updateUser">

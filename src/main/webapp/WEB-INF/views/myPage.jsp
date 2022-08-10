@@ -16,6 +16,7 @@
 %>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+<c:import url="/WEB-INF/views/searchResult.jsp"/>
 <div class="wrap">
     <div class="myPageBody">
 

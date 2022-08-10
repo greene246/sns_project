@@ -9,7 +9,7 @@ div{
 }
 .main_wrap {
     display: flex;
-    padding: 90px 15% 0 25%;
+    padding: 10px 15% 0 25%;
 }
 .all_contents{
     display: flex;
@@ -20,7 +20,6 @@ div{
 }
 #profile_img_wrap{
     width: 100px;
-    cursor: pointer;
 }
 .section{
     /*flex-grow: 1;*/
@@ -43,7 +42,6 @@ div{
     height: 100%;
     border-radius: 50%;
     border: 1px solid lightslategrey;
-    cursor: pointer;
 }
 .serve_block{
     display: flex;
@@ -140,14 +138,15 @@ div{
 }
 
 .contents {
-    height: 15%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 200px;
+    width: 100%;
     padding: 5px;
     height: 15%;
     overflow: hidden;
+    border-bottom: 1px solid #dbdbdb;
+    color: #5f5f5f;
 }
 
 /*///////////////////////////////////*/
@@ -155,7 +154,7 @@ div{
 .contents_detail {
     position: absolute;
     background-color:black;
-    border-radius: 4px;
+    border-radius: 8px;
     margin:5% 5%;
     width: 90%;
     height: 80%;
@@ -205,7 +204,7 @@ div{
     width: 40%;
     height: 100%;
     background-color: white;
-
+    border-radius: 8px;
 }
 
 #cancel {
@@ -299,14 +298,16 @@ div{
 }
 
 .comments_owner{
-    height: 10%;
-    margin: 10px;
+    height: 12%;
+    padding: 10px;
     display: flex;
     align-items: center;
+    border-bottom: #dbdbdb;
 }
 .detail_profile_img{
     height: 100%;
     border-radius: 50%;
+    border: 1px solid #dbdbdb;
 }
 
 .all_comments{
@@ -317,9 +318,14 @@ div{
 }
 .comment_section{
     display: flex;
-    height: 10%;
+    height: auto;
     margin : 10px;
-    align-items: center;
+    justify-content: space-between
+}
+.comment_profile{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
 }
 .comments_info{
     display: flex;
@@ -329,12 +335,13 @@ div{
 }
 
 .commented_user_info{
-    height: 100%;
+    height: 50px
 }
 .input_comments{
     display: flex;
     justify-content: space-between;
     border-top: 1px solid #dbdbdb;
+    height: 100%;
 }
 .input_btn{
     background-color: transparent;
@@ -395,11 +402,29 @@ div{
 .box{
     word-break: break-all;
 }
-
-#userid{
-    cursor: pointer;
+.user_id{
+    cursor:pointer;
 }
-
-._profile_box{
-    cursor: pointer;
+.detail_btn{
+    background-color: transparent;
+    border: none;
+    color: #0095f6;
+    cursor:pointer;
+}
+#detail_comments_val{
+    border:none;
+    width: 100%;
+    resize: none;
+}
+.input_comment{
+    display: flex;
+    border-top: 1px solid #dbdbdb;
+    height: 10%;
+}
+.del_cbtn{
+    height: 20px;
+}
+.set_comments{
+    height: 45%;
+    align-self: self-start;
 }

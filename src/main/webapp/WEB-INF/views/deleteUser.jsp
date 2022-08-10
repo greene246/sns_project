@@ -9,6 +9,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/header.jsp"></c:import>
+<c:import url="/WEB-INF/views/searchResult.jsp"/>
 <div class="wrap">
     <div class="_wrap">
         <%if (request.getParameter("check") != null) { %>
@@ -62,6 +63,7 @@
 })
 </script>
 <script src="js/user.js"></script>
+<script src="./js/validation.js"></script>
 <%
     }
 %>

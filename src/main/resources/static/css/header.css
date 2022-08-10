@@ -40,4 +40,8 @@
 #search_btn{
     position: relative;
     right: 50px;
+    background-color: transparent;
+    border: none;
+    color: #1877f2;
+    cursor:pointer;
 }

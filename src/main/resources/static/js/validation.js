@@ -22,7 +22,7 @@ function file_upload_pop(log) {
 function detail_comments_pop(user_id, board, board_id, user_log, contents) {
     console.log($('.__profile_box').attr("value"));
     let my_id = $('.__profile_box').attr("value");
-    // user_id 게시글 작성자
+
     // board 게시글 img 아이디
     // board_id 게시글의 id값
     // log 로그인 중인 user의 id값
@@ -42,11 +42,13 @@ function detail_comments_pop(user_id, board, board_id, user_log, contents) {
 
     $(".detail_profile_img").attr("src", target_url);
     $(".detail_profile_img").attr("onclick", `location.href='/userPage?user_id=${user_id}'`);
-    console.log(my_id)
-    console.log(user_id)
+
+    // user_id 게시글 작성자의 id값
+    // my_id 로그인 중인 user id값
     if(my_id == user_id){
         $('.del_btn_detail_profile').remove();
-        let html = `<input type="image" src="img/delBtn.png" class="del_btn_detail_profile" onclick=deleteBoardId1()>`
+        let html = `<input type="image" src="img/delBtn.png" 
+        class="del_btn_detail_profile" onclick=deleteBoardId1()>`
 
         $('.del_btn_section').append(html);
     }
@@ -153,7 +155,11 @@ function comments_view(result, result2, user_log, board_id) {
                         </div>
                     </div>
                     <div>
-                        <div class="set_comments"><a onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})"><img src="img/delBtn.png" class="del_cbtn"></a></div>
+                        <div class="set_comments">
+                            <a onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})">
+                                <img src="img/delBtn.png" class="del_cbtn">
+                            </a>
+                        </div>
                     </div>
                 </div>
             `;
@@ -182,9 +188,9 @@ function comments_view(result, result2, user_log, board_id) {
 
 // 댓글 업로드
 function upload_comments_in_detail(user_log) {
-    // log = 로그인 중인 user의 id값
+    // user_log = 로그인 중인 user의 id값
     // board_id = 댓글을 작성한 보드의 id값
-    // $(`#${comments_id}`).val() = 작성한 댓글 내용
+    // input_comment = 작성한 댓글 내용
 
     let board_id = $('#detail_board_id').val();        // board_id
     let input_comment = $('#detail_comments_val').val();
@@ -250,6 +256,7 @@ function upload_comments(log, board_id, comments_id) {
 
 // 댓글 삭제
 function del_comments(target_id, board_id, user_id) {
+    // target_id : 삭제할 댓글의 id값
     $.ajax({
         url: "/del_comment?comments=" + target_id,
         method: "post",

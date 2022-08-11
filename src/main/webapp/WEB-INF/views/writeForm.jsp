@@ -22,7 +22,7 @@
                 <label for="input_img" style="display: flex; justify-content: center">
                     <div class="btn_upload">파일 선택하기</div>
                 </label>
-                <input type="file" multiple name="uploadFile" accept="image/png, image/gif, image/jpeg"
+                <input type="file" name="uploadFile" accept="image/png, image/jpeg"
                        id="input_img" onchange="setThumbnail(this)"/>
             </div>
         </div>

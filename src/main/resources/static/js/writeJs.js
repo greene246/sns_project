@@ -1,8 +1,9 @@
 let fileNo = 0;
 let filesArr = new Array();
 
-// 사진 클라우드에 업로드 후 data 받아와서 hidden에 넣어줌
+// ajax문
 function uploadImg(){
+    $('#upload_section3').css("display", "none");
     let form = new FormData();
     form.append("image", filesArr[0]);
     let settings = {
@@ -25,6 +26,7 @@ function uploadImg(){
 function callUploadApi(settings){
     $.ajax(settings)
         .done(response => {
+            console.log(response);
             let jx = JSON.parse(response);
             // jx.data.id의 값도 저장해야함 - 삭제 시 필요
             $('#img_url').val(jx.data.url);
@@ -93,7 +95,8 @@ function setThumbnail(obj) {
 // 파일 선택 취소
 function del_img(){
     $('#image_contain').empty();
-    $('#input_img').val('');
+    $('#input_img').val();
+    filesArr = new Array();
     $('#upload_section1').css("display", "flex");
     $('#upload_section2').css("display", "none");
     $('#upload_section3').css("display", "none");
@@ -111,3 +114,9 @@ function back_btn(){
     $('#upload_section2').css("display", "flex");
     $('#upload_section3').css("display", "none");
 }
+
+$('#b_contents').keydown(e=>{
+    if(e.keyCode == '13'){
+        uploadImg($('#write_form'));
+    }
+})

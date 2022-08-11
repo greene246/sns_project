@@ -19,8 +19,8 @@ function file_upload_pop(log) {
 }
 
 // 댓글 아이콘 클릭 시
-function detail_comments_pop(user_id, board, board_id, user_log, contents) {
-    console.log($('.__profile_box').attr("value"));
+function detail_comments_pop(user_id, board, board_id, user_log) {
+    let contents = $('#hidden_contents').val();
     let my_id = $('.__profile_box').attr("value");
 
     // board 게시글 img 아이디
@@ -103,7 +103,6 @@ function comment_load(board_id, user_log) {
         contentType: "application/json"
     }).done(result => {
         console.log("comments loading success");
-        console.log(result);
 
         result.forEach(e => {
             arr.push(e.user_id);
@@ -199,6 +198,10 @@ function upload_comments_in_detail(user_log) {
         alert("댓글은 1자 이상 작성해주세요");
         return;
     }
+    else if(input_comment.length > 299){
+        alert("댓글은 300자 이하로 작성 가능합니다.");
+        return;
+    }
 
     const requestData = {
         "user_id": user_log,
@@ -268,7 +271,7 @@ function del_comments(target_id, board_id, user_id) {
 }
 
 // 검색기능
-$('#search_btn').on("click", e => {
+function search_user(){
     $('.search_result').empty();
     $('.searched_section').css("display", "none");
     if ($('.search').val().length < 2) {
@@ -308,6 +311,12 @@ $('#search_btn').on("click", e => {
         }
         $('.searched_section').css("display", "block");
     })
+}
+
+$('.search').keydown(e=>{
+    if(e.keyCode == '13'){
+        search_user();
+    }
 })
 
 $('.cancel_btn').on("click", e => {

@@ -8,14 +8,10 @@ let log; // userLog
 let _id // myLog
 
 function userPageUser(id, user_id ,my_id) {
-    console.log('user_id: ' + user_id);
-
     $.ajax({
         url: "/getUserId?user_id=" + user_id,
         type: "POST"
     }).done(result => {
-        console.log(result);
-
         userId = result.user_id;
         name = result.name;
         thumbnail = `<img class="_mainThumbnail" src=${result.thumbnail}>`;
@@ -64,7 +60,8 @@ function printContent(id, Board) {
     if(Board.public_scope != 2){
         let html = `
         <div class="userImage">
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id}, '${Board.contents}')" src=${Content_img}>
+            <input type="hidden" id="hidden_contents" value="${Board.contents}">
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}>
         </div>
     `;
         $('.userPageContent').append(html);

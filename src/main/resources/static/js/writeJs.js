@@ -3,6 +3,11 @@ let filesArr = new Array();
 
 // ajax문
 function uploadImg(){
+    if($('#b_contents').val().length > 199){
+        alert('게시글 내용은 200자 이내로 가능합니다.')
+        return;
+    }
+
     $('#upload_section3').css("display", "none");
     let form = new FormData();
     form.append("image", filesArr[0]);
@@ -26,13 +31,10 @@ function uploadImg(){
 function callUploadApi(settings){
     $.ajax(settings)
         .done(response => {
-            console.log(response);
             let jx = JSON.parse(response);
             // jx.data.id의 값도 저장해야함 - 삭제 시 필요
             $('#img_url').val(jx.data.url);
             $('#del_url').val(jx.data.delete_url);
-
-            console.log($('#b_contents').val());
 
             let boardJson = {
                 "url" : "/upload",
@@ -54,7 +56,7 @@ function callUploadApi(settings){
                 })
         })
         .fail(error =>{
-            console.log(error);
+            console.log("fail");
         })
 }
 

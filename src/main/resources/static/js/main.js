@@ -39,7 +39,8 @@ function insertHtml(Board, log) {
                     <div class='icon'>
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')">
+                            <input type="hidden" value="${Board.contents}" id="hidden_contents">
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', '${Board.id}', '${log}')">
                         </div>
                     </div>
                     <div class="text_sources">
@@ -65,7 +66,6 @@ function insertHtml(Board, log) {
 
 // Serve 출력 부분
 function serveShow(log) {
-    console.log("serve 출력 js")
     //유저의 log을 받아서 해당 users의 정보를 가져온 후 그 정보를 출력한다.
     $.ajax({
         url: "/getUser/" + log,

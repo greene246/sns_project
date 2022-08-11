@@ -30,7 +30,7 @@
             <a href="/main" id="logo"><img src="img/logo.PNG" style="height: 36px"></a>
             <div class="search_area">
                 <input type="text" class="search" name="search" placeholder="아이디를 검색하세요">
-                <input type="button" value="찾기" id="search_btn">
+                <input type="button" value="찾기" id="search_btn" onclick="search_user()">
             </div>
             <div class="topMenu">
                 <a onclick="file_upload_pop(<%=log%>)">

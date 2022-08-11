@@ -105,3 +105,15 @@
     font-weight: bold;
     font-size: 16px;
 }
+.next_btn{
+    cursor: pointer;
+}
+.del_img{
+    cursor: pointer;
+}
+.back_btn{
+    cursor: pointer;
+}
+#write{
+    cursor: pointer;
+}

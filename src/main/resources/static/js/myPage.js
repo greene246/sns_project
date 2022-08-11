@@ -54,13 +54,12 @@ function myPageContents(log, userId){
 
 function printContent(log, Board) {
     let Content_img = Board.img_url;
-    console.log(Content_img);
-    console.log('유저아이디 : ' + `${Board.user_id}`);
 
     let html = `
         <div class="myImage">
 <!--            <input type="image" src="img/delBtn.png" class="del_btn" onclick="deleteContent(${Board.id})">-->
-            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log}, '${Board.contents}')" src=${Content_img}>
+            <input type="hidden" value="${Board.contents}" id="hidden_contents">
+            <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
         </div>
     `;
     $('.myPageContent').append(html);
@@ -73,7 +72,6 @@ function deleteBoardId(){
 }
 
 function deleteContent(id){
-    console.log(id);
     if(confirm("게시물을 삭제하시겠습니까?")){
         $.ajax({
             url: "/deleteMyContent/" + id,

@@ -56,7 +56,7 @@ function uploadToCloud(formObj) {
             update(formObj);
 
         }).fail(error => {
-            console.log(error)
+            console.log('error')
         })
     } else {
         let thumbnail = $('#preview').val();

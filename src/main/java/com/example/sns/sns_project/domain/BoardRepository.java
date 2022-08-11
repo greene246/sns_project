@@ -19,5 +19,7 @@ public interface BoardRepository extends JpaRepository<BoardVO, Integer> {
      @Query(value = "select * from boards where id = ?1 order by  created_at DESC", nativeQuery = true)
      List<BoardVO> findBoardsById(int id);
 
+     @Query(value = "SELECT * FROM boards ORDER BY created_at DESC LIMIT ?1, 10;", nativeQuery = true)
+     List<BoardVO> getBoardsAmount(int n);
 
 }

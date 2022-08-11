@@ -68,8 +68,9 @@
 <script src="./js/writeJs.js"></script>
 <script src="./js/eventJs.js"></script>
 <script>
+    pageCnt(<%=log%>);
     serveShow(<%=log%>);
-    getBoards(<%=log%>);
+    getBoards(<%=log%>)
     <%}%>
 </script>
 </body>

@@ -1,26 +1,78 @@
 let _userid;
 let _log;
-let _contents;
+let row_cnt = 0;
+let total_cnt;
+let user_log;
+let page_cnt = 0;
 
 //Boards DB에 있느 값을 가져온다.
-function getBoards(log) {
+
+// 1. 보드 전체 개수를 확인
+// 2. 10개 단위로 ajax 호출
+// 3. let name = setInterval(500, 호출메소드);
+// 4. 조건(카운트) 도달 시, 인터벌 종료
+
+function pageCnt(log){
     $.ajax({
-        url: "/search/" + 0,
+        url: "/count_boards/",
+        type: "POST",
+        async: false,
+        contentType: "application/json"
+    }).done(result=>{
+        total_cnt = result;
+        page_cnt = total_cnt / 10;
+        user_log = log;
+    })
+}
+
+// let interval = setInterval(500, getBoards(user_log));
+// clearInterval(interval);
+let interval;
+let section_cnt;
+
+function getBoards(log) {
+    user_log = log
+    if(total_cnt / 10 > 0){
+        section_cnt = 10;
+    }
+    else{
+        section_cnt = total_cnt % 10;
+    }
+
+    $.ajax({
+        url: "/search/" + row_cnt + "/" + section_cnt,
         type: "GET",
         async: false,
         contentType: "application/json"
     }).done(data => {
+        if(data.length == 0){
+            clearInterval(interval);
+            return;
+        }
+
+        row_cnt += section_cnt;
+        total_cnt -= section_cnt;
+
+        console.log(data);
+
         data.forEach(e => {
             _log = log;
             _userid = e.id;
-            setTimeout(function() {
-                insertHtml(e, _log);
-                getThumbnail(e.user_id);
-                checkDibs(_userid, _log);
-            }, 300);
+            insertHtml(e, _log);
+            getThumbnail(e.user_id);
+            checkDibs(_userid, _log);
         })
-    })
+        interval = setInterval(getBoards(user_log), 100);
+        page_cnt --;
+    }).fail(fail=> {
+        total_cnt = 0;
+        clearInterval(interval);
+    });
 }
+
+
+
+
 
 
 //메인 출력 부분
@@ -116,7 +168,6 @@ function getThumbnail(userid) {
 
 // 해당 테이블에 찜 확인 출력
 function checkDibs(userid, log) {
-
     $.ajax({
         url: "/likesSearch?userid=" + userid + "&log=" + log,
         type: "GET",
@@ -143,15 +194,10 @@ function checkHeart(boardid) {
         type: "GET",
         async: false,
         contentType: "application/json",
-        success: data => {
-            location.reload();
-        },
-        fail: function () {
-            console.log("fail2")
-        },
-        error: function () {
-            console.log("error2")
-        }
+    }).done(done=> {
+        location.reload();
+    }).fail(error=>{
+        console.log("error2")
     })
 }
 

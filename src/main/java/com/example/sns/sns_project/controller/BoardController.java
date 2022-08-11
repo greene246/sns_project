@@ -40,9 +40,12 @@ public class BoardController {
         }
     }
 
-    @GetMapping("/search/{num}")
-    public List<BoardVO> search(@PathVariable("num") int num) {
-        return boardService.search(num);
+    @GetMapping("/search/{num}/{section_cnt}")
+    public List<BoardVO> search(@PathVariable("num") int num, @PathVariable("section_cnt") int section_cnt) {
+        // num 부터 section_cnt 개수 만큼
+        List<BoardVO> result =  boardService.search(num, section_cnt);
+        System.out.println("size :" + result.size());
+        return result;
     }
 
     // 유저 아이디 받아서 그 유저가 쓴 게시물 죄다 가져오기
@@ -62,11 +65,16 @@ public class BoardController {
     public int myCommentCount(@PathVariable("log") int log){
         return boardService.myCommentCount(log);
     }
+
     //유저의 아이디로 게시물 개수 가져오기
     @PostMapping("/CommentCount/{user_id}")
     public int CommentCount(@PathVariable("user_id") String user_id){
         return boardService.CommentCount(user_id);
     }
 
+    @PostMapping("/count_boards")
+    public int count_boards(){
+        return boardService.Count_board();
+    }
 
 }

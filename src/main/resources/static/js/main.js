@@ -3,9 +3,9 @@ let _log;
 let _contents;
 
 //Boards DB에 있느 값을 가져온다.
-function getBoards(scope, log) {
+function getBoards(log) {
     $.ajax({
-        url: "/search/" + scope,
+        url: "/search/" + 0,
         type: "GET",
         async: false,
         contentType: "application/json"
@@ -13,12 +13,15 @@ function getBoards(scope, log) {
         data.forEach(e => {
             _log = log;
             _userid = e.id;
-            insertHtml(e, _log);
-            getThumbnail(e.user_id);
-            checkDibs(_userid, _log);
+            setTimeout(function() {
+                insertHtml(e, _log);
+                getThumbnail(e.user_id);
+                checkDibs(_userid, _log);
+            }, 300);
         })
     })
 }
+
 
 //메인 출력 부분
 function insertHtml(Board, log) {
@@ -135,7 +138,6 @@ function checkDibs(userid, log) {
 
 //하트 찜하기 2022.08.11 fix
 function checkHeart(boardid) {
-
     $.ajax({
         url: "/dibsSearch?boardid=" + boardid + "&log=" + _log,
         type: "GET",

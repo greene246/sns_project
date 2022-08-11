@@ -3,9 +3,11 @@ package com.example.sns.sns_project.service;
 import com.example.sns.sns_project.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 
@@ -32,6 +34,7 @@ public class BoardService {
 
     // 컨텐츠 DB 탐색
     public List<BoardVO> search(int a){
+        PageRequest pageRequest = PageRequest.of(0, 10);
         List<BoardVO> boards = boardRepository.findBoardsByPublicScopeOrderByCreatedAtDesc(a);
         return boards;
     }

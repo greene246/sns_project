@@ -69,8 +69,7 @@
 <script src="./js/eventJs.js"></script>
 <script>
     serveShow(<%=log%>);
-    getBoards(0,<%=log%>);
-    getBoards(1,<%=log%>);
+    getBoards(<%=log%>);
     <%}%>
 </script>
 </body>

@@ -139,11 +139,7 @@ function checkHeart(boardid) {
         async: false,
         contentType: "application/json",
         success: data => {
-            if (data == true) {
-                $('.' + boardid + '_img').prop('src', "./img/heart.png");
-            } else {
-                $('.' + boardid + '_img').prop('src', "./img/fullhearts.png");
-            }
+            location.reload()
         },
         fail: function () {
             console.log("fail2")
@@ -152,7 +148,7 @@ function checkHeart(boardid) {
             console.log("error2")
         }
     })
-    location.reload()
+
 }
 
 // 더보기 생성

@@ -60,7 +60,7 @@ function printContent(id, Board) {
     if(Board.public_scope != 2){
         let html = `
         <div class="userImage">
-            <input type="hidden" id="hidden_contents" value="${Board.contents}">
+            <input type="hidden" id="hidden_contents_${Board.id}" value="${Board.contents}">
             <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${id})" src=${Content_img}>
         </div>
     `;

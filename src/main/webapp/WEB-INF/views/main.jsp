@@ -70,7 +70,7 @@
 <script>
     pageCnt(<%=log%>);
     serveShow(<%=log%>);
-    getBoards(<%=log%>)
+    getBoards(<%=log%>);
     <%}%>
 </script>
 </body>

@@ -58,7 +58,7 @@ function printContent(log, Board) {
     let html = `
         <div class="myImage">
 <!--            <input type="image" src="img/delBtn.png" class="del_btn" onclick="deleteContent(${Board.id})">-->
-            <input type="hidden" value="${Board.contents}" id="hidden_contents">
+            <input type="hidden" value="${Board.contents}" id="hidden_contents_${Board.id}">
             <img class="imgSize" id="img_${Board.id}" onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', ${Board.id}, ${log})" src=${Content_img}>
         </div>
     `;

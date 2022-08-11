@@ -20,7 +20,7 @@ function file_upload_pop(log) {
 
 // 댓글 아이콘 클릭 시
 function detail_comments_pop(user_id, board, board_id, user_log) {
-    let contents = $('#hidden_contents').val();
+    let contents = $(`#hidden_contents_${board_id}`).val();
     let my_id = $('.__profile_box').attr("value");
 
     // board 게시글 img 아이디
@@ -155,7 +155,7 @@ function comments_view(result, result2, user_log, board_id) {
                     </div>
                     <div>
                         <div class="set_comments">
-                            <a onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})">
+                            <a style="cursor:pointer" onclick="del_comments('${result[i].id}', ${board_id}, ${user_log})">
                                 <img src="img/delBtn.png" class="del_cbtn">
                             </a>
                         </div>

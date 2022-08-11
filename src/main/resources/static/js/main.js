@@ -49,11 +49,8 @@ function getBoards(log) {
             clearInterval(interval);
             return;
         }
-
         row_cnt += section_cnt;
         total_cnt -= section_cnt;
-
-        console.log(data);
 
         data.forEach(e => {
             _log = log;
@@ -94,7 +91,7 @@ function insertHtml(Board, log) {
                     <div class='icon'>
                         <div class='three'>
                             <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                            <input type="hidden" value="${Board.contents}" id="hidden_contents">
+                            <input type="hidden" value="${Board.contents}" id="hidden_contents_${Board.id}">
                                     <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', '${Board.id}', '${log}')">
                         </div>
                     </div>

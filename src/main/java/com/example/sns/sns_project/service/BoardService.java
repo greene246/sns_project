@@ -33,7 +33,7 @@ public class BoardService {
     // 컨텐츠 DB 탐색
     public List<BoardVO> search(int a, int section_cnt){
         // a번째부터 section_cnt 개수만큼
-        List<BoardVO> boards = boardRepository.getBoardsAmount(a);
+        List<BoardVO> boards = boardRepository.getBoardsAmount(0, a);
         return boards;
     }
 
@@ -111,6 +111,8 @@ public class BoardService {
         int lenght = boards.size();
         return lenght;
     }
+
+
 }
 
 

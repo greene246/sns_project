@@ -44,7 +44,6 @@ public class BoardController {
     public List<BoardVO> search(@PathVariable("num") int num, @PathVariable("section_cnt") int section_cnt) {
         // num 부터 section_cnt 개수 만큼
         List<BoardVO> result =  boardService.search(num, section_cnt);
-        System.out.println("size :" + result.size());
         return result;
     }
 

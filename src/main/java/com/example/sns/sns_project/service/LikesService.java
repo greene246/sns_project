@@ -34,8 +34,9 @@ public class LikesService {
         boolean check = false;
         List<LikesVo> likes = likesRepository.findLikesByUserId(log);
 
+        // 9 10 11 12
+        // 77
         for (int i = 0; i < likes.size(); i++) {
-
             if (likes.get(i).getBoard_id() == userid) {
                 check = true;
             }
@@ -73,5 +74,9 @@ public class LikesService {
         int check = readLikesId(likes);
         likesRepository.deleteById(check);
 
+    }
+
+    public List<LikesVo> getAllLikes(){
+        return likesRepository.findAll();
     }
 }

@@ -84,6 +84,7 @@ function when_close() {
 // 댓글 클릭 시 보여준다.
 function showPopup(board, board_id, user_log) {
     scrollDisable();
+
     // 게시글 img아이디, 게시글의 id값, 나의 id값
     $(".contents_detail").css("display", "flex");
 

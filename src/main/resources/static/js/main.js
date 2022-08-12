@@ -1,4 +1,4 @@
-let _userid;
+let _boardid;
 let _log;
 let row_cnt = 0;
 let total_cnt;
@@ -40,30 +40,34 @@ function getBoards(log) {
     }
 
     $.ajax({
-        url: "/search/" + row_cnt + "/" + section_cnt,
+        url: "/search/" + row_cnt + "/" + section_cnt + "/" + log,
         type: "GET",
         async: false,
         contentType: "application/json"
     }).done(data => {
+        console.log(data);
         if(data.length == 0){
-            clearInterval(interval);
+            // clearInterval(interval);
             return;
         }
         row_cnt += section_cnt;
         total_cnt -= section_cnt;
 
         data.forEach(e => {
+            // e = 게시물객체
+            // e.user_id = 게시물의 작성자 아이디
+            // e.id = 게시물의 아이디
             _log = log;
-            _userid = e.id;
-            insertHtml(e, _log);
-            getThumbnail(e.user_id);
-            checkDibs(_userid, _log);
+            _boardid = e.id;
+            insertHtml(e, _log); // x
+            // getThumbnail(e.user_id);
+            // checkDibs(_boardid, _log);
         })
-        interval = setInterval(getBoards(user_log), 100);
-        page_cnt --;
+        getBoards(user_log);
+        // page_cnt --;
     }).fail(fail=> {
         total_cnt = 0;
-        clearInterval(interval);
+        // clearInterval(interval);
     });
 }
 
@@ -76,29 +80,29 @@ function getBoards(log) {
 function insertHtml(Board, log) {
     let my_id = $('._profile_box').attr("value");
     let html = `
-                 <div class='section author_${Board.user_id} bNum_${Board.id}'>
+                 <div class='section author_${Board.user_idS} bNum_${Board.board_id}'>
                     <div class='profile_box'>
                          <span id="profile_img_wrap">
-                            <img class="profile_img ${Board.user_id}_info" onclick="location.href='/userPage?user_id=${Board.user_id}&my_id=${my_id}'">
+                            <img class="profile_img ${Board.user_idS}_info" src="${Board.user_thumbnail}" onclick="location.href='/userPage?user_id=${Board.user_idS}&my_id=${my_id}'">
                          </span>
-                        <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_id}&my_id=${my_id}'" value="${Board.user_id}">
-                            <a class="user_id">${Board.user_id}</a>
+                        <div id='userid' onclick="location.href='/userPage?user_id=${Board.user_idS}&my_id=${my_id}'" value="${Board.user_idS}">
+                            <a class="user_id">${Board.user_idS}</a>
                         </div>
                     </div>
                     <div class="main_img_wrap">
-                        <div id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.id}"></div>
+                        <div id='main_img'><img src=${Board.img_url} class="print_img" id="img_${Board.board_id}"></div>
                     </div>
                     <div class='icon'>
                         <div class='three'>
-                            <img src='./img/heart.png' class='icon_img ${Board.id}_img'  value="${Board.id}" onclick="checkHeart(${Board.id})">
-                            <input type="hidden" value="${Board.contents}" id="hidden_contents_${Board.id}">
-                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_id}', 'img_${Board.id}', '${Board.id}', '${log}')">
+                            <img src='./img/heart.png' class='icon_img ${Board.board_id}_img'  value="${Board.board_id}" onclick="checkHeart(${Board.board_id})">
+                            <input type="hidden" value="${Board.contents}" id="hidden_contents_${Board.board_id}">
+                                    <img src='./img/message.png' class='icon_img msg' onclick="detail_comments_pop('${Board.user_idS}', 'img_${Board.board_id}', '${Board.board_id}', '${log}')">
                         </div>
                     </div>
                     <div class="text_sources">
                         <span class='word'> 좋아요 ${Board.like_cnt}개</span>
                         
-                        <span class='id'>${Board.user_id}</span>
+                        <span class='id'>${Board.user_idS}</span>
                         
                         <div class="box">
                             <span className='main3' id='contents' class="content">${Board.contents}</span>
@@ -106,14 +110,18 @@ function insertHtml(Board, log) {
                         
                         <span className='main4' id='createdAt'>${(Board.createdAt).substring(0, 10)}</span>
                         <div class="input_comments">
-                                <textarea id="comments_${Board.id}" placeholder="친구와 소통해봐요! (300자 이내)" class="text_area"></textarea>
-                                <input type="button" class="detail_btn" value="댓글" onclick="upload_comments(${log}, ${Board.id}, 'comments_${Board.id}')">
+                                <textarea id="comments_${Board.board_id}" placeholder="친구와 소통해봐요! (300자 이내)" class="text_area"></textarea>
+                                <input type="button" class="detail_btn" value="댓글" onclick="upload_comments(${log}, ${Board.board_id}, 'comments_${Board.board_id}')">
                         </div>
                     </div>
                 </div>
             `;
 
     $('.main_section').append(html);
+
+    if(Board.like_check == 1){
+        $('.' + Board.board_id + '_img').prop('src', "./img/fullhearts.png");
+    }
 }
 
 // Serve 출력 부분
@@ -164,15 +172,15 @@ function getThumbnail(userid) {
 }
 
 // 해당 테이블에 찜 확인 출력
-function checkDibs(userid, log) {
+function checkDibs(board_id, log) {
     $.ajax({
-        url: "/likesSearch?userid=" + userid + "&log=" + log,
+        url: "/likesSearch?userid=" + board_id + "&log=" + log,
         type: "GET",
         async: false,
         contentType: "application/json",
         success: data => {
             if (data == true) {
-                $('.' + userid + '_img').prop('src', "./img/fullhearts.png");
+                $('.' + board_id + '_img').prop('src', "./img/fullhearts.png");
             }
         },
         fail: function () {

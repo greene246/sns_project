@@ -37,6 +37,10 @@ public class UserVO extends Timestamp {
     @Column(name="thumbnail", nullable = true)
     private String thumbnail;
 
+    public UserVO(int id, String thumbnail){
+        this.id = id;
+        this.thumbnail = thumbnail;
+    }
 
     public UserVO(UserRequestDto userRequestDto){
         this.user_id = userRequestDto.getUser_id();

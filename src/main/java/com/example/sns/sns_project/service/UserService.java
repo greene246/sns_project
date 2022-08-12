@@ -148,4 +148,8 @@ public class UserService {
         return userRepository.findbyUserName(searchName);
     }
 
+    public List<UserVO> getAllUsers(){
+        return userRepository.findAll();
+    }
+
 }
